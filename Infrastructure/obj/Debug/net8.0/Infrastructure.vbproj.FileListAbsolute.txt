@@ -1,0 +1,15 @@
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\obj\Debug\net8.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfoInputs.cache
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfo.vb
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\obj\Debug\net8.0\Infrastructure.vbproj.CoreCompileInputs.cache
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\obj\Debug\net8.0\Infrastructure.vbproj.AssemblyReference.cache
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\bin\Debug\net8.0\Infrastructure.deps.json
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\bin\Debug\net8.0\Infrastructure.dll
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\bin\Debug\net8.0\Infrastructure.pdb
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\bin\Debug\net8.0\Domain.dll
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\bin\Debug\net8.0\Domain.pdb
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\obj\Debug\net8.0\Infrastr.F1EEFA0B.Up2Date
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\obj\Debug\net8.0\Infrastructure.dll
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
