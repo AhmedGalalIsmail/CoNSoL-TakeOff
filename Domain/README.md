@@ -1,12 +1,12 @@
-# Domain Layer
+﻿# Domain Layer
 
 The **Domain** layer contains the **core business logic, data entities, and utilities** for CoNSoL-TakeOff.
 
-This is the **heart of the application** � all other layers depend on it.
+This is the **heart of the application** — all other layers depend on it.
 
 ---
 
-## ?? Overview
+## 📋 Overview
 
 ### Purpose
 
@@ -22,24 +22,24 @@ The Domain layer provides:
 
 ---
 
-## ??? Project Structure
+## 🏗️ Project Structure
 
 ```
 Domain/
-??? Entities/
-?   ??? CanvasElement.vb              # Shape + metadata container
-?   ??? CanvasLayout.vb               # Canvas state (collection of elements)
-?   ??? BusinessDefinition.vb         # Business metadata (Material, Quantity, Price)
-?   ??? BlockModels.vb                # Block/Symbol definitions
-?   ??? ElementRelationship.vb        # Nested object relationships (Parent-Child)
-??? Utilities/
-?   ??? Geometry.vb                   # Geometric calculations (distance, area, etc.)
-??? README.md
+├── Entities/
+│   ├── CanvasElement.vb              # Shape + metadata container
+│   ├── CanvasLayout.vb               # Canvas state (collection of elements)
+│   ├── BusinessDefinition.vb         # Business metadata (Material, Quantity, Price)
+│   ├── BlockModels.vb                # Block/Symbol definitions
+│   └── ElementRelationship.vb        # Nested object relationships (Parent-Child)
+├── Utilities/
+│   └── Geometry.vb                   # Geometric calculations (distance, area, etc.)
+└── README.md
 ```
 
 ---
 
-## ?? Core Entities
+## 📊 Core Entities
 
 ### 1. CanvasElement
 
@@ -62,8 +62,8 @@ End Class
 **Key Points:**
 - Geometry and business data **separated** (different JSON fields)
 - Supports **nested objects** (parent-child relationships)
-- **Type-agnostic** � shape type determined by Type property
-- **Layer-aware** � can query by layer for batch operations
+- **Type-agnostic** — shape type determined by Type property
+- **Layer-aware** — can query by layer for batch operations
 
 **Related Use Cases:**
 - UC-001: Draw a Line on the Canvas
@@ -112,26 +112,26 @@ Public Class BusinessDefinition
     Public Property DimensionMode As String             ' D0 (count), D1 (length), D2 (area), D3 (volume)
     Public Property FormulaCode As String               ' Formula to apply for calculation
     Public Property Quantity As Double                  ' Calculated quantity
-    Public Property Unit As String                      ' Unit of measurement (m, m�, m�, count)
+    Public Property Unit As String                      ' Unit of measurement (m, m², m³, count)
     Public Property UnitPrice As Double                 ' Price per unit
-    Public Property TotalCost As Double                 ' Quantity � UnitPrice (calculated)
+    Public Property TotalCost As Double                 ' Quantity × UnitPrice (calculated)
 End Class
 ```
 
-**Dimension Modes (from Mega-File.md �7.1):**
+**Dimension Modes (from Mega-File.md §7.1):**
 
 | Mode | Meaning | Calculation | Example |
 |------|---------|-------------|---------|
 | D0 | Count | 1 per shape | Door count |
 | D1 | Length | Derived from geometry | Wall length (m) |
-| D2 | Area | Width � Height or derived | Room area (m�) |
-| D3 | Volume | Area � Depth | Concrete volume (m�) |
+| D2 | Area | Width × Height or derived | Room area (m²) |
+| D3 | Volume | Area × Depth | Concrete volume (m³) |
 
 **Key Points:**
 - **Separates** visual (geometry) from business (this class)
 - Drives **calculation engine** logic
 - Supports **formula-based** quantity calculations
-- **Extensible** � new dimension modes can be added
+- **Extensible** — new dimension modes can be added
 
 **Related Use Cases:**
 - UC-003: Attach a Smart Tag to an object
@@ -212,10 +212,10 @@ End Enum
 
 **Example:**
 ```
-Wall (area = 50 m�)
-  ?? Door 1 (subtracts 2 m�)
-  ?? Door 2 (subtracts 2 m�)
-  Result: Net wall area = 46 m�
+Wall (area = 50 m²)
+  ├─ Door 1 (subtracts 2 m²)
+  └─ Door 2 (subtracts 2 m²)
+  Result: Net wall area = 46 m²
 ```
 
 **Related Use Cases:**
@@ -224,7 +224,7 @@ Wall (area = 50 m�)
 
 ---
 
-## ?? Utilities
+## 🧮 Utilities
 
 ### Geometry.vb
 
@@ -242,9 +242,9 @@ Wall (area = 50 m�)
 | `RotatePoint(point, angle, center)` | Rotation transformation | Point |
 
 **Key Points:**
-- **No UI dependencies** � pure math
+- **No UI dependencies** — pure math
 - **Reusable** across desktop and future web implementations
-- **Testable** � geometric logic isolated
+- **Testable** — geometric logic isolated
 
 **Related Use Cases:**
 - UC-001: Draw a Line on the Canvas (distance calculation)
@@ -252,79 +252,79 @@ Wall (area = 50 m�)
 
 ---
 
-## ?? Data Flow
+## 🔄 Data Flow
 
 ### From Drawing to Calculation
 
 ```
 CanvasElement (visual)
-  ? GeometryJson
-  ??? Geometry.vb calculates length/area/volume
+  ↓ GeometryJson
+  └─→ Geometry.vb calculates length/area/volume
 
 CanvasElement (business)
-  ? BusinessJson
-  ??? BusinessDefinition extracted
-      ? Quantity = calculated geometry � DimensionMode
-      ??? TakeOffResult (quantity � price = cost)
+  ↓ BusinessJson
+  └─→ BusinessDefinition extracted
+      ↓ Quantity = calculated geometry × DimensionMode
+      └─→ TakeOffResult (quantity × price = cost)
 ```
 
 ### Example: Room with Doors
 
 ```
 Drawing Canvas:
-  ?? Room Rectangle (D2, area = 50 m�)
-  ?   ?? BusinessDefinition: Material="Concrete", Unit Price = 20 �/m�
-  ?
-  ?? Door 1 Rectangle (D2, area = 2 m�)
-  ?   ?? RelationshipType: Subtracts (from Room)
-  ?   ?? BusinessDefinition: Material="Wood", Unit Price = 100 �/unit
-  ?
-  ?? Door 2 Rectangle (D2, area = 2 m�)
-      ?? RelationshipType: Subtracts (from Room)
-      ?? BusinessDefinition: Material="Wood", Unit Price = 100 �/unit
+  ├─ Room Rectangle (D2, area = 50 m²)
+  │   └─ BusinessDefinition: Material="Concrete", Unit Price = 20 €/m²
+  │
+  ├─ Door 1 Rectangle (D2, area = 2 m²)
+  │   ├─ RelationshipType: Subtracts (from Room)
+  │   └─ BusinessDefinition: Material="Wood", Unit Price = 100 €/unit
+  │
+  └─ Door 2 Rectangle (D2, area = 2 m²)
+      ├─ RelationshipType: Subtracts (from Room)
+      └─ BusinessDefinition: Material="Wood", Unit Price = 100 €/unit
 
 Calculation:
-  Room net area = 50 - 2 - 2 = 46 m�
-  Room cost = 46 m� � 20 �/m� = 920 �
-  Door cost = 2 � 100 � = 200 �
-  Total = 1120 �
+  Room net area = 50 - 2 - 2 = 46 m²
+  Room cost = 46 m² × 20 €/m² = 920 €
+  Door cost = 2 × 100 € = 200 €
+  Total = 1120 €
 ```
 
 ---
 
-## ?? Testing Considerations
+## 🧪 Testing Considerations
 
 ### Unit Tests
 
-- **GeometryUtilities** � Test geometric calculations independently
-- **BusinessDefinition** � Test quantity calculations per dimension mode
-- **ElementRelationship** � Test nested object logic and circular reference prevention
-- **Serialization** � Test JSON round-trip integrity
+- **GeometryUtilities** — Test geometric calculations independently
+- **BusinessDefinition** — Test quantity calculations per dimension mode
+- **ElementRelationship** — Test nested object logic and circular reference prevention
+- **Serialization** — Test JSON round-trip integrity
 
 ### Integration Tests
 
-- **CanvasLayout** + **CanvasElement** � End-to-end drawing state
-- **Relationships** + **Calculation** � Parent-child quantity rules
+- **CanvasLayout** + **CanvasElement** — End-to-end drawing state
+- **Relationships** + **Calculation** — Parent-child quantity rules
 
 ---
 
-## ?? References
+## 🔗 References
 
 ### Mega-File Documentation
 
-- [020103-Data_Model](../Mega-File.md#-020103--data-model) � Full entity relationships and schema
-- [0201-Design_Documentation](../Mega-File.md#-0201--design-documentation) � Architecture context
-- [0104-SRS �5.2](../Mega-File.md#-drawing-tools) � Functional requirements for drawing tools
+- [020103-Data_Model](../Mega-File.md#-020103--data-model) — Full entity relationships and schema
+- [0201-Design_Documentation](../Mega-File.md#-0201--design-documentation) — Architecture context
+- [0104-SRS §5.2](../Mega-File.md#-drawing-tools) — Functional requirements for drawing tools
 
 ### Related Layers
 
-- **Application** � Consumes Domain entities for use case orchestration
-- **Desktop** � Uses Domain entities in UI binding and serialization
-- **Infrastructure** � Persists Domain entities via repositories
+- **Application** — Consumes Domain entities for use case orchestration
+- **Desktop** — Uses Domain entities in UI binding and serialization
+- **Infrastructure** — Persists Domain entities via repositories
 
 ---
 
-## ?? Conventions
+## 📝 Conventions
 
 ### Naming
 
@@ -346,16 +346,16 @@ Calculation:
 
 ---
 
-## ?? Important Notes
+## ⚠️ Important Notes
 
 ### No UI Dependencies
 
-? Do NOT add:
+❌ Do NOT add:
 - Windows.Forms references
 - WPF references
 - Any UI framework imports
 
-? Keep domain layer:
+✅ Keep domain layer:
 - Pure .NET Framework APIs
 - JSON serialization only
 - Geometric calculations only
@@ -363,13 +363,13 @@ Calculation:
 ### Framework Independence
 
 This layer is designed to be **host-agnostic**:
-- ? Desktop (WinForms)
-- ? Web (Blazor/HTML5 Canvas)
-- ? Mobile (Xamarin/MAUI future)
+- ✅ Desktop (WinForms)
+- ✅ Web (Blazor/HTML5 Canvas)
+- ✅ Mobile (Xamarin/MAUI future)
 
 ---
 
-## ?? Quick Reference
+## 🚀 Quick Reference
 
 ### Create a Canvas Element
 
