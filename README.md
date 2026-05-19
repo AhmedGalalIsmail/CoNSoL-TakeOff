@@ -36,15 +36,15 @@ CoNSoL-TakeOff bridges the gap by treating drawing geometry as **first-class bus
 ### Layered Design
 
 ```
-???????????????????????????????????????
-?       UI Layer (Desktop)            ?  WinForms, Canvas, Panels, Tools
-???????????????????????????????????????
-?     Application Layer               ?  Use Cases, Services, Orchestration
-???????????????????????????????????????
-?       Domain Layer                  ?  Entities, Business Logic, Utilities
-???????????????????????????????????????
-?    Infrastructure Layer             ?  Config, Logging, IO, Crypto, JSON
-???????????????????????????????????????
++-------------------------------------+
+¦       UI Layer (Desktop)            ¦  WinForms, Canvas, Panels, Tools
++-------------------------------------¦
+¦     Application Layer               ¦  Use Cases, Services, Orchestration
++-------------------------------------¦
+¦       Domain Layer                  ¦  Entities, Business Logic, Utilities
++-------------------------------------¦
+¦    Infrastructure Layer             ¦  Config, Logging, IO, Crypto, JSON
++-------------------------------------+
 ```
 
 ### Core Components
@@ -151,58 +151,58 @@ The calculation engine automatically handles subtraction.
 
 ```
 CoNSoL-TakeOff/
-??? Domain/                              # Business logic, entities, utilities
-?   ??? Entities/
-?   ?   ??? CanvasElement.vb            # Shape + metadata container
-?   ?   ??? CanvasLayout.vb             # Drawing canvas state
-?   ?   ??? BusinessDefinition.vb       # Material, quantity, pricing info
-?   ?   ??? BlockModels.vb              # Block/Symbol definitions
-?   ?   ??? ElementRelationship.vb      # Nested object relationships
-?   ??? Utilities/
-?   ?   ??? Geometry.vb                 # Geometric calculations
-?   ??? README.md
-?
-??? Application/                         # Use case orchestration, services
-?   ??? Services/
-?   ?   ??? TakeOffService.vb           # Quantity aggregation
-?   ?   ??? MaterialService.vb          # Material lookups
-?   ??? TakeOffCalculator.vb            # Calculation engine
-?   ??? TakeOffContext.vb               # Calculation context
-?   ??? TakeOffResult.vb                # Result aggregates
-?   ??? README.md
-?
-??? Infrastructure/                      # Cross-cutting concerns
-?   ??? Config/
-?   ?   ??? AppConfig.vb                # Configuration management
-?   ??? Logging/
-?   ?   ??? ILogger.vb                  # Logging interface
-?   ?   ??? FileLogger.vb               # File-based logger
-?   ??? IO/
-?   ?   ??? TakeOffFileStore.vb         # File persistence
-?   ?   ??? MaterialJsonStore.vb        # Material JSON storage
-?   ??? Crypto/
-?   ?   ??? CryptoService.vb            # Encryption/decryption
-?   ?   ??? Hashing.vb                  # Hashing utilities
-?   ??? Wrappers/
-?   ?   ??? JsonSerializer.vb           # JSON serialization wrapper
-?   ??? README.md
-?
-??? Desktop/                             # WinForms UI layer
-?   ??? Forms/
-?   ?   ??? MainForm.vb                 # Main application window
-?   ?   ??? BlockAssignmentForm.vb      # Block assignment dialog
-?   ?   ??? MaterialCrudForm.vb         # Material management dialog
-?   ??? Controls/
-?   ?   ??? CanvasControl.vb            # 2D drawing canvas
-?   ?   ??? PropertiesPanel.vb          # Property inspector
-?   ?   ??? LineShape.vb                # Line shape implementation
-?   ??? CompositionRoot.vb              # Dependency injection setup
-?   ??? Program.vb                      # Entry point
-?   ??? ApplicationEvents.vb            # VB app framework events
-?   ??? README.md
-?
-??? Mega-File.md                        # SDLC documentation library
-??? README.md                           # This file
++-- Domain/                              # Business logic, entities, utilities
+¦   +-- Entities/
+¦   ¦   +-- CanvasElement.vb            # Shape + metadata container
+¦   ¦   +-- CanvasLayout.vb             # Drawing canvas state
+¦   ¦   +-- BusinessDefinition.vb       # Material, quantity, pricing info
+¦   ¦   +-- BlockModels.vb              # Block/Symbol definitions
+¦   ¦   +-- ElementRelationship.vb      # Nested object relationships
+¦   +-- Utilities/
+¦   ¦   +-- Geometry.vb                 # Geometric calculations
+¦   +-- README.md
+¦
++-- Application/                         # Use case orchestration, services
+¦   +-- Services/
+¦   ¦   +-- TakeOffService.vb           # Quantity aggregation
+¦   ¦   +-- MaterialService.vb          # Material lookups
+¦   +-- TakeOffCalculator.vb            # Calculation engine
+¦   +-- TakeOffContext.vb               # Calculation context
+¦   +-- TakeOffResult.vb                # Result aggregates
+¦   +-- README.md
+¦
++-- Infrastructure/                      # Cross-cutting concerns
+¦   +-- Config/
+¦   ¦   +-- AppConfig.vb                # Configuration management
+¦   +-- Logging/
+¦   ¦   +-- ILogger.vb                  # Logging interface
+¦   ¦   +-- FileLogger.vb               # File-based logger
+¦   +-- IO/
+¦   ¦   +-- TakeOffFileStore.vb         # File persistence
+¦   ¦   +-- MaterialJsonStore.vb        # Material JSON storage
+¦   +-- Crypto/
+¦   ¦   +-- CryptoService.vb            # Encryption/decryption
+¦   ¦   +-- Hashing.vb                  # Hashing utilities
+¦   +-- Wrappers/
+¦   ¦   +-- JsonSerializer.vb           # JSON serialization wrapper
+¦   +-- README.md
+¦
++-- Desktop/                             # WinForms UI layer
+¦   +-- Forms/
+¦   ¦   +-- MainForm.vb                 # Main application window
+¦   ¦   +-- BlockAssignmentForm.vb      # Block assignment dialog
+¦   ¦   +-- MaterialCrudForm.vb         # Material management dialog
+¦   +-- Controls/
+¦   ¦   +-- CanvasControl.vb            # 2D drawing canvas
+¦   ¦   +-- PropertiesPanel.vb          # Property inspector
+¦   ¦   +-- LineShape.vb                # Line shape implementation
+¦   +-- CompositionRoot.vb              # Dependency injection setup
+¦   +-- Program.vb                      # Entry point
+¦   +-- ApplicationEvents.vb            # VB app framework events
+¦   +-- README.md
+¦
++-- Mega-File.md                        # SDLC documentation library
++-- README.md                           # This file
 ```
 
 ---
@@ -364,6 +364,6 @@ See LICENSE file for details.
 
 ---
 
-**Last Updated:** January 2025  
+**Last Updated:** 19 April 2026  
 **Repository:** E:\Users\GoingIForMal\CoNSoL-TakeOff  
 **Master Document:** [Mega-File.md](Mega-File.md)
