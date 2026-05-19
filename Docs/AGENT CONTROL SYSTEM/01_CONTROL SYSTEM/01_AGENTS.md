@@ -3,7 +3,7 @@ color: "#f40a0a"
 ---
 # Agent Registry — CoNSoL Swarm
 
-## Agent A — Foundation Enforcer
+## Agent Foundation — Foundation Enforcer
 **Authority:** Absolute veto power  
 **Owns:**
 - Invariants
@@ -18,7 +18,7 @@ color: "#f40a0a"
 
 ---
 
-## Agent B — Canvas Engineer
+## Agent Canvas — Canvas Engineer
 **Owns:**
 - 0209 Canvas Engine Spec implementation
 - Zoom / Pan / Resize
@@ -32,7 +32,7 @@ color: "#f40a0a"
 
 ---
 
-## Agent C — Interaction & Geometry
+## Agent Geometry — Interaction & Geometry
 **Owns:**
 - Shape lifecycle
 - HitTest algorithms
@@ -42,7 +42,7 @@ color: "#f40a0a"
 
 ---
 
-## Agent D — Business & Take-Off
+## Agent Business — Business & Take-Off
 **Owns:**
 - Materials
 - Blocks
@@ -52,7 +52,7 @@ color: "#f40a0a"
 
 ---
 
-## Agent E — Integrator & Polish
+## Agent Integrator — Integrator & Polish
 **Owns:**
 - Undo/Redo wiring
 - File I/O

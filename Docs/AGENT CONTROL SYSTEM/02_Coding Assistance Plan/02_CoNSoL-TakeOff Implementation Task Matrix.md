@@ -1,5 +1,5 @@
 ---
-color: var(--mk-color-blue)
+color: "#1358ce"
 ---
 # CoNSoL-TakeOff Implementation Task Matrix
 
@@ -34,28 +34,28 @@ This document provides:
 
 ## Foundation Task Matrix
 
-| Task ID | SDLC Ref | Feature | Entity | Layer | Status | Priority |
-|---------|----------|---------|--------|-------|--------|----------|
-| FND-001 | 0104-5.1.1 | Create CanvasLayout entity | CanvasLayout | Domain | 🔲 TODO | P0 |
-| FND-002 | 0104-5.1.1 | Implement CanvasLayout invariants | CanvasLayout | Domain | 🔲 TODO | P0 |
-| FND-003 | 0104-5.1.1 | Add CanvasLayout validation module | CanvasLayout | Domain | 🔲 TODO | P0 |
-| FND-004 | 0104-5.1.1 | Add/Delete layer with reassignment logic | CanvasLayout | Domain | 🔲 TODO | P1 |
-| FND-005 | 0104-5.1.1 | Create CanvasElement entity | CanvasElement | Domain | 🔲 TODO | P0 |
-| FND-006 | 0104-5.1.1 | Implement CanvasElement invariants | CanvasElement | Domain | 🔲 TODO | P0 |
-| FND-007 | 0104-5.1.1 | Add CanvasElement validation module | CanvasElement | Domain | 🔲 TODO | P0 |
-| FND-008 | 0104-5.1.1 | Add geometry validation by shape type | CanvasElement | Domain | 🔲 TODO | P0 |
-| FND-009 | 0104-5.1.1 | Implement parent-child relationship validation | CanvasElement | Domain | 🔲 TODO | P1 |
-| FND-010 | 0104-5.1.1 | Create BusinessDefinition entity | BusinessDef | Domain | 🔲 TODO | P0 |
-| FND-011 | 0104-5.1.1 | Implement BusinessDefinition invariants | BusinessDef | Domain | 🔲 TODO | P0 |
-| FND-012 | 0104-5.1.1 | Dimension mode validation (D0-D3) | BusinessDef | Domain | 🔲 TODO | P0 |
-| FND-013 | 0104-5.1.1 | Create Layer entity | Layer | Domain | 🔲 TODO | P0 |
-| FND-014 | 0104-5.1.1 | Implement Layer visibility/lock logic | Layer | Domain | 🔲 TODO | P1 |
-| FND-015 | 0104-5.1.1 | Create AppConfig with validation | AppConfig | Infrastructure | 🔲 TODO | P0 |
-| FND-016 | 0104-5.1.1 | Load config from file (environment-aware) | AppConfig | Infrastructure | 🔲 TODO | P0 |
-| FND-017 | 0104-5.1.1 | JSON serialization wrapper | JSON | Infrastructure | 🔲 TODO | P0 |
-| FND-018 | 0104-5.1.1 | Round-trip serialization validation | JSON | Infrastructure | 🔲 TODO | P1 |
-| FND-019 | 0104-5.1.1 | File I/O service (.takeoff files) | FileStore | Infrastructure | 🔲 TODO | P1 |
-| FND-020 | 0104-5.1.1 | Material JSON store | MatStore | Infrastructure | 🔲 TODO | P1 |
+| Task ID | SDLC Ref   | Feature                                        | Entity        | Layer          | Status  | Priority |
+| ------- | ---------- | ---------------------------------------------- | ------------- | -------------- | ------- | -------- |
+| FND-001 | 0104-5.1.1 | Create CanvasLayout entity                     | CanvasLayout  | Domain         | 🔲 TODO | P0       |
+| FND-002 | 0104-5.1.1 | Implement CanvasLayout invariants              | CanvasLayout  | Domain         | 🔲 TODO | P0       |
+| FND-003 | 0104-5.1.1 | Add CanvasLayout validation module             | CanvasLayout  | Domain         | 🔲 TODO | P0       |
+| FND-004 | 0104-5.1.1 | Add/Delete layer with reassignment logic       | CanvasLayout  | Domain         | 🔲 TODO | P1       |
+| FND-005 | 0104-5.1.1 | Create CanvasElement entity                    | CanvasElement | Domain         | 🔲 TODO | P0       |
+| FND-006 | 0104-5.1.1 | Implement CanvasElement invariants             | CanvasElement | Domain         | 🔲 TODO | P0       |
+| FND-007 | 0104-5.1.1 | Add CanvasElement validation module            | CanvasElement | Domain         | 🔲 TODO | P0       |
+| FND-008 | 0104-5.1.1 | Add geometry validation by shape type          | CanvasElement | Domain         | 🔲 TODO | P0       |
+| FND-009 | 0104-5.1.1 | Implement parent-child relationship validation | CanvasElement | Domain         | 🔲 TODO | P1       |
+| FND-010 | 0104-5.1.1 | Create BusinessDefinition entity               | BusinessDef   | Domain         | 🔲 TODO | P0       |
+| FND-011 | 0104-5.1.1 | Implement BusinessDefinition invariants        | BusinessDef   | Domain         | 🔲 TODO | P0       |
+| FND-012 | 0104-5.1.1 | Dimension mode validation (D0-D3)              | BusinessDef   | Domain         | 🔲 TODO | P0       |
+| FND-013 | 0104-5.1.1 | Create Layer entity                            | Layer         | Domain         | 🔲 TODO | P0       |
+| FND-014 | 0104-5.1.1 | Implement Layer visibility/lock logic          | Layer         | Domain         | 🔲 TODO | P1       |
+| FND-015 | 0104-5.1.1 | Create AppConfig with validation               | AppConfig     | Infrastructure | 🔲 TODO | P0       |
+| FND-016 | 0104-5.1.1 | Load config from file (environment-aware)      | AppConfig     | Infrastructure | 🔲 TODO | P0       |
+| FND-017 | 0104-5.1.1 | JSON serialization wrapper                     | JSON          | Infrastructure | 🔲 TODO | P0       |
+| FND-018 | 0104-5.1.1 | Round-trip serialization validation            | JSON          | Infrastructure | 🔲 TODO | P1       |
+| FND-019 | 0104-5.1.1 | File I/O service (.takeoff files)              | FileStore     | Infrastructure | 🔲 TODO | P1       |
+| FND-020 | 0104-5.1.1 | Material JSON store                            | MatStore      | Infrastructure | 🔲 TODO | P1       |
 
 ---
 
@@ -1132,20 +1132,20 @@ IGN-016 through IGN-019: Event Publishing & Subscription
 **Tasks:** 52 Foundation + Rendering + Interaction + Business P0 tasks
 
 ```
-Week 1-2: Foundation Layer
+Foundation Layer
 └─ FND-001 through FND-020 (infrastructure + core entities)
 
-Week 3-4: Rendering + Interaction
+Rendering + Interaction
 ├─ RND-001 through RND-004 (canvas basics)
 ├─ INT-001 through INT-008 (tool system)
 └─ RND-005-009 (shape rendering)
 
-Week 5-6: Business + Integration
+Business + Integration
 ├─ BUS-001 through BUS-009 (calculation)
 ├─ IGN-001 through IGN-005 (DI)
 └─ IGN-006 through IGN-011 (forms)
 
-Week 7: Testing & Polish
+Testing & Polish
 ├─ Unit tests for all P0 tasks
 ├─ Integration tests
 └─ Bug fixes
@@ -1161,19 +1161,19 @@ Week 7: Testing & Polish
 **Tasks:** 31 P1 tasks
 
 ```
-Week 8-9: Advanced Rendering + Selection
+Advanced Rendering + Selection
 ├─ RND-010-014 (zoom, pan, grid, hit test)
 ├─ INT-009-014 (multi-selection, window select, keyboard)
 
-Week 10-11: Business Services
+Business Services
 ├─ BUS-010-019 (formulas, aggregations, export)
 ├─ Materials service
 
-Week 12-13: Integration & Forms
+Integration & Forms
 ├─ IGN-010-019 (layer panel, menus, events)
 ├─ File operations (Open, Save)
 
-Week 14: Testing
+Testing
 ├─ Acceptance tests
 ├─ UI tests
 └─ Performance profiling
@@ -1189,16 +1189,16 @@ Week 14: Testing
 **Tasks:** 3 P2 tasks + performance
 
 ```
-Week 15-16: Performance
+Performance
 ├─ Optimize rendering (large drawings)
 ├─ Optimize calculations (many elements)
 
-Week 17: Polish
+Polish
 ├─ Menu bar completion
 ├─ Dark mode support
 ├─ Accessibility improvements
 
-Week 18: Final Testing
+Final Testing
 ├─ Full regression test
 ├─ UAT with stakeholders
 └─ Release preparation

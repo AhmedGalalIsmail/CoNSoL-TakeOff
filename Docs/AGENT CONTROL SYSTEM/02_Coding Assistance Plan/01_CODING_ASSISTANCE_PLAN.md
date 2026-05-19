@@ -1,8 +1,69 @@
-﻿# CoNSoL-TakeOff Coding Assistance Plan
+---
+color: "#1358ce"
+aliases:
+  - CoNSoL-TakeOff Coding Assistance Plan
+---
+# CoNSoL-TakeOff Coding Assistance Plan
 
-**Purpose:** Comprehensive guide for consistent, high-quality implementation across all project layers  
+## Purpose: 
+Comprehensive guide for consistent, high-quality implementation across all project layers  
 **Date:** 2025  
-**Aligned with:** SDLC Documentation (Mega-File.md), OOAD Principles, VB.NET Best Practices
+## Aligned with: 
+SDLC Documentation (Mega-File.md), OOAD Principles, VB.NET Best Practices
+
+---
+# 📋 Document Structure
+The plan is organized into 5 architectural layers as you requested:
+
+## Architectural Layers
+### 🏗️ Foundation Layer
+•	Domain Entities: CanvasLayout, CanvasElement, BusinessDefinition invariants, behavior, and validation
+•	Infrastructure: AppConfig, JSON Serialization with round-trip validation
+•	Coverage: Entry-point validation, entity lifecycle, constraint enforcement
+
+### 🎨 Rendering Layer
+•	Canvas Control: Drawing surface, coordinate transformation, shape rendering
+•	Shape Rendering: Zoom-aware scaling, selection highlighting, hit testing
+•	Coverage: Visual consistency rules, layer visibility, preview geometry
+
+### ⌨️ Interaction Layer
+•	Tool System: State machine for drawing tools (Line, Rectangle, Circle, etc.)
+•	Multi-Selection: Duplicate prevention, selection consistency, shared properties
+•	Coverage: Event routing, tool activation/deactivation, cursor management
+### 💼 Business Layer
+•	Calculation Engine: Dimension modes (D0-D3), nested object logic, cost aggregation
+•	Aggregation Service: Material/layer grouping, CSV export, quantity calculations
+•	Coverage: Deterministic calculations, cost validation, child quantity subtraction
+### 🔗 Integration Layer
+•	Dependency Injection: Composition root, singleton/scoped lifetimes, service resolution
+•	Form Orchestration: Event handler coordination, modal dialogs, state propagation
+•	Cross-Layer Communication: Domain event publisher, upward event bubbling
+
+---
+## 🎯 What's Included in Each Layer
+
+For every layer, you get:
+✅ Invariants - Rules that must always be true (e.g., "Scale factor must be > 0")
+✅ Behavior - Actual code patterns with VB.NET examples
+✅ Validation - Entry-point checks and constraint enforcement
+
+---
+## 📚 Quick Navigation Features
+
+•	Cross-references to SDLC documentation (Mega-File.md)
+•	Use case linkage (e.g., "UC-001: Draw a Line")
+•	Reference tables for shape types, dimension modes, and dependency graphs
+•	Testing hooks and mock patterns
+•	Checklists for adding new features
+
+---
+## 💡 How to Use This Plan
+
+1.	When starting a new feature: Review the relevant layer's invariants first
+2.	When writing code: Copy the behavior patterns and adapt to your needs
+3.	When debugging: Check the validation modules for constraint violations
+4.	When refactoring: Use the dependency graph to ensure layering is maintained
+5.	When onboarding: Have new team members read the Foundation layer first
 
 ---
 
@@ -16,19 +77,18 @@
 
 ---
 
-# 🏗️ Foundation Layer
+# 🏗️ Foundation Layer ^Foundation
 
 **Scope:** Domain + Infrastructure layers  
 **Responsibility:** Core data entities, utilities, configuration, persistence, serialization  
 **Independence:** UI-agnostic, framework-free core
 
----
 
-## 📦 Foundation Layer - Domain Entities
+## 📦 Foundation Layer - Domain Entities ^Domain
 
-### 1. CanvasLayout Entity
+### **1. CanvasLayout Entity** ^Dom-1CanvasLayout
 
-#### **Invariants**
+#### Invariants ^Dom-1Invariants
 
 - ✅ `Id` must be a valid Guid (not empty)
 - ✅ `Name` must be non-null and not whitespace-only
@@ -39,7 +99,7 @@
 - ✅ Only one layer can be marked as active at a time
 - ✅ All `Elements` must reference a valid `LayerId` from `Layers`
 
-#### **Behavior**
+#### Behavior ^Dom-1Behavior
 
 ```vb
 ' Add element with layer validation
@@ -79,7 +139,7 @@ Public Sub DeleteLayer(layerId As Guid, Optional moveToLayerId As Guid = Nothing
 End Sub
 ```
 
-#### **Validation**
+#### Validation ^Dom-1Validation
 
 ```vb
 Public Module CanvasLayoutValidation
@@ -112,9 +172,9 @@ End Module
 
 ---
 
-### 2. CanvasElement Entity
+### **2. CanvasElement Entity** ^Dom-2CanvasElement
 
-#### **Invariants**
+#### Invariants ^Dom-2Invariants
 
 - ✅ `Id` must be a valid Guid (not empty)
 - ✅ `Type` must be one of: Line, Rectangle, Circle, Polyline, Text, Symbol, Dimension, Arc, Spline, Bezier
@@ -125,7 +185,7 @@ End Module
 - ✅ Parent-child relationships must not form cycles
 - ✅ Parent must exist in canvas if `ParentElementId` is set
 
-#### **Behavior**
+#### Behavior ^Dom-2Behavior
 
 ```vb
 ' Create element with validation
@@ -165,7 +225,7 @@ Public Sub SetParent(parentElement As CanvasElement, Optional relationship As El
 End Sub
 ```
 
-#### **Validation**
+#### Validation ^Dom-2Validation
 
 ```vb
 Public Module CanvasElementValidation
@@ -259,9 +319,9 @@ End Module
 
 ---
 
-### 3. BusinessDefinition Entity
+### **3. BusinessDefinition Entity** ^Dom-3BusinessDefinition
 
-#### **Invariants**
+#### Invariants ^3Invariants
 
 - ✅ `BlockId` must reference a valid Block definition
 - ✅ `DimensionMode` must be D0, D1, D2, or D3
@@ -270,7 +330,7 @@ End Module
 - ✅ `Quantity` must be >= 0 if set
 - ✅ `UnitPrice` must be >= 0 if set
 
-#### **Behavior**
+#### Behavior ^3Behavior
 
 ```vb
 Public Class BusinessDefinition
@@ -308,7 +368,7 @@ Public Class BusinessDefinition
 End Class
 ```
 
-#### **Validation**
+#### Validation ^3Validation
 
 ```vb
 Public Module BusinessDefinitionValidation
@@ -330,11 +390,11 @@ End Module
 
 ---
 
-## 🔧 Foundation Layer - Infrastructure
+## 🔧 Foundation Layer - Infrastructure ^Infrastructure
 
-### 1. AppConfig
+### **1. AppConfig** ^Inf-1AppConfig
 
-#### **Invariants**
+#### Invariants ^Inf-1Invariants
 
 - ✅ `DatabaseConnectionString` must be non-null and valid for target DB
 - ✅ `DeploymentMode` must be "Standalone" or "Integrated"
@@ -343,7 +403,7 @@ End Module
 - ✅ `DefaultUnitSystem` must be "metric" or "imperial"
 - ✅ All feature flags must have boolean values
 
-#### **Behavior**
+#### Behavior ^Inf-1Behavior
 
 ```vb
 Public Class AppConfig
@@ -398,7 +458,7 @@ Public Class AppConfig
 End Class
 ```
 
-#### **Validation**
+#### Validation ^Inf-1Validation
 
 ```vb
 Public Module AppConfigValidation
@@ -434,9 +494,9 @@ End Module
 
 ---
 
-### 2. JSON Serialization
+### **2. JSON Serialization** ^Inf-2Serial
 
-#### **Invariants**
+#### Invariants ^Inf-2Invariants
 
 - ✅ All serialized objects must preserve round-trip equality (serialize → deserialize → identical)
 - ✅ Null values must be explicitly handled or configured
@@ -444,7 +504,7 @@ End Module
 - ✅ Guid must serialize as hyphenated string
 - ✅ Custom converters must not lose type information
 
-#### **Behavior**
+#### Behavior ^Inf-2Behavior
 
 ```vb
 Public Module JsonSerializer
@@ -488,7 +548,7 @@ Public Module JsonSerializer
 End Module
 ```
 
-#### **Validation**
+#### Validation ^Inf-2Validation
 
 ```vb
 Public Module SerializationValidation
@@ -508,7 +568,7 @@ End Module
 
 ---
 
-# 🎨 Rendering Layer
+# 🎨 Rendering Layer ^Rendering
 
 **Scope:** Desktop.Controls (CanvasControl, LineShape)  
 **Responsibility:** 2D drawing, shape rendering, visual feedback  
@@ -516,9 +576,9 @@ End Module
 
 ---
 
-## 🖼️ Canvas Control
+## 🖼️ Canvas Control ^Canvas-Control
 
-### **Invariants**
+#### Invariants ^Ren-1Invariants
 
 - ✅ Canvas must always have a valid `CanvasLayout` reference (not null)
 - ✅ Current drawing state must match visual display
@@ -527,7 +587,7 @@ End Module
 - ✅ No shapes can be rendered outside valid layer bounds
 - ✅ Selection state must be consistent with rendered highlights
 
-### **Behavior**
+#### Behavior ^Ren-1Behavior
 
 ```vb
 Public Class CanvasControl
@@ -646,7 +706,7 @@ Public Class CanvasControl
 End Class
 ```
 
-### **Validation**
+#### Validation ^Ren-1Validation
 
 ```vb
 Public Module CanvasControlValidation
@@ -673,9 +733,9 @@ End Module
 
 ---
 
-## 🔷 Shape Rendering
+## 🔷 Shape Rendering ^Shape-Rendering
 
-### **Invariants**
+#### Invariants ^Ren-2Invariants
 
 - ✅ All rendered shapes must use consistent coordinate systems (logical)
 - ✅ Line width must scale with zoom level
@@ -683,7 +743,7 @@ End Module
 - ✅ Selection highlighting must be visually distinct but non-destructive
 - ✅ Text must render with proper alignment and clipping
 
-### **Behavior**
+#### Behavior ^Ren-2Behavior
 
 ```vb
 Public Class LineShape
@@ -745,7 +805,7 @@ Public Class LineShape
 End Class
 ```
 
-### **Validation**
+#### Validation ^Ren-2Validation
 
 ```vb
 Public Module ShapeRenderingValidation
@@ -771,9 +831,9 @@ End Module
 
 ---
 
-## 🖱️ Tool System & State Machine
+## 🖱️ Tool System & State Machine ^ToolSystem-StateMachine
 
-### **Invariants**
+#### Invariants ^Inter-1Invariants
 
 - ✅ Only one tool can be active at a time
 - ✅ Tool must have a valid state machine (idle, drawing, previewing)
@@ -781,7 +841,7 @@ End Module
 - ✅ Drawing state must be cleared on Escape or tool switch
 - ✅ Selection state must be consistent with visual highlights
 
-### **Behavior**
+#### Behavior ^Inter-1Behavior
 
 ```vb
 Public Enum ToolType
@@ -895,7 +955,7 @@ Public Class LineTool
 End Class
 ```
 
-### **Validation**
+#### Validation ^Inter-1Validation
 
 ```vb
 Public Module ToolValidation
@@ -913,16 +973,16 @@ End Module
 
 ---
 
-## 📋 Multi-Selection
+## 📋 Multi-Selection ^Multi-Selection
 
-### **Invariants**
+#### Invariants ^Inter-2Invariants
 
 - ✅ Selection list must never contain duplicate elements
 - ✅ All selected elements must exist in current layout
 - ✅ Empty selection is valid state
 - ✅ Selection must be cleared when layout changes
 
-### **Behavior**
+#### Behavior ^Inter-2Behavior
 
 ```vb
 Public Class SelectionManager
@@ -1009,7 +1069,7 @@ Public Class SelectionManager
 End Class
 ```
 
-### **Validation**
+#### Validation ^Inter-2Validation
 
 ```vb
 Public Module SelectionValidation
@@ -1026,7 +1086,7 @@ End Module
 
 ---
 
-# 💼 Business Layer
+# 💼 Business Layer ^Business
 
 **Scope:** Application layer (Services, Calculators)  
 **Responsibility:** Use case orchestration, calculations, aggregations  
@@ -1034,9 +1094,9 @@ End Module
 
 ---
 
-## 🧮 Calculation Engine
+## 🧮 Calculation Engine ^Calculation
 
-### **Invariants**
+#### Invariants ^Bus-1Invariants
 
 - ✅ Calculations must be deterministic (same input → same output)
 - ✅ All quantities must be >= 0
@@ -1045,7 +1105,7 @@ End Module
 - ✅ Nested object relationships must be respected (subtractions)
 - ✅ Division by zero must never occur
 
-### **Behavior**
+#### Behavior ^Bus-1Behavior
 
 ```vb
 Public Class TakeOffCalculator
@@ -1198,7 +1258,7 @@ Public Class TakeOffCalculator
 End Class
 ```
 
-### **Validation**
+#### Validation ^Bus-1Validation
 
 ```vb
 Public Module CalculationValidation
@@ -1229,16 +1289,16 @@ End Module
 
 ---
 
-## 📊 Aggregation Service
+## 📊 Aggregation Service ^Aggregation
 
-### **Invariants**
+#### Invariants ^Ren-2Invariants
 
 - ✅ Aggregation must not modify source data
 - ✅ Aggregation function must match data type (Sum/Avg only for numeric)
 - ✅ Result must include source information (layer, object type)
 - ✅ Zero-quantity items should still be included in results
 
-### **Behavior**
+#### Behavior ^Bus-2Behavior
 
 ```vb
 Public Class TakeOffService
@@ -1302,7 +1362,7 @@ Public Class TakeOffService
 End Class
 ```
 
-### **Validation**
+#### Validation ^Bus-2Validation
 
 ```vb
 Public Module AggregationValidation
@@ -1330,7 +1390,7 @@ End Module
 
 ---
 
-# 🔗 Integration Layer
+# 🔗 Integration Layer ^Integration
 
 **Scope:** Desktop.Forms, Desktop.CompositionRoot, Application Services  
 **Responsibility:** Dependency injection, form orchestration, inter-layer communication  
@@ -1338,16 +1398,16 @@ End Module
 
 ---
 
-## 🏗️ Composition Root & Dependency Injection
+## 🏗️ Composition Root & Dependency Injection ^Composition-Root
 
-### **Invariants**
+#### Invariants ^Integ-1Invariants
 
 - ✅ All singletons must be thread-safe
 - ✅ Circular dependencies must not exist
 - ✅ All services must be properly registered before use
 - ✅ Lifetime scope must match component expectations
 
-### **Behavior**
+#### Behavior ^Integ-1Behavior
 
 ```vb
 Public Module CompositionRoot
@@ -1406,7 +1466,7 @@ Public Module CompositionRoot
 End Module
 ```
 
-### **Validation**
+#### Validation ^Integ-1Validation
 
 ```vb
 Public Module DIValidation
@@ -1420,16 +1480,16 @@ End Module
 
 ---
 
-## 📝 Form Orchestration
+## 📝 Form Orchestration ^Form-Orch
 
-### **Invariants**
+#### Invariants ^Integ-2Invariants
 
 - ✅ Each form must have clear responsibility
 - ✅ Form data must flow through MVVM or coordinator pattern
 - ✅ Modal dialogs must return `DialogResult`
 - ✅ Form state must be validated before commit
 
-### **Behavior**
+#### Behavior ^Integ-2Behavior
 
 ```vb
 Public Class MainForm
@@ -1514,7 +1574,7 @@ Public Class MainForm
 End Class
 ```
 
-### **Validation**
+#### Validation ^Integ-2Validation
 
 ```vb
 Public Module FormOrchestrationValidation
@@ -1528,16 +1588,16 @@ End Module
 
 ---
 
-## 🔄 Cross-Layer Communication
+## 🔄 Cross-Layer Communication ^Cross-Layer
 
-### **Invariants**
+#### Invariants ^Integ-3Invariants
 
 - ✅ Communication must flow downward (UI → Application → Domain)
 - ✅ Events must bubble upward (Domain state → Application → UI)
 - ✅ No layer may directly access UI from business logic
 - ✅ All data must be validated at layer boundaries
 
-### **Behavior**
+#### Behavior ^Integ-3Behavior
 
 ```vb
 ''' <summary>Event system for cross-layer communication</summary>
@@ -1599,7 +1659,7 @@ End Class
 AddHandler _eventPublisher.ElementCreated, AddressOf OnElementCreated
 ```
 
-### **Validation**
+#### Validation ^Integ-3Validation
 
 ```vb
 Public Module CommunicationValidation
@@ -1612,13 +1672,13 @@ End Module
 
 ---
 
-# 📋 Cross-Cutting Patterns
+# 📋 Cross-Cutting Patterns ^Cross-Cutting
 
 ---
 
-## ✅ Validation Strategy
+## ✅ Validation Strategy ^Validation-Strategy
 
-### Entry-Point Validation (Per-Layer)
+### Entry-Point Validation (Per-Layer) ^Entry-Point-Validation
 
 ```vb
 ' UI Layer: User input validation
@@ -1673,7 +1733,7 @@ End Class
 
 ---
 
-## 🔍 Error Handling Strategy
+## 🔍 Error Handling Strategy ^Error-Handling
 
 ```vb
 ' Global exception handler
@@ -1699,7 +1759,7 @@ End Class
 
 ---
 
-## 🧪 Testing Hooks
+## 🧪 Testing Hooks ^Testing-Hooks
 
 ```vb
 ' Dependency injection for testing
@@ -1743,11 +1803,11 @@ End Sub
 
 ---
 
-# 📊 Reference Tables
+# 📊 Reference Tables ^Reference
 
 ---
 
-## Shape Type & Valid Dimension Modes
+## Shape Type & Valid Dimension Modes ^Valid-Dimension
 
 | Shape | D0 | D1 | D2 | D3 |
 |-------|----|----|----|----|
@@ -1760,7 +1820,7 @@ End Sub
 
 ---
 
-## Component Dependency Graph
+## Component Dependency Graph ^Component-Dependency
 
 ```
 Foundation
@@ -1791,7 +1851,7 @@ Integration (depends on all)
 
 ---
 
-## Checklist: Adding New Feature
+## Checklist: Adding New Feature ^Adding-New-Feature
 
 - [ ] Define entity invariants (Domain layer)
 - [ ] Add validation module (Domain layer)
@@ -1806,11 +1866,11 @@ Integration (depends on all)
 
 ---
 
-# 🚀 Quick Start Commands
+# 🚀 Quick Start Commands ^Quick-Start
 
 ---
 
-## Running Tests
+## Running Tests ^Running-Tests
 
 ```powershell
 # Unit tests only
@@ -1828,7 +1888,7 @@ dotnet test /p:CollectCoverage=true
 
 ---
 
-## Building & Deploying
+## Building & Deploying ^Building-Deploying
 
 ```powershell
 # Clean build
@@ -1845,7 +1905,7 @@ msbuild /p:Configuration=Release /p:Platform=x64
 
 ---
 
-# 📞 Contact & Support
+# 📞 Contact & Support ^Support
 
 - **Architecture Questions:** Review SDLC docs (Mega-File.md)
 - **Code Questions:** Check relevant README.md in each project

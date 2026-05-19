@@ -1,5 +1,5 @@
 ---
-color: var(--mk-color-blue)
+color: "#1358ce"
 ---
 # CoNSoL-TakeOff Project Documentation Index
 
