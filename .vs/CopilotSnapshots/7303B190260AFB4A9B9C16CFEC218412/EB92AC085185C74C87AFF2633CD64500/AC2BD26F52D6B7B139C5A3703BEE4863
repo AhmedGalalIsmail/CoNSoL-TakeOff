@@ -1,4 +1,4 @@
-# Desktop Layer (WinForms UI)
+﻿# Desktop Layer (WinForms UI)
 
 The **Desktop** layer is the **presentation layer** containing the WinForms user interface for CoNSoL-TakeOff.
 
@@ -6,16 +6,16 @@ This layer provides the visual interface for drawing, editing, and managing cons
 
 ---
 
-## ?? Overview
+## 📋 Overview
 
 ### Purpose
 
 The Desktop layer provides:
-- **2D Drawing Canvas** � Interactive drawing surface with geometric shapes
-- **Tool System** � Select, Line, Rectangle, Circle, Polyline, Pan, Zoom tools
-- **Property Inspector** � Context-sensitive property editing
-- **Forms & Dialogs** � Material management, block assignment, settings
-- **Event Handling** � User interaction orchestration
+- **2D Drawing Canvas** — Interactive drawing surface with geometric shapes
+- **Tool System** — Select, Line, Rectangle, Circle, Polyline, Pan, Zoom tools
+- **Property Inspector** — Context-sensitive property editing
+- **Forms & Dialogs** — Material management, block assignment, settings
+- **Event Handling** — User interaction orchestration
 
 ### Design Principle
 
@@ -25,54 +25,54 @@ The Desktop layer provides:
 
 ```
 WinForms UI
-    ?
+    ↓
 Desktop Layer (MainForm, CanvasControl, PropertiesPanel)
-    ?
+    ↓
 Application Layer (Services, Orchestration)
-    ?
+    ↓
 Domain Layer (Entities, Calculations)
-    ?
+    ↓
 Infrastructure Layer (IO, Config, Logging)
 ```
 
 ---
 
-## ??? Project Structure
+## 🏗️ Project Structure
 
 ```
 Desktop/
-??? Forms/
-?   ??? MainForm.vb                    # Main application window
-?   ??? MainForm.Designer.vb           # Designer-generated (DO NOT EDIT)
-?   ??? BlockAssignmentForm.vb         # Block/Material assignment dialog
-?   ??? BlockAssignmentForm.Designer.vb
-?   ??? BlockAssignmentModel.vb        # MVVM model for block assignment
-?   ??? MaterialCrudForm.vb            # Material CRUD dialog
-??? Controls/
-?   ??? CanvasControl.vb               # 2D drawing canvas
-?   ??? PropertiesPanel.vb             # Property inspector
-?   ??? LineShape.vb                   # Line shape implementation
-??? CompositionRoot.vb                 # Dependency injection setup
-??? ApplicationEvents.vb               # VB Application Framework events
-??? Program.vb                         # Entry point (Main Sub)
-??? PublicTypes.vb                     # Enums and public types
-??? README.md
+├── Forms/
+│   ├── MainForm.vb                    # Main application window
+│   ├── MainForm.Designer.vb           # Designer-generated (DO NOT EDIT)
+│   ├── BlockAssignmentForm.vb         # Block/Material assignment dialog
+│   ├── BlockAssignmentForm.Designer.vb
+│   ├── BlockAssignmentModel.vb        # MVVM model for block assignment
+│   └── MaterialCrudForm.vb            # Material CRUD dialog
+├── Controls/
+│   ├── CanvasControl.vb               # 2D drawing canvas
+│   ├── PropertiesPanel.vb             # Property inspector
+│   └── LineShape.vb                   # Line shape implementation
+├── CompositionRoot.vb                 # Dependency injection setup
+├── ApplicationEvents.vb               # VB Application Framework events
+├── Program.vb                         # Entry point (Main Sub)
+├── PublicTypes.vb                     # Enums and public types
+└── README.md
 ```
 
 ---
 
-## ?? Core Components
+## 📊 Core Components
 
 ### 1. MainForm
 
-**Purpose:** Main application window � primary UI container.
+**Purpose:** Main application window — primary UI container.
 
 **Key Responsibilities:**
 
-- **Window Layout** � Menu, toolbars, canvas, panels, statusbar
-- **Tool Activation** � Respond to toolbar button clicks
-- **File Operations** � Open, save, new drawing
-- **Event Coordination** � Wire up control events
+- **Window Layout** — Menu, toolbars, canvas, panels, statusbar
+- **Tool Activation** — Respond to toolbar button clicks
+- **File Operations** — Open, save, new drawing
+- **Event Coordination** — Wire up control events
 
 **Key Properties:**
 
@@ -127,9 +127,9 @@ End Sub
 - All use cases (central hub)
 
 **Key Design Patterns:**
-- **Composition** � Aggregates CanvasControl, PropertiesPanel, toolbars
-- **Dependency Injection** � Gets services from CompositionRoot
-- **Event Propagation** � Receives events from child controls
+- **Composition** — Aggregates CanvasControl, PropertiesPanel, toolbars
+- **Dependency Injection** — Gets services from CompositionRoot
+- **Event Propagation** — Receives events from child controls
 
 ---
 
@@ -139,11 +139,11 @@ End Sub
 
 **Key Responsibilities:**
 
-- **Shape Rendering** � Draw all CanvasElements to the surface
-- **Tool Processing** � Handle mouse events per active tool
-- **Coordinate Mapping** � Convert physical (pixels) ? logical (units) coordinates
-- **Grid & Snapping** � Optional grid rendering and snap-to-grid
-- **Selection** � Track selected objects for property editing
+- **Shape Rendering** — Draw all CanvasElements to the surface
+- **Tool Processing** — Handle mouse events per active tool
+- **Coordinate Mapping** — Convert physical (pixels) ↔ logical (units) coordinates
+- **Grid & Snapping** — Optional grid rendering and snap-to-grid
+- **Selection** — Track selected objects for property editing
 
 **Key Properties:**
 
@@ -229,16 +229,16 @@ Protected Overrides Sub OnPaint(e As PaintEventArgs)
 End Sub
 ```
 
-**Tool Interaction Model (from Mega-File.md �6.2):**
+**Tool Interaction Model (from Mega-File.md §6.2):**
 
 ```
-MouseDown ? start
-  ?
-MouseMove ? preview (rubber-band)
-  ?
-MouseUp ? commit
-  ?
-Escape ? cancel
+MouseDown → start
+  ↓
+MouseMove → preview (rubber-band)
+  ↓
+MouseUp → commit
+  ↓
+Escape → cancel
 ```
 
 **Related Use Cases:**
@@ -247,9 +247,9 @@ Escape ? cancel
 - UC-006: Edit properties of a multi-selection
 
 **Key Design Patterns:**
-- **Separation of Concerns** � Canvas handles rendering/events, logic in Application
-- **Double Buffering** � Reduces flicker during redraw
-- **Coordinate Abstraction** � Logical/physical separation enables zoom/pan
+- **Separation of Concerns** — Canvas handles rendering/events, logic in Application
+- **Double Buffering** — Reduces flicker during redraw
+- **Coordinate Abstraction** — Logical/physical separation enables zoom/pan
 
 ---
 
@@ -259,10 +259,10 @@ Escape ? cancel
 
 **Key Responsibilities:**
 
-- **Context Detection** � Show appropriate properties based on selection
-- **Property Binding** � Bind UI controls to CanvasElement properties
-- **Multi-Selection** � Show `(mixed)` for differing values
-- **Validation** � Validate input before saving to model
+- **Context Detection** — Show appropriate properties based on selection
+- **Property Binding** — Bind UI controls to CanvasElement properties
+- **Multi-Selection** — Show `(mixed)` for differing values
+- **Validation** — Validate input before saving to model
 
 **Key Properties:**
 
@@ -307,7 +307,7 @@ End Sub
 
 ```
 Selection State          | Properties Shown
-????????????????????????????????????????????????????????????????
+─────────────────────────┼──────────────────────────────────────
 None (canvas)            | Canvas properties (Unit, ScaleFactor)
 Single object            | All properties for that type + universal
 Multi same-type          | Shared properties + (mixed) placeholders
@@ -357,9 +357,9 @@ TotalCost                ' (calculated)
 - UC-006: Edit properties of a multi-selection
 
 **Key Design Patterns:**
-- **Property Binding** � Two-way data binding to selected elements
-- **Context Adaptation** � Show/hide fields based on selection type
-- **Validation** � Inline error display on invalid input
+- **Property Binding** — Two-way data binding to selected elements
+- **Context Adaptation** — Show/hide fields based on selection type
+- **Validation** — Inline error display on invalid input
 
 ---
 
@@ -404,10 +404,10 @@ End Class
 
 **Key Features:**
 
-- **Material List** � DataGridView showing all materials
-- **CRUD Operations** � Add, Edit, Delete buttons
-- **Property Editor** � Edit name, unit, price
-- **Validation** � Ensure required fields are filled
+- **Material List** — DataGridView showing all materials
+- **CRUD Operations** — Add, Edit, Delete buttons
+- **Property Editor** — Edit name, unit, price
+- **Validation** — Ensure required fields are filled
 
 **Related Use Cases:**
 - UC-004: Run a take-off quantity summary (material lookup)
@@ -453,37 +453,37 @@ End Enum
 
 ---
 
-## ?? Data Flow
+## 🔄 Data Flow
 
 ### User Creates a Rectangle
 
 ```
 User clicks Rectangle tool button
-    ?
+    ↓
 BtnRectangle_Click() 
-    ?
+    ↓
 _canvas.SetTool(ToolType.Rectangle)
-    ?
+    ↓
 CanvasControl.OnMouseDown (rectangle drawing starts)
-    ?? ScreenToLogical() convert pixel to units
-    ?? Store start point
-    ?? Enter preview mode
-    ?
+    ├─ ScreenToLogical() convert pixel to units
+    ├─ Store start point
+    └─ Enter preview mode
+    ↓
 CanvasControl.OnMouseMove (for each mouse move)
-    ?? Calculate rubber-band preview
-    ?? OnPaint() renders preview
-    ?
+    ├─ Calculate rubber-band preview
+    ├─ OnPaint() renders preview
+    ↓
 CanvasControl.OnMouseUp (user finishes)
-    ?? Create new CanvasElement
-    ?? Set geometry JSON
-    ?? Add to _layout.Elements
-    ?? Invalidate() triggers redraw
-    ?? Exit tool mode
-    ?
+    ├─ Create new CanvasElement
+    ├─ Set geometry JSON
+    ├─ Add to _layout.Elements
+    ├─ Invalidate() triggers redraw
+    └─ Exit tool mode
+    ↓
 Canvas redraws
-    ?
+    ↓
 PropertiesPanel.SetSelection([new rectangle])
-    ?
+    ↓
 Panel displays rectangle properties (X, Y, Width, Height, etc.)
 ```
 
@@ -491,104 +491,104 @@ Panel displays rectangle properties (X, Y, Width, Height, etc.)
 
 ```
 User selects rectangle (already on canvas)
-    ?
+    ↓
 CanvasControl.SelectTool processes MouseUp
-    ?? ElementsAtPoint() finds rectangle
-    ?? Select it
-    ?? Fire SelectionChanged event
-    ?
+    ├─ ElementsAtPoint() finds rectangle
+    ├─ Select it
+    └─ Fire SelectionChanged event
+    ↓
 PropertiesPanel.SetSelection([rectangle])
-    ?
+    ↓
 Panel displays properties
-    ?
+    ↓
 User opens "Assign Material" dialog
-    ?
+    ↓
 BlockAssignmentForm shows available materials
-    ?
+    ↓
 User selects material, clicks OK
-    ?
+    ↓
 Form returns BlockAssignmentModel
-    ?
+    ↓
 MainForm.OnBlockAssignmentComplete()
-    ?? Update selected rectangle's BusinessJson
-    ?? Trigger calculation
-    ?? Update statusbar with quantity
-    ?
+    ├─ Update selected rectangle's BusinessJson
+    ├─ Trigger calculation
+    └─ Update statusbar with quantity
+    ↓
 Canvas redraws with updated appearance
 ```
 
 ---
 
-## ?? Event Flow
+## 🧵 Event Flow
 
-### Single Selection ? Property Display
+### Single Selection → Property Display
 
 ```
 Canvas.SelectionChanged event
-    ?
+    ↓
 MainForm catches event
-    ?
+    ↓
 PropertiesPanel.SetSelection(selectedElements)
-    ?
+    ↓
 Panel creates property controls
-    ?
+    ↓
 Bind to selected element
-    ?
+    ↓
 Display in UI
 ```
 
-### Property Changed ? Model Update
+### Property Changed → Model Update
 
 ```
 User edits property (e.g., Width = 10)
-    ?
+    ↓
 PropertiesPanel.OnPropertyChanged()
-    ?
+    ↓
 Validate input (must be > 0)
-    ?
+    ↓
 Update selected element
-    ?? Modify GeometryJson
-    ?? Trigger recalculation
-    ?? Mark drawing modified
-    ?
+    ├─ Modify GeometryJson
+    ├─ Trigger recalculation
+    └─ Mark drawing modified
+    ↓
 Canvas.Invalidate()
-    ?
+    ↓
 OnPaint() redraws canvas
 ```
 
 ---
 
-## ?? UI/UX Considerations (from Mega-File.md �0208)
+## 🎨 UI/UX Considerations (from Mega-File.md §0208)
 
 ### Canvas Guidelines
 
-? **Do:**
+✅ **Do:**
 - Use adequate margins/padding around drawing area
 - Support keyboard shortcuts (Ctrl+Z for undo, Ctrl+S for save)
 - Provide visual feedback (cursor changes, status messages)
 - Support multiple selection (Ctrl+Click, window select)
 
-? **Don't:**
+❌ **Don't:**
 - Use absolute positioning (use anchors/docking)
 - Block user input on validation errors (warn instead)
 - Perform heavy calculations on every mouse move (debounce)
 
 ### Property Panel Guidelines
 
-? **Do:**
+✅ **Do:**
 - Show `(mixed)` for multi-selection with differing values
 - Disable fields when all objects are locked
 - Provide inline validation feedback
 - Update real-time (no "Apply" button needed)
 
-? **Don't:**
+❌ **Don't:**
 - Show too many fields at once (group logically)
 - Allow invalid values (validate before commit)
 - Update canvas on every keystroke (wait for enter/blur)
 
 ---
 
-## ?? Dependency Injection (CompositionRoot.vb)
+## 🔌 Dependency Injection (CompositionRoot.vb)
 
 **Purpose:** Central DI container setup.
 
@@ -626,18 +626,18 @@ End Class
 
 ---
 
-## ?? Testing Considerations
+## 🧪 Testing Considerations
 
 ### Unit Tests
 
-- **MainForm** � Test toolbar button wiring, file operations
-- **CanvasControl** � Test coordinate mapping, tool switching
-- **PropertiesPanel** � Test property binding, multi-selection display
+- **MainForm** — Test toolbar button wiring, file operations
+- **CanvasControl** — Test coordinate mapping, tool switching
+- **PropertiesPanel** — Test property binding, multi-selection display
 
 ### Integration Tests
 
-- **End-to-End Drawing** � Create shape ? Set properties ? Save/load
-- **Tool Workflow** � Activate tool ? Draw ? Commit ? Verify in model
+- **End-to-End Drawing** — Create shape → Set properties → Save/load
+- **Tool Workflow** — Activate tool → Draw → Commit → Verify in model
 
 ### UI Testing (Manual)
 
@@ -648,16 +648,16 @@ End Class
 
 ---
 
-## ?? WinForms Best Practices
+## 📝 WinForms Best Practices
 
 ### Designer Files
 
-? **Do:**
+✅ **Do:**
 - Keep `*.Designer.vb` auto-generated (don't edit manually)
 - Use `InitializeComponent()` only (Designer responsibility)
 - Pin complex controls in constructor
 
-? **Don't:**
+❌ **Don't:**
 - Add event handlers in Designer file
 - Add business logic in `InitializeComponent()`
 - Use `Handles` clause in Designer file
@@ -679,23 +679,23 @@ End Property
 
 ---
 
-## ?? References
+## 🔗 References
 
 ### Mega-File Documentation
 
-- [0208-UX_UI_Design](../Mega-File.md#-0208--ux--ui-design) � Interaction model, validation rules
-- [0301-Development_Documentation](../Mega-File.md#-0301--development-documentation) � Coding standards
-- [UC-001-007](../Mega-File.md#-use-cases) � Use case workflows
+- [0208-UX_UI_Design](../Mega-File.md#-0208--ux--ui-design) — Interaction model, validation rules
+- [0301-Development_Documentation](../Mega-File.md#-0301--development-documentation) — Coding standards
+- [UC-001-007](../Mega-File.md#-use-cases) — Use case workflows
 
 ### Related Layers
 
-- **Application** � Provides services (TakeOffService, MaterialService)
-- **Domain** � Provides entities (CanvasElement, CanvasLayout)
-- **Infrastructure** � Provides config, logging, persistence
+- **Application** — Provides services (TakeOffService, MaterialService)
+- **Domain** — Provides entities (CanvasElement, CanvasLayout)
+- **Infrastructure** — Provides config, logging, persistence
 
 ---
 
-## ?? Conventions
+## 📝 Conventions
 
 ### Form Naming
 
@@ -718,16 +718,16 @@ End Property
 
 ---
 
-## ?? Important Notes
+## ⚠️ Important Notes
 
 ### No Business Logic
 
-? Do NOT add:
+❌ Do NOT add:
 - Calculation logic (belongs in Application)
 - Data access (belongs in Infrastructure)
 - Entity manipulation (minimal, prefer service calls)
 
-? Keep Desktop layer:
+✅ Keep Desktop layer:
 - Pure UI rendering and event handling
 - Delegation to Application services
 - Thin orchestration only
@@ -735,7 +735,7 @@ End Property
 ### Thread Safety
 
 - All UI updates **must** occur on the UI thread
-- Long-running operations ? Use Task with ConfigureAwait(False)
+- Long-running operations → Use Task with ConfigureAwait(False)
 - Use `Invoke` for cross-thread updates
 
 ```vb
@@ -748,7 +748,7 @@ End Sub
 
 ---
 
-## ?? Quick Reference
+## 🚀 Quick Reference
 
 ### Add a Toolbar Button
 

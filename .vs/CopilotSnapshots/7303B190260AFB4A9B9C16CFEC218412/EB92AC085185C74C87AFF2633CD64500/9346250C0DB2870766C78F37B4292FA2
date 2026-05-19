@@ -1,4 +1,4 @@
-# Application Layer
+﻿# Application Layer
 
 The **Application** layer contains the **use case orchestration, business services, and calculation engines** for CoNSoL-TakeOff.
 
@@ -6,15 +6,15 @@ This layer bridges the **Domain** (data) and **Infrastructure** (persistence) la
 
 ---
 
-## ?? Overview
+## 📋 Overview
 
 ### Purpose
 
 The Application layer provides:
-- **Use Case Orchestration** � Coordinates domain entities to implement business workflows
-- **Calculation Engine** � Computes quantities, costs, aggregations
-- **Business Services** � Material lookups, quantity services, pricing
-- **Context & Results** � Contextual calculation parameters and aggregation results
+- **Use Case Orchestration** — Coordinates domain entities to implement business workflows
+- **Calculation Engine** — Computes quantities, costs, aggregations
+- **Business Services** — Material lookups, quantity services, pricing
+- **Context & Results** — Contextual calculation parameters and aggregation results
 
 ### Design Principle
 
@@ -22,38 +22,38 @@ The Application layer provides:
 
 The layers work together as:
 ```
-Desktop (UI) ? Application (workflows) ? Domain (calculations) ? Infrastructure (persistence)
+Desktop (UI) → Application (workflows) → Domain (calculations) → Infrastructure (persistence)
 ```
 
 ---
 
-## ??? Project Structure
+## 🏗️ Project Structure
 
 ```
 Application/
-??? Services/
-?   ??? TakeOffService.vb              # Quantity & cost aggregation
-?   ??? MaterialService.vb             # Material management & lookup
-??? TakeOffCalculator.vb               # Core calculation engine
-??? TakeOffContext.vb                  # Calculation context parameters
-??? TakeOffResult.vb                   # Result aggregation object
-??? README.md
+├── Services/
+│   ├── TakeOffService.vb              # Quantity & cost aggregation
+│   └── MaterialService.vb             # Material management & lookup
+├── TakeOffCalculator.vb               # Core calculation engine
+├── TakeOffContext.vb                  # Calculation context parameters
+├── TakeOffResult.vb                   # Result aggregation object
+└── README.md
 ```
 
 ---
 
-## ?? Core Components
+## 📊 Core Components
 
 ### 1. TakeOffCalculator
 
-**Purpose:** Core calculation engine � computes quantities and costs from canvas state.
+**Purpose:** Core calculation engine — computes quantities and costs from canvas state.
 
 **Key Responsibilities:**
 
-- **Quantity Calculation** � Apply dimension mode (D0-D3) to shapes
-- **Nested Object Logic** � Handle parent-child relationships (doors in walls, etc.)
-- **Cost Aggregation** � Multiply quantity � unit price
-- **Formula Application** � Apply custom formulas to shapes
+- **Quantity Calculation** — Apply dimension mode (D0-D3) to shapes
+- **Nested Object Logic** — Handle parent-child relationships (doors in walls, etc.)
+- **Cost Aggregation** — Multiply quantity × unit price
+- **Formula Application** — Apply custom formulas to shapes
 
 **Key Methods:**
 
@@ -109,10 +109,10 @@ Dim result = calculator.Calculate(layout, ctx)
 
 **Key Responsibilities:**
 
-- **Group Aggregation** � Group elements by tag, layer, or type
-- **Sum/Average Functions** � Compute statistics on grouped quantities
-- **Export Formatting** � Prepare results for CSV/Excel export
-- **Caching** � Cache intermediate results for performance
+- **Group Aggregation** — Group elements by tag, layer, or type
+- **Sum/Average Functions** — Compute statistics on grouped quantities
+- **Export Formatting** — Prepare results for CSV/Excel export
+- **Caching** — Cache intermediate results for performance
 
 **Key Methods:**
 
@@ -172,10 +172,10 @@ Dim csv = service.ExportToCsv(summary)
 
 **Key Responsibilities:**
 
-- **Material Lookup** � Find material by ID or name
-- **Price Retrieval** � Get current unit price for material
-- **Material List** � List all available materials (for dropdowns)
-- **Price History** � Retrieve historical prices (future)
+- **Material Lookup** — Find material by ID or name
+- **Price Retrieval** — Get current unit price for material
+- **Material List** — List all available materials (for dropdowns)
+- **Price History** — Retrieve historical prices (future)
 
 **Key Methods:**
 
@@ -234,7 +234,7 @@ End Class
 
 - **Parameterizes** calculation behavior
 - Enables **filtering** (by layer, object type)
-- Supports **unit conversion** (metric ? imperial)
+- Supports **unit conversion** (metric ↔ imperial)
 - **Reusable** across multiple calculation requests
 
 **Example:**
@@ -253,7 +253,7 @@ Dim result = calculator.Calculate(layout, ctx)
 
 ### 5. TakeOffResult
 
-**Purpose:** Aggregation result object � holds calculation outputs.
+**Purpose:** Aggregation result object — holds calculation outputs.
 
 **Structure:**
 
@@ -286,35 +286,35 @@ End Class
 
 **Key Points:**
 
-- **Immutable result** � represents calculation snapshot
-- Contains **detailed breakdown** � by material, layer, etc.
-- **Warnings included** � validation issues don't block calculation
-- **Exportable** � can be serialized to CSV/Excel
+- **Immutable result** — represents calculation snapshot
+- Contains **detailed breakdown** — by material, layer, etc.
+- **Warnings included** — validation issues don't block calculation
+- **Exportable** — can be serialized to CSV/Excel
 
 ---
 
-## ?? Data Flow
+## 🔄 Data Flow
 
 ### Calculation Pipeline
 
 ```
 CanvasLayout (from storage)
-    ?
+    ↓
 TakeOffCalculator.Calculate(layout, context)
-    ?? For each CanvasElement:
-    ?   ?? Extract BusinessDefinition
-    ?   ?? Determine dimension mode (D0-D3)
-    ?   ?? Get geometry dimensions (from Geometry utility)
-    ?   ?? Check relationships (nested objects)
-    ?   ?? Apply quantity formula
-    ?   ?? Multiply by unit price
-    ?   ?? Accumulate in result
-    ?
-    ?? Return TakeOffResult
-        ?? MaterialSummary (by tag)
-        ?? CostByLayer (by layer)
-        ?? GrandTotalCost
-        ?? Warnings
+    ├─ For each CanvasElement:
+    │   ├─ Extract BusinessDefinition
+    │   ├─ Determine dimension mode (D0-D3)
+    │   ├─ Get geometry dimensions (from Geometry utility)
+    │   ├─ Check relationships (nested objects)
+    │   ├─ Apply quantity formula
+    │   ├─ Multiply by unit price
+    │   └─ Accumulate in result
+    │
+    └─ Return TakeOffResult
+        ├─ MaterialSummary (by tag)
+        ├─ CostByLayer (by layer)
+        ├─ GrandTotalCost
+        └─ Warnings
 ```
 
 ### Example: Two-Room Layout
@@ -323,52 +323,52 @@ TakeOffCalculator.Calculate(layout, context)
 
 ```
 CanvasLayout:
-  ?? Room A (Rectangle, D2, area=50m�, Material="Concrete", Price=20�/m�)
-  ?? Door A1 (Rectangle, D0, count=1, Subtracts from Room A, Material="Wood", Price=100�)
-  ?? Room B (Rectangle, D2, area=30m�, Material="Tile", Price=15�/m�)
-  ?? Door B1 (Rectangle, D0, count=1, Subtracts from Room B, Material="Wood", Price=100�)
+  ├─ Room A (Rectangle, D2, area=50m², Material="Concrete", Price=20€/m²)
+  ├─ Door A1 (Rectangle, D0, count=1, Subtracts from Room A, Material="Wood", Price=100€)
+  ├─ Room B (Rectangle, D2, area=30m², Material="Tile", Price=15€/m²)
+  └─ Door B1 (Rectangle, D0, count=1, Subtracts from Room B, Material="Wood", Price=100€)
 ```
 
 **Calculation:**
 
 ```
 Room A:
-  - Geometry area = 50 m�
-  - Doors subtract = 2 m� (typical door)
-  - Net area = 48 m�
-  - Cost = 48 m� � 20 �/m� = 960 �
+  - Geometry area = 50 m²
+  - Doors subtract = 2 m² (typical door)
+  - Net area = 48 m²
+  - Cost = 48 m² × 20 €/m² = 960 €
 
 Room B:
-  - Geometry area = 30 m�
-  - Doors subtract = 2 m�
-  - Net area = 28 m�
-  - Cost = 28 m� � 15 �/m� = 420 �
+  - Geometry area = 30 m²
+  - Doors subtract = 2 m²
+  - Net area = 28 m²
+  - Cost = 28 m² × 15 €/m² = 420 €
 
 Doors (Wood):
   - Count = 2
-  - Cost = 2 � 100 � = 200 �
+  - Cost = 2 × 100 € = 200 €
 ```
 
 **Output (TakeOffResult):**
 
 ```
 MaterialSummary:
-  "Concrete": { Qty=48, Unit="m�", Price=20, Total=960 }
-  "Tile":     { Qty=28, Unit="m�", Price=15, Total=420 }
+  "Concrete": { Qty=48, Unit="m²", Price=20, Total=960 }
+  "Tile":     { Qty=28, Unit="m²", Price=15, Total=420 }
   "Wood":     { Qty=2,  Unit="count", Price=100, Total=200 }
 
 CostByLayer:
-  "Walls": 960 + 420 = 1380 �
-  "Doors": 200 �
+  "Walls": 960 + 420 = 1380 €
+  "Doors": 200 €
 
-GrandTotalCost: 1580 �
+GrandTotalCost: 1580 €
 
 Warnings: []
 ```
 
 ---
 
-## ?? Service Interfaces
+## 🧪 Service Interfaces
 
 ### ICalculationEngine (Interface Contract)
 
@@ -403,17 +403,17 @@ End Interface
 
 ---
 
-## ??? Layering Pattern
+## 🏗️ Layering Pattern
 
 ### Dependency Direction
 
 ```
 Desktop (UI)
-    ? uses
+    ↓ uses
 Application (Orchestration)
-    ? uses
+    ↓ uses
 Domain (Entities, Calculation utilities)
-    ? uses
+    ↓ uses
 Infrastructure (IO, Config, Logging)
 ```
 
@@ -436,25 +436,25 @@ End Class
 ```
 
 **Benefits:**
-- ? Testable (mock dependencies)
-- ? Loosely coupled (interface-based)
-- ? Flexible (swap implementations)
+- ✅ Testable (mock dependencies)
+- ✅ Loosely coupled (interface-based)
+- ✅ Flexible (swap implementations)
 
 ---
 
-## ?? Testing Considerations
+## 🧪 Testing Considerations
 
 ### Unit Tests
 
-- **TakeOffCalculator** � Test quantity calculations per dimension mode
-- **TakeOffService** � Test aggregation and export formatting
-- **MaterialService** � Test lookup and filtering
+- **TakeOffCalculator** — Test quantity calculations per dimension mode
+- **TakeOffService** — Test aggregation and export formatting
+- **MaterialService** — Test lookup and filtering
 
 ### Integration Tests
 
-- **Full Pipeline** � CanvasLayout ? Calculate ? TakeOffResult
-- **Nested Objects** � Verify parent-child quantity logic
-- **CSV Export** � Verify formatting and data integrity
+- **Full Pipeline** — CanvasLayout → Calculate → TakeOffResult
+- **Nested Objects** — Verify parent-child quantity logic
+- **CSV Export** — Verify formatting and data integrity
 
 ### Mock Dependencies
 
@@ -471,24 +471,24 @@ Dim service = New TakeOffService(mockMaterialService.Object)
 
 ---
 
-## ?? References
+## 🔗 References
 
 ### Mega-File Documentation
 
-- [0301-Development_Documentation](../Mega-File.md#-0301--development-documentation) � Coding standards
-- [020103-Data_Model](../Mega-File.md#-020103--data-model) � Entity schemas
-- [0104-SRS �5](../Mega-File.md#-functional-requirements) � Functional requirements
-- [UC-004: Run a take-off quantity summary](../Mega-File.md#uc004--run-a-take-off-quantity-summary-) � Main use case
+- [0301-Development_Documentation](../Mega-File.md#-0301--development-documentation) — Coding standards
+- [020103-Data_Model](../Mega-File.md#-020103--data-model) — Entity schemas
+- [0104-SRS §5](../Mega-File.md#-functional-requirements) — Functional requirements
+- [UC-004: Run a take-off quantity summary](../Mega-File.md#uc004--run-a-take-off-quantity-summary-) — Main use case
 
 ### Related Layers
 
-- **Domain** � Provides entities (CanvasLayout, BusinessDefinition, etc.)
-- **Desktop** � Consumes services and results for UI binding
-- **Infrastructure** � Provides persistence and configuration
+- **Domain** — Provides entities (CanvasLayout, BusinessDefinition, etc.)
+- **Desktop** — Consumes services and results for UI binding
+- **Infrastructure** — Provides persistence and configuration
 
 ---
 
-## ?? Conventions
+## 📝 Conventions
 
 ### Naming
 
@@ -499,9 +499,9 @@ Dim service = New TakeOffService(mockMaterialService.Object)
 
 ### Exception Handling
 
-- **ArgumentException** � Invalid parameters
-- **InvalidOperationException** � Invalid state
-- **ApplicationException** � Business logic errors
+- **ArgumentException** — Invalid parameters
+- **InvalidOperationException** — Invalid state
+- **ApplicationException** — Business logic errors
 
 ```vb
 If layout Is Nothing Then
@@ -527,29 +527,29 @@ _logger.Log(LogLevel.Error, $"Calculation failed: {ex.Message}")
 
 ---
 
-## ?? Important Notes
+## ⚠️ Important Notes
 
 ### No UI Logic
 
-? Do NOT add:
+❌ Do NOT add:
 - Windows.Forms references
 - Display formatting (use Infrastructure/Wrappers)
 - Event handlers
 
-? Keep Application layer:
+✅ Keep Application layer:
 - Pure orchestration
 - Business calculations
 - Service interfaces
 
 ### Performance Considerations
 
-- **Caching** � Cache material lookups within a calculate call
-- **Lazy Loading** � Don't load all materials upfront
-- **Batch Operations** � Process multiple elements in a single call
+- **Caching** — Cache material lookups within a calculate call
+- **Lazy Loading** — Don't load all materials upfront
+- **Batch Operations** — Process multiple elements in a single call
 
 ---
 
-## ?? Quick Reference
+## 🚀 Quick Reference
 
 ### Create Context and Calculate
 

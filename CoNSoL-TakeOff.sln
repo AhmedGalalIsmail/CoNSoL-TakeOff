@@ -15,7 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{956EB379-583E-4D28-8F59-928DF0155CA8}"
 	ProjectSection(SolutionItems) = preProject
-		README2.md = README2.md
+		Mega-File.md = Mega-File.md
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resx", "Resx", "{3FA9AE5B-1A1D-43A7-90F7-5F53603F6B06}"
