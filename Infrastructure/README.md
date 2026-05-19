@@ -1,4 +1,4 @@
-# Infrastructure Layer
+﻿# Infrastructure Layer
 
 The **Infrastructure** layer contains **cross-cutting concerns** that support the application: configuration management, logging, persistence, cryptography, and JSON serialization.
 
@@ -6,16 +6,16 @@ This layer is **reusable** across Desktop, Web, and future deployment scenarios.
 
 ---
 
-## ?? Overview
+## 📋 Overview
 
 ### Purpose
 
 The Infrastructure layer provides:
-- **Configuration Management** � Application settings, database connections, feature flags
-- **Logging** � File-based logging for debugging and auditing
-- **Persistence** � File I/O for drawings and materials
-- **Cryptography** � Encryption, hashing for security
-- **Serialization** � JSON wrapper for domain entity serialization
+- **Configuration Management** — Application settings, database connections, feature flags
+- **Logging** — File-based logging for debugging and auditing
+- **Persistence** — File I/O for drawings and materials
+- **Cryptography** — Encryption, hashing for security
+- **Serialization** — JSON wrapper for domain entity serialization
 
 ### Design Principle
 
@@ -24,35 +24,35 @@ The Infrastructure layer provides:
 ### Layer Independence
 
 Infrastructure is **UI-agnostic** and can serve:
-- ? Desktop (WinForms)
-- ? Web (ASP.NET Core)
-- ? Services (background jobs)
+- ✅ Desktop (WinForms)
+- ✅ Web (ASP.NET Core)
+- ✅ Services (background jobs)
 
 ---
 
-## ??? Project Structure
+## 🏗️ Project Structure
 
 ```
 Infrastructure/
-??? Config/
-?   ??? AppConfig.vb                   # Configuration management
-??? Logging/
-?   ??? ILogger.vb                     # Logging interface
-?   ??? FileLogger.vb                  # File-based logger implementation
-??? IO/
-?   ??? TakeOffFileStore.vb            # Drawing file persistence (.takeoff)
-?   ??? MaterialJsonStore.vb           # Material database JSON storage
-??? Crypto/
-?   ??? CryptoService.vb               # Encryption/decryption service
-?   ??? Hashing.vb                     # Password/token hashing
-??? Wrappers/
-?   ??? JsonSerializer.vb              # JSON serialization wrapper
-??? README.md
+├── Config/
+│   └── AppConfig.vb                   # Configuration management
+├── Logging/
+│   ├── ILogger.vb                     # Logging interface
+│   └── FileLogger.vb                  # File-based logger implementation
+├── IO/
+│   ├── TakeOffFileStore.vb            # Drawing file persistence (.takeoff)
+│   └── MaterialJsonStore.vb           # Material database JSON storage
+├── Crypto/
+│   ├── CryptoService.vb               # Encryption/decryption service
+│   └── Hashing.vb                     # Password/token hashing
+├── Wrappers/
+│   └── JsonSerializer.vb              # JSON serialization wrapper
+└── README.md
 ```
 
 ---
 
-## ?? Core Components
+## 🔧 Core Components
 
 ### 1. AppConfig
 
@@ -60,9 +60,9 @@ Infrastructure/
 
 **Key Responsibilities:**
 
-- **Load Settings** � From config files, environment variables, database
-- **Provide Access** � Typed, strongly-validated properties
-- **Support Environments** � Development, Testing, Production
+- **Load Settings** — From config files, environment variables, database
+- **Provide Access** — Typed, strongly-validated properties
+- **Support Environments** — Development, Testing, Production
 
 **Key Properties:**
 
@@ -175,10 +175,10 @@ End Class
 
 **Key Points:**
 
-- **Thread-safe** � Uses lock for concurrent access
-- **Rotating logs** � New file per day (optional)
-- **Levels** � Debug, Info, Warn, Error, Critical
-- **Timestamped** � All entries include ISO 8601 timestamp
+- **Thread-safe** — Uses lock for concurrent access
+- **Rotating logs** — New file per day (optional)
+- **Levels** — Debug, Info, Warn, Error, Critical
+- **Timestamped** — All entries include ISO 8601 timestamp
 
 **Related Use Cases:**
 - All use cases (implicit logging throughout)
@@ -206,9 +206,9 @@ End Try
 
 **Key Responsibilities:**
 
-- **Save Drawing** � Serialize CanvasLayout to file
-- **Load Drawing** � Deserialize file to CanvasLayout
-- **File Format** � JSON-based with optional compression/encryption
+- **Save Drawing** — Serialize CanvasLayout to file
+- **Load Drawing** — Deserialize file to CanvasLayout
+- **File Format** — JSON-based with optional compression/encryption
 
 **Key Methods:**
 
@@ -296,9 +296,9 @@ Console.WriteLine($"File size: {metadata.FileSizeBytes} bytes")
 
 **Key Responsibilities:**
 
-- **Save Materials** � Serialize material list to JSON
-- **Load Materials** � Deserialize material definitions
-- **Merge Prices** � Update pricing from multiple sources
+- **Save Materials** — Serialize material list to JSON
+- **Load Materials** — Deserialize material definitions
+- **Merge Prices** — Update pricing from multiple sources
 
 **Key Methods:**
 
@@ -321,7 +321,7 @@ Public Class Material
     Public Property Id As String
     Public Property Name As String
     Public Property Category As String
-    Public Property Unit As String         ' m, m�, m�, kg, etc.
+    Public Property Unit As String         ' m, m², m³, kg, etc.
     Public Property UnitPrice As Double
     Public Property CreatedDate As DateTime
     Public Property LastUpdatedDate As DateTime
@@ -356,9 +356,9 @@ store.UpsertMaterial(concrete, "materials.json")
 
 **Key Responsibilities:**
 
-- **Encrypt Data** � AES-256 encryption
-- **Decrypt Data** � Reverse encryption
-- **Key Management** � Derive keys from master password
+- **Encrypt Data** — AES-256 encryption
+- **Decrypt Data** — Reverse encryption
+- **Key Management** — Derive keys from master password
 
 **Key Methods:**
 
@@ -411,9 +411,9 @@ End If
 
 **Key Responsibilities:**
 
-- **Hash Password** � PBKDF2 with salt
-- **Verify Password** � Compare against hash
-- **Generate Token** � Secure random tokens
+- **Hash Password** — PBKDF2 with salt
+- **Verify Password** — Compare against hash
+- **Generate Token** — Secure random tokens
 
 **Key Methods:**
 
@@ -465,9 +465,9 @@ Dim token = Hashing.GenerateToken(32)  ' 32 random bytes
 
 **Key Responsibilities:**
 
-- **Serialize Objects** � Object ? JSON string
-- **Deserialize Objects** � JSON string ? Object
-- **Settings Management** � Consistent JSON settings across app
+- **Serialize Objects** — Object → JSON string
+- **Deserialize Objects** — JSON string → Object
+- **Settings Management** — Consistent JSON settings across app
 
 **Key Methods:**
 
@@ -511,21 +511,21 @@ Dim prettyJson = JsonSerializer.SerializeIndented(layout)
 
 ---
 
-## ?? Data Flow
+## 🔄 Data Flow
 
 ### File Save Pipeline
 
 ```
 CanvasLayout (in memory)
-    ?
-JsonSerializer.Serialize() ? JSON string
-    ?
-(Optional) CryptoService.Encrypt() ? Encrypted bytes
-    ?
-TakeOffFileStore.SaveAsync() ? Write to disk
-    ?
+    ↓
+JsonSerializer.Serialize() → JSON string
+    ↓
+(Optional) CryptoService.Encrypt() → Encrypted bytes
+    ↓
+TakeOffFileStore.SaveAsync() → Write to disk
+    ↓
 Log event (FileLogger)
-    ?
+    ↓
 File saved: project.takeoff
 ```
 
@@ -533,21 +533,21 @@ File saved: project.takeoff
 
 ```
 File: project.takeoff (on disk)
-    ?
-TakeOffFileStore.LoadAsync() ? Read from disk
-    ?
-(Optional) CryptoService.Decrypt() ? JSON string
-    ?
-JsonSerializer.Deserialize(Of CanvasLayout)() ? Object
-    ?
+    ↓
+TakeOffFileStore.LoadAsync() → Read from disk
+    ↓
+(Optional) CryptoService.Decrypt() → JSON string
+    ↓
+JsonSerializer.Deserialize(Of CanvasLayout)() → Object
+    ↓
 Log event (FileLogger)
-    ?
+    ↓
 CanvasLayout (in memory)
 ```
 
 ---
 
-## ??? Dependency Injection
+## 🏗️ Dependency Injection
 
 ### Typical DI Setup
 
@@ -569,20 +569,20 @@ Dim takeOffService = New TakeOffService(
 
 ---
 
-## ?? Testing Considerations
+## 🧪 Testing Considerations
 
 ### Unit Tests
 
-- **AppConfig** � Test configuration loading from different sources
-- **FileLogger** � Test log file creation and formatting
-- **JsonSerializer** � Test round-trip serialization for domain entities
-- **Hashing** � Test password verification, token generation
+- **AppConfig** — Test configuration loading from different sources
+- **FileLogger** — Test log file creation and formatting
+- **JsonSerializer** — Test round-trip serialization for domain entities
+- **Hashing** — Test password verification, token generation
 
 ### Integration Tests
 
-- **TakeOffFileStore** � Test save/load with actual files
-- **CryptoService** � Test encrypt/decrypt round-trip
-- **Material JSON Store** � Test persistence with material data
+- **TakeOffFileStore** — Test save/load with actual files
+- **CryptoService** — Test encrypt/decrypt round-trip
+- **Material JSON Store** — Test persistence with material data
 
 ### Mock Dependencies
 
@@ -600,47 +600,47 @@ End Class
 
 ---
 
-## ?? Security Considerations
+## 🔒 Security Considerations
 
 ### Password Storage
 
-? **Do:**
+✅ **Do:**
 - Use PBKDF2 or Bcrypt for password hashing
 - Store only hashes, never plaintext passwords
 - Use strong salt (16+ bytes)
 
-? **Don't:**
+❌ **Don't:**
 - Use MD5 or SHA-1 (weak)
 - Store passwords in config files
 - Log passwords or tokens
 
 ### File Encryption
 
-? **Do:**
+✅ **Do:**
 - Use AES-256 for file encryption
 - Use authenticated encryption (GCM mode)
 - Protect encryption keys
 
-? **Don't:**
+❌ **Don't:**
 - Use weak ciphers (DES, RC4)
 - Embed keys in source code
 - Log encrypted/decrypted data
 
 ### Configuration Secrets
 
-? **Do:**
+✅ **Do:**
 - Use environment variables for secrets
 - Use OS credential storage (Windows DPAPI)
 - Rotate secrets regularly
 
-? **Don't:**
+❌ **Don't:**
 - Commit secrets to Git
 - Hardcode connection strings
 - Log sensitive config values
 
 ---
 
-## ?? Conventions
+## 📝 Conventions
 
 ### Naming
 
@@ -665,16 +665,16 @@ _logger.LogError("Failed to decrypt file", ex)
 
 ---
 
-## ?? Important Notes
+## ⚠️ Important Notes
 
 ### No Business Logic
 
-? Do NOT add:
+❌ Do NOT add:
 - Domain entity logic
 - Calculation logic
 - Use case orchestration
 
-? Keep Infrastructure layer:
+✅ Keep Infrastructure layer:
 - Pure plumbing
 - Framework abstractions
 - Cross-cutting concerns
@@ -687,7 +687,7 @@ _logger.LogError("Failed to decrypt file", ex)
 
 ---
 
-## ?? Quick Reference
+## 🚀 Quick Reference
 
 ### Load Configuration
 
@@ -721,6 +721,6 @@ Dim decrypted = crypto.Decrypt(encrypted, masterKey)
 
 ---
 
-**Last Updated:** January 2025  
+**Last Updated:** 19 April 2026  
 **Layer Responsibility:** Cross-Cutting Concerns & Persistence  
 **Maintainer:** Development Team
