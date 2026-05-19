@@ -29,16 +29,18 @@ tags:
 
 ---
 
-## 📌 Type | النوع
+## 📌 Type 
+### النوع
 
-| 📌*** Type***   | ***النوع***          |
+| 📌***Type***   | ***النوع***          |
 | --------------- | -------------------- |
 | 📜 **Policy**   | **السياسة**          |
 | 🛑 **Standard** | ا**لمعيار الإلزامي** |
 
 ---
 
-## 👥 Filled By | الجهة المسؤولة
+## 👥 Filled By
+### الجهة المسؤولة
 
 | **Leadership** | **الإدارة العليا**                   |
 | -------------- | ------------------------------------ |
@@ -46,9 +48,10 @@ tags:
 
 ---
 
-## 🎯 Purpose | الهدف
+## 🎯 Purpose 
+### الهدف
 
-### **Defining document standards, their lifecycle, and assigning responsibilities across the SDLC — تعريف معايير الوثائق، دورة حياتها، وتحديد المسؤوليات عبر SDLC**
+### **Defining document standards, their lifecycle, and assigning responsibilities across the SDLC - تعريف معايير الوثائق، دورة حياتها، وتحديد المسؤوليات عبر SDLC**
 
 | **Define**                   | **التعريف**       |
 | ---------------------------- | ----------------- |
@@ -58,9 +61,12 @@ tags:
 
 ---
 
-## 🔄 Standards | المعايير
+## 🔄 Standards 
+### المعايير
 
-### Lifecycle | دورة الحياة
+### Lifecycle 
+### دورة الحياة
+
 - Draft — مسودة  
 - In Review — قيد المراجعة  
 - Approved — معتمد  
@@ -68,19 +74,24 @@ tags:
 
 ---
 
-## 🧬 Versioning | إدارة الإصدارات
+## 🧬 Versioning 
+### إدارة الإصدارات
+
 - `MAJOR.MINOR.PATCH`  
 - Example: `1.0.0`
 
 ---
 
-## 🔁 Review Cadence | دورية المراجعة
+## 🔁 Review Cadence 
+### دورية المراجعة
+
 - Quarterly — ربع سنوي  
 - On major change — عند التغيير الجوهري
 
 ---
 
-## 🧾 Required Metadata | البيانات الإلزامية
+## 🧾 Required Metadata 
+### البيانات الإلزامية
 
 | Field (EN) | الحقل (AR) |
 |-----------|-----------|
@@ -94,7 +105,9 @@ tags:
 
 ---
 
-## 📄 Typical Static Content | محتوى ثابت نموذجي
+## 📄 Typical Static Content
+### محتوى ثابت نموذجي
+
 
 | **Item (EN)**  | **Value**                 | **الوصف (AR)**      |
 | -------------- | ------------------------- | ------------------- |
@@ -104,7 +117,9 @@ tags:
 
 ---
 
-## ✅ Quality Gates | بوابات الجودة
+## ✅ Quality Gates
+### بوابات الجودة
+
 
 | **Phase (EN)** | **Approval Requirements**  | **شرط الاعتماد**                        |
 | -------------- | -------------------------- | --------------------------------------- |
@@ -118,3 +133,4 @@ tags:
 > This document is **static by design** and should change rarely.
 
 ⬅️ [🏠 Back to Platform Index](../0000-CoNSoL-Platform-Index.md)
+
