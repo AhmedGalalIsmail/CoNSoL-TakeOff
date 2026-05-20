@@ -23,8 +23,6 @@ Namespace Config
             Return Load(path, logger, _logger)
         End Function
 
-
-
         Public Shared Function Load(path As String, logger As ILogger, _logger As ILogger) As AppConfig
             _logger = logger
             If Not File.Exists(path) Then
@@ -36,6 +34,15 @@ Namespace Config
             Return JsonSerializer.Deserialize(Of AppConfig)(json)
         End Function
 
+        Public Shared Function Load(path As String) As AppConfig
+            If Not File.Exists(path) Then
+                Dim def = New AppConfig()
+                File.WriteAllText(path, JsonSerializer.Serialize(def, New JsonSerializerOptions With {.WriteIndented = True}))
+                Return def
+            End If
+            Dim json = File.ReadAllText(path)
+            Return JsonSerializer.Deserialize(Of AppConfig)(json)
+        End Function
 
         Public Function LoadFromFile(configPath As String) As AppConfig
             _logger.Info($"Loading config from: {configPath}")

@@ -66,31 +66,35 @@ Namespace Forms
         ''' </remarks>
         Public Sub New()
             Try
-                Logger.Info("Initializing MainForm")
+                Logger.LogInfo("Initializing MainForm")
 
                 ' ✅ MUST BE FIRST: Designer-generated initialization
                 InitializeComponent()
+                Logger.LogDebug("InitializeComponent completed")
 
                 ' Set form properties
                 Me.Text = "CoNSoL-TakeOff"
                 Me.Width = 1200
                 Me.Height = 800
+                Logger.LogDebug("Form properties set (1200x800)")
 
                 ' Initialize UI components
                 InitializeToolButtons()
+                Logger.LogDebug("Tool buttons initialized")
 
                 ' Add controls to form
                 Me.Controls.Add(_canvas)
                 Me.Controls.Add(_left)
                 Me.Controls.Add(_status)
+                Logger.LogDebug("Controls added to form")
 
                 ' Load documentation (non-critical)
                 LoadReadmeFiles()
 
-                Logger.Info("MainForm initialization complete")
+                Logger.LogInfo("MainForm initialization complete")
 
             Catch ex As Exception
-                Logger.Error($"MainForm initialization failed: {ex.Message}", ex)
+                Logger.LogError($"MainForm initialization failed: {ex.Message}")
                 MessageBox.Show(
                     $"Failed to initialize application: {ex.Message}",
                     "Initialization Error",
@@ -113,7 +117,7 @@ Namespace Forms
         ''' </remarks>
         Private Sub InitializeToolButtons()
             Try
-                Logger.Info("Initializing tool buttons")
+                Logger.LogDebug("Initializing tool buttons")
 
                 ' Create tool buttons
                 Dim btnSelect = CreateToolButton("Select", Sub() HandleToolClick(ToolType.SelectTool, "Select"))
@@ -147,10 +151,10 @@ Namespace Forms
                 _left.Controls.Add(btnEllipse)
                 _left.Controls.Add(btnPolyline)
 
-                Logger.Info("Tool buttons created and added to panel")
+                Logger.LogDebug("Tool buttons created and added to panel")
 
             Catch ex As Exception
-                Logger.Error($"Failed to initialize tool buttons: {ex.Message}", ex)
+                Logger.LogError($"Failed to initialize tool buttons: {ex.Message}")
                 Throw
             End Try
         End Sub
@@ -179,11 +183,11 @@ Namespace Forms
         ''' <param name="toolName">Human-readable tool name for logging</param>
         Private Sub HandleToolClick(toolType As ToolType, toolName As String)
             Try
-                Logger.Info($"Tool clicked: {toolName}")
+                Logger.LogDebug($"Tool clicked: {toolName}")
                 _canvas.SetTool(toolType)
                 UpdateStatusBar($"Tool: {toolName}")
             Catch ex As Exception
-                Logger.Error($"Failed to set tool {toolName}: {ex.Message}", ex)
+                Logger.LogError($"Failed to set tool {toolName}: {ex.Message}")
                 UpdateStatusBar($"Error setting {toolName}", isError:=True)
             End Try
         End Sub
@@ -191,11 +195,11 @@ Namespace Forms
         ''' <summary>Handles Zoom In button click.</summary>
         Private Sub HandleZoomIn()
             Try
-                Logger.Info("Zoom In clicked")
+                Logger.LogDebug("Zoom In clicked")
                 _canvas.ZoomIn()
                 UpdateStatusBar("Zoom In")
             Catch ex As Exception
-                Logger.Error($"Zoom In failed: {ex.Message}", ex)
+                Logger.LogError($"Zoom In failed: {ex.Message}")
                 UpdateStatusBar("Zoom In failed", isError:=True)
             End Try
         End Sub
@@ -203,11 +207,11 @@ Namespace Forms
         ''' <summary>Handles Zoom Out button click.</summary>
         Private Sub HandleZoomOut()
             Try
-                Logger.Info("Zoom Out clicked")
+                Logger.LogDebug("Zoom Out clicked")
                 _canvas.ZoomOut()
                 UpdateStatusBar("Zoom Out")
             Catch ex As Exception
-                Logger.Error($"Zoom Out failed: {ex.Message}", ex)
+                Logger.LogError($"Zoom Out failed: {ex.Message}")
                 UpdateStatusBar("Zoom Out failed", isError:=True)
             End Try
         End Sub
@@ -215,11 +219,11 @@ Namespace Forms
         ''' <summary>Handles Grid Toggle button click.</summary>
         Private Sub HandleGridToggle()
             Try
-                Logger.Info("Grid toggle clicked")
+                Logger.LogDebug("Grid toggle clicked")
                 _canvas.ToggleGrid()
                 UpdateStatusBar("Grid toggled")
             Catch ex As Exception
-                Logger.Error($"Grid toggle failed: {ex.Message}", ex)
+                Logger.LogError($"Grid toggle failed: {ex.Message}")
                 UpdateStatusBar("Grid toggle failed", isError:=True)
             End Try
         End Sub
@@ -238,17 +242,8 @@ Namespace Forms
             _status.Items.Add(item)
         End Sub
 
-        ''' <summary>
-        ''' Loads and displays README files from each layer.
-        ''' </summary>
-        ''' <remarks>
-        ''' Non-critical function. Displays README files in message boxes.
-        ''' Errors are logged but do not prevent application startup.
-        ''' </remarks>
         Private Sub LoadReadmeFiles()
             Try
-                Logger.Info("Loading README files")
-
                 Dim readmePaths = New String() {
                     "Desktop/README.md",
                     "Infrastructure/README.md",
@@ -256,200 +251,37 @@ Namespace Forms
                     "Domain/README.md"
                 }
 
-                Dim foundCount = 0
-
                 For Each path In readmePaths
-                    Try
-                        Dim fullPath = IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, path)
-                        If IO.File.Exists(fullPath) Then
-                            Logger.Info($"Found README: {path}")
-                            ' Intentionally skip showing these to avoid message boxes on startup
-                            ' Dim content = IO.File.ReadAllText(fullPath)
-                            ' MessageBox.Show(content, $"README - {IO.Path.GetFileNameWithoutExtension(path)}", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                            foundCount += 1
-                        Else
-                            Logger.Info($"README not found: {path}")
-                        End If
-                    Catch ex As Exception
-                        Logger.Warn($"Failed to load README {path}: {ex.Message}")
-                    End Try
+                    Dim fullPath = IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, path)
+                    If IO.File.Exists(fullPath) Then
+                        Dim content = IO.File.ReadAllText(fullPath)
+                        ' You might want to show this content in a dedicated UI component, like a TextBox or a WebBrowser control
+                        MessageBox.Show(content, $"README - {IO.Path.GetFileNameWithoutExtension(path)}", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End If
                 Next
-
-                Logger.Info($"README load complete: {foundCount} files found")
-
             Catch ex As Exception
-                Logger.Error($"Unexpected error loading README files: {ex.Message}", ex)
-                ' Non-critical, don't show error dialog
+                MessageBox.Show($"Error loading README files: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End Sub
 
-        ''' <summary>
-        ''' Creates a new blank drawing layout.
-        ''' </summary>
-        ''' <remarks>
-        ''' Clears the canvas and starts with a fresh CanvasLayout.
-        ''' The layout is empty until elements are drawn.
-        ''' </remarks>
         Private Sub NewLayout()
-            Try
-                Logger.Info("Creating new layout")
-
-                ' Create new layout
-                CurrentLayout = New CanvasLayout()
-                Logger.Info($"New layout created: {CurrentLayout.CanvasId}")
-
-                ' Clear canvas
-                _canvas.Clear()
-
-                UpdateStatusBar("New layout created")
-                Logger.Info("New layout ready for drawing")
-
-            Catch ex As Exception
-                Logger.Error($"Failed to create new layout: {ex.Message}", ex)
-                UpdateStatusBar("Error creating layout", isError:=True)
-                MessageBox.Show(
-                    $"Failed to create new layout: {ex.Message}",
-                    "New Layout Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error)
-            End Try
+            CurrentLayout = New CanvasLayout()
+            Logger.Info("New layout created")
+            _canvas.Clear()
         End Sub
 
-        ''' <summary>
-        ''' Opens a previously saved drawing layout from disk.
-        ''' </summary>
-        ''' <remarks>
-        ''' Supports two formats:
-        ''' - .takeoff: Encrypted binary format
-        ''' - .json: Unencrypted JSON format
-        ''' 
-        ''' File format is auto-detected by extension.
-        ''' </remarks>
         Private Sub OpenLayout()
-            Dim openPath As String = Nothing
-
-            Try
-                Logger.Info("Opening layout file dialog")
-
-                Using ofd As New OpenFileDialog With {
-                    .Filter = "TakeOff (*.takeoff)|*.takeoff|JSON (*.json)|*.json",
-                    .Title = "Open Drawing Layout"
-                }
-
-                    If ofd.ShowDialog() <> DialogResult.OK Then
-                        Logger.Info("Open dialog canceled")
-                        Return
-                    End If
-
-                    openPath = ofd.FileName
-                    Logger.Info($"Opening file: {openPath}")
-
-                End Using
-
-                ' Determine if file is encrypted based on extension
-                Dim encrypted = openPath.EndsWith(".takeoff", StringComparison.OrdinalIgnoreCase)
-
-                ' Load layout from file
-                Dim store = New TakeOffFileStore(CompositionRoot.Crypto)
-                CurrentLayout = store.Load(openPath, encrypted:=encrypted)
-                Logger.Info($"File loaded. Layout ID: {CurrentLayout.CanvasId}")
-
-                ' Update canvas with loaded layout
-                _canvas.LoadFromLayout(CurrentLayout)
-
-                UpdateStatusBar($"Layout opened: {IO.Path.GetFileName(openPath)}")
-                Logger.Info($"Layout opened successfully: {CurrentLayout.CanvasId}")
-
-            Catch ex As Exception
-                Logger.Error($"Failed to open layout: {ex.Message}", ex)
-                UpdateStatusBar("Failed to open layout", isError:=True)
-                MessageBox.Show(
-                    $"Failed to open layout: {ex.Message}",
-                    "Open Layout Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error)
-            End Try
-        End Sub
-
-        ''' <summary>
-        ''' Saves the current drawing layout to disk.
-        ''' </summary>
-        ''' <remarks>
-        ''' Supports two formats:
-        ''' - .takeoff: Encrypted binary format (encrypted with AES + HMAC)
-        ''' - .json: Unencrypted JSON format
-        ''' 
-        ''' File format is auto-detected by extension.
-        ''' A random nonce is generated for each save to ensure encryption security.
-        ''' </remarks>
-        Private Sub SaveLayout()
-            Dim savePath As String = Nothing
-
-            Try
-                Logger.Info("Saving layout file dialog")
-
-                Using sfd As New SaveFileDialog With {
-                    .Filter = "TakeOff (*.takeoff)|*.takeoff|JSON (*.json)|*.json",
-                    .Title = "Save Drawing Layout",
-                    .DefaultExt = ".takeoff"
-                }
-
-                    If sfd.ShowDialog() <> DialogResult.OK Then
-                        Logger.Info("Save dialog canceled")
-                        Return
-                    End If
-
-                    savePath = sfd.FileName
-                    Logger.Info($"Saving to file: {savePath}")
-
-                End Using
-
-                ' Validate layout before saving
-                If CurrentLayout Is Nothing Then
-                    Logger.Warn("No layout to save (CurrentLayout is Nothing)")
-                    UpdateStatusBar("No layout to save", isError:=True)
-                    Return
+            Using ofd As New OpenFileDialog With {.Filter = "TakeOff (*.takeoff)|*.takeoff|JSON (*.json)|*.json"}
+                If ofd.ShowDialog() = DialogResult.OK Then
+                    Dim store = New TakeOffFileStore(CompositionRoot.Crypto)
+                    Dim encrypted = ofd.FileName.EndsWith(".takeoff", StringComparison.OrdinalIgnoreCase)
+                    CurrentLayout = store.Load(ofd.FileName, encrypted:=encrypted)
+                    _canvas.LoadFromLayout(CurrentLayout)
+                    Logger.Info($"Loaded layout: {CurrentLayout.CanvasId}")
                 End If
-
-                ' Determine if file should be encrypted based on extension
-                Dim encrypted = savePath.EndsWith(".takeoff", StringComparison.OrdinalIgnoreCase)
-
-                ' Generate random nonce for encryption
-                Dim nonce = New Byte(11) {}
-                RandomNumberGenerator.Fill(nonce)
-
-                ' Convert canvas to layout and save
-                Dim layout = _canvas.ToLayout()
-                Logger.Info($"Canvas converted to layout (elements: {layout.Elements.Count})")
-
-                ' Save file
-                Dim store = New TakeOffFileStore(CompositionRoot.Crypto)
-                store.Save(savePath, layout, encrypt:=encrypted, nonce:=nonce)
-
-                UpdateStatusBar($"Layout saved: {IO.Path.GetFileName(savePath)}")
-                Logger.Info($"Layout saved successfully: {savePath}")
-
-            Catch ex As Exception
-                Logger.Error($"Failed to save layout: {ex.Message}", ex)
-                UpdateStatusBar("Failed to save layout", isError:=True)
-                MessageBox.Show(
-                    $"Failed to save layout: {ex.Message}",
-                    "Save Layout Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error)
-            End Try
+            End Using
         End Sub
 
-        ''' <summary>
-        ''' Designer-generated initialization method (auto-generated code).
-        ''' </summary>
-        ''' <remarks>
-        ''' This method is generated by the Windows Forms designer.
-        ''' It initializes designer-managed components.
-        ''' 
-        ''' WARNING: Do not manually edit this method. Changes may be lost
-        ''' when the designer regenerates the code.
-        ''' </remarks>
         Private Sub InitializeComponent()
             SuspendLayout()
             ' 
@@ -458,6 +290,21 @@ Namespace Forms
             ClientSize = New Size(606, 428)
             Name = "MainForm"
             ResumeLayout(False)
+
+        End Sub
+
+        Private Sub SaveLayout()
+            Using sfd As New SaveFileDialog With {.Filter = "TakeOff (*.takeoff)|*.takeoff|JSON (*.json)|*.json"}
+                If sfd.ShowDialog() = DialogResult.OK Then
+                    Dim store = New TakeOffFileStore(CompositionRoot.Crypto)
+                    Dim encrypted = sfd.FileName.EndsWith(".takeoff", StringComparison.OrdinalIgnoreCase)
+                    Dim nonce = New Byte(11) {}
+                    RandomNumberGenerator.Fill(nonce)
+                    Dim layout = _canvas.ToLayout()
+                    store.Save(sfd.FileName, layout, encrypt:=encrypted, nonce:=nonce)
+                    Logger.Info("Layout saved")
+                End If
+            End Using
         End Sub
     End Class
 End Namespace

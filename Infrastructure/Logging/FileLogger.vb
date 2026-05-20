@@ -35,7 +35,7 @@ Namespace Logging
             _logDir = logDir
             ' Create directory if not exists
             Dim dir = Path.GetDirectoryName(_logDir)
-            If Not Directory.Exists(dir) Then
+            If Not Directory.Exists(path:=dir) Then
                 Directory.CreateDirectory(dir)
             End If
         End Sub
