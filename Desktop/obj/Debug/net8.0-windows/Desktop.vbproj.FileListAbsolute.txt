@@ -24,3 +24,4 @@ E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\obj\Debug\net8.0-windows\refint\Des
 E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\obj\Debug\net8.0-windows\Desktop.pdb
 E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\obj\Debug\net8.0-windows\Desktop.genruntimeconfig.cache
 E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\obj\Debug\net8.0-windows\ref\Desktop.dll
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\obj\Debug\net8.0-windows\Desktop.sourcelink.json

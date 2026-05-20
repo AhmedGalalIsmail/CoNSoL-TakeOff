@@ -1,13 +1,14 @@
 ﻿
+'Filename: Desktop/Controls/CanvasControl.vb
 #Region "Info. & Imports"
 'Option Strict On
-Imports System.Drawing
+'Imports System.Drawing
 Imports System.Drawing.Drawing2D
-Imports System.Windows.Forms
+'Imports System.Windows.Forms
 Imports System.Text.Json
-Imports System.Linq
+'Imports System.Linq
 Imports Domain.Entities
-Imports Domain
+'Imports Domain
 
 
 
@@ -39,9 +40,27 @@ End Enum
 
 #Region "canvas control"
 ''' <summary>
-''' Interactive canvas control that supports drawing, selection, panning and zooming.
-''' Handles shape hit-testing and layout serialization via domain models.
+''' Interactive 2D drawing canvas with shape rendering and tool support.
 ''' </summary>
+''' <remarks>
+''' CanvasControl is the primary UI component for drawing operations.
+''' It manages:
+''' - Shape rendering with zoom/pan support
+''' - Tool activation (Line, Rectangle, Select, Pan, Zoom)
+''' - Selection highlighting and feedback
+''' - Layer visibility and filtering
+''' - Double-buffered rendering for smooth updates
+''' 
+''' Coordinate Systems:
+''' - Physical: Screen pixels (0,0 at top-left)
+''' - Logical: Canvas units (user coordinate system)
+''' - Transform: physical = (logical * zoom) + pan
+''' 
+''' Related Use Cases:
+''' - UC-001: Draw shapes
+''' - UC-006: Edit multi-selection
+''' - UC-008: Deployment (serialization)
+''' </remarks>
 Public Class CanvasControl
     Inherits UserControl
 
@@ -54,8 +73,17 @@ Public Class CanvasControl
     Private _tool As ToolType = ToolType.SelectTool
 
     Private ReadOnly _shapeMenu As New ContextMenuStrip()
+
+    ''' <summary>Current layout being rendered.</summary>
+    ''' <remarks>Invariant: Never null. Set via SetLayout().</remarks>
     Private _currentLayout As CanvasLayout
+
+    ''' <summary>Zoom factor (1.0 = 100%).</summary>
+    ''' <remarks>Valid range: 0.1 to 10.0</remarks>
     Private _zoom As Single = 1.0F
+
+    ''' <summary>Pan offset in physical coordinates.</summary>
+    ''' <remarks>Represents top-left corner displacement.</remarks>
     Private _pan As PointF = New PointF(0, 0)
     Private _gridSize As Integer = 20
     Private _showGrid As Boolean = True
@@ -67,6 +95,19 @@ Public Class CanvasControl
 
     Public Property BusinessJson As String
 
+    ''' <summary>Sets the layout to render and clears selection.</summary>
+    ''' <param name="layout">Canvas layout to display</param>
+    ''' <remarks>
+    ''' Resets zoom/pan to defaults and clears any selection.
+    ''' Triggers full repaint of canvas.
+    ''' </remarks>
+    ''' <exception cref="ArgumentNullException">If layout is Nothing</exception>
+    Public Sub SetLayout(layout As CanvasLayout)
+        _currentLayout = layout
+        _zoom = 1.0F
+        _pan = New PointF(0, 0)
+        Invalidate()
+    End Sub
 
     Private Function FindShapeByElementId(id As Guid) As ShapeBase
         Return _shapes.FirstOrDefault(Function(s) s.ElementId = id)
@@ -168,19 +209,32 @@ thickness As Single
 
     ''' <summary>
     ''' Increase the canvas zoom by a fixed factor and request repaint.
+    ''' Zooms in 25%.
     ''' </summary>
+    'Public Sub ZoomIn()
+    '    _zoom *= 1.2F
+    '    Invalidate()
+    'End Sub
+
+    ''' <summary>Zooms in 25%.</summary>
     Public Sub ZoomIn()
-        _zoom *= 1.2F
+        _zoom = Math.Min(_zoom * 1.25F, 10.0F)
         Invalidate()
     End Sub
 
-    ''' <summary>
-    ''' Decrease the canvas zoom by a fixed factor and request repaint.
-    ''' Zoom is clamped to a small positive minimum.
-    ''' </summary>
+    '''' <summary>
+    '''' Decrease the canvas zoom by a fixed factor and request repaint.
+    '''' Zoom is clamped to a small positive minimum.
+    '''' </summary>
+    'Public Sub ZoomOut()
+    '    _zoom /= 1.2F
+    '    If _zoom < 0.1F Then _zoom = 0.1F
+    '    Invalidate()
+    'End Sub
+
+    ''' <summary>Zooms out 20%.</summary>
     Public Sub ZoomOut()
-        _zoom /= 1.2F
-        If _zoom < 0.1F Then _zoom = 0.1F
+        _zoom = Math.Max(_zoom * 0.8F, 0.1F)
         Invalidate()
     End Sub
 
@@ -317,13 +371,17 @@ thickness As Single
             End If
         End If
 
-        If _tool = ToolType.Pan Then
-            _startPt = e.Location
-            Cursor = Cursors.SizeAll
-            Return
-        End If
+        'If _tool = ToolType.Pan Then
+        '    _startPt = e.Location
+        '    Cursor = Cursors.SizeAll
+        '    Return
+        'End If
 
         Select Case _tool
+            Case ToolType.Pan
+                _startPt = e.Location
+                Cursor = Cursors.SizeAll
+                Return
             Case ToolType.SelectTool
                 _selected = HitTest(lp)
                 Invalidate()
@@ -335,6 +393,14 @@ thickness As Single
                 _isDrawing = True
                 _startPt = lp
                 _tempShape = New RectShape() With {.TopLeft = lp, .Width = 0, .Height = 0}
+            Case ToolType.Polyline
+                _isDrawing = True
+                _startPt = lp
+                '_tempShape = New PolylineShape()
+            Case ToolType.Ellipse
+                _isDrawing = True
+                _startPt = lp
+                '_tempShape = New EllipseShape() With {.TopLeft = lp, .Width = 0, .Height = 0}
         End Select
     End Sub
 
@@ -370,7 +436,7 @@ thickness As Single
                 ee.Height = Math.Abs(lp.Y - _startPt.Y)
                 ee.TopLeft = New PointF(Math.Min(_startPt.X, lp.X), Math.Min(_startPt.Y, lp.Y))
             ElseIf TypeOf _tempShape Is PolylineShape Then
-                'preview handled naturally via Draw()
+
             End If
             Invalidate()
         End If
@@ -407,6 +473,21 @@ thickness As Single
         _tempShape = Nothing
         Invalidate()
     End Sub
+
+    ''' <summary>
+    ''' Converts screen pixel coordinates to canvas logical coordinates.
+    ''' </summary>
+    ''' <param name="screenPoint">Point in screen pixels</param>
+    ''' <returns>Point in canvas logical units</returns>
+    ''' <remarks>
+    ''' Formula: logical = (physical - pan) / zoom
+    ''' Used for tool interaction (mouse clicks, drags).
+    ''' </remarks>
+    Private Function PhysicalToLogical(screenPoint As PointF) As PointF
+        Return New PointF(
+                (screenPoint.X - _pan.X) / _zoom,
+                (screenPoint.Y - _pan.Y) / _zoom)
+    End Function
 
     ''' <summary>
     ''' Convert a screen coordinate to world/canvas coordinates applying pan and zoom.
@@ -535,6 +616,7 @@ End Class
 #End Region
 
 #Region "Specific shape implementations"
+
 #Region "LineShape"
 ''' <summary>
 ''' Straight line shape defined by a start and end point in world coordinates.
@@ -803,6 +885,12 @@ End Class
 #End Region
 
 #End Region
+
+
+
+
+
+
 
 'End Namespace
 

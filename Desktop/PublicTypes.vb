@@ -17,468 +17,520 @@ Imports System.Drawing
 Imports System.Runtime.InteropServices
 #End Region
 
+Namespace Desktop
 #Region "Public enums"
-' ---------------------------
-' Public enums (keep contracts)
-' ---------------------------
-' Specifies how a grid should be rendered
-Public Enum GridKind
-	FullLines = 0   ' Continuous grid lines
-	Points = 1     ' Grid as points
-	Crosses = 2    ' Grid as crosses
-End Enum
-' Defines mouse click actions supported by the editor/viewer
-Public Enum enClickAction
-	None = 0
-	' Value 1 deliberately unused to preserve legacy API compatibility
-	Zoom = 2
-	MeasureDistance = 3
-End Enum
-' Determines how resize operations affect content
-Public Enum ResizeMode
-	Normal = 0     ' Maintain aspect ratio / normal behavior
-	Stretch = 1    ' Stretch content to fit
-End Enum
+	' ---------------------------
+	' Public enums (keep contracts)
+	' ---------------------------
+	' Specifies how a grid should be rendered
+	Public Enum GridKind
+		None
+		Lines   ' Continuous grid lines
+		Points     ' Grid as points
+		Crosses    ' Grid as crosses
+	End Enum
+
+	Public Enum AxisVisibility
+		None
+		Horizontal
+		Vertical
+		Both
+	End Enum
+
+	' Define Theme Mode Light/Dark
+	Public Enum ThemeMode
+		Light
+		Dark
+	End Enum
+
+	' Define Coordinate Space Logical/Physical
+	Public Enum CoordinateSpace
+		Logical
+		Physical
+	End Enum
+
+
+	Public Enum ToolType
+		None
+		SelectTool
+		LineTool
+		RectangleTool
+		CircleTool
+		PanTool
+		ZoomTool
+	End Enum
+
+	Public Enum InteractionState
+		Idle
+		Drawing
+		Dragging
+		Selecting
+	End Enum
+
+	Public Enum HitKind
+		None
+		Inside
+		Edge
+		Vertex
+	End Enum
+
+	' Defines mouse click actions supported by the editor/viewer
+	Public Enum ClickAction
+		None
+		' Value 1 deliberately unused to preserve legacy API compatibility
+		Zoom
+		MeasureDistance
+	End Enum
+	' Determines how resize operations affect content
+	Public Enum ResizeMode
+		Normal = 0     ' Maintain aspect ratio / normal behavior
+		Stretch = 1    ' Stretch content to fit
+	End Enum
 #End Region
 
+
+
+
 #Region "Public Structure RECT"
-' ---------------------------
-' RECT (logical rectangle)
-' ---------------------------
-' A custom rectangle structure that mirrors Win32 RECT semantics
-' but adds rich helpers, conversions, and geometry operations.
-' It uses "left, top, right, bottom" instead of width/height storage.
-<CLSCompliant(True), Serializable(),
+	' ---------------------------
+	' RECT (logical rectangle)
+	' ---------------------------
+	' A custom rectangle structure that mirrors Win32 RECT semantics
+	' but adds rich helpers, conversions, and geometry operations.
+	' It uses "left, top, right, bottom" instead of width/height storage.
+	<CLSCompliant(True), Serializable(),
  StructLayout(LayoutKind.Sequential, Pack:=4),
  DebuggerDisplay("Left={left} Top={top} Right={right} Bottom={bottom} [Width={Width},Height={Height}]")>
-Public Structure RECT
+	Public Structure RECT
 #Region "Public fields"
-	' ----------- Public fields -----------
-	' Raw rectangle edges (legacy-compatible layout)
-	Public left As Integer
-	Public top As Integer
-	Public right As Integer
-	Public bottom As Integer
+		' ----------- Public fields -----------
+		' Raw rectangle edges (legacy-compatible layout)
+		Public left As Integer
+		Public top As Integer
+		Public right As Integer
+		Public bottom As Integer
 #End Region
-	' Returns a special sentinel value representing an invalid point
-	Public Shared Function InvalidPoint() As Point
-		Return New Point(Integer.MaxValue, Integer.MaxValue)
-	End Function
+		' Returns a special sentinel value representing an invalid point
+		Public Shared Function InvalidPoint() As Point
+			Return New Point(Integer.MaxValue, Integer.MaxValue)
+		End Function
 #Region "Public Operators"
-	' ----------- Operators -----------
-	' Equality compares all four rectangle edges
-	Public Shared Operator =(ByVal R1 As RECT, ByVal R2 As RECT) As Boolean
-		Return R1.top = R2.top AndAlso R1.left = R2.left _
+		' ----------- Operators -----------
+		' Equality compares all four rectangle edges
+		Public Shared Operator =(ByVal R1 As RECT, ByVal R2 As RECT) As Boolean
+			Return R1.top = R2.top AndAlso R1.left = R2.left _
 		   AndAlso R1.right = R2.right AndAlso R1.bottom = R2.bottom
-	End Operator
-	' Inequality is simply the inverse of equality
-	Public Shared Operator <>(ByVal R1 As RECT, ByVal R2 As RECT) As Boolean
-		Return Not (R1 = R2)
-	End Operator
-	' Converts RECT to System.Drawing.Rectangle
-	' Width/Height are clamped to >= 0 to avoid invalid rectangles
-	Public Shared Widening Operator CType(ByVal r As RECT) As Rectangle
-		Return New Rectangle(
+		End Operator
+		' Inequality is simply the inverse of equality
+		Public Shared Operator <>(ByVal R1 As RECT, ByVal R2 As RECT) As Boolean
+			Return Not (R1 = R2)
+		End Operator
+		' Converts RECT to System.Drawing.Rectangle
+		' Width/Height are clamped to >= 0 to avoid invalid rectangles
+		Public Shared Widening Operator CType(ByVal r As RECT) As Rectangle
+			Return New Rectangle(
 			r.left,
 			r.top,
 			Math.Max(0, r.right - r.left),
 			Math.Max(0, r.bottom - r.top)
 		)
-	End Operator
+		End Operator
 
-	' Converts RECT to RectangleF (floating-point equivalent)
-	Public Shared Widening Operator CType(ByVal r As RECT) As RectangleF
-		Return New RectangleF(
+		' Converts RECT to RectangleF (floating-point equivalent)
+		Public Shared Widening Operator CType(ByVal r As RECT) As RectangleF
+			Return New RectangleF(
 			r.left,
 			r.top,
 			Math.Max(0, CSng(r.right - r.left)),
 			Math.Max(0, CSng(r.bottom - r.top))
 		)
-	End Operator
+		End Operator
 
-	' Converts RectangleF back into a RECT (rounded outwards)
-	Public Shared Widening Operator CType(ByVal r As RectangleF) As RECT
-		Return New RECT(r)
-	End Operator
+		' Converts RectangleF back into a RECT (rounded outwards)
+		Public Shared Widening Operator CType(ByVal r As RectangleF) As RECT
+			Return New RECT(r)
+		End Operator
 #End Region
 #Region "Constructors"
-	' ----------- Constructors -----------
+		' ----------- Constructors -----------
 
-	' Copy constructor
-	Public Sub New(ByVal inRect As RECT)
-		Me.top = inRect.top
-		Me.left = inRect.left
-		Me.right = inRect.right
-		Me.bottom = inRect.bottom
-	End Sub
+		' Copy constructor
+		Public Sub New(ByVal inRect As RECT)
+			Me.top = inRect.top
+			Me.left = inRect.left
+			Me.right = inRect.right
+			Me.bottom = inRect.bottom
+		End Sub
 
-	' Construct from System.Drawing.Rectangle
-	Public Sub New(ByVal inRect As Rectangle)
-		Me.top = inRect.Y
-		Me.left = inRect.X
-		Me.right = inRect.X + inRect.Width
-		Me.bottom = inRect.Y + inRect.Height
-	End Sub
+		' Construct from System.Drawing.Rectangle
+		Public Sub New(ByVal inRect As Rectangle)
+			Me.top = inRect.Y
+			Me.left = inRect.X
+			Me.right = inRect.X + inRect.Width
+			Me.bottom = inRect.Y + inRect.Height
+		End Sub
 
-	' Construct from RectangleF, expanding to cover full area
-	Public Sub New(ByVal inRect As RectangleF)
-		Me.top = CInt(Math.Floor(inRect.Y))
-		Me.left = CInt(Math.Floor(inRect.X))
-		Me.right = CInt(Math.Ceiling(inRect.X + inRect.Width))
-		Me.bottom = CInt(Math.Ceiling(inRect.Y + inRect.Height))
-	End Sub
+		' Construct from RectangleF, expanding to cover full area
+		Public Sub New(ByVal inRect As RectangleF)
+			Me.top = CInt(Math.Floor(inRect.Y))
+			Me.left = CInt(Math.Floor(inRect.X))
+			Me.right = CInt(Math.Ceiling(inRect.X + inRect.Width))
+			Me.bottom = CInt(Math.Ceiling(inRect.Y + inRect.Height))
+		End Sub
 
-	' Construct a bounding rectangle from an array of points
-	Public Sub New(ByVal vector() As Point)
-		If vector Is Nothing OrElse vector.Length = 0 Then Exit Sub
+		' Construct a bounding rectangle from an array of points
+		Public Sub New(ByVal vector() As Point)
+			If vector Is Nothing OrElse vector.Length = 0 Then Exit Sub
 
-		left = vector(0).X : right = vector(0).X
-		top = vector(0).Y : bottom = vector(0).Y
+			left = vector(0).X : right = vector(0).X
+			top = vector(0).Y : bottom = vector(0).Y
 
-		' Expand bounds to include each point
-		For i As Integer = 1 To vector.Length - 1
-			Dim p = vector(i)
-			If p.X > right Then right = p.X Else If p.X < left Then left = p.X
-			If p.Y > bottom Then bottom = p.Y Else If p.Y < top Then top = p.Y
-		Next
-	End Sub
+			' Expand bounds to include each point
+			For i As Integer = 1 To vector.Length - 1
+				Dim p = vector(i)
+				If p.X > right Then right = p.X Else If p.X < left Then left = p.X
+				If p.Y > bottom Then bottom = p.Y Else If p.Y < top Then top = p.Y
+			Next
+		End Sub
 
-	' Construct from explicit left/top/right/bottom values
-	Public Sub New(ByVal left As Integer, ByVal top As Integer, ByVal right As Integer, ByVal bottom As Integer)
-		Me.left = left : Me.top = top : Me.right = right : Me.bottom = bottom
-	End Sub
+		' Construct from explicit left/top/right/bottom values
+		Public Sub New(ByVal left As Integer, ByVal top As Integer, ByVal right As Integer, ByVal bottom As Integer)
+			Me.left = left : Me.top = top : Me.right = right : Me.bottom = bottom
+		End Sub
 
-	' Construct from a top-left point and a size
-	Public Sub New(ByVal topLeft As Point, ByVal size As Size)
-		Me.left = topLeft.X : Me.top = topLeft.Y
-		Me.right = topLeft.X + size.Width
-		Me.bottom = topLeft.Y + size.Height
-	End Sub
+		' Construct from a top-left point and a size
+		Public Sub New(ByVal topLeft As Point, ByVal size As Size)
+			Me.left = topLeft.X : Me.top = topLeft.Y
+			Me.right = topLeft.X + size.Width
+			Me.bottom = topLeft.Y + size.Height
+		End Sub
 
-	' Construct from two corner points
-	Public Sub New(ByVal topLeft As Point, ByVal bottomRight As Point)
-		Me.left = topLeft.X : Me.top = topLeft.Y
-		Me.right = bottomRight.X : Me.bottom = bottomRight.Y
-	End Sub
+		' Construct from two corner points
+		Public Sub New(ByVal topLeft As Point, ByVal bottomRight As Point)
+			Me.left = topLeft.X : Me.top = topLeft.Y
+			Me.right = bottomRight.X : Me.bottom = bottomRight.Y
+		End Sub
 #End Region
 #Region "Properties"
-	' ----------- Properties -----------
+		' ----------- Properties -----------
 
-	' X-coordinate of rectangle (left edge)
-	' Setting X keeps the width constant
-	Public Property X() As Integer
-		Get
-			Return left
-		End Get
-		Set(ByVal value As Integer)
-			Dim w = Width
-			left = value
-			right = left + w
-		End Set
-	End Property
+		' X-coordinate of rectangle (left edge)
+		' Setting X keeps the width constant
+		Public Property X() As Integer
+			Get
+				Return left
+			End Get
+			Set(ByVal value As Integer)
+				Dim w = Width
+				left = value
+				right = left + w
+			End Set
+		End Property
 
-	' Y-coordinate of rectangle (top edge)
-	' Setting Y keeps the height constant
-	Public Property Y() As Integer
-		Get
-			Return top
-		End Get
-		Set(ByVal value As Integer)
-			top = value
-			bottom = top + Height
-		End Set
-	End Property
+		' Y-coordinate of rectangle (top edge)
+		' Setting Y keeps the height constant
+		Public Property Y() As Integer
+			Get
+				Return top
+			End Get
+			Set(ByVal value As Integer)
+				top = value
+				bottom = top + Height
+			End Set
+		End Property
 
-	' Width derived from right - left
-	Public Property Width() As Integer
-		Get
-			Return right - left
-		End Get
-		Set(ByVal value As Integer)
-			right = left + value
-		End Set
-	End Property
+		' Width derived from right - left
+		Public Property Width() As Integer
+			Get
+				Return right - left
+			End Get
+			Set(ByVal value As Integer)
+				right = left + value
+			End Set
+		End Property
 
-	' Height derived from bottom - top
-	Public Property Height() As Integer
-		Get
-			Return bottom - top
-		End Get
-		Set(ByVal value As Integer)
-			bottom = top + value
-		End Set
-	End Property
+		' Height derived from bottom - top
+		Public Property Height() As Integer
+			Get
+				Return bottom - top
+			End Get
+			Set(ByVal value As Integer)
+				bottom = top + value
+			End Set
+		End Property
 
-	' Integer center point of the rectangle
-	Public ReadOnly Property CenterPoint() As Point
-		Get
-			Return New Point((left + right) \ 2, (top + bottom) \ 2)
-		End Get
-	End Property
+		' Integer center point of the rectangle
+		Public ReadOnly Property CenterPoint() As Point
+			Get
+				Return New Point((left + right) \ 2, (top + bottom) \ 2)
+			End Get
+		End Property
 
-	' Size represented as System.Drawing.Size
-	Public ReadOnly Property Size() As Size
-		Get
-			Return New Size(Width, Height)
-		End Get
-	End Property
+		' Size represented as System.Drawing.Size
+		Public ReadOnly Property Size() As Size
+			Get
+				Return New Size(Width, Height)
+			End Get
+		End Property
 
-	' Common anchor points used for resizing, snapping, etc.
-	Public Property TopLeft() As Point
-		Get
-			Return New Point(left, top)
-		End Get
-		Set(ByVal value As Point)
-			left = value.X : top = value.Y
-		End Set
-	End Property
+		' Common anchor points used for resizing, snapping, etc.
+		Public Property TopLeft() As Point
+			Get
+				Return New Point(left, top)
+			End Get
+			Set(ByVal value As Point)
+				left = value.X : top = value.Y
+			End Set
+		End Property
 
-	Public Property TopRight() As Point
-		Get
-			Return New Point(right, top)
-		End Get
-		Set(ByVal value As Point)
-			right = value.X : top = value.Y
-		End Set
-	End Property
+		Public Property TopRight() As Point
+			Get
+				Return New Point(right, top)
+			End Get
+			Set(ByVal value As Point)
+				right = value.X : top = value.Y
+			End Set
+		End Property
 
-	Public Property BottomRight() As Point
-		Get
-			Return New Point(right, bottom) : End Get
-		Set(ByVal value As Point)
-			right = value.X : bottom = value.Y
-		End Set
-	End Property
+		Public Property BottomRight() As Point
+			Get
+				Return New Point(right, bottom) : End Get
+			Set(ByVal value As Point)
+				right = value.X : bottom = value.Y
+			End Set
+		End Property
 
-	Public ReadOnly Property BottomCenter() As Point
-		Get
-			Return New Point((left + right) \ 2, bottom) : End Get
-	End Property
+		Public ReadOnly Property BottomCenter() As Point
+			Get
+				Return New Point((left + right) \ 2, bottom) : End Get
+		End Property
 
-	Public ReadOnly Property TopCenter() As Point
-		Get
-			Return New Point((left + right) \ 2, top) : End Get
-	End Property
+		Public ReadOnly Property TopCenter() As Point
+			Get
+				Return New Point((left + right) \ 2, top) : End Get
+		End Property
 
-	Public ReadOnly Property LeftCenter() As Point
-		Get
-			Return New Point(left, (top + bottom) \ 2) : End Get
-	End Property
+		Public ReadOnly Property LeftCenter() As Point
+			Get
+				Return New Point(left, (top + bottom) \ 2) : End Get
+		End Property
 
-	Public ReadOnly Property RightCenter() As Point
-		Get
-			Return New Point(right, (top + bottom) \ 2) : End Get
-	End Property
+		Public ReadOnly Property RightCenter() As Point
+			Get
+				Return New Point(right, (top + bottom) \ 2) : End Get
+		End Property
 
-	Public Property BottomLeft() As Point
-		Get
-			Return New Point(left, bottom) : End Get
-		Set(ByVal value As Point)
-			left = value.X : bottom = value.Y
-		End Set
-	End Property
+		Public Property BottomLeft() As Point
+			Get
+				Return New Point(left, bottom) : End Get
+			Set(ByVal value As Point)
+				left = value.X : bottom = value.Y
+			End Set
+		End Property
 
-	' Size state helpers
-	Public ReadOnly Property IsZeroSized() As Boolean
-		Get
-			Return Height = 0 AndAlso Width = 0 : End Get
-	End Property
+		' Size state helpers
+		Public ReadOnly Property IsZeroSized() As Boolean
+			Get
+				Return Height = 0 AndAlso Width = 0 : End Get
+		End Property
 
-	Public ReadOnly Property IsNonZeroSized() As Boolean
-		Get
-			Return Not IsZeroSized : End Get
-	End Property
+		Public ReadOnly Property IsNonZeroSized() As Boolean
+			Get
+				Return Not IsZeroSized : End Get
+		End Property
 
-	' Normalized means right >= left and bottom >= top
-	Public ReadOnly Property IsNormalized() As Boolean
-		Get
-			Return (right >= left) AndAlso (bottom >= top)
-		End Get
-	End Property
+		' Normalized means right >= left and bottom >= top
+		Public ReadOnly Property IsNormalized() As Boolean
+			Get
+				Return (right >= left) AndAlso (bottom >= top)
+			End Get
+		End Property
 #End Region
 #Region "Normalization"
-	' ----------- Normalization -----------
+		' ----------- Normalization -----------
 
-	' Debug-only validation for inverted rectangles
-	Public Sub AssertIfNotNormalized()
-		If Not IsNormalized() Then
-			Debug.Assert(right >= left, "RECT.right and RECT.left are inverted!")
-			Debug.Assert(bottom >= top, "RECT.bottom and RECT.top are inverted!")
-		End If
-	End Sub
+		' Debug-only validation for inverted rectangles
+		Public Sub AssertIfNotNormalized()
+			If Not IsNormalized() Then
+				Debug.Assert(right >= left, "RECT.right and RECT.left are inverted!")
+				Debug.Assert(bottom >= top, "RECT.bottom and RECT.top are inverted!")
+			End If
+		End Sub
 
-	' Swaps edges to enforce proper left/top/right/bottom ordering
-	Public Sub NormalizeRect()
-		If right < left Then
-			Dim tmp = right : right = left : left = tmp
-		End If
-		If bottom < top Then
-			Dim tmp = bottom : bottom = top : top = tmp
-		End If
-	End Sub
+		' Swaps edges to enforce proper left/top/right/bottom ordering
+		Public Sub NormalizeRect()
+			If right < left Then
+				Dim tmp = right : right = left : left = tmp
+			End If
+			If bottom < top Then
+				Dim tmp = bottom : bottom = top : top = tmp
+			End If
+		End Sub
 #End Region
 #Region "Move & Resize"
-	' ----------- Move & Resize -----------
+		' ----------- Move & Resize -----------
 
-	' Moves the rectangle by an offset
-	Public Sub Offset(ByVal x As Integer, ByVal y As Integer)
-		left += x : right += x
-		top += y : bottom += y
-	End Sub
+		' Moves the rectangle by an offset
+		Public Sub Offset(ByVal x As Integer, ByVal y As Integer)
+			left += x : right += x
+			top += y : bottom += y
+		End Sub
 
-	Public Sub Offset(ByVal offs As Point)
-		Offset(offs.X, offs.Y)
-	End Sub
+		Public Sub Offset(ByVal offs As Point)
+			Offset(offs.X, offs.Y)
+		End Sub
 
-	' Expands the rectangle equally in all directions
-	Public Sub Inflate(ByVal size As Size)
-		Inflate(size.Width, size.Height)
-	End Sub
+		' Expands the rectangle equally in all directions
+		Public Sub Inflate(ByVal size As Size)
+			Inflate(size.Width, size.Height)
+		End Sub
 
-	Public Sub Inflate(ByVal width As Integer, ByVal height As Integer)
-		left -= width : right += width
-		top -= height : bottom += height
-	End Sub
+		Public Sub Inflate(ByVal width As Integer, ByVal height As Integer)
+			left -= width : right += width
+			top -= height : bottom += height
+		End Sub
 
-	' Asymmetric inflation (per-edge)
-	Public Sub Inflate(ByVal leftInflate As Integer, ByVal topInflate As Integer,
+		' Asymmetric inflation (per-edge)
+		Public Sub Inflate(ByVal leftInflate As Integer, ByVal topInflate As Integer,
 					   ByVal rightInflate As Integer, ByVal bottomInflate As Integer)
-		left -= leftInflate
-		top -= topInflate
-		right += rightInflate
-		bottom += bottomInflate
-	End Sub
+			left -= leftInflate
+			top -= topInflate
+			right += rightInflate
+			bottom += bottomInflate
+		End Sub
 
-	' Scales the rectangle relative to a fixed reference point (zoom behavior)
-	Public Function ExpandFromFixedPoint(ByVal zoomMultiplier As Single, ByVal fixedPoint As Point) As RECT
-		Dim dx = (left - fixedPoint.X) * zoomMultiplier
-		Dim dy = (top - fixedPoint.Y) * zoomMultiplier
-		Dim newX = fixedPoint.X + dx
-		Dim newY = fixedPoint.Y + dy
-		Dim newW = zoomMultiplier * Width
-		Dim newH = zoomMultiplier * Height
+		' Scales the rectangle relative to a fixed reference point (zoom behavior)
+		Public Function ExpandFromFixedPoint(ByVal zoomMultiplier As Single, ByVal fixedPoint As Point) As RECT
+			Dim dx = (left - fixedPoint.X) * zoomMultiplier
+			Dim dy = (top - fixedPoint.Y) * zoomMultiplier
+			Dim newX = fixedPoint.X + dx
+			Dim newY = fixedPoint.Y + dy
+			Dim newW = zoomMultiplier * Width
+			Dim newH = zoomMultiplier * Height
 
-		Return New RECT(
+			Return New RECT(
 			CInt(newX),
 			CInt(newY),
 			CInt(newX + newW),
 			CInt(newY + newH)
 		)
-	End Function
+		End Function
 #End Region
 #Region "Containment & intersection"
-	' ----------- Containment & intersection -----------
+		' ----------- Containment & intersection -----------
 
-	' Returns True if this rectangle is fully inside aRect
-	Public Function IsContainedIn(ByRef aRect As RECT) As Boolean
-		AssertIfNotNormalized() : aRect.AssertIfNotNormalized()
-		Return bottom <= aRect.bottom AndAlso top >= aRect.top _
+		' Returns True if this rectangle is fully inside aRect
+		Public Function IsContainedIn(ByRef aRect As RECT) As Boolean
+			AssertIfNotNormalized() : aRect.AssertIfNotNormalized()
+			Return bottom <= aRect.bottom AndAlso top >= aRect.top _
 		   AndAlso left >= aRect.left AndAlso right <= aRect.right
-	End Function
+		End Function
 
-	Public Function Contains(ByRef aRect As RECT) As Boolean
-		Return aRect.IsContainedIn(Me)
-	End Function
+		Public Function Contains(ByRef aRect As RECT) As Boolean
+			Return aRect.IsContainedIn(Me)
+		End Function
 
-	Public Function Contains(ByRef aRect As Rectangle) As Boolean
-		Return New RECT(aRect).IsContainedIn(Me)
-	End Function
+		Public Function Contains(ByRef aRect As Rectangle) As Boolean
+			Return New RECT(aRect).IsContainedIn(Me)
+		End Function
 
-	' Point containment checks (integer and float)
-	Public Function Contains(ByRef pt As PointF) As Boolean
-		AssertIfNotNormalized()
-		Return Not (pt.X > right OrElse pt.X < left OrElse pt.Y > bottom OrElse pt.Y < top)
-	End Function
+		' Point containment checks (integer and float)
+		Public Function Contains(ByRef pt As PointF) As Boolean
+			AssertIfNotNormalized()
+			Return Not (pt.X > right OrElse pt.X < left OrElse pt.Y > bottom OrElse pt.Y < top)
+		End Function
 
-	Public Function Contains(ByRef pt As Point) As Boolean
-		AssertIfNotNormalized()
-		Return Not (pt.X > right OrElse pt.X < left OrElse pt.Y > bottom OrElse pt.Y < top)
-	End Function
+		Public Function Contains(ByRef pt As Point) As Boolean
+			AssertIfNotNormalized()
+			Return Not (pt.X > right OrElse pt.X < left OrElse pt.Y > bottom OrElse pt.Y < top)
+		End Function
 
-	' Checks whether two rectangles overlap
-	Public Function IntersectsWith(ByRef rect As RECT) As Boolean
-		AssertIfNotNormalized() : rect.AssertIfNotNormalized()
-		Return Not RECT.Intersect(Me, rect).IsZeroSized
-	End Function
+		' Checks whether two rectangles overlap
+		Public Function IntersectsWith(ByRef rect As RECT) As Boolean
+			AssertIfNotNormalized() : rect.AssertIfNotNormalized()
+			Return Not RECT.Intersect(Me, rect).IsZeroSized
+		End Function
 
 
-	' Debug / utility helpers
-	Public Overrides Function ToString() As String
-		Return $"Left={left} Top={top} Right={right} Bottom={bottom} [Width={Width},Height={Height}]"
-	End Function
+		' Debug / utility helpers
+		Public Overrides Function ToString() As String
+			Return $"Left={left} Top={top} Right={right} Bottom={bottom} [Width={Width},Height={Height}]"
+		End Function
 
-	' Returns rectangle edges as a closed polygon
-	Public Function ToPointArray() As Point()
-		Return {
+		' Returns rectangle edges as a closed polygon
+		Public Function ToPointArray() As Point()
+			Return {
 			New Point(left, top),
 			New Point(left, bottom),
 			New Point(right, bottom),
 			New Point(right, top),
 			New Point(left, top)
 		}
-	End Function
+		End Function
 
-	Public Function ToRectangle() As Rectangle
-		Return New Rectangle(left, top, Width, Height)
-	End Function
+		Public Function ToRectangle() As Rectangle
+			Return New Rectangle(left, top, Width, Height)
+		End Function
 #End Region
 #Region "Static helpers"
-	' ----------- Static helpers -----------
+		' ----------- Static helpers -----------
 
-	' Union = smallest rectangle covering both
-	Public Shared Function Union(ByRef a As RECT, ByRef b As RECT) As RECT
-		Return New RECT(Rectangle.Union(CType(a, Rectangle), CType(b, Rectangle)))
-	End Function
+		' Union = smallest rectangle covering both
+		Public Shared Function Union(ByRef a As RECT, ByRef b As RECT) As RECT
+			Return New RECT(Rectangle.Union(CType(a, Rectangle), CType(b, Rectangle)))
+		End Function
 
-	' Union ignoring zero-sized rectangles
-	Public Shared Function UnionWithoutZeroSized(ByRef a As RECT, ByRef b As RECT) As RECT
-		If a.IsZeroSized Then Return b
-		If b.IsZeroSized Then Return a
-		Return Union(a, b)
-	End Function
+		' Union ignoring zero-sized rectangles
+		Public Shared Function UnionWithoutZeroSized(ByRef a As RECT, ByRef b As RECT) As RECT
+			If a.IsZeroSized Then Return b
+			If b.IsZeroSized Then Return a
+			Return Union(a, b)
+		End Function
 
-	' Intersection = overlapping area
-	Public Shared Function Intersect(ByRef a As RECT, ByRef b As RECT) As RECT
-		Return New RECT(Rectangle.Intersect(CType(a, Rectangle), CType(b, Rectangle)))
-	End Function
+		' Intersection = overlapping area
+		Public Shared Function Intersect(ByRef a As RECT, ByRef b As RECT) As RECT
+			Return New RECT(Rectangle.Intersect(CType(a, Rectangle), CType(b, Rectangle)))
+		End Function
 
-	Public Shared Function IntersectWithoutInvalid(ByVal a As RECT, ByVal b As RECT) As RECT
-		If a.IsZeroSized Then Return b
-		If b.IsZeroSized Then Return a
-		Return Intersect(a, b)
-	End Function
+		Public Shared Function IntersectWithoutInvalid(ByVal a As RECT, ByVal b As RECT) As RECT
+			If a.IsZeroSized Then Return b
+			If b.IsZeroSized Then Return a
+			Return Intersect(a, b)
+		End Function
 
-	'''<returns> Returns a new inflated copy</returns>
-	Public Shared Function Inflate(ByVal r As RECT, ByVal x As Integer, ByVal y As Integer) As RECT
-		Dim tmp = r : tmp.Inflate(x, y) : Return tmp
-	End Function
+		'''<returns> Returns a new inflated copy</returns>
+		Public Shared Function Inflate(ByVal r As RECT, ByVal x As Integer, ByVal y As Integer) As RECT
+			Dim tmp = r : tmp.Inflate(x, y) : Return tmp
+		End Function
 
 
-	'''<returns>Returns rectangle bounds covering a set of points</returns>
-	Public Shared Function CoordsBoundaries(ByVal coords() As Point) As RECT
-		Dim ret As RECT
-		If coords IsNot Nothing AndAlso coords.Length > 0 Then
-			ret.left = coords(0).X : ret.right = coords(0).X
-			ret.top = coords(0).Y : ret.bottom = coords(0).Y
-			For Each p In coords
-				If p.X > ret.right Then ret.right = p.X
-				If p.X < ret.left Then ret.left = p.X
-				If p.Y > ret.bottom Then ret.bottom = p.Y
-				If p.Y < ret.top Then ret.top = p.Y
-			Next
-		End If
-		Return ret
-	End Function
+		'''<returns>Returns rectangle bounds covering a set of points</returns>
+		Public Shared Function CoordsBoundaries(ByVal coords() As Point) As RECT
+			Dim ret As RECT
+			If coords IsNot Nothing AndAlso coords.Length > 0 Then
+				ret.left = coords(0).X : ret.right = coords(0).X
+				ret.top = coords(0).Y : ret.bottom = coords(0).Y
+				For Each p In coords
+					If p.X > ret.right Then ret.right = p.X
+					If p.X < ret.left Then ret.left = p.X
+					If p.Y > ret.bottom Then ret.bottom = p.Y
+					If p.Y < ret.top Then ret.top = p.Y
+				Next
+			End If
+			Return ret
+		End Function
 
-	' Special invalid rectangle sentinel
-	Public Shared ReadOnly Property Invalid As RECT
-		Get
-			Return New RECT(Integer.MaxValue, Integer.MaxValue, Integer.MinValue, Integer.MinValue)
-		End Get
-	End Property
+		' Special invalid rectangle sentinel
+		Public Shared ReadOnly Property Invalid As RECT
+			Get
+				Return New RECT(Integer.MaxValue, Integer.MaxValue, Integer.MinValue, Integer.MinValue)
+			End Get
+		End Property
 #End Region
-End Structure
+	End Structure
 #End Region
+
+End Namespace
 
 '#Region "Info. & Imports"
 '' =========================================================

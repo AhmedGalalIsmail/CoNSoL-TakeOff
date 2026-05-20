@@ -3,9 +3,12 @@
 Option Strict On
 
 Namespace Entities 'BlockModels
+    ''' <summary>
+    ''' Represents the core domain models for block definitions, materials, and formulas.
+    ''' </summary>
     Public Class BlockModels
         ''' <summary>
-        ''' Block Info.
+        ''' Block Component Info - represents a single component within a block, with quantity and optional parameters.
         ''' </summary>
         Public Class Block
             Public Property Code As String
@@ -16,7 +19,7 @@ Namespace Entities 'BlockModels
         End Class
 
         ''' <summary>
-        ''' Material Info.
+        ''' Material Info - represents a material with code, unit, density, and price information.
         ''' </summary>
         Public Class Material
             Public Property Code As String          ' e.g. CEMENT_BAG
@@ -26,7 +29,7 @@ Namespace Entities 'BlockModels
         End Class
 
         ''' <summary>
-        ''' Formula Info.
+        ''' Formula Info - represents a calculation formula with a code and expression.
         ''' </summary>
         Public Class Formula
             Public Property Code As String

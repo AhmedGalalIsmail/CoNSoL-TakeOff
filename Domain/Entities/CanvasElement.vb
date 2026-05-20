@@ -3,6 +3,10 @@
 Imports Domain.Entities
 
 Namespace Entities
+    ''' <summary>
+    ''' Represents a single element drawn on the canvas, 
+    ''' including its geometry, business data, and relationships.
+    ''' </summary>
     Public Class CanvasElement
         Public Property ParentElementId As String
         Public Property Id As Guid = Guid.NewGuid()

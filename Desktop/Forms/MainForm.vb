@@ -1,11 +1,12 @@
-﻿Option Strict On
+﻿'Filename: Desktop/Forms/MainForm.vb
+Option Strict On
 Imports System.Security.Cryptography
-Imports System.Drawing
-Imports System.Windows.Forms
+'Imports System.Drawing
+'Imports System.Windows.Forms
 Imports Infrastructure.IO
 Imports Domain.Entities
 Imports Desktop.Controls
-
+Imports Desktop.CompositionRoot
 
 Namespace Forms
     Public Class MainForm
@@ -19,10 +20,11 @@ Namespace Forms
         Private CurrentLayout As CanvasLayout
 
         Public Sub New()
-            Me.Text = "CoNSoL-TakeOff (WinForms)"
+            InitializeComponent()   ' ✅ MUST BE FIRST
+            Me.Text = "CoNSoL-TakeOff"
             Me.Width = 1200
             Me.Height = 800
-            Me.Controls.Add(_propertiesPanel)
+            'Me.Controls.Add(_propertiesPanel)
 
             ' Tools
             ' Select, Line, Rectangle, Ellipse, Polyline, Pan, Zoom In/Out, Toggle Grid
@@ -99,10 +101,10 @@ Namespace Forms
         Private Sub LoadReadmeFiles()
             Try
                 Dim readmePaths = New String() {
-                    "src/CoNSoL.Desktop/README.md",
-                    "src/CoNSoL.Infrastructure/README.md",
-                    "src/CoNSoL.Application/README.md",
-                    "src/CoNSoL.Domain/README.md"
+                    "Desktop/README.md",
+                    "Infrastructure/README.md",
+                    "Application/README.md",
+                    "Domain/README.md"
                 }
 
                 For Each path In readmePaths
@@ -120,7 +122,7 @@ Namespace Forms
 
         Private Sub NewLayout()
             CurrentLayout = New CanvasLayout()
-            CompositionRoot.Logger.Info("New layout created")
+            Logger.Info("New layout created")
             _canvas.Clear()
         End Sub
 
@@ -131,7 +133,7 @@ Namespace Forms
                     Dim encrypted = ofd.FileName.EndsWith(".takeoff", StringComparison.OrdinalIgnoreCase)
                     CurrentLayout = store.Load(ofd.FileName, encrypted:=encrypted)
                     _canvas.LoadFromLayout(CurrentLayout)
-                    CompositionRoot.Logger.Info($"Loaded layout: {CurrentLayout.CanvasId}")
+                    Logger.Info($"Loaded layout: {CurrentLayout.CanvasId}")
                 End If
             End Using
         End Sub
@@ -156,7 +158,7 @@ Namespace Forms
                     RandomNumberGenerator.Fill(nonce)
                     Dim layout = _canvas.ToLayout()
                     store.Save(sfd.FileName, layout, encrypt:=encrypted, nonce:=nonce)
-                    CompositionRoot.Logger.Info("Layout saved")
+                    Logger.Info("Layout saved")
                 End If
             End Using
         End Sub

@@ -1,4 +1,5 @@
-﻿Option Strict On
+﻿'Filename: Desktop/CompositionRoot.vb
+Option Strict On
 Imports Infrastructure.Logging
 Imports Infrastructure.Config
 Imports Infrastructure.Crypto

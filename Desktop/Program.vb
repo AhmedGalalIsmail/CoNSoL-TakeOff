@@ -1,4 +1,5 @@
-﻿Option Strict On
+﻿'Filename: Desktop/Program.vb
+Option Strict On
 Imports System.Windows.Forms.Application
 Imports System.Threading
 Imports System.Windows.Forms

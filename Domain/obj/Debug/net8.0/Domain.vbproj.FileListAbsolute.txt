@@ -9,3 +9,4 @@ E:\Users\GoingIForMal\CoNSoL-TakeOff\Domain\obj\Debug\net8.0\Domain.dll
 E:\Users\GoingIForMal\CoNSoL-TakeOff\Domain\obj\Debug\net8.0\refint\Domain.dll
 E:\Users\GoingIForMal\CoNSoL-TakeOff\Domain\obj\Debug\net8.0\Domain.pdb
 E:\Users\GoingIForMal\CoNSoL-TakeOff\Domain\obj\Debug\net8.0\ref\Domain.dll
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Domain\obj\Debug\net8.0\Domain.sourcelink.json
