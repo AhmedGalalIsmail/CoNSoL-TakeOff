@@ -1,0 +1,380 @@
+2026-05-19 23:59:54.001 [info] [Main] [BrowserOnboardingClientMainService] Starting browser onboarding server
+2026-05-19 23:59:54.002 [info] [Main] [BrowserOnboardingClientServer] Browser onboarding server started on http://localhost:58365
+2026-05-19 23:59:54.003 [info] [auth] [Auth] Auth state changed to: uninitialized
+2026-05-19 23:59:54.004 [info] [ls-main] [LS Main] Starting language server from: e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\bin\language_server_windows_x64.exe
+2026-05-19 23:59:54.864 [info] [Main] update#setState disabled
+2026-05-19 23:59:54.865 [info] [Main] update#ctor - updates are disabled by user preference
+2026-05-19 23:59:56.265 [info] [ls-main] [LS Main] Args: --csrf_token 51ab72ea-de98-4948-b8ba-30062c450ebc --extension_server_port 58364 --extension_server_csrf_token 0064db41-7ef8-4b2f-a2a3-696049552e6c --app_data_dir antigravity --cloud_code_endpoint https://cloudcode-pa.googleapis.com
+2026-05-19 23:59:56.537 [info] [ls-main] [LS Main] Process spawned with PID: 7652
+2026-05-19 23:59:56.656 [info] [auth] [Auth] Auth state changed to: validatingLogin
+2026-05-19 23:59:56.658 [error] [cloudcode] Failed to set Cloud Code URL on Language Server: Language server client has not been initialized!
+2026-05-19 23:59:56.658 [info] [auth] [Auth] Auth state changed to: validatingLogin
+2026-05-20 00:00:04.798 [warning] [Window] Via 'product.json#extensionEnabledApiProposals' extension 'ms-vscode.vscode-selfhost-test-provider' wants API proposal 'attributableCoverage' but that proposal DOES NOT EXIST. Likely, the proposal has been finalized (check 'vscode.d.ts') or was abandoned.
+2026-05-20 00:00:04.800 [warning] [Window] Via 'product.json#extensionEnabledApiProposals' extension 'ms-vsliveshare.vsliveshare' wants API proposal 'notebookCellExecutionState' but that proposal DOES NOT EXIST. Likely, the proposal has been finalized (check 'vscode.d.ts') or was abandoned.
+2026-05-20 00:00:04.801 [warning] [Window] Via 'product.json#extensionEnabledApiProposals' extension 'ms-python.python' wants API proposal 'contribIssueReporter' but that proposal DOES NOT EXIST. Likely, the proposal has been finalized (check 'vscode.d.ts') or was abandoned.
+2026-05-20 00:00:04.819 [warning] [Window] Via 'product.json#extensionEnabledApiProposals' extension 'github.vscode-pull-request-github' wants API proposal 'fileComments' but that proposal DOES NOT EXIST. Likely, the proposal has been finalized (check 'vscode.d.ts') or was abandoned.
+2026-05-20 00:00:04.820 [warning] [Window] Via 'product.json#extensionEnabledApiProposals' extension 'github.copilot-chat' wants API proposal 'chatVariableResolver' but that proposal DOES NOT EXIST. Likely, the proposal has been finalized (check 'vscode.d.ts') or was abandoned.
+2026-05-20 00:00:04.821 [warning] [Window] Via 'product.json#extensionEnabledApiProposals' extension 'github.copilot-chat' wants API proposal 'lmTools' but that proposal DOES NOT EXIST. Likely, the proposal has been finalized (check 'vscode.d.ts') or was abandoned.
+2026-05-20 00:00:04.822 [warning] [Window] Via 'product.json#extensionEnabledApiProposals' extension 'ms-python.gather' wants API proposal 'notebookCellExecutionState' but that proposal DOES NOT EXIST. Likely, the proposal has been finalized (check 'vscode.d.ts') or was abandoned.
+2026-05-20 00:00:04.823 [warning] [Window] Via 'product.json#extensionEnabledApiProposals' extension 'ms-python.vscode-pylance' wants API proposal 'notebookCellExecutionState' but that proposal DOES NOT EXIST. Likely, the proposal has been finalized (check 'vscode.d.ts') or was abandoned.
+2026-05-20 00:00:04.824 [warning] [Window] Via 'product.json#extensionEnabledApiProposals' extension 'ms-python.debugpy' wants API proposal 'contribIssueReporter' but that proposal DOES NOT EXIST. Likely, the proposal has been finalized (check 'vscode.d.ts') or was abandoned.
+2026-05-20 00:00:04.825 [warning] [Window] Via 'product.json#extensionEnabledApiProposals' extension 'ms-toolsai.jupyter' wants API proposal 'notebookCellExecutionState' but that proposal DOES NOT EXIST. Likely, the proposal has been finalized (check 'vscode.d.ts') or was abandoned.
+2026-05-20 00:00:04.826 [warning] [Window] Via 'product.json#extensionEnabledApiProposals' extension 'dbaeumer.vscode-eslint' wants API proposal 'notebookCellExecutionState' but that proposal DOES NOT EXIST. Likely, the proposal has been finalized (check 'vscode.d.ts') or was abandoned.
+2026-05-20 00:00:04.827 [warning] [Window] Via 'product.json#extensionEnabledApiProposals' extension 'ms-azuretools.vscode-azure-github-copilot' wants API proposal 'lmTools' but that proposal DOES NOT EXIST. Likely, the proposal has been finalized (check 'vscode.d.ts') or was abandoned.
+2026-05-20 00:00:04.828 [warning] [Window] Via 'product.json#extensionEnabledApiProposals' extension 'ms-vscode.cpptools' wants API proposal 'lmTools' but that proposal DOES NOT EXIST. Likely, the proposal has been finalized (check 'vscode.d.ts') or was abandoned.
+2026-05-20 00:00:04.829 [warning] [Window] Via 'product.json#extensionEnabledApiProposals' extension 'redhat.java' wants API proposal 'documentPaste' but that proposal DOES NOT EXIST. Likely, the proposal has been finalized (check 'vscode.d.ts') or was abandoned.
+2026-05-20 00:00:04.830 [warning] [Window] Via 'product.json#extensionEnabledApiProposals' extension 'vscjava.vscode-java-pack' wants API proposal 'lmTools' but that proposal DOES NOT EXIST. Likely, the proposal has been finalized (check 'vscode.d.ts') or was abandoned.
+2026-05-20 00:00:05.697 [info] [cloudcode] [CloudCode] POST v1internal:loadCodeAssist traceId: 477c2223d6325d75
+2026-05-20 00:00:05.770 [info] [cloudcode] [CloudCode] POST v1internal:loadCodeAssist traceId: cb52a435c82c7db5
+2026-05-20 00:00:05.941 [warning] [Window] SettingsEditor2: Settings not included in settingsLayout.ts: antigravity.enableAgentMode, extensions.requestTimeout, chat.agent.terminal.allowList, chat.agent.terminal.autoApprove, chat.agent.terminal.denyList, chat.tools.terminal.autoApprove, chat.tools.terminal.autoReplyToPrompts, chat.tools.terminal.blockDetectedFileWrites, chat.tools.terminal.enableAutoApprove, chat.tools.terminal.ignoreDefaultAutoApproveRules, chat.tools.terminal.outputLocation, chat.tools.terminal.shellIntegrationTimeout, chat.tools.terminal.terminalProfile.linux, chat.tools.terminal.terminalProfile.osx, chat.tools.terminal.terminalProfile.windows, github.copilot.chat.agent.terminal.allowList, github.copilot.chat.agent.terminal.denyList, terminal.integrated.developer.devMode, terminal.integrated.developer.ptyHost.latency, terminal.integrated.developer.ptyHost.startupDelay, inlineChat.accessibleDiffView, inlineChat.enableV2, inlineChat.finishOnType, inlineChat.holdToSpeech, inlineChat.notebookAgent, chat.agent.codeBlockProgress, chat.agent.enabled, chat.agent.thinking.collapsedTools, chat.agent.thinking.generateTitles, chat.agent.thinkingStyle, chat.agentSessionsViewLocation, chat.allowAnonymousAccess, chat.checkpoints.enabled, chat.checkpoints.showFileChanges, chat.commandCenter.enabled, chat.customAgentInSubagent.enabled, chat.detectParticipant.enabled, chat.disableAIFeatures, chat.editing.autoAcceptDelay, chat.editing.confirmEditRequestRemoval, chat.editing.confirmEditRequestRetry, chat.editor.fontFamily, chat.editor.fontSize, chat.editor.fontWeight, chat.editor.lineHeight, chat.editor.wordWrap, chat.editRequests, chat.edits2.enabled, chat.exitAfterDelegation, chat.experimental.detectParticipant.enabled, chat.extensionTools.enabled, chat.extensionUnification.enabled, chat.fontFamily, chat.fontSize, chat.implicitContext.enabled, chat.implicitContext.suggestedContext, chat.instructionsFilesLocations, chat.math.enabled, chat.mcp.access, chat.mcp.assisted.nuget.enabled, chat.mcp.autostart, chat.mcp.discovery.enabled, chat.mcp.gallery.enabled, chat.mcp.serverSampling, chat.modeFilesLocations, chat.notifyWindowOnConfirmation, chat.notifyWindowOnResponseReceived, chat.promptFilesLocations, chat.promptFilesRecommendations, chat.renderRelatedFiles, chat.restoreLastPanelSession, chat.sendElementsToChat.attachCSS, chat.sendElementsToChat.attachImages, chat.sendElementsToChat.enabled, chat.showAgentSessionsViewDescription, chat.suspendThrottling, chat.todoListTool.descriptionField, chat.todoListTool.writeOnly, chat.tools.edits.autoApprove, chat.tools.eligibleForAutoApproval, chat.tools.global.autoApprove, chat.tools.todos.showWidget, chat.tools.urls.autoApprove, chat.undoRequests.restoreInput, chat.useAgentsMdFile, chat.useClaudeSkills, chat.useNestedAgentsMdFiles, chat.viewSessions.enabled, chat.viewSessions.orientation, chat.viewTitle.enabled, chat.viewWelcome.enabled
+2026-05-20 00:00:06.694 [error] [ls-main] No LS client info found for local authority
+2026-05-20 00:00:06.748 [info] [cloudcode] [CloudCode] POST v1internal:loadCodeAssist traceId: ee840c00c88d99e6
+2026-05-20 00:00:06.749 [error] [cloudcode] Failed to set Cloud Code URL on Language Server: Language server client has not been initialized!
+2026-05-20 00:00:06.958 [info] [cloudcode] [CloudCode] POST v1internal:loadCodeAssist traceId: fafcdbc06cab1223
+2026-05-20 00:00:06.989 [error] [cloudcode] Failed to set Cloud Code URL on Language Server: Language server client has not been initialized!
+2026-05-20 00:00:09.171 [info] [cloudcode] [CloudCode] POST v1internal:fetchAvailableModels traceId: 7b515578b82095d
+2026-05-20 00:00:09.304 [info] [cloudcode] [CloudCode] POST v1internal:onboardUser traceId: ea9a0bb26df99e86
+2026-05-20 00:00:09.479 [info] [Window] Started local extension host with pid 18300.
+2026-05-20 00:00:10.025 [info] [cloudcode] [CloudCode] POST v1internal:loadCodeAssist traceId: 6939e62f3e0680f
+2026-05-20 00:00:10.918 [info] [cloudcode] [CloudCode] POST v1internal:loadCodeAssist traceId: 3abca8c6c709de50
+2026-05-20 00:00:10.919 [error] [cloudcode] Failed to set Cloud Code URL on Language Server: Language server client has not been initialized!
+2026-05-20 00:00:11.829 [info] [cloudcode] [CloudCode] POST v1internal:fetchAvailableModels traceId: af40148cb2915cad
+2026-05-20 00:00:11.847 [info] [auth] [Auth] Auth state changed to: signedIn
+2026-05-20 00:00:11.849 [info] [auth] [Auth] Auth state changed to: signedIn
+2026-05-20 00:00:11.850 [info] [auth] [Auth] AntigravityAuthMainService initialized
+2026-05-20 00:00:14.676 [warning] [Terminal] Webgl could not be loaded. Falling back to the DOM renderer [{}]
+2026-05-20 00:00:14.791 [error] [Window] [vscode.git]: property `title` is mandatory and must be of type `string` or `object`
+2026-05-20 00:00:14.792 [error] [Window] [vscode.git]: property `title` is mandatory and must be of type `string` or `object`
+2026-05-20 00:00:14.801 [error] [Window] [google.antigravity]: Menu item references a command `antigravity.importAntigravitySettings` which is not defined in the 'commands' section.
+2026-05-20 00:00:14.802 [error] [Window] [google.antigravity]: Menu item references a command `antigravity.importAntigravityExtensions` which is not defined in the 'commands' section.
+2026-05-20 00:00:14.803 [error] [Window] [google.antigravity]: Menu item references a command `antigravity.prioritized.chat.open` which is not defined in the 'commands' section.
+2026-05-20 00:00:19.235 [error] [Remote Tunnel Service] Missing 'tunnelApplicationConfig' or 'tunnelApplicationName' in product.json. Remote tunneling is not available.
+2026-05-20 00:00:19.967 [info] [antigravity-interactive-editor] Initialized with 0 existing HTML files
+2026-05-20 00:00:19.968 [info] [antigravity-interactive-editor] Watching for HTML files in: file:///c%3A/Users/GoingIForMal/.gemini/antigravity/html_artifacts
+2026-05-20 00:00:24.221 [info] [rendererPerf] Render performance baseline is 61ms
+2026-05-20 00:00:34.773 [info] [Extension Host] Extension host with pid 18300 started
+2026-05-20 00:00:34.774 [info] [Extension Host] Skipping acquiring lock for c:\Users\GoingIForMal\AppData\Roaming\Antigravity\User\workspaceStorage\16e694c9b5ae9b78817eabfee460122f.
+2026-05-20 00:00:34.841 [info] [Extension Host] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2026-05-20 00:00:34.916 [info] [Extension Host] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-05-20 00:00:34.945 [info] [Extension Host] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-05-20 00:00:35.150 [info] [Extension Host] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-05-20 00:00:35.878 [info] [Extension Host] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: google.antigravity
+2026-05-20 00:00:35.993 [info] [Extension Host] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*', root cause: google.antigravity
+2026-05-20 00:00:36.606 [info] [Extension Host] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2026-05-20 00:00:36.807 [info] [Extension Host] ExtensionService#_doActivateExtension google.antigravity, startup: true, activationEvent: '*'
+2026-05-20 00:00:38.871 [info] [Git] [main] Log level: Info
+2026-05-20 00:00:38.871 [info] [Git] [main] Validating found git in: "C:\Program Files\Git\cmd\git.exe"
+2026-05-20 00:00:38.871 [info] [Git] [main] Validating found git in: "C:\Program Files (x86)\Git\cmd\git.exe"
+2026-05-20 00:00:38.871 [info] [Git] [main] Validating found git in: "C:\Program Files\Git\cmd\git.exe"
+2026-05-20 00:00:38.871 [info] [Git] [main] Validating found git in: "C:\Users\GoingIForMal\AppData\Local\Programs\Git\cmd\git.exe"
+2026-05-20 00:00:38.871 [warning] [Git] Unable to find git. Error: not found: git.exe
+2026-05-20 00:00:38.871 [warning] [Git] [main] Failed to create model: Error: Git installation not found.
+2026-05-20 00:00:39.172 [info] [GitHub] Log level: Info
+2026-05-20 00:00:39.643 [warning] [Main] No ptyHost heartbeat after 6 seconds
+2026-05-20 00:00:39.894 [error] [Window] [Extension Host] No LS client info found for local authority
+2026-05-20 00:00:45.893 [info] [Extension Host] ExtensionService#_doActivateExtension google.antigravity-dev-containers, startup: false, activationEvent: 'onStartupFinished'
+2026-05-20 00:00:46.011 [info] [Extension Host] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2026-05-20 00:00:46.061 [info] [Extension Host] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2026-05-20 00:00:56.279 [error] [ls-main] [LS Main] Failed to start language server: Timed out waiting for language server start
+2026-05-20 00:00:56.303 [info] [ls-main] [LS Main] Process killed with signal SIGTERM
+2026-05-20 00:01:05.691 [info] [Antigravity] I0520 00:01:05.689133 19148 server.go:1236] Starting language server process with pid 19148
+2026-05-20 00:01:05.735 [info] [Antigravity] I0520 00:01:05.734105 19148 server.go:301] Setting GOMAXPROCS to 4
+2026-05-20 00:01:05.912 [info] [Antigravity] I0520 00:01:05.911820 19148 server.go:440] Language server will attempt to listen on host 127.0.0.1
+2026-05-20 00:01:05.934 [info] [Antigravity] I0520 00:01:05.933322 19148 server.go:454] Language server listening on random port at 58391 for HTTPS (gRPC)
+2026-05-20 00:01:05.934 [info] [Antigravity] I0520 00:01:05.933322 19148 server.go:461] Language server listening on random port at 58392 for HTTP
+2026-05-20 00:01:08.241 [info] [Antigravity] I0520 00:01:08.240792 19148 server.go:433] Created extension server client at port 58384
+2026-05-20 00:01:09.305 [info] [Antigravity] I0520 00:01:09.304655 19148 cascade_manager.go:773] Reactive state is disabled
+2026-05-20 00:01:11.452 [info] [Antigravity] (Antigravity) 2026-05-20 00:01:11.449 [INFO]: Language server started
+2026-05-20 00:01:11.724 [info] [Antigravity] I0520 00:01:11.724431 19148 server.go:1693] initialized server successfully in 5.9993204s
+2026-05-20 00:01:11.847 [info] [Antigravity] I0520 00:01:11.846882 19148 http_helpers.go:151] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0xbacc96bbea21ae25
+2026-05-20 00:01:12.566 [info] [Antigravity] (Antigravity) 2026-05-20 00:01:12.565 [INFO]: LS lspClient started successfully
+2026-05-20 00:01:12.573 [info] [Antigravity] I0520 00:01:12.572496 19148 http_helpers.go:151] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0x808bda0226ae8229
+2026-05-20 00:01:13.870 [info] [Antigravity] I0520 00:01:13.418538 19148 http_helpers.go:151] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:fetchAvailableModels Trace: 0x1e78b0e2b53333b1
+2026-05-20 00:01:14.226 [error] [Window] [Extension Host] Error getting git API: Error: Git model not found
+	at Object.getAPI (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\git\dist\main.js:2:576134)
+	at PS (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2012090)
+	at KS (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2012184)
+	at HS (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2013736)
+	at XI (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2142008)
+	at async QS.n (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:117:14144)
+	at async QS.m (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:117:14107)
+	at async QS.l (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:117:13563)
+2026-05-20 00:01:14.231 [info] [Extension Host] Eager extensions activated
+2026-05-20 00:01:45.438 [info] [cloudcode] [CloudCode] POST v1internal:fetchAvailableModels traceId: 6234354cbdc9f94c
+2026-05-20 00:01:45.675 [info] [cloudcode] [CloudCode] POST v1internal:loadCodeAssist traceId: 826aa0588821b181
+2026-05-20 00:01:46.620 [info] [cloudcode] [CloudCode] POST v1internal:loadCodeAssist traceId: db87d38210bacad7
+2026-05-20 00:01:46.621 [error] [cloudcode] Failed to set Cloud Code URL on Language Server: Language server client has not been initialized!
+2026-05-20 00:01:55.548 [warning] [Main] No ptyHost heartbeat after 6 seconds
+2026-05-20 00:02:10.188 [warning] [rendererPerf] Renderer reported VERY LONG TASK (751ms), starting profiling session '11bc760f-53b8-45ba-a5bd-39be7fbb1a38'
+2026-05-20 00:02:12.273 [warning] [Main] [perf] profiling STARTED 11bc760f-53b8-45ba-a5bd-39be7fbb1a38
+2026-05-20 00:02:19.938 [warning] [Main] [perf] profiling DONE 11bc760f-53b8-45ba-a5bd-39be7fbb1a38
+2026-05-20 00:02:36.965 [warning] [Main] [perf] profiling STARTED 11bc760f-53b8-45ba-a5bd-39be7fbb1a38
+2026-05-20 00:02:42.343 [warning] [Main] [perf] profiling DONE 11bc760f-53b8-45ba-a5bd-39be7fbb1a38
+2026-05-20 00:02:42.412 [error] [rendererPerf] 
+	 at i (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:2770:5371)
+	 at PTt (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:2770:5326)
+	 at getOtherRecommendations (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:7006:12116)
+2026-05-20 00:02:42.425 [error] [rendererPerf] 
+	 at rDl (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:2792:101681)
+	 at get (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:2791:53941)
+	 at isAnnouncementEnabled (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:3052:32967)
+	 at playSignal (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:3052:31211)
+	 at s (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:3052:32827)
+	 at (anonymous) (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:3052:32903)
+2026-05-20 00:02:42.428 [error] [rendererPerf] 
+	 at w6e (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:2792:60323)
+	 at parse (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:2792:59050)
+	 at M (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:5892:35109)
+	 at E (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:5892:25809)
+	 at (anonymous) (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:5892:25172)
+	 at D (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:5892:25047)
+	 at getExtensions (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:5892:23598)
+2026-05-20 00:02:43.001 [info] [rendererPerf] Stored profile to DISK 'file:///c%3A/Users/GOINGI~1/AppData/Local/Temp/renderer-1fc038.cpuprofile.json' 11bc760f-53b8-45ba-a5bd-39be7fbb1a38
+2026-05-20 00:04:59.955 [warning] [Main] No ptyHost heartbeat after 6 seconds
+2026-05-20 00:05:12.244 [info] [cloudcode] [CloudCode] POST v1internal:loadCodeAssist traceId: 2d892ca000eb01b2
+2026-05-20 00:05:15.862 [info] [cloudcode] [CloudCode] POST v1internal:loadCodeAssist traceId: 5d9dabd24d641860
+2026-05-20 00:05:15.862 [error] [cloudcode] Failed to set Cloud Code URL on Language Server: Language server client has not been initialized!
+2026-05-20 00:05:29.891 [error] [Window] [Extension Host] FetchError: Unleash Repository error: network timeout at: http://localhost:58392/proxy/unleash/client/features
+	at Timeout.<anonymous> (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:812821)
+	at listOnTimeout (node:internal/timers:588:17)
+	at process.processTimers (node:internal/timers:523:7)
+2026-05-20 00:05:36.434 [info] [cloudcode] [CloudCode] POST v1internal:fetchAvailableModels traceId: 820af6ce6202b700
+2026-05-20 00:06:12.719 [error] [Window] [createInstance] ooe depends on UNKNOWN service agentSessions.: Error: [createInstance] ooe depends on UNKNOWN service agentSessions.
+    at jrs.y (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:5934:4186)
+    at jrs.o (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:5934:1360)
+    at jrs.createInstance (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:5934:1207)
+    at new Bei (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:6603:8181)
+    at new G6n (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:6603:15815)
+    at jrs.o (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:5934:1710)
+    at jrs.createInstance (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:5934:1207)
+    at new _ei (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:6603:18528)
+    at jrs.o (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:5934:1710)
+    at jrs.createInstance (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:5934:1207)
+2026-05-20 00:06:14.476 [error] [Window] [Extension Host] Error getting git API: Error: Git model not found
+	at Object.getAPI (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\git\dist\main.js:2:576134)
+	at PS (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2012090)
+	at jS (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2012311)
+	at e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2138267
+	at sp.h (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:117:44683)
+	at sp.$executeContributedCommand (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:117:45574)
+	at D9.S (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:126864)
+	at D9.Q (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:126644)
+	at D9.M (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:125732)
+	at D9.L (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:124837)
+	at Hf.value (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:123633)
+	at v.C (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2330)
+	at v.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2548)
+	at Kl.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:9451)
+	at Hf.value (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:407:9341)
+	at v.C (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2330)
+	at v.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2548)
+	at Kl.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:9451)
+	at MessagePortMain.<anonymous> (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:407:7573)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2949)
+2026-05-20 00:06:19.481 [info] [Antigravity] I0520 00:06:19.481496 19148 http_helpers.go:151] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:fetchAvailableModels Trace: 0xd59832d6bd96e9d
+2026-05-20 00:06:25.982 [error] [Window] [Extension Host] Error getting git API: Error: Git model not found
+	at Object.getAPI (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\git\dist\main.js:2:576134)
+	at PS (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2012090)
+	at jS (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2012311)
+	at e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2138267
+	at sp.h (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:117:44683)
+	at sp.$executeContributedCommand (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:117:45574)
+	at D9.S (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:126864)
+	at D9.Q (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:126644)
+	at D9.M (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:125732)
+	at D9.L (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:124837)
+	at Hf.value (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:123633)
+	at v.C (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2330)
+	at v.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2548)
+	at Kl.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:9451)
+	at Hf.value (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:407:9341)
+	at v.C (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2330)
+	at v.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2548)
+	at Kl.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:9451)
+	at MessagePortMain.<anonymous> (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:407:7573)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2949)
+2026-05-20 00:06:28.398 [info] [Antigravity] I0520 00:06:28.398610 19148 http_helpers.go:151] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0x27939abf60fd84bb
+2026-05-20 00:06:31.092 [error] [Window] TreeError [DebugRepl] Tree input not set: Error: TreeError [DebugRepl] Tree input not set
+    at rI.C (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:3204:29722)
+    at rI.updateChildren (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:3204:29503)
+    at JTt.value (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:7153:35079)
+    at K.C (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:2791:2353)
+    at K.D (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:2791:2423)
+    at K.fire (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:2791:2641)
+    at sri.setVisible (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:5090:2713)
+    at vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:5112:14411
+    at Array.map (<anonymous>)
+    at $E.setVisible (vscode-file://vscode-app/e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/workbench.desktop.main.js:5112:14402)
+2026-05-20 00:06:35.557 [info] [Antigravity] I0520 00:06:35.557046 19148 http_helpers.go:151] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0x7b5de213cdbe162
+2026-05-20 00:06:38.935 [error] [Window] [Extension Host] FetchError: Unleash Repository error: network timeout at: http://localhost:58392/proxy/unleash/client/features
+	at Timeout.<anonymous> (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:812821)
+	at listOnTimeout (node:internal/timers:588:17)
+	at process.processTimers (node:internal/timers:523:7)
+2026-05-20 00:06:53.462 [error] [Window] [Extension Host] Error getting git API: Error: Git model not found
+	at Object.getAPI (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\git\dist\main.js:2:576134)
+	at PS (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2012090)
+	at jS (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2012311)
+	at e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2138267
+	at sp.h (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:117:44683)
+	at sp.$executeContributedCommand (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:117:45574)
+	at D9.S (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:126864)
+	at D9.Q (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:126644)
+	at D9.M (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:125732)
+	at D9.L (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:124837)
+	at Hf.value (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:123633)
+	at v.C (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2330)
+	at v.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2548)
+	at Kl.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:9451)
+	at Hf.value (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:407:9341)
+	at v.C (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2330)
+	at v.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2548)
+	at Kl.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:9451)
+	at MessagePortMain.<anonymous> (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:407:7573)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2949)
+2026-05-20 00:07:48.016 [error] [Window] [Extension Host] FetchError: Unleash Repository error: network timeout at: http://localhost:58392/proxy/unleash/client/features
+	at Timeout.<anonymous> (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:812821)
+	at listOnTimeout (node:internal/timers:588:17)
+	at process.processTimers (node:internal/timers:523:7)
+2026-05-20 00:08:09.311 [error] [Window] [Extension Host] Error getting git API: Error: Git model not found
+	at Object.getAPI (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\git\dist\main.js:2:576134)
+	at PS (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2012090)
+	at jS (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2012311)
+	at e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2138267
+	at sp.h (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:117:44683)
+	at sp.$executeContributedCommand (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:117:45574)
+	at D9.S (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:126864)
+	at D9.Q (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:126644)
+	at D9.M (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:125732)
+	at D9.L (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:124837)
+	at Hf.value (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:123633)
+	at v.C (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2330)
+	at v.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2548)
+	at Kl.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:9451)
+	at Hf.value (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:407:9341)
+	at v.C (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2330)
+	at v.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2548)
+	at Kl.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:9451)
+	at MessagePortMain.<anonymous> (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:407:7573)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2949)
+2026-05-20 00:08:17.053 [error] [Window] [Extension Host] Error getting git API: Error: Git model not found
+	at Object.getAPI (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\git\dist\main.js:2:576134)
+	at PS (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2012090)
+	at jS (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2012311)
+	at e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2138267
+	at sp.h (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:117:44683)
+	at sp.$executeContributedCommand (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:117:45574)
+	at D9.S (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:126864)
+	at D9.Q (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:126644)
+	at D9.M (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:125732)
+	at D9.L (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:124837)
+	at Hf.value (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:123633)
+	at v.C (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2330)
+	at v.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2548)
+	at Kl.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:9451)
+	at Hf.value (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:407:9341)
+	at v.C (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2330)
+	at v.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2548)
+	at Kl.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:9451)
+	at MessagePortMain.<anonymous> (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:407:7573)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2949)
+2026-05-20 00:08:50.712 [error] [Network] #16: https://browser.events.data.microsoft.com/OneCollector/1.0/?cors=true&content-type=application/x-json-stream - error POST net::ERR_TIMED_OUT
+2026-05-20 00:08:57.065 [error] [Window] [Extension Host] FetchError: Unleash Repository error: network timeout at: http://localhost:58392/proxy/unleash/client/features
+	at Timeout.<anonymous> (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:812821)
+	at listOnTimeout (node:internal/timers:588:17)
+	at process.processTimers (node:internal/timers:523:7)
+2026-05-20 00:08:59.948 [error] [Network] #17: https://browser.events.data.microsoft.com/OneCollector/1.0/?cors=true&content-type=application/x-json-stream - error POST net::ERR_CONNECTION_RESET
+2026-05-20 00:09:00.062 [error] [Network] #18: https://browser.events.data.microsoft.com/OneCollector/1.0/?cors=true&content-type=application/x-json-stream - error POST net::ERR_CONNECTION_RESET
+2026-05-20 00:09:30.489 [error] [Network] #19: https://browser.events.data.microsoft.com/OneCollector/1.0/?cors=true&content-type=application/x-json-stream - error POST net::ERR_TIMED_OUT
+2026-05-20 00:09:40.578 [error] [Network] #20: https://browser.events.data.microsoft.com/OneCollector/1.0/?cors=true&content-type=application/x-json-stream - error POST net::ERR_TIMED_OUT
+2026-05-20 00:10:06.135 [error] [Window] [Extension Host] FetchError: Unleash Repository error: network timeout at: http://localhost:58392/proxy/unleash/client/features
+	at Timeout.<anonymous> (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:812821)
+	at listOnTimeout (node:internal/timers:588:17)
+	at process.processTimers (node:internal/timers:523:7)
+2026-05-20 00:10:11.350 [info] [cloudcode] [CloudCode] POST v1internal:loadCodeAssist traceId: 6c63f37d8be76fae
+2026-05-20 00:10:16.508 [info] [cloudcode] [CloudCode] POST v1internal:loadCodeAssist traceId: ba2cf11fe36e35c4
+2026-05-20 00:10:16.509 [error] [cloudcode] Failed to set Cloud Code URL on Language Server: Language server client has not been initialized!
+2026-05-20 00:10:25.415 [info] [cloudcode] [CloudCode] POST v1internal:fetchAvailableModels traceId: a1a3a4f87dfeb1ee
+2026-05-20 00:11:15.196 [error] [Window] [Extension Host] FetchError: Unleash Repository error: network timeout at: http://localhost:58392/proxy/unleash/client/features
+	at Timeout.<anonymous> (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:812821)
+	at listOnTimeout (node:internal/timers:588:17)
+	at process.processTimers (node:internal/timers:523:7)
+2026-05-20 00:12:17.659 [info] [Antigravity] I0520 00:12:17.659066 19148 http_helpers.go:151] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:fetchAvailableModels Trace: 0x17b0b6ce257ffb18
+2026-05-20 00:12:22.411 [info] [Antigravity] I0520 00:12:22.409926 19148 http_helpers.go:151] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0x798bb8fc71cf3757
+2026-05-20 00:12:24.265 [error] [Window] [Extension Host] FetchError: Unleash Repository error: network timeout at: http://localhost:58392/proxy/unleash/client/features
+	at Timeout.<anonymous> (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:812821)
+	at listOnTimeout (node:internal/timers:588:17)
+	at process.processTimers (node:internal/timers:523:7)
+2026-05-20 00:12:25.010 [info] [Antigravity] I0520 00:12:25.009862 19148 http_helpers.go:151] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0x53b91bdc7cf35f0a
+2026-05-20 00:14:51.898 [info] [cloudcode] [CloudCode] POST v1internal:loadCodeAssist traceId: 1cc7904abaef85ee
+2026-05-20 00:14:52.565 [info] [cloudcode] [CloudCode] POST v1internal:loadCodeAssist traceId: cf91cb8042e3833a
+2026-05-20 00:14:52.566 [error] [cloudcode] Failed to set Cloud Code URL on Language Server: Language server client has not been initialized!
+2026-05-20 00:14:53.109 [info] [cloudcode] [CloudCode] POST v1internal:fetchAvailableModels traceId: 40ed645018e4e6d8
+2026-05-20 00:17:49.934 [error] [Main] [storage state.vscdb] prepare(): Error: SQLITE_FULL: database or disk is full (INSERT INTO ItemTable VALUES (?,?) ON CONFLICT (key) DO UPDATE SET value = excluded.value WHERE value != excluded.value). Details: Keys: output.activechannel Length: 37
+2026-05-20 00:17:49.938 [error] [Main] [storage state.vscdb] transaction(): Error: SQLITE_ERROR: cannot commit - no transaction is active
+2026-05-20 00:17:49.939 [error] [Main] [uncaught exception in main]: Error: SQLITE_ERROR: cannot commit - no transaction is active
+2026-05-20 00:17:49.939 [error] [Main] Error: SQLITE_ERROR: cannot commit - no transaction is active
+2026-05-20 00:18:05.241 [error] [Main] [storage state.vscdb] prepare(): Error: SQLITE_FULL: database or disk is full (INSERT INTO ItemTable VALUES (?,?) ON CONFLICT (key) DO UPDATE SET value = excluded.value WHERE value != excluded.value). Details: Keys: memento/workbench.panel.output Length: 394
+2026-05-20 00:18:05.242 [error] [Main] [storage state.vscdb] transaction(): Error: SQLITE_ERROR: cannot commit - no transaction is active
+2026-05-20 00:18:05.242 [error] [Main] [uncaught exception in main]: Error: SQLITE_ERROR: cannot commit - no transaction is active
+2026-05-20 00:18:05.243 [error] [Main] Error: SQLITE_ERROR: cannot commit - no transaction is active
+2026-05-20 00:18:10.535 [info] [Antigravity] I0520 00:18:10.535319 19148 http_helpers.go:151] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:fetchAvailableModels Trace: 0xf6fc57c2c789c512
+2026-05-20 00:18:11.405 [info] [Antigravity] I0520 00:18:11.404501 19148 http_helpers.go:151] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0xf1d9c4c5d51bcee6
+2026-05-20 00:18:12.507 [info] [Antigravity] I0520 00:18:12.505963 19148 http_helpers.go:151] URL: https://daily-cloudcode-pa.googleapis.com/v1internal:loadCodeAssist Trace: 0x6e0828feeb29414b
+2026-05-20 00:18:22.357 [error] [Window] [Extension Host] Error getting git API: Error: Git model not found
+	at Object.getAPI (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\git\dist\main.js:2:576134)
+	at PS (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2012090)
+	at jS (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2012311)
+	at e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2138267
+	at sp.h (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:117:44683)
+	at sp.$executeContributedCommand (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:117:45574)
+	at D9.S (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:126864)
+	at D9.Q (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:126644)
+	at D9.M (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:125732)
+	at D9.L (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:124837)
+	at Hf.value (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:123633)
+	at v.C (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2330)
+	at v.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2548)
+	at Kl.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:9451)
+	at Hf.value (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:407:9341)
+	at v.C (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2330)
+	at v.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2548)
+	at Kl.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:9451)
+	at MessagePortMain.<anonymous> (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:407:7573)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2949)
+2026-05-20 00:18:32.497 [error] [Window] [Extension Host] Error getting git API: Error: Git model not found
+	at Object.getAPI (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\git\dist\main.js:2:576134)
+	at PS (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2012090)
+	at jS (e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2012311)
+	at e:\Users\GoingIForMal\AppData\Local\Programs\Antigravity\resources\app\extensions\antigravity\dist\extension.js:2:2138267
+	at sp.h (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:117:44683)
+	at sp.$executeContributedCommand (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:117:45574)
+	at D9.S (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:126864)
+	at D9.Q (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:126644)
+	at D9.M (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:125732)
+	at D9.L (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:124837)
+	at Hf.value (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:123633)
+	at v.C (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2330)
+	at v.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2548)
+	at Kl.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:9451)
+	at Hf.value (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:407:9341)
+	at v.C (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2330)
+	at v.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2548)
+	at Kl.fire (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:30:9451)
+	at MessagePortMain.<anonymous> (file:///e:/Users/GoingIForMal/AppData/Local/Programs/Antigravity/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:407:7573)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2949)
+2026-05-20 00:19:52.093 [info] [cloudcode] [CloudCode] POST v1internal:loadCodeAssist traceId: 93f6e94723aa822
+2026-05-20 00:19:53.121 [info] [cloudcode] [CloudCode] POST v1internal:loadCodeAssist traceId: 1ca4ae3969883024
+2026-05-20 00:19:53.121 [error] [cloudcode] Failed to set Cloud Code URL on Language Server: Language server client has not been initialized!
+2026-05-20 00:19:54.056 [info] [cloudcode] [CloudCode] POST v1internal:fetchAvailableModels traceId: 8abf3614be0e11bf
+2026-05-20 00:20:35.906 [warning] [rendererPerf] Renderer reported VERY LONG TASK (642ms), starting profiling session '05207597-4266-45d6-b550-ae51c7e3e645'
+2026-05-20 00:20:36.537 [warning] [Main] [perf] profiling STARTED 05207597-4266-45d6-b550-ae51c7e3e645
+2026-05-20 00:20:41.591 [warning] [Main] [perf] profiling DONE 05207597-4266-45d6-b550-ae51c7e3e645
+2026-05-20 00:20:58.614 [warning] [Main] [perf] profiling STARTED 05207597-4266-45d6-b550-ae51c7e3e645
+2026-05-20 00:21:03.678 [warning] [Main] [perf] profiling DONE 05207597-4266-45d6-b550-ae51c7e3e645
