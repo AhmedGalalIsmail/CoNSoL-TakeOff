@@ -16,7 +16,7 @@ Imports System.Reflection
 <Assembly: System.Reflection.AssemblyCompanyAttribute("Desktop"),  _
  Assembly: System.Reflection.AssemblyConfigurationAttribute("Debug"),  _
  Assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0"),  _
- Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3198aee83cab6ea3cffd2eb8703d206a6bee402f"),  _
+ Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a168430dc45eac2964dc9c4bb94e7b687e7152ef"),  _
  Assembly: System.Reflection.AssemblyProductAttribute("Desktop"),  _
  Assembly: System.Reflection.AssemblyTitleAttribute("Desktop"),  _
  Assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0"),  _

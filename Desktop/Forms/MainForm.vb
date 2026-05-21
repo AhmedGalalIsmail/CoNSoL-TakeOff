@@ -1,10 +1,11 @@
-﻿'Filename: Desktop/Forms/MainForm.vb
+'Filename: Desktop/Forms/MainForm.vb
 Option Strict On
 Imports System.Security.Cryptography
-Imports Infrastructure.IO
-Imports Domain.Entities
-Imports Desktop.Controls
 Imports Desktop.CompositionRoot
+Imports Desktop.Controls
+Imports Domain.Entities
+Imports Domain.Services
+Imports Infrastructure.IO
 
 Namespace Forms
     ''' <summary>
@@ -51,6 +52,10 @@ Namespace Forms
         ''' <summary>Current drawing layout (canvas state).</summary>
         Private CurrentLayout As CanvasLayout
 
+        ' ? CONTROL NAME: layerPanel
+        Private layerPanel As LayerPanel
+        Private layerManager As New LayerManager()
+
         ''' <summary>
         ''' Initializes the main form with UI components and event handlers.
         ''' </summary>
@@ -65,10 +70,13 @@ Namespace Forms
         ''' All exceptions are logged but not re-thrown to allow application startup.
         ''' </remarks>
         Public Sub New()
+            layerPanel = New LayerPanel()
+            layerPanel.Initialize(layerManager)
+
             Try
                 Logger.Info("Initializing MainForm")
 
-                ' ✅ MUST BE FIRST: Designer-generated initialization
+                ' ? MUST BE FIRST: Designer-generated initialization
                 InitializeComponent()
 
                 ' Set form properties
@@ -83,6 +91,7 @@ Namespace Forms
                 Me.Controls.Add(_canvas)
                 Me.Controls.Add(_left)
                 Me.Controls.Add(_status)
+                Me.Controls.Add(layerPanel)
 
                 ' Load documentation (non-critical)
                 LoadReadmeFiles()

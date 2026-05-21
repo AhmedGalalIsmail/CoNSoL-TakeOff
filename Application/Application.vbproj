@@ -10,6 +10,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.vbproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.vbproj" />
   </ItemGroup>

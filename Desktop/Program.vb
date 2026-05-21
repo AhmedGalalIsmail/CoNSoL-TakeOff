@@ -1,4 +1,4 @@
-﻿'Filename: Desktop/Program.vb
+'Filename: Desktop/Program.vb
 Option Strict On
 Imports System.Windows.Forms.Application
 Imports System.Threading
@@ -25,7 +25,7 @@ Module Program
 
     Private Sub OnUnhandledException(sender As Object, e As UnhandledExceptionEventArgs)
         Dim ex = TryCast(e.ExceptionObject, Exception)
-        CompositionRoot.Logger.Error("Unhandled exception", ex)
+        ' CompositionRoot.Logger.Error("Unhandled exception", ex)
     End Sub
 End Module
 'End Namespace

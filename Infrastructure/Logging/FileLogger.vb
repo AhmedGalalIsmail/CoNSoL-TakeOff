@@ -1,4 +1,4 @@
-﻿'Filename: Infrastructure/Logging/FileLogger.vb
+'Filename: Infrastructure/Logging/FileLogger.vb
 Option Strict On
 Imports System.IO
 Imports System.Text
@@ -55,6 +55,11 @@ Namespace Logging
             Write("WARN", message)
         End Sub
 
+        'Debug
+        Public Sub Debug(message As String) Implements ILogger.Debug
+            Write("Debug", message)
+        End Sub
+
         ''' <summary>Logs an error message.</summary>
         ''' <param name="message">Error message to log</param>
         ''' <remarks>Used when an error occurs but operation can continue.</remarks>
@@ -92,7 +97,7 @@ Namespace Logging
                     File.AppendAllText(_logPath, logEntry & vbCrLf)
                 Catch ex As Exception
                     ' Silent fail - don't throw on logging errors
-                    Debug.WriteLine($"Failed to write log: {ex.Message}")
+                    System.Diagnostics.Debug.WriteLine($"Failed to write log: {ex.Message}")
                 End Try
             End SyncLock
         End Sub

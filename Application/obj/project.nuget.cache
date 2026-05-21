@@ -1,8 +1,21 @@
 {
   "version": 2,
-  "dgSpecHash": "MS9qoRaudCA=",
+  "dgSpecHash": "ABON0A4r3No=",
   "success": true,
   "projectFilePath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Application\\Application.vbproj",
-  "expectedPackageFiles": [],
-  "logs": []
+  "expectedPackageFiles": [
+    "C:\\Users\\GoingIForMal\\.nuget\\packages\\newtonsoft.json\\13.0.4\\newtonsoft.json.13.0.4.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU3003",
+      "level": "Warning",
+      "message": "Package 'Newtonsoft.Json 13.0.4' from source 'https://api.nuget.org/v3/index.json': The package signature is invalid or cannot be verified on this platform.",
+      "projectPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Application\\Application.vbproj",
+      "warningLevel": 1,
+      "filePath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Application\\Application.vbproj",
+      "libraryId": "Newtonsoft.Json",
+      "targetGraphs": []
+    }
+  ]
 }
