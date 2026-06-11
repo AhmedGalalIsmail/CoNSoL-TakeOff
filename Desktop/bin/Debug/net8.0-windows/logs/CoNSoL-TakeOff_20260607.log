@@ -1,0 +1,11 @@
+﻿2026-06-07T04:37:28.1879534Z [INFO] Bootstrap complete
+2026-06-07T04:37:53.2007065Z [INFO] Initializing MainForm
+2026-06-07T04:37:53.2593341Z [INFO] Initializing tool buttons
+2026-06-07T04:37:53.2618526Z [INFO] Tool buttons created and added to panel
+2026-06-07T04:37:53.2906457Z [INFO] Loading README files
+2026-06-07T04:37:53.2913445Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\README.md
+2026-06-07T04:37:53.2918227Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\README.md
+2026-06-07T04:37:53.2923005Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Application\README.md
+2026-06-07T04:37:53.2989586Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Domain\README.md
+2026-06-07T04:37:53.2994772Z [INFO] README load complete: 4 files found
+2026-06-07T04:37:53.2999959Z [INFO] MainForm initialization complete

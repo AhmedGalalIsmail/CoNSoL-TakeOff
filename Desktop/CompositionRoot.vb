@@ -1,8 +1,9 @@
-﻿'Filename: Desktop/CompositionRoot.vb
+'Filename: Desktop/CompositionRoot.vb
 Option Strict On
-Imports Infrastructure.Logging
+Imports System.IO
 Imports Infrastructure.Config
 Imports Infrastructure.Crypto
+Imports Infrastructure.Logging
 
 
 Public Class CompositionRoot
@@ -12,7 +13,11 @@ Public Class CompositionRoot
 
     Public Shared Sub Bootstrap()
         Config = AppConfig.Load("appsettings.json")
-        Logger = New FileLogger("CoNSoL", Config.LogDir)
+
+        Dim baseDir = AppDomain.CurrentDomain.BaseDirectory
+        Dim logDir = Path.Combine(baseDir, Config.LogDir)
+
+        Logger = New FileLogger(Config.AppName, logDir)
         Crypto = New CryptoService()
         Logger.Info("Bootstrap complete")
     End Sub

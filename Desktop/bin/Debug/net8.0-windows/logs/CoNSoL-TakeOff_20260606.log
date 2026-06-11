@@ -1,0 +1,147 @@
+﻿2026-06-06T04:47:00.7324628Z [INFO] Bootstrap complete
+2026-06-06T04:47:14.7410029Z [INFO] Initializing MainForm
+2026-06-06T04:47:14.7443519Z [INFO] Initializing tool buttons
+2026-06-06T04:47:14.7465884Z [INFO] Tool buttons created and added to panel
+2026-06-06T04:47:14.7621224Z [INFO] Loading README files
+2026-06-06T04:47:14.7629440Z [INFO] README not found: Desktop/README.md
+2026-06-06T04:47:14.7636728Z [INFO] README not found: Infrastructure/README.md
+2026-06-06T04:47:14.7643699Z [INFO] README not found: Application/README.md
+2026-06-06T04:47:14.7660842Z [INFO] README not found: Domain/README.md
+2026-06-06T04:47:14.7669714Z [INFO] README load complete: 0 files found
+2026-06-06T04:47:14.7674951Z [INFO] MainForm initialization complete
+2026-06-06T04:47:21.5831593Z [INFO] Tool clicked: Line
+2026-06-06T04:47:24.2943611Z [INFO] Tool clicked: Rectangle
+2026-06-06T04:47:28.4945128Z [INFO] Zoom In clicked
+2026-06-06T04:47:29.0941625Z [INFO] Zoom In clicked
+2026-06-06T04:47:32.5262304Z [INFO] Tool clicked: Select
+2026-06-06T04:47:40.1020430Z [INFO] Tool clicked: Pan
+2026-06-06T04:47:48.8704916Z [INFO] Zoom Out clicked
+2026-06-06T04:47:49.4308204Z [INFO] Zoom Out clicked
+2026-06-06T04:47:50.3505247Z [INFO] Zoom Out clicked
+2026-06-06T04:47:54.2144792Z [INFO] Grid toggle clicked
+2026-06-06T04:47:54.9920202Z [INFO] Grid toggle clicked
+2026-06-06T04:48:00.0537986Z [INFO] Tool clicked: Rectangle
+2026-06-06T04:48:03.2137855Z [INFO] Tool clicked: Line
+2026-06-06T04:48:16.3738667Z [INFO] Tool clicked: Ellipse
+2026-06-06T04:48:25.6699854Z [INFO] Tool clicked: Polyline
+2026-06-06T04:51:43.2706071Z [INFO] Tool clicked: Rectangle
+2026-06-06T04:58:31.2600157Z [INFO] Bootstrap complete
+2026-06-06T04:58:54.0862737Z [INFO] Initializing MainForm
+2026-06-06T04:58:54.0927706Z [INFO] Initializing tool buttons
+2026-06-06T04:58:54.0955734Z [INFO] Tool buttons created and added to panel
+2026-06-06T04:58:54.0988420Z [INFO] Loading README files
+2026-06-06T05:00:04.4628687Z [INFO] README not found: Desktop\README.md
+2026-06-06T05:08:30.7757046Z [INFO] Bootstrap complete
+2026-06-06T05:08:35.5684036Z [INFO] Initializing MainForm
+2026-06-06T05:08:35.5727691Z [INFO] Initializing tool buttons
+2026-06-06T05:08:35.5747450Z [INFO] Tool buttons created and added to panel
+2026-06-06T05:08:35.5777022Z [INFO] Loading README files
+2026-06-06T05:09:19.2442637Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\README.md
+2026-06-06T05:10:18.7760845Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\README.md
+2026-06-06T05:10:46.6231301Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Application\README.md
+2026-06-06T05:10:58.6889181Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Domain\README.md
+2026-06-06T05:11:03.1170323Z [INFO] README load complete: 4 files found
+2026-06-06T05:11:03.1182565Z [INFO] MainForm initialization complete
+2026-06-06T05:11:09.4851658Z [INFO] Tool clicked: Ellipse
+2026-06-06T05:11:12.1888264Z [INFO] Tool clicked: Polyline
+2026-06-06T05:11:15.1642004Z [INFO] Tool clicked: Line
+2026-06-06T05:11:17.8603346Z [INFO] Tool clicked: Rectangle
+2026-06-06T05:24:39.3046309Z [INFO] Bootstrap complete
+2026-06-06T05:24:40.2535785Z [INFO] Initializing MainForm
+2026-06-06T05:24:40.2569051Z [INFO] Initializing tool buttons
+2026-06-06T05:24:40.2597933Z [INFO] Tool buttons created and added to panel
+2026-06-06T05:24:40.2626598Z [INFO] Loading README files
+2026-06-06T05:24:40.2634484Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\README.md
+2026-06-06T05:24:40.2640964Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\README.md
+2026-06-06T05:24:40.2647751Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Application\README.md
+2026-06-06T05:24:40.2654488Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Domain\README.md
+2026-06-06T05:24:40.2660791Z [INFO] README load complete: 4 files found
+2026-06-06T05:24:40.2667166Z [INFO] MainForm initialization complete
+2026-06-06T05:24:42.6241576Z [INFO] Tool clicked: Polyline
+2026-06-06T05:25:12.6629787Z [INFO] Zoom In clicked
+2026-06-06T05:25:13.1744274Z [INFO] Zoom In clicked
+2026-06-06T05:25:16.7106927Z [INFO] Tool clicked: Line
+2026-06-06T05:25:58.5183643Z [INFO] Tool clicked: Ellipse
+2026-06-06T05:26:14.8459912Z [INFO] Tool clicked: Rectangle
+2026-06-06T05:26:24.8217456Z [INFO] Tool clicked: Pan
+2026-06-06T05:26:28.7823086Z [INFO] Zoom Out clicked
+2026-06-06T05:26:29.0301741Z [INFO] Zoom Out clicked
+2026-06-06T05:26:30.6219120Z [INFO] Tool clicked: Pan
+2026-06-06T05:27:22.3574314Z [INFO] Tool clicked: Polyline
+2026-06-06T05:30:52.1839596Z [INFO] Saving layout file dialog
+2026-06-06T05:32:43.8028744Z [INFO] Saving to file: C:\Users\GoingIForMal\Documents\myTakeOff2.takeoff
+2026-06-06T05:32:43.8038190Z [WARN] No layout to save (CurrentLayout is Nothing)
+2026-06-06T05:32:48.8689428Z [INFO] Opening layout file dialog
+2026-06-06T05:33:26.6839358Z [INFO] Open dialog canceled
+2026-06-06T05:33:28.9466517Z [INFO] Saving layout file dialog
+2026-06-06T05:33:43.5336368Z [INFO] Saving to file: C:\Users\GoingIForMal\Documents\myTakeOff2.takeoff
+2026-06-06T05:33:43.5508178Z [WARN] No layout to save (CurrentLayout is Nothing)
+2026-06-06T05:33:47.1706011Z [INFO] Saving layout file dialog
+2026-06-06T05:36:29.6813110Z [INFO] Save dialog canceled
+2026-06-06T05:38:34.3671205Z [INFO] Saving layout file dialog
+2026-06-06T05:40:19.7058297Z [INFO] Saving to file: C:\Users\GoingIForMal\Documents\myTakeOff22.takeoff
+2026-06-06T05:44:26.6152536Z [WARN] No layout to save (CurrentLayout is Nothing)
+2026-06-06T05:44:29.5342946Z [INFO] Saving layout file dialog
+2026-06-06T05:44:43.3431511Z [INFO] Saving to file: C:\Users\GoingIForMal\Documents\myTakeOff2.takeoff
+2026-06-06T05:44:43.3437115Z [WARN] No layout to save (CurrentLayout is Nothing)
+2026-06-06T05:45:04.8381558Z [INFO] Opening layout file dialog
+2026-06-06T05:45:07.1329451Z [INFO] Open dialog canceled
+2026-06-06T05:45:21.2301920Z [INFO] Tool clicked: Line
+2026-06-06T05:45:31.1098636Z [INFO] Saving layout file dialog
+2026-06-06T05:46:10.9625317Z [INFO] Bootstrap complete
+2026-06-06T05:46:11.4293103Z [INFO] Initializing MainForm
+2026-06-06T05:46:32.3187499Z [INFO] Initializing tool buttons
+2026-06-06T05:46:32.3212998Z [INFO] Tool buttons created and added to panel
+2026-06-06T05:46:32.3234954Z [INFO] Loading README files
+2026-06-06T05:46:32.3241967Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\README.md
+2026-06-06T05:46:32.3247793Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\README.md
+2026-06-06T05:46:32.3253201Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Application\README.md
+2026-06-06T05:46:32.3258825Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Domain\README.md
+2026-06-06T05:46:32.3264040Z [INFO] README load complete: 4 files found
+2026-06-06T05:46:32.3268848Z [INFO] MainForm initialization complete
+2026-06-06T05:46:34.1909951Z [INFO] Tool clicked: Polyline
+2026-06-06T05:46:36.5574682Z [INFO] Tool clicked: Polyline
+2026-06-06T05:46:43.6299614Z [INFO] Tool clicked: Line
+2026-06-06T05:46:48.2052278Z [INFO] Tool clicked: Ellipse
+2026-06-06T05:46:55.2215878Z [INFO] Zoom In clicked
+2026-06-06T05:46:55.6777614Z [INFO] Zoom In clicked
+2026-06-06T05:47:03.0295672Z [INFO] Tool clicked: Pan
+2026-06-06T05:47:12.5972444Z [INFO] Tool clicked: Rectangle
+2026-06-06T05:47:18.7573207Z [INFO] Tool clicked: Select
+2026-06-06T05:48:21.6931684Z [INFO] Layout saved
+2026-06-06T05:48:54.5414562Z [INFO] Opening layout file dialog
+2026-06-06T05:49:20.5450456Z [INFO] Open dialog canceled
+2026-06-06T05:49:22.2851165Z [INFO] Creating new layout
+2026-06-06T05:49:22.2857678Z [INFO] New layout created: dbdf6d91-cc2c-43da-a43c-2b44e6dc82f8
+2026-06-06T05:49:22.2881552Z [INFO] New layout ready for drawing
+2026-06-06T05:49:23.5486007Z [INFO] Opening layout file dialog
+2026-06-06T05:49:25.5550923Z [INFO] Opening file: C:\Users\GoingIForMal\Documents\myTakeOff.takeoff
+2026-06-06T05:49:25.9225271Z [INFO] File loaded. Layout ID: ab482746-9845-42c6-b82c-f718b3c93f6b
+2026-06-06T05:49:26.0942350Z [INFO] Layout opened successfully: ab482746-9845-42c6-b82c-f718b3c93f6b
+2026-06-06T05:49:29.8045879Z [INFO] Creating new layout
+2026-06-06T05:49:29.8051897Z [INFO] New layout created: 37f2335d-7c0c-4852-a1f3-86c06e05bff5
+2026-06-06T05:49:29.8072067Z [INFO] New layout ready for drawing
+2026-06-06T05:49:34.7961853Z [INFO] Tool clicked: Select
+2026-06-06T05:49:37.2840006Z [INFO] Tool clicked: Ellipse
+2026-06-06T05:49:43.8680744Z [INFO] Tool clicked: Polyline
+2026-06-06T05:49:54.0519176Z [INFO] Tool clicked: Rectangle
+2026-06-06T05:49:59.2120343Z [INFO] Tool clicked: Select
+2026-06-06T05:50:49.5237605Z [INFO] Tool clicked: Ellipse
+2026-06-06T05:50:54.6834797Z [INFO] Tool clicked: Polyline
+2026-06-06T05:51:03.4035153Z [INFO] Tool clicked: Select
+2026-06-06T05:51:06.9633909Z [INFO] Tool clicked: Pan
+2026-06-06T05:51:11.3007917Z [INFO] Zoom Out clicked
+2026-06-06T05:51:11.9076325Z [INFO] Zoom Out clicked
+2026-06-06T05:51:12.5072147Z [INFO] Zoom Out clicked
+2026-06-06T05:51:13.0038125Z [INFO] Zoom Out clicked
+2026-06-06T05:51:17.9553886Z [INFO] Tool clicked: Select
+2026-06-06T05:52:09.2506702Z [INFO] Layout saved
+2026-06-06T05:52:12.3230237Z [INFO] Opening layout file dialog
+2026-06-06T05:52:43.2971777Z [INFO] Open dialog canceled
+2026-06-06T05:52:45.9474604Z [INFO] Opening layout file dialog
+2026-06-06T05:52:50.2566432Z [INFO] Opening file: C:\Users\GoingIForMal\Documents\myTakeOff.takeoff
+2026-06-06T05:52:50.5112836Z [INFO] File loaded. Layout ID: ab482746-9845-42c6-b82c-f718b3c93f6b
+2026-06-06T05:52:50.5133400Z [INFO] Layout opened successfully: ab482746-9845-42c6-b82c-f718b3c93f6b
+2026-06-06T05:53:15.6247266Z [INFO] Layout saved
+2026-06-06T05:53:19.9546652Z [INFO] Opening layout file dialog
+2026-06-06T05:54:23.7068678Z [INFO] Open dialog canceled

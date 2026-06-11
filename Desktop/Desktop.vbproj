@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ApplicationEvents.vb" />
     <Compile Remove="Forms\MainForm.Designer.vb" />
     <Compile Remove="My Project\Application.Designer.vb" />
   </ItemGroup>

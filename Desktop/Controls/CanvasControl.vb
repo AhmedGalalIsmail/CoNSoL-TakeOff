@@ -1,4 +1,4 @@
-﻿
+
 'Filename: Desktop/Controls/CanvasControl.vb
 #Region "Info. & Imports"
 'Option Strict On
@@ -371,12 +371,6 @@ thickness As Single
             End If
         End If
 
-        'If _tool = ToolType.Pan Then
-        '    _startPt = e.Location
-        '    Cursor = Cursors.SizeAll
-        '    Return
-        'End If
-
         Select Case _tool
             Case ToolType.Pan
                 _startPt = e.Location
@@ -394,13 +388,21 @@ thickness As Single
                 _startPt = lp
                 _tempShape = New RectShape() With {.TopLeft = lp, .Width = 0, .Height = 0}
             Case ToolType.Polyline
+                '_isDrawing = True
+                '_startPt = lp
+                ''_tempShape = New PolylineShape()
+
                 _isDrawing = True
-                _startPt = lp
-                '_tempShape = New PolylineShape()
+                _tempShape = New PolylineShape()
+                CType(_tempShape, PolylineShape).Points.Add(lp)
             Case ToolType.Ellipse
                 _isDrawing = True
                 _startPt = lp
-                '_tempShape = New EllipseShape() With {.TopLeft = lp, .Width = 0, .Height = 0}
+                _tempShape = New EllipseShape() With {
+                .Center = lp,
+                .RadiusX = 0,
+                .RadiusY = 0
+                }
         End Select
     End Sub
 
@@ -432,11 +434,15 @@ thickness As Single
                 r.TopLeft = New PointF(Math.Min(_startPt.X, lp.X), Math.Min(_startPt.Y, lp.Y))
             ElseIf TypeOf _tempShape Is EllipseShape Then
                 Dim ee = CType(_tempShape, EllipseShape)
-                ee.Width = Math.Abs(lp.X - _startPt.X)
-                ee.Height = Math.Abs(lp.Y - _startPt.Y)
-                ee.TopLeft = New PointF(Math.Min(_startPt.X, lp.X), Math.Min(_startPt.Y, lp.Y))
+                ee.RadiusX = Math.Abs(lp.X - _startPt.X)
+                ee.RadiusY = Math.Abs(lp.Y - _startPt.Y)
+                ee.Center = New PointF(Math.Min(_startPt.X, lp.X), Math.Min(_startPt.Y, lp.Y))
             ElseIf TypeOf _tempShape Is PolylineShape Then
-
+                'If _isDrawing Then
+                Dim pl = CType(_tempShape, PolylineShape)
+                    pl.Points.Add(lp)
+                    Invalidate()
+                'End If
             End If
             Invalidate()
         End If
@@ -742,16 +748,21 @@ End Class
 Public Class EllipseShape
     Inherits ShapeBase
 
-    Public Property TopLeft As PointF
-    Public Property Width As Single
-    Public Property Height As Single
+    'Public Property TopLeft As PointF
+    'Public Property Width As Single
+    'Public Property Height As Single
+
+    Public Property Center As PointF
+    Public Property RadiusX As Single
+    Public Property RadiusY As Single
+
 
     Public Overrides Sub Draw(g As Graphics, zoom As Single, pan As PointF, Optional pen As Pen = Nothing)
         Dim r = New RectangleF(
-        TopLeft.X * zoom + pan.X,
-        TopLeft.Y * zoom + pan.Y,
-        Width * zoom,
-        Height * zoom
+        Center.X * zoom + pan.X,
+        Center.Y * zoom + pan.Y,
+        RadiusX * zoom,
+        RadiusY * zoom
     )
         Using p As Pen = If(pen, New Pen(Color.MediumPurple, 2))
             g.DrawEllipse(p, r)
@@ -759,12 +770,12 @@ Public Class EllipseShape
     End Sub
 
     Public Overrides Function HitTest(lp As PointF) As Boolean
-        Dim rx = Width / 2.0F
-        Dim ry = Height / 2.0F
+        Dim rx = RadiusX / 2.0F
+        Dim ry = RadiusY / 2.0F
         If rx <= 0 OrElse ry <= 0 Then Return False
 
-        Dim cx = TopLeft.X + rx
-        Dim cy = TopLeft.Y + ry
+        Dim cx = Center.X + rx
+        Dim cy = Center.Y + ry
 
         Dim dx = (lp.X - cx) / rx
         Dim dy = (lp.Y - cy) / ry
@@ -774,32 +785,32 @@ Public Class EllipseShape
 
     Public Overrides Function GetBounds(zoom As Single, pan As PointF) As Rectangle
         Dim r = New RectangleF(
-        TopLeft.X * zoom + pan.X,
-        TopLeft.Y * zoom + pan.Y,
-        Width * zoom,
-        Height * zoom
+        Center.X * zoom + pan.X,
+        Center.Y * zoom + pan.Y,
+        RadiusX * zoom,
+        RadiusY * zoom
     )
         Return Rectangle.Round(r)
     End Function
 
     Public Overrides Function IsValid() As Boolean
-        Return Width >= 5 AndAlso Height >= 5
+        Return RadiusX >= 5 AndAlso RadiusY >= 5
     End Function
 
     Public Overrides Function ToGeometryJson() As String
         Return JsonSerializer.Serialize(New With {
-        .topLeft = New With {.x = TopLeft.X, .y = TopLeft.Y},
-        .width = Width,
-        .height = Height
+        .topLeft = New With {.x = Center.X, .y = Center.Y},
+        .width = RadiusX,
+        .height = RadiusY
     })
     End Function
 
     Public Overrides Sub FromGeometryJson(json As String)
         Dim doc = JsonDocument.Parse(json)
         Dim tl = doc.RootElement.GetProperty("topLeft")
-        TopLeft = New PointF(tl.GetProperty("x").GetSingle(), tl.GetProperty("y").GetSingle())
-        Width = doc.RootElement.GetProperty("width").GetSingle()
-        Height = doc.RootElement.GetProperty("height").GetSingle()
+        Center = New PointF(tl.GetProperty("x").GetSingle(), tl.GetProperty("y").GetSingle())
+        RadiusX = doc.RootElement.GetProperty("width").GetSingle()
+        RadiusY = doc.RootElement.GetProperty("height").GetSingle()
     End Sub
 End Class
 #End Region

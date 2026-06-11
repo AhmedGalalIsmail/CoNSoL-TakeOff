@@ -1,0 +1,34 @@
+﻿2026-06-05T22:18:28.3254628Z [INFO] Bootstrap complete
+2026-06-05T22:31:59.9436249Z [INFO] Bootstrap complete
+2026-06-05T22:48:34.1442749Z [INFO] Bootstrap complete
+2026-06-05T22:51:42.6205651Z [INFO] Bootstrap complete
+2026-06-05T22:55:10.7358197Z [INFO] Bootstrap complete
+2026-06-05T22:55:14.5757454Z [INFO] Initializing MainForm
+2026-06-05T22:55:14.5784596Z [INFO] Initializing tool buttons
+2026-06-05T22:55:14.5804816Z [INFO] Tool buttons created and added to panel
+2026-06-05T22:55:14.6008297Z [INFO] Loading README files
+2026-06-05T22:55:14.6017908Z [INFO] README not found: Desktop/README.md
+2026-06-05T22:55:14.6062872Z [INFO] README not found: Infrastructure/README.md
+2026-06-05T22:55:14.6068116Z [INFO] README not found: Application/README.md
+2026-06-05T22:55:14.6072997Z [INFO] README not found: Domain/README.md
+2026-06-05T22:55:14.6077830Z [INFO] README load complete: 0 files found
+2026-06-05T22:55:14.6082455Z [INFO] MainForm initialization complete
+2026-06-05T22:55:24.8862075Z [INFO] Tool clicked: Line
+2026-06-05T22:55:44.3103289Z [INFO] Tool clicked: Ellipse
+2026-06-05T22:55:46.2613869Z [INFO] Tool clicked: Polyline
+2026-06-05T22:55:48.0454146Z [INFO] Tool clicked: Rectangle
+2026-06-05T22:55:54.4220986Z [INFO] Creating new layout
+2026-06-05T22:55:54.4240735Z [INFO] New layout created: a305a47a-ed6a-4d57-93e8-9404f5e9028d
+2026-06-05T22:55:54.4264213Z [INFO] New layout ready for drawing
+2026-06-05T22:56:22.7330146Z [INFO] Tool clicked: Line
+2026-06-05T22:59:03.6335902Z [INFO] Bootstrap complete
+2026-06-05T22:59:05.5692934Z [INFO] Initializing MainForm
+2026-06-05T22:59:05.5718104Z [INFO] Initializing tool buttons
+2026-06-05T22:59:05.5741647Z [INFO] Tool buttons created and added to panel
+2026-06-05T22:59:05.5762399Z [INFO] Loading README files
+2026-06-05T22:59:05.5769203Z [INFO] README not found: Desktop/README.md
+2026-06-05T22:59:05.5775727Z [INFO] README not found: Infrastructure/README.md
+2026-06-05T22:59:05.5781352Z [INFO] README not found: Application/README.md
+2026-06-05T22:59:05.5786405Z [INFO] README not found: Domain/README.md
+2026-06-05T22:59:05.5789950Z [INFO] README load complete: 0 files found
+2026-06-05T22:59:05.5793499Z [INFO] MainForm initialization complete

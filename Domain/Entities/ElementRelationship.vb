@@ -1,6 +1,5 @@
-﻿' src\CoNSoL.Domain\Entities\ElementRelationship.vb
+' src\CoNSoL.Domain\Entities\ElementRelationship.vb
 ' New: element relationship model + enum
-
 Option Strict On
 
 Namespace Entities

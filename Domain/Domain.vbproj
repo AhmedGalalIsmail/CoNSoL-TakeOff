@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Entities\LayerManager.vb" />
     <Compile Remove="Utilities\Geometry1.vb" />
   </ItemGroup>
 
