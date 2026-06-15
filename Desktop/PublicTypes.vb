@@ -1,4 +1,4 @@
-ï»¿
+
 #Region "Info. & Imports"
 ' =========================================================
 ' Filename: PublicTypes.vb
@@ -530,11 +530,315 @@ Namespace Desktop
 	End Structure
 #End Region
 
+
+#Region "Public Structure SEGMENT"
+	''' <summary>
+	''' Defines a line segment in 2D space using two endpoints (P0 and P1). The segment is represented by four integer fields (X0, Y0, X1, Y1) corresponding to the coordinates of the endpoints. The structure provides properties to access the endpoints as System.Drawing.Point structures, as well as methods for geometric calculations such as length and direction.
+	''' </summary>
+	<CLSCompliantAttribute(True), Serializable(), StructLayout(LayoutKind.Sequential, Pack:=4)>
+	<DebuggerDisplay("{GetDebuggerDisplay(),nq}")>
+	Public Structure SEGMENT
+
+#Region "Public Members"
+		''' <summary>Defines a line segment in 2D space using two endpoints (P0 and P1).<br></br> The segment is represented by four integer fields (X0, Y0, X1, Y1) corresponding to the coordinates of the endpoints.<br></br> The structure provides properties to access the endpoints as System.Drawing.Point structures, as well as methods for geometric calculations such as length and direction.</summary>
+		Dim X0 As Integer
+		''' <summary>The Y coordinate of the first endpoint (P0) of the segment.</summary>
+		Dim Y0 As Integer
+		''' <summary>The X coordinate of the second endpoint (P1) of the segment.</summary>
+		Dim X1 As Integer
+		''' <summary>The Y coordinate of the second endpoint (P1) of the segment.</summary>
+		Dim Y1 As Integer
+
+		''' <summary>
+		''' Gets or sets the first endpoint (P0) of the segment as a System.Drawing.Point structure. The getter constructs a Point from the X0 and Y0 fields, while the setter updates X0 and Y0 based on the provided Point's coordinates. Similarly, the P1 property manages the second endpoint using X1 and Y1.
+		''' </summary>
+		''' <returns>
+		''' A System.Drawing.Point representing the first endpoint (P0) of the segment, constructed from the X0 and Y0 fields. Setting this property updates X0 and Y0 to match the coordinates of the provided Point. The P1 property behaves similarly for the second endpoint.
+		''' </returns>
+		Public Property P0() As System.Drawing.Point
+			Get
+				Return New System.Drawing.Point(X0, Y0)
+			End Get
+			Set(ByVal value As System.Drawing.Point)
+				X0 = value.X
+				Y0 = value.Y
+			End Set
+		End Property
+
+		''' <summary>
+		''' Gets or sets the second endpoint (P1) of the segment as a System.Drawing.Point structure. The getter constructs a Point from the X1 and Y1 fields, while the setter updates X1 and Y1 based on the provided Point's coordinates. The P0 property manages the first endpoint using X0 and Y0 in a similar manner.
+		''' </summary>
+		''' <returns>
+		''' A System.Drawing.Point representing the second endpoint (P1) of the segment, constructed from the X1 and Y1 fields. Setting this property updates X1 and Y1 to match the coordinates of the provided Point. The P0 property behaves similarly for the first endpoint.
+		''' </returns>
+		Public Property P1() As System.Drawing.Point
+			Get
+				Return New System.Drawing.Point(X1, Y1)
+			End Get
+			Set(ByVal value As System.Drawing.Point)
+				X1 = value.X
+				Y1 = value.Y
+			End Set
+		End Property
+#End Region
+
+#Region "Constructors"
+		''' <summary>
+		''' Initializes a new instance of the SEGMENT structure by copying the coordinates from another SEGMENT instance.
+		''' </summary>
+		''' <param name="aSEGMENT"></param>
+		Public Sub New(ByVal aSEGMENT As SEGMENT)
+			Try
+				Me.X0 = aSEGMENT.X0
+				Me.Y0 = aSEGMENT.Y0
+				Me.X1 = aSEGMENT.X1
+				Me.Y1 = aSEGMENT.Y1
+			Catch ex As Exception
+				MsgBox(ex.Message)
+			End Try
+		End Sub
+
+		''' <summary>
+		''' Initializes a new instance of the SEGMENT structure with specified endpoint coordinates.
+		''' </summary>
+		''' <param name="X0"></param>
+		''' <param name="Y0"></param>
+		''' <param name="X1"></param>
+		''' <param name="Y1"></param>
+		Public Sub New(ByVal X0 As Integer, ByVal Y0 As Integer, ByVal X1 As Integer, ByVal Y1 As Integer)
+			Try
+				Me.X0 = X0
+				Me.Y0 = Y0
+				Me.X1 = X1
+				Me.Y1 = Y1
+			Catch ex As Exception
+				MsgBox(ex.Message)
+			End Try
+		End Sub
+
+		''' <summary>
+		''' Initializes a new instance of the SEGMENT structure using two System.Drawing.Point structures as endpoints.
+		''' </summary>
+		''' <param name="P0"></param>
+		''' <param name="P1"></param>
+		Public Sub New(ByVal P0 As System.Drawing.Point, ByVal P1 As System.Drawing.Point)
+			Try
+				Me.X0 = P0.X
+				Me.Y0 = P0.Y
+				Me.X1 = P1.X
+				Me.Y1 = P1.Y
+			Catch ex As Exception
+				MsgBox(ex.Message)
+			End Try
+		End Sub
+#End Region
+
+#Region "Public Functions"
+
+		''' <summary>
+		''' Determines if a given X coordinate falls within the horizontal bounds of the segment.
+		''' </summary>
+		''' <param name="XQuote">
+		''' The X coordinate to test for containment within the segment's horizontal range.
+		''' </param>
+		''' <returns>
+		''' True if XQuote is between the X coordinates of P0 and P1 (inclusive); otherwise, False.
+		''' </returns>
+		Public Function ContainsX(ByVal XQuote As Integer) As Boolean
+			If (XQuote >= P0.X) AndAlso (XQuote <= P1.X) Then  '(Valido se P1 a sinistra di P0)
+				Return True
+			Else
+				If (XQuote >= P1.X) AndAlso (XQuote <= P0.X) Then  '(Valido se P0 a sinistra di P1)
+					Return True
+				End If
+			End If
+			Return False
+		End Function
+
+		''' <summary>
+		''' Determines if a given Y coordinate falls within the vertical bounds of the segment.
+		''' </summary>
+		''' <param name="YQuote">
+		''' The Y coordinate to test for containment within the segment's vertical range.
+		''' </param>
+		''' <returns>
+		''' True if YQuote is between the Y coordinates of P0 and P1 (inclusive); otherwise, False.
+		''' </returns>
+		Public Function MediumPoint() As System.Drawing.Point
+			Try
+				Dim retVal As System.Drawing.Point
+				retVal.X = CInt((Me.X0 + Me.X1) / 2)
+				retVal.Y = CInt((Me.Y0 + Me.Y1) / 2)
+				Return retVal
+			Catch ex As Exception
+				MsgBox(ex.Message)
+			End Try
+		End Function
+
+		''' <summary>
+		''' Returns the length of the segment defined by points P0 and P1.
+		''' </summary>
+		''' <param name="P0">
+		''' The starting point of the segment, represented as a System.Drawing.Point structure.
+		''' </param>
+		''' <param name="P1">
+		''' The ending point of the segment, represented as a System.Drawing.Point structure.
+		''' </param>
+		''' <returns>
+		''' The length of the segment as a Double. Returns 0 if an error occurs (e.g., overflow).
+		''' </returns>
+		Public Shared Function SegmentModule(ByVal P0 As System.Drawing.Point, ByVal P1 As System.Drawing.Point) As Double
+			Try
+				Return System.Math.Sqrt(System.Math.Pow(P1.X - P0.X, 2) + System.Math.Pow(P1.Y - P0.Y, 2))
+			Catch ex As Exception
+				Return 0
+			End Try
+		End Function
+
+		''' <summary>
+		''' Returns the length of the segment (distance between P0 and P1)
+		''' </summary>
+		''' <returns>
+		''' The length of the segment as a Double. Returns 0 if an error occurs (e.g., overflow).
+		''' </returns>
+		Public Function SegmentModule() As Double
+			Try
+				Return System.Math.Sqrt(System.Math.Pow(X1 - X0, 2) + System.Math.Pow(Y1 - Y0, 2))
+			Catch ex As Exception
+				Return 0
+			End Try
+		End Function
+
+		''' <summary>
+		''' Returns the direction (angle in radians) of the segment ...
+		''' </summary>
+		''' <returns></returns>
+		''' <remarks></remarks>
+		Public Function SegmentDirection() As Double
+			Try
+				Dim dblHyp As Double = 0
+				Dim dblSin As Double = 0
+				Dim RefX As Double = 0
+				Dim RefY As Double = 0
+				'I translate the segment so that it starts from the origin...
+				RefX = X1 - X0
+				RefY = -(Y1 - Y0)
+				'Memo: In Windows, the Y-axis is inverted...
+				'Reverting to the standard coordinate system to
+				'apply trigonometric formulas...'
+
+				If (RefY = 0) Then
+					'Horizontal segment...
+					If (RefX > 0) Then
+						'Null angle ...
+						Return 0
+					Else
+						'Flat angle...
+						Return System.Math.PI
+					End If
+				End If
+
+				If (RefX = 0) Then
+					'Vertical segment...
+					If (RefY > 0) Then
+						Return System.Math.PI / 2
+					Else
+						Return -System.Math.PI / 2
+					End If
+				End If
+
+				'If I've gotten this far,
+				'the angle is not a multiple of Pi/2...
+				If (RefX > 0) Then
+					If (RefY > 0) Then
+						'First quadrant ....
+						dblHyp = System.Math.Sqrt((RefX * RefX + RefY * RefY))    'Ipotenusa ...
+						dblSin = RefY / dblHyp
+						Return System.Math.Atan(dblSin / System.Math.Sqrt(-dblSin * dblSin + 1))
+					Else
+						'Fourth quadrant ...
+						RefY = -RefY
+						dblHyp = System.Math.Sqrt((RefX * RefX + RefY * RefY))    'Ipotenusa ...
+						dblSin = RefY / dblHyp
+						Return (2 * System.Math.PI) - System.Math.Atan(dblSin / System.Math.Sqrt(-dblSin * dblSin + 1))
+					End If
+				Else
+					If (RefY > 0) Then
+						'Second quadrant ...
+						RefX = -RefX
+						dblHyp = System.Math.Sqrt((RefX * RefX + RefY * RefY))  'Ipotenusa ...
+						dblSin = CDbl(RefY) / dblHyp
+						Return -System.Math.Atan(dblSin / System.Math.Sqrt(-dblSin * dblSin + 1)) + System.Math.PI
+					Else
+						'Third quadrant ...
+						RefX = -RefX
+						RefY = -RefY
+						dblHyp = System.Math.Sqrt((RefX * RefX + RefY * RefY))  'Ipotenusa ...
+						dblSin = RefY / dblHyp
+						Return System.Math.Atan(dblSin / System.Math.Sqrt(-dblSin * dblSin + 1)) + System.Math.PI
+					End If
+				End If
+			Catch ex As Exception
+				Return 0
+			End Try
+		End Function
+#End Region
+
+#Region "Operators"
+		''' <summary>
+		''' Determines if two segments are equal by comparing their endpoints.
+		''' </summary>
+		''' <param name="S1">
+		''' The first segment to compare, represented as a SEGMENT structure with endpoints (X0, Y0) and (X1, Y1).
+		''' </param>
+		''' <param name="S2">
+		''' The second segment to compare, represented as a SEGMENT structure with endpoints (X0, Y0) and (X1, Y1).
+		''' </param>
+		''' <returns>
+		''' True if S1 and S2 have the same endpoints (regardless of order); otherwise, False.
+		''' </returns>
+		Public Shared Operator =(ByVal S1 As SEGMENT, ByVal S2 As SEGMENT) As Boolean
+			If (S1.X0 = S2.X0) AndAlso (S1.X1 = S2.X1) AndAlso (S1.Y0 = S2.Y0) AndAlso (S1.Y1 = S2.Y1) Then
+				Return True
+			Else
+				Return False
+			End If
+		End Operator
+
+		''' <summary>
+		''' Determines if two segments are not equal by comparing their endpoints.
+		''' </summary>
+		''' <param name="S1">
+		''' The first segment to compare, represented as a SEGMENT structure with endpoints (X0, Y0) and (X1, Y1).
+		''' </param>
+		''' <param name="S2">
+		''' The second segment to compare, represented as a SEGMENT structure with endpoints (X0, Y0) and (X1, Y1).
+		''' </param>
+		''' <returns>
+		''' True if S1 and S2 have different endpoints; otherwise, False.
+		''' </returns>
+		Public Shared Operator <>(ByVal S1 As SEGMENT, ByVal S2 As SEGMENT) As Boolean
+			If (S1.X0 <> S2.X0) Or (S1.X1 <> S2.X1) Or (S1.Y0 <> S2.Y0) Or (S1.Y1 <> S2.Y1) Then
+				Return True
+			Else
+				Return False
+			End If
+		End Operator
+
+		Private Function GetDebuggerDisplay() As String
+			Return ToString()
+		End Function
+#End Region
+
+
+	End Structure
+#End Region
+
 End Namespace
 
 '#Region "Info. & Imports"
 '' =========================================================
-'' Filename: PublicTypes.vb â€” Refactored geometry primitives
+'' Filename: PublicTypes.vb — Refactored geometry primitives
 '' =========================================================
 'Option Strict On
 'Option Infer On
@@ -556,7 +860,7 @@ End Namespace
 
 'Public Enum enClickAction
 '	None = 0
-'	' NOTE: value 1 intentionally unused in legacy API â€” preserve numbering
+'	' NOTE: value 1 intentionally unused in legacy API — preserve numbering
 '	Zoom = 2
 '	MeasureDistance = 3
 'End Enum
@@ -973,7 +1277,7 @@ End Namespace
 '		Return CSng(Math.Sqrt(dx * dx + dy * dy))
 '	End Function
 
-'	' 0Â° to the right, increasing clockwise (Windows Y grows downward)
+'	' 0° to the right, increasing clockwise (Windows Y grows downward)
 '	Public Function SegmentDirection() As Single
 '		Dim dx = X1 - X0, dy = Y1 - Y0
 '		Dim angle = CSng(Math.Atan2(dy, dx) * 180.0 / Math.PI)
