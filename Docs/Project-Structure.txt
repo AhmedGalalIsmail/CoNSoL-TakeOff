@@ -17,80 +17,8 @@ E:\Users\GoingIForMal\CoNSoL-TakeOff>tree /f
 │   │   TakeOffContext.vb
 │   │   TakeOffResult.vb
 │   │
-│   ├───bin
-│   │   ├───Debug
-│   │   │   └───net8.0
-│   │   │       │   Application.deps.json
-│   │   │       │   Application.dll
-│   │   │       │   Application.pdb
-│   │   │       │   brotlicommon.dll
-│   │   │       │   brotlidec.dll
-│   │   │       │   bz2.dll
-│   │   │       │   Domain.dll
-│   │   │       │   Domain.pdb
-│   │   │       │   freetype.dll
-│   │   │       │   Ijwhost.dll
-│   │   │       │   Infrastructure.dll
-│   │   │       │   Infrastructure.pdb
-│   │   │       │   jpeg62.dll
-│   │   │       │   leptonica-1.78.0.dll
-│   │   │       │   libpng16.dll
-│   │   │       │   lzma.dll
-│   │   │       │   tiff.dll
-│   │   │       │   webp.dll
-│   │   │       │   zlib1.dll
-│   │   │       │
-│   │   │       ├───x64
-│   │   │       │       leptonica-1.82.0.dll
-│   │   │       │       tesseract50.dll
-│   │   │       │
-│   │   │       └───x86
-│   │   │               leptonica-1.82.0.dll
-│   │   │               tesseract50.dll
-│   │   │
-│   │   └───Release
-│   │       └───net8.0
 │   ├───DTOs
-│   ├───obj
-│   │   │   Application.vbproj.nuget.dgspec.json
-│   │   │   Application.vbproj.nuget.g.props
-│   │   │   Application.vbproj.nuget.g.targets
-│   │   │   project.assets.json
-│   │   │   project.nuget.cache
-│   │   │
-│   │   ├───Debug
-│   │   │   └───net8.0
-│   │   │       │   .NETCoreApp,Version=v8.0.AssemblyAttributes.vb
-│   │   │       │   Applicat.4282EC6F.Up2Date
-│   │   │       │   Application.AssemblyInfo.vb
-│   │   │       │   Application.AssemblyInfoInputs.cache
-│   │   │       │   Application.assets.cache
-│   │   │       │   Application.dll
-│   │   │       │   Application.GeneratedMSBuildEditorConfig.editorconfig
-│   │   │       │   Application.pdb
-│   │   │       │   Application.sourcelink.json
-│   │   │       │   Application.vbproj.AssemblyReference.cache
-│   │   │       │   Application.vbproj.BuildWithSkipAnalyzers
-│   │   │       │   Application.vbproj.CoreCompileInputs.cache
-│   │   │       │   Application.vbproj.FileListAbsolute.txt
-│   │   │       │
-│   │   │       ├───ref
-│   │   │       │       Application.dll
-│   │   │       │
-│   │   │       └───refint
-│   │   │               Application.dll
-│   │   │
-│   │   └───Release
-│   │       └───net8.0
-│   │           │   .NETCoreApp,Version=v8.0.AssemblyAttributes.vb
-│   │           │   Application.AssemblyInfo.vb
-│   │           │   Application.AssemblyInfoInputs.cache
-│   │           │   Application.assets.cache
-│   │           │   Application.GeneratedMSBuildEditorConfig.editorconfig
-│   │           │   Application.vbproj.AssemblyReference.cache
-│   │           │
-│   │           ├───ref
-│   │           └───refint
+│   │   
 │   └───Services
 │           MaterialService.vb
 │           TakeOffService.vb
@@ -105,80 +33,6 @@ E:\Users\GoingIForMal\CoNSoL-TakeOff>tree /f
 │   │   PublicTypes.vb
 │   │   README.md
 │   │
-│   ├───bin
-│   │   ├───Debug
-│   │   │   └───net8.0-windows
-│   │   │       │   Application.dll
-│   │   │       │   Application.pdb
-│   │   │       │   appsettings.json
-│   │   │       │   brotlicommon.dll
-│   │   │       │   brotlidec.dll
-│   │   │       │   bz2.dll
-│   │   │       │   Desktop.deps.json
-│   │   │       │   Desktop.dll
-│   │   │       │   Desktop.exe
-│   │   │       │   Desktop.pdb
-│   │   │       │   Desktop.runtimeconfig.json
-│   │   │       │   Domain.dll
-│   │   │       │   Domain.pdb
-│   │   │       │   freetype.dll
-│   │   │       │   Ijwhost.dll
-│   │   │       │   Infrastructure.dll
-│   │   │       │   Infrastructure.pdb
-│   │   │       │   jpeg62.dll
-│   │   │       │   leptonica-1.78.0.dll
-│   │   │       │   libpng16.dll
-│   │   │       │   lzma.dll
-│   │   │       │   Microsoft.Win32.SystemEvents.dll
-│   │   │       │   Newtonsoft.Json.dll
-│   │   │       │   OpenCvSharp.dll
-│   │   │       │   OpenCvSharp.WpfExtensions.dll
-│   │   │       │   System.Drawing.Common.dll
-│   │   │       │   System.Private.Windows.Core.dll
-│   │   │       │   System.Private.Windows.GdiPlus.dll
-│   │   │       │   Tesseract.dll
-│   │   │       │   TesseractWrapper.dll
-│   │   │       │   tiff.dll
-│   │   │       │   webp.dll
-│   │   │       │   zlib1.dll
-│   │   │       │
-│   │   │       ├───logs
-│   │   │       │       CoNSoL-TakeOff_20260606.log
-│   │   │       │       CoNSoL-TakeOff_20260607.log
-│   │   │       │       CoNSoL-TakeOff_20260611.log
-│   │   │       │       CoNSoL_20260518.log
-│   │   │       │       CoNSoL_20260520.log
-│   │   │       │       CoNSoL_20260605.log
-│   │   │       │
-│   │   │       ├───runtimes
-│   │   │       │   ├───osx-arm64
-│   │   │       │   │   └───native
-│   │   │       │   │           libOpenCvSharpExtern.dylib
-│   │   │       │   │
-│   │   │       │   ├───osx-x64
-│   │   │       │   │   └───native
-│   │   │       │   │           libOpenCvSharpExtern.dylib
-│   │   │       │   │
-│   │   │       │   ├───win
-│   │   │       │   │   └───lib
-│   │   │       │   │       └───net8.0
-│   │   │       │   │               Microsoft.Win32.SystemEvents.dll
-│   │   │       │   │
-│   │   │       │   └───win-x64
-│   │   │       │       └───native
-│   │   │       │               OpenCvSharpExtern.dll
-│   │   │       │               opencv_videoio_ffmpeg4130_64.dll
-│   │   │       │
-│   │   │       ├───x64
-│   │   │       │       leptonica-1.82.0.dll
-│   │   │       │       tesseract50.dll
-│   │   │       │
-│   │   │       └───x86
-│   │   │               leptonica-1.82.0.dll
-│   │   │               tesseract50.dll
-│   │   │
-│   │   └───Release
-│   │       └───net8.0-windows
 │   ├───Controls
 │   │       CanvasControl.resx
 │   │       CanvasControl.vb
@@ -197,58 +51,9 @@ E:\Users\GoingIForMal\CoNSoL-TakeOff>tree /f
 │   │       MaterialCrudForm.resx
 │   │       MaterialCrudForm.vb
 │   │
-│   ├───My Project
-│   │       Application.Designer.vb
-│   │       Application.myapp
-│   │
-│   └───obj
-│       │   Desktop.vbproj.nuget.dgspec.json
-│       │   Desktop.vbproj.nuget.g.props
-│       │   Desktop.vbproj.nuget.g.targets
-│       │   project.assets.json
-│       │   project.nuget.cache
-│       │
-│       ├───Debug
-│       │   └───net8.0-windows
-│       │       │   .NETCoreApp,Version=v8.0.AssemblyAttributes.vb
-│       │       │   apphost.exe
-│       │       │   Desktop.AssemblyInfo.vb
-│       │       │   Desktop.AssemblyInfoInputs.cache
-│       │       │   Desktop.assets.cache
-│       │       │   Desktop.BlockAssignmentForm.resources
-│       │       │   Desktop.Controls.CanvasControl.resources
-│       │       │   Desktop.designer.deps.json
-│       │       │   Desktop.designer.runtimeconfig.json
-│       │       │   Desktop.dll
-│       │       │   Desktop.Forms.MainForm.resources
-│       │       │   Desktop.GeneratedMSBuildEditorConfig.editorconfig
-│       │       │   Desktop.genruntimeconfig.cache
-│       │       │   Desktop.MaterialCrudForm.resources
-│       │       │   Desktop.pdb
-│       │       │   Desktop.sourcelink.json
-│       │       │   Desktop.vbproj.AssemblyReference.cache
-│       │       │   Desktop.vbproj.BuildWithSkipAnalyzers
-│       │       │   Desktop.vbproj.CoreCompileInputs.cache
-│       │       │   Desktop.vbproj.FileListAbsolute.txt
-│       │       │   Desktop.vbproj.GenerateResource.cache
-│       │       │   Desktop.vbproj.Up2Date
-│       │       │
-│       │       ├───ref
-│       │       │       Desktop.dll
-│       │       │
-│       │       └───refint
-│       │               Desktop.dll
-│       │
-│       └───Release
-│           └───net8.0-windows
-│               │   .NETCoreApp,Version=v8.0.AssemblyAttributes.vb
-│               │   Desktop.AssemblyInfo.vb
-│               │   Desktop.AssemblyInfoInputs.cache
-│               │   Desktop.assets.cache
-│               │   Desktop.GeneratedMSBuildEditorConfig.editorconfig
-│               │
-│               ├───ref
-│               └───refint
+│   └───My Project
+│           Application.Designer.vb
+│           Application.myapp
 ├───Docs
 │   │   0000_START_HERE.md
 │   │   0001_CoNSoL-TakeOff Documentation Index.md
@@ -336,15 +141,6 @@ E:\Users\GoingIForMal\CoNSoL-TakeOff>tree /f
 │   │   Domain.vbproj
 │   │   README.md
 │   │
-│   ├───bin
-│   │   ├───Debug
-│   │   │   └───net8.0
-│   │   │           Domain.deps.json
-│   │   │           Domain.dll
-│   │   │           Domain.pdb
-│   │   │
-│   │   └───Release
-│   │       └───net8.0
 │   ├───Common
 │   │       DomainErrorCodes.vb
 │   │       ValidationException.vb
@@ -361,42 +157,7 @@ E:\Users\GoingIForMal\CoNSoL-TakeOff>tree /f
 │   │
 │   ├───Exceptions
 │   ├───Interfaces
-│   ├───obj
-│   │   │   Domain.vbproj.nuget.dgspec.json
-│   │   │   Domain.vbproj.nuget.g.props
-│   │   │   Domain.vbproj.nuget.g.targets
-│   │   │   project.assets.json
-│   │   │   project.nuget.cache
-│   │   │
-│   │   ├───Debug
-│   │   │   └───net8.0
-│   │   │       │   .NETCoreApp,Version=v8.0.AssemblyAttributes.vb
-│   │   │       │   Domain.AssemblyInfo.vb
-│   │   │       │   Domain.AssemblyInfoInputs.cache
-│   │   │       │   Domain.assets.cache
-│   │   │       │   Domain.dll
-│   │   │       │   Domain.GeneratedMSBuildEditorConfig.editorconfig
-│   │   │       │   Domain.pdb
-│   │   │       │   Domain.sourcelink.json
-│   │   │       │   Domain.vbproj.CoreCompileInputs.cache
-│   │   │       │   Domain.vbproj.FileListAbsolute.txt
-│   │   │       │
-│   │   │       ├───ref
-│   │   │       │       Domain.dll
-│   │   │       │
-│   │   │       └───refint
-│   │   │               Domain.dll
-│   │   │
-│   │   └───Release
-│   │       └───net8.0
-│   │           │   .NETCoreApp,Version=v8.0.AssemblyAttributes.vb
-│   │           │   Domain.AssemblyInfo.vb
-│   │           │   Domain.AssemblyInfoInputs.cache
-│   │           │   Domain.assets.cache
-│   │           │   Domain.GeneratedMSBuildEditorConfig.editorconfig
-│   │           │
-│   │           ├───ref
-│   │           └───refint
+│   │   
 │   ├───Services
 │   │       LayerManager.vb
 │   │
@@ -407,185 +168,27 @@ E:\Users\GoingIForMal\CoNSoL-TakeOff>tree /f
 │           CanvasElementValidation.vb
 │           CanvasLayoutValidation.vb
 │
-├───Infrastructure
-│   │   Infrastructure.vbproj
-│   │   README.md
-│   │
-│   ├───bin
-│   │   ├───Debug
-│   │   │   └───net8.0
-│   │   │           Domain.dll
-│   │   │           Domain.pdb
-│   │   │           Infrastructure.deps.json
-│   │   │           Infrastructure.dll
-│   │   │           Infrastructure.pdb
-│   │   │
-│   │   └───Release
-│   │       └───net8.0
-│   ├───Config
-│   │       AppConfig.vb
-│   │
-│   ├───Crypto
-│   │       CryptoService.vb
-│   │       Hashing.vb
-│   │
-│   ├───IO
-│   │       MaterialJsonStore.vb
-│   │       TakeOffFileStore.vb
-│   │
-│   ├───Logging
-│   │       FileLogger.vb
-│   │       ILogger.vb
-│   │
-│   ├───obj
-│   │   │   Infrastructure.vbproj.nuget.dgspec.json
-│   │   │   Infrastructure.vbproj.nuget.g.props
-│   │   │   Infrastructure.vbproj.nuget.g.targets
-│   │   │   project.assets.json
-│   │   │   project.nuget.cache
-│   │   │
-│   │   ├───Debug
-│   │   │   └───net8.0
-│   │   │       │   .NETCoreApp,Version=v8.0.AssemblyAttributes.vb
-│   │   │       │   Infrastr.F1EEFA0B.Up2Date
-│   │   │       │   Infrastructure.AssemblyInfo.vb
-│   │   │       │   Infrastructure.AssemblyInfoInputs.cache
-│   │   │       │   Infrastructure.assets.cache
-│   │   │       │   Infrastructure.dll
-│   │   │       │   Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
-│   │   │       │   Infrastructure.pdb
-│   │   │       │   Infrastructure.sourcelink.json
-│   │   │       │   Infrastructure.vbproj.AssemblyReference.cache
-│   │   │       │   Infrastructure.vbproj.BuildWithSkipAnalyzers
-│   │   │       │   Infrastructure.vbproj.CoreCompileInputs.cache
-│   │   │       │   Infrastructure.vbproj.FileListAbsolute.txt
-│   │   │       │
-│   │   │       ├───ref
-│   │   │       │       Infrastructure.dll
-│   │   │       │
-│   │   │       └───refint
-│   │   │               Infrastructure.dll
-│   │   │
-│   │   └───Release
-│   │       └───net8.0
-│   │           │   .NETCoreApp,Version=v8.0.AssemblyAttributes.vb
-│   │           │   Infrastructure.AssemblyInfo.vb
-│   │           │   Infrastructure.AssemblyInfoInputs.cache
-│   │           │   Infrastructure.assets.cache
-│   │           │   Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
-│   │           │
-│   │           ├───ref
-│   │           └───refint
-│   └───Wrappers
-│           JsonSerializer.vb
-│
-└───Temp
-    │   00_START_HERE.md
-    │   COMPLETION_SUMMARY.md
-    │   DELIVERY_SUMMARY.md
-    │   DOCUMENTATION_INDEX.md
-    │   Mega-File.md
-    │   output.log
-    │   PROJECT_DASHBOARD.md
-    │   QUICK_REFERENCE.md
+└───Infrastructure
+    │   Infrastructure.vbproj
     │   README.md
     │
-    ├───01_PROJECT_STATUS
-    │       IMPLEMENTATION_STATUS_REPORT.md
+    ├───Config
+    │       AppConfig.vb
     │
-    ├───02_CODING_ASSISTANCE_PLAN
-    │       IMPLEMENTATION_TASK_MATRIX_UPDATED.md
+    ├───Crypto
+    │       CryptoService.vb
+    │       Hashing.vb
     │
-    ├───03_ENHANCEMENT_PLAN
-    │   │   COMPREHENSIVE_TASKS_PLAN.md
-    │   │
-    │   └───CoNSoL-TakeOff Master Work Plan Summary
-    │           03_COMPLETION SUMMARY.md
-    │           CoNSoL-TakeOff Code Quality & Completion Plan.md
-    │           CoNSoL-TakeOff Documentation Index.md
-    │           CoNSoL-TakeOff Enhancement Plan.md
-    │           CoNSoL-TakeOff Implementation Status Report.md
-    │           CoNSoL-TakeOff Implementation Task Matrix - UPDATED.md
-    │           CoNSoL-TakeOff Master Work Plan Summary.md
-    │           CoNSoL-TakeOff Project Dashboard.md
-    │           CoNSoL-TakeOff Project-Documentation Index.md
-    │           CoNSoL-TakeOff Quick Reference Card.md
-    │           CoNSoL-TakeOff Task Organization.md
+    ├───IO
+    │       MaterialJsonStore.vb
+    │       TakeOffFileStore.vb
     │
-    ├───AGENT CONTROL SYSTEM
-    │   │   CoNSoL-TakeOff — SDLC Gap Analysis.md
-    │   │
-    │   ├───01_CONTROL SYSTEM
-    │   │       01_AGENTS.md
-    │   │       02_AGENT-RULES.md
-    │   │       03_AGENT-COMMANDS.md
-    │   │       04_AGENT TASK BACKLOG.md
-    │   │       10_agent_activity_log.md
-    │   │
-    │   ├───02_Coding Assistance Plan
-    │   │       00_DOCUMENTATION_INDEX.md
-    │   │       01_CODING_ASSISTANCE_PLAN.md
-    │   │       02_CoNSoL-TakeOff Implementation Task Matrix.md
-    │   │
-    │   └───10_Agent Notes
-    │           Agent-Business-Notes.md
-    │           Agent-Canvas-Notes.md
-    │           Agent-Foundation-Notes.md
-    │           Agent-Geometry-Notes.md
-    │           Agent-Integrator-Notes.md
+    ├───Logging
+    │       FileLogger.vb
+    │       ILogger.vb
     │
-    └───CoNSoL-Documents-Library
-        │   CoNSoL-TakeOff — SDLC Gap Analysis.md
-        │
-        └───en
-            │   Mega-File.md
-            │
-            ├───00-Governance
-            │       0001-SDLC_Governance.md
-            │
-            ├───01-Inception
-            │       0101-Requirement_Analysis.md
-            │       0101-Requirement_Analysis_Ar.md
-            │       0102-Planning.md
-            │       0102-Planning_Ar.md
-            │       0103-Requirement-Traceability.md
-            │       0104-Software Requirements Specification (SRS).md
-            │       010410_use_cases.md
-            │
-            ├───02-Design
-            │       020101-System Context.md
-            │       020102-C4 Diagrams.md
-            │       020103-Data Model.md
-            │       0201_design_documentation_ar.md
-            │       0201_design_documentation_en.md
-            │       0202-Security Documentation.md
-            │       0203-Compliance_Legal.md
-            │       0204-Risk Management.md
-            │       0205-Architecture Decision Records-ADR.md
-            │       0206-Data Governance.md
-            │       0207-Cost_FinOps.md
-            │       0208-ux_ui_design_ar.md
-            │       0208-ux_ui_design_en.md
-            │
-            ├───03-Implementation
-            │       0301-Development Documentation.md
-            │       0302-API Documentation.md
-            │       0303-Configuration Management.md
-            │       0304-DevSecOps_CI-CD Strategy.md
-            │       0305-Environment Strategy.md
-            │
-            ├───04-Verification
-            │       0401-Testing Documentation.md
-            │       0402-Release_Change Management.md
-            │
-            ├───05-Delivery
-            │       0501-Deployment Documentation.md
-            │
-            └───06-Operations
-                    0601-Operations_Maintenance.md
-                    0602-Incident_Problem Management.md
-                    0603-Business Continuity_DR.md
-                    0604-User_Training Documentation.md
-                    0605-Process Documentation.md
-                    0606-Observability.md
+    └───Wrappers
+            JsonSerializer.vb
+
+
 
