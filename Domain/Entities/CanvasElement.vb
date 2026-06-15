@@ -1,4 +1,4 @@
-﻿Option Strict On
+Option Strict On
 
 Imports Domain.Entities
 
@@ -16,5 +16,6 @@ Namespace Entities
         Public Property BusinessJson As String
         Public Property RelationshipType As ElementRelationshipType
         Public Property ChildElementId As String
+        Public Property LayerId As Guid
     End Class
 End Namespace
