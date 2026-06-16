@@ -37,5 +37,14 @@ Module Program
         End If
     End Sub
 
+
+    Public NotInheritable Class Guard
+        Public Shared Function NotNull(Of T)(value As T, name As String) As T
+            If value Is Nothing Then
+                Throw New ArgumentNullException(name)
+            End If
+            Return value
+        End Function
+    End Class
 End Module
 'End Namespace

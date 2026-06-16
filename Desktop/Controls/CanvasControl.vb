@@ -638,7 +638,7 @@ thickness As Single
 			g.FillRectangle(br, 0, 0, Me.Width, 20)
 			g.FillRectangle(br, 0, 0, 20, Me.Height)
 		End Using
-		Using pen As New Pen(Color.DarkSlateGray)
+		Using pen As New Pen(Color.Black)
 			g.DrawLine(pen, 20, 20, Me.Width, 20)
 			g.DrawLine(pen, 20, 20, 20, Me.Height)
 		End Using
@@ -697,10 +697,6 @@ Public MustInherit Class ShapeBase
 	''' </summary>
 	''' <param name="json">JSON geometry payload.</param>
 	Public MustOverride Sub FromGeometryJson(json As String)
-
-	Public Shared Widening Operator CType(v As ShapeBase) As ShapeBase
-		Throw New NotImplementedException()
-	End Operator
 End Class
 #End Region
 

@@ -59,3 +59,131 @@
 2026-06-16T03:29:00.6526405Z [INFO] Layout saved
 2026-06-16T03:29:03.3564993Z [INFO] Opening layout file dialog
 2026-06-16T03:51:57.7142486Z [INFO] Open dialog canceled
+2026-06-16T11:34:13.3618717Z [INFO] Bootstrap complete
+2026-06-16T11:35:02.1546159Z [INFO] Initializing MainForm
+2026-06-16T11:35:02.2470419Z [INFO] Initializing tool buttons
+2026-06-16T11:35:02.4897255Z [INFO] Tool buttons created and added to panel
+2026-06-16T11:35:02.4953252Z [INFO] Loading README files
+2026-06-16T11:35:02.4960106Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\README.md
+2026-06-16T11:35:02.4966771Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\README.md
+2026-06-16T11:35:02.5005565Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Application\README.md
+2026-06-16T11:35:02.5015744Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Domain\README.md
+2026-06-16T11:35:02.5021090Z [INFO] README load complete: 4 files found
+2026-06-16T11:35:02.5025981Z [INFO] MainForm initialization complete
+2026-06-16T11:35:10.4936138Z [INFO] Tool clicked: Polyline
+2026-06-16T11:36:04.3552752Z [INFO] Tool clicked: Rectangle
+2026-06-16T11:36:09.2829066Z [INFO] Tool clicked: Select
+2026-06-16T11:36:46.0050713Z [INFO] Layout saved
+2026-06-16T11:36:46.8911813Z [INFO] Opening layout file dialog
+2026-06-16T11:37:33.8914596Z [INFO] Open dialog canceled
+2026-06-16T11:38:01.1063940Z [INFO] Tool clicked: Ellipse
+2026-06-16T11:38:13.6642728Z [INFO] Layout saved
+2026-06-16T11:38:19.3858968Z [INFO] Opening layout file dialog
+2026-06-16T11:38:38.7816307Z [INFO] Open dialog canceled
+2026-06-16T11:38:41.9216552Z [INFO] Tool clicked: Line
+2026-06-16T11:39:01.0257399Z [INFO] Layout saved
+2026-06-16T11:39:02.1215496Z [INFO] Opening layout file dialog
+2026-06-16T11:39:20.1918806Z [INFO] Open dialog canceled
+2026-06-16T11:39:32.7292162Z [INFO] Layout saved
+2026-06-16T11:39:35.8326735Z [INFO] Opening layout file dialog
+2026-06-16T11:40:24.1627092Z [INFO] Open dialog canceled
+2026-06-16T11:58:49.4998122Z [INFO] Bootstrap complete
+2026-06-16T11:59:00.2399030Z [INFO] Initializing MainForm
+2026-06-16T11:59:00.2711310Z [INFO] Initializing tool buttons
+2026-06-16T11:59:00.3277298Z [INFO] Tool buttons created and added to panel
+2026-06-16T11:59:00.3370361Z [INFO] Loading README files
+2026-06-16T11:59:00.3378405Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\README.md
+2026-06-16T11:59:00.3385168Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\README.md
+2026-06-16T11:59:00.3390633Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Application\README.md
+2026-06-16T11:59:00.3395474Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Domain\README.md
+2026-06-16T11:59:00.3400214Z [INFO] README load complete: 4 files found
+2026-06-16T11:59:00.3404032Z [INFO] MainForm initialization complete
+2026-06-16T11:59:22.9627341Z [INFO] Tool clicked: Line
+2026-06-16T11:59:27.1055256Z [INFO] Tool clicked: Select
+2026-06-16T11:59:37.5293161Z [INFO] Tool clicked: Rectangle
+2026-06-16T11:59:40.7768309Z [INFO] Tool clicked: Select
+2026-06-16T12:02:12.9211914Z [INFO] Bootstrap complete
+2026-06-16T12:02:13.0482997Z [INFO] Initializing MainForm
+2026-06-16T12:02:13.0512881Z [INFO] Initializing tool buttons
+2026-06-16T12:02:13.0546126Z [INFO] Tool buttons created and added to panel
+2026-06-16T12:02:13.0566859Z [INFO] Loading README files
+2026-06-16T12:02:13.0573012Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\README.md
+2026-06-16T12:02:13.0577776Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\README.md
+2026-06-16T12:02:13.0732117Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Application\README.md
+2026-06-16T12:02:13.0737154Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Domain\README.md
+2026-06-16T12:02:13.0765571Z [INFO] README load complete: 4 files found
+2026-06-16T12:02:13.0770691Z [INFO] MainForm initialization complete
+2026-06-16T12:04:13.3016673Z [INFO] Bootstrap complete
+2026-06-16T12:04:13.4044206Z [INFO] Initializing MainForm
+2026-06-16T12:04:13.4071397Z [INFO] Initializing tool buttons
+2026-06-16T12:04:13.4101681Z [INFO] Tool buttons created and added to panel
+2026-06-16T12:04:13.4124846Z [INFO] Loading README files
+2026-06-16T12:04:13.4131358Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\README.md
+2026-06-16T12:04:13.4135655Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\README.md
+2026-06-16T12:04:13.4141749Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Application\README.md
+2026-06-16T12:04:13.4146153Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Domain\README.md
+2026-06-16T12:04:13.4173800Z [INFO] README load complete: 4 files found
+2026-06-16T12:04:13.4178851Z [INFO] MainForm initialization complete
+2026-06-16T12:11:47.5446147Z [INFO] Bootstrap complete
+2026-06-16T12:11:47.8299860Z [INFO] Initializing MainForm
+2026-06-16T12:11:47.8347019Z [INFO] Initializing tool buttons
+2026-06-16T12:11:47.8393634Z [INFO] Tool buttons created and added to panel
+2026-06-16T12:12:03.3990185Z [INFO] MainForm initialization complete
+2026-06-16T12:14:07.1694505Z [INFO] Bootstrap complete
+2026-06-16T12:14:07.7188926Z [INFO] Initializing MainForm
+2026-06-16T12:14:07.7291011Z [INFO] Initializing tool buttons
+2026-06-16T12:14:07.7421913Z [INFO] Tool buttons created and added to panel
+2026-06-16T12:14:17.0775620Z [INFO] MainForm initialization complete
+2026-06-16T12:14:47.7473854Z [INFO] Tool clicked: Ellipse
+2026-06-16T12:14:50.6829408Z [INFO] Tool clicked: Select
+2026-06-16T12:14:54.4108678Z [INFO] Tool clicked: Rectangle
+2026-06-16T12:15:00.2105179Z [INFO] Tool clicked: Select
+2026-06-16T12:15:06.2583592Z [INFO] Tool clicked: Polyline
+2026-06-16T12:15:21.9063703Z [INFO] Tool clicked: Pan
+2026-06-16T12:15:30.3463081Z [INFO] Tool clicked: Select
+2026-06-16T12:15:38.7629670Z [INFO] Tool clicked: Pan
+2026-06-16T12:16:19.4833314Z [INFO] Zoom Out clicked
+2026-06-16T12:16:20.0819536Z [INFO] Zoom Out clicked
+2026-06-16T12:16:30.8420808Z [INFO] Tool clicked: Line
+2026-06-16T12:16:48.6576714Z [INFO] Tool clicked: Rectangle
+2026-06-16T12:17:01.8577075Z [INFO] Tool clicked: Select
+2026-06-16T12:20:34.7527134Z [INFO] Bootstrap complete
+2026-06-16T12:20:35.0006633Z [INFO] Initializing MainForm
+2026-06-16T12:20:35.0041695Z [INFO] Initializing tool buttons
+2026-06-16T12:20:35.0091521Z [INFO] Tool buttons created and added to panel
+2026-06-16T12:20:50.5297188Z [INFO] MainForm initialization complete
+2026-06-16T12:21:03.6097581Z [INFO] Tool clicked: Rectangle
+2026-06-16T12:23:40.3428283Z [INFO] Tool clicked: Ellipse
+2026-06-16T12:23:42.8949918Z [INFO] Tool clicked: Line
+2026-06-16T12:23:52.3669315Z [INFO] Tool clicked: Select
+2026-06-16T12:24:16.9025282Z [INFO] Tool clicked: Rectangle
+2026-06-16T12:24:25.5827312Z [INFO] Tool clicked: Polyline
+2026-06-16T12:24:50.5183094Z [INFO] Tool clicked: Select
+2026-06-16T12:49:36.9012908Z [INFO] Bootstrap complete
+2026-06-16T12:49:37.2498222Z [INFO] Initializing MainForm
+2026-06-16T12:49:37.2523911Z [INFO] Initializing tool buttons
+2026-06-16T12:49:37.2561175Z [INFO] Tool buttons created and added to panel
+2026-06-16T12:50:54.6686039Z [INFO] MainForm initialization complete
+2026-06-16T12:51:12.5399283Z [INFO] Tool clicked: Polyline
+2026-06-16T12:52:24.9467751Z [INFO] Tool clicked: Select
+2026-06-16T12:52:25.6670799Z [INFO] Tool clicked: Select
+2026-06-16T12:54:14.5371918Z [INFO] Bootstrap complete
+2026-06-16T12:54:14.6534523Z [INFO] Initializing MainForm
+2026-06-16T12:54:14.6556672Z [INFO] Initializing tool buttons
+2026-06-16T12:54:14.6621904Z [INFO] Tool buttons created and added to panel
+2026-06-16T12:54:14.6648187Z [INFO] MainForm initialization complete
+2026-06-16T12:54:54.3856948Z [INFO] Bootstrap complete
+2026-06-16T12:54:54.6701946Z [INFO] Initializing MainForm
+2026-06-16T12:54:54.6760239Z [INFO] Initializing tool buttons
+2026-06-16T12:54:54.6814542Z [INFO] Tool buttons created and added to panel
+2026-06-16T12:55:00.6197722Z [INFO] MainForm initialization complete
+2026-06-16T12:59:51.3375274Z [INFO] Bootstrap complete
+2026-06-16T12:59:51.5677521Z [INFO] Initializing MainForm
+2026-06-16T12:59:51.5745412Z [INFO] Initializing tool buttons
+2026-06-16T12:59:51.5802227Z [INFO] Tool buttons created and added to panel
+2026-06-16T12:59:51.5835751Z [INFO] MainForm initialization complete
+2026-06-16T13:00:35.7167022Z [INFO] Bootstrap complete
+2026-06-16T13:00:35.8944036Z [INFO] Initializing MainForm
+2026-06-16T13:00:35.8969839Z [INFO] Initializing tool buttons
+2026-06-16T13:00:35.9003343Z [INFO] Tool buttons created and added to panel
+2026-06-16T13:00:35.9032500Z [INFO] MainForm initialization complete

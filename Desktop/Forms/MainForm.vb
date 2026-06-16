@@ -47,6 +47,9 @@ Namespace Forms
 		''' <summary>Left sidebar panel containing tool buttons.</summary>
 		Private ReadOnly _left As New Panel With {.Dock = DockStyle.Left, .Width = 250}
 
+		''' <summary>Right sidebar panel containing tool buttons.</summary>
+		Private ReadOnly _right As New Panel With {.Dock = DockStyle.Right, .Width = 250}
+
 		''' <summary>Status bar for displaying messages and state.</summary>
 		Private ReadOnly _status As New StatusStrip()
 
@@ -59,10 +62,8 @@ Namespace Forms
 		''' <summary>Current drawing layout (canvas state).</summary>
 		Private CurrentLayout As CanvasLayout
 
-		'Private propertiesPanel As New PropertiesPanel()
-
 		' ? CONTROL NAME: layerPanel
-		Private layerPanel As LayerPanel
+		Private _layerPanel As LayerPanel
 		Private layerManager As New LayerManager()
 
 		''' <summary>
@@ -79,8 +80,8 @@ Namespace Forms
 		''' All exceptions are logged but not re-thrown to allow application startup.
 		''' </remarks>
 		Public Sub New()
-			layerPanel = New LayerPanel()
-			layerPanel.Initialize(layerManager)
+			_layerPanel = New LayerPanel()
+			_layerPanel.Initialize(layerManager)
 			Try
 				Logger.Info("Initializing MainForm")
 				' ? MUST BE FIRST: Designer-generated initialization
@@ -97,14 +98,15 @@ Namespace Forms
 
 				Me.Controls.Add(_canvas)
 				Me.Controls.Add(_left)
+				Me.Controls.Add(_right)
 				Me.Controls.Add(_status)
-				Me.Controls.Add(layerPanel)
+				'Me.Controls.Add(_layerPanel)
 				Me.Controls.Add(_propertiesPanel)
 
 				AddHandler _canvas.ElementSelected, AddressOf OnElementSelected
 
 				' Load documentation (non-critical)
-				LoadReadmeFiles()
+				'LoadReadmeFiles()
 
 				Logger.Info("MainForm initialization complete")
 
@@ -118,8 +120,12 @@ Namespace Forms
 			End Try
 		End Sub
 
-
-		Private Sub OnElementSelected(el As CanvasElement)
+        ''' <summary>
+        ''' Event handler for when a canvas element is selected.
+        ''' Updates the properties panel to show the selected element's properties.
+        ''' </summary>
+        ''' <param name="el"></param>
+        Private Sub OnElementSelected(el As CanvasElement)
 			_propertiesPanel.SetElement(el)
 		End Sub
 
@@ -161,11 +167,10 @@ Namespace Forms
 
 				' Import AI button 
 				Dim btnImportAI = CreateToolButton("Import", Sub() ImportAI_Click(), heightOverride:=40)
-				btnImportAI.Dock = DockStyle.Top
-
-
+				'btnImportAI.Dock = DockStyle.Top
 
 				' Add buttons to panel (in reverse order due to docking from top)
+				_left.Controls.Add(_layerPanel)
 				_left.Controls.Add(btnSave)
 				_left.Controls.Add(btnOpen)
 				_left.Controls.Add(btnNew)
@@ -179,21 +184,31 @@ Namespace Forms
 				_left.Controls.Add(btnEllipse)
 				_left.Controls.Add(btnPolyline)
 				_left.Controls.Add(btnExportExcel)
-				Me.Controls.Add(btnImportAI)
+				_left.Controls.Add(btnImportAI)
 
 
-				'layerManager.Initialize()
+				_right.Controls.Add(_propertiesPanel)
+
+				layerManager.Initialize()
 				layerManager.EnsureDefaultLayer()
 
-
 				Logger.Info("Tool buttons created and added to panel")
-
 			Catch ex As Exception
 				Logger.Error($"Failed to initialize tool buttons: {ex.Message}", ex)
 				Throw
 			End Try
 		End Sub
 
+		''' <summary>
+		''' Handles the Import button click event to process a drawing file using AI services.<br></br>
+		''' <br></br>
+		''' Workflow:<br></br>
+		''' 1. Open file dialog to select image (PNG, JPG)<br></br>
+		''' 2. Use AiIntakeService to process the image and extract elements and scale<br></br>
+		''' 3. Show detected scale and ask for confirmation<br></br>
+		''' 4. Load detected elements into a new CanvasLayout and display on canvas<br></br>
+		''' 5. If user rejects detected scale, prompt for manual input
+		''' </summary>
 		Private Sub ImportAI_Click() 'sender As Object, e As EventArgs)
 			Dim dlg As New OpenFileDialog()
 			dlg.Filter = "Images|*.png;*.jpg;*.jpeg"
@@ -237,7 +252,6 @@ Namespace Forms
 			ExcelExporter.Export(lastResult, "takeoff.xlsx")
 			MessageBox.Show("Exported ?")
 		End Sub
-
 
 		''' <summary>
 		''' Creates a tool button with standard styling.
@@ -285,7 +299,8 @@ Namespace Forms
 			End Try
 		End Sub
 
-		''' <summary>Handles Zoom Out button click.</summary>
+		''' <summary>
+		''' Handles Zoom Out button click.</summary>
 		Private Sub HandleZoomOut()
 			Try
 				Logger.Info("Zoom Out clicked")
@@ -297,7 +312,8 @@ Namespace Forms
 			End Try
 		End Sub
 
-		''' <summary>Handles Grid Toggle button click.</summary>
+		''' <summary>
+		''' Handles Grid Toggle button click.</summary>
 		Private Sub HandleGridToggle()
 			Try
 				Logger.Info("Grid toggle clicked")
