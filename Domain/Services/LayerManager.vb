@@ -11,11 +11,9 @@ Namespace Services
 		''' </summary>
 		Private ReadOnly _layers As New List(Of Layer)
 
-		'Public Sub New(layers As List(Of Layer))
-		'	Initialize()
-		'	_layers = layers
-		'End Sub
-
+		''' <summary>
+		''' Initializes the LayerManager by ensuring that there is at least one default layer present in the collection. If no layers exist, a default layer is created and added to the collection.
+		''' </summary>
 		Public Sub Initialize()
 			EnsureDefaultLayer()
 		End Sub
