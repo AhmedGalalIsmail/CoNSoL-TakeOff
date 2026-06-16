@@ -58,9 +58,21 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "ClosedXML": {
+              "target": "Package",
+              "version": "[0.105.0, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.4, )"
+            },
+            "OpenCvSharp4": {
+              "target": "Package",
+              "version": "[4.13.0.20260602, )"
+            },
+            "Tesseract": {
+              "target": "Package",
+              "version": "[5.2.0, )"
             }
           },
           "imports": [

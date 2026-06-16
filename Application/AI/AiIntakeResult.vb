@@ -8,5 +8,5 @@ Public Class AiIntakeResult
 
 	Public Property DetectedText As List(Of String)
 	Public Property DetectedScale As String
-	Public Property DetectedElements As List(Of CanvasElement)
+	Public Property DetectedElements As List(Of CanvasElement) ' ? NEW
 End Class
