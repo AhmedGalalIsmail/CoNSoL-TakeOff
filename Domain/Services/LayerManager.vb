@@ -11,10 +11,10 @@ Namespace Services
 		''' </summary>
 		Private ReadOnly _layers As New List(Of Layer)
 
-		Public Sub New(layers As List(Of Layer))
-			Initialize()
-			_layers = layers
-		End Sub
+		'Public Sub New(layers As List(Of Layer))
+		'	Initialize()
+		'	_layers = layers
+		'End Sub
 
 		Public Sub Initialize()
 			EnsureDefaultLayer()

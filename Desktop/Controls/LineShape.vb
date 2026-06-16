@@ -1,4 +1,4 @@
-﻿
+
 #Region "Info. & Imports"
 'Option Strict On
 Imports System.Drawing
@@ -9,23 +9,23 @@ Imports System.Text.Json
 Namespace Controls
 #Region "CanvasControl and related types"
 
-	''' <summary>
-	''' available Tools for the interactive canvas.
-	''' </summary>
-	Public Enum ToolType
-		''' <summary>Select and manipulate existing shapes.</summary>
-		SelectTool
-		''' <summary>Draw straight lines.</summary>
-		Line
-		''' <summary>Draw rectangles.</summary>
-		Rectangle
-		''' <summary>Draw ellipses.</summary>
-		Ellipse
-		''' <summary>Draw Polyline</summary>
-		Polyline
-		''' <summary>Pan the viewport.</summary>
-		Pan
-	End Enum
+	'''' <summary>
+	'''' available Tools for the interactive canvas.
+	'''' </summary>
+	'Public Enum ToolType
+	'	''' <summary>Select and manipulate existing shapes.</summary>
+	'	SelectTool
+	'	''' <summary>Draw straight lines.</summary>
+	'	Line
+	'	''' <summary>Draw rectangles.</summary>
+	'	Rectangle
+	'	''' <summary>Draw ellipses.</summary>
+	'	Ellipse
+	'	''' <summary>Draw Polyline</summary>
+	'	Polyline
+	'	''' <summary>Pan the viewport.</summary>
+	'	Pan
+	'End Enum
 
 #Region "Specific shape implementations"
 	''' <summary>
