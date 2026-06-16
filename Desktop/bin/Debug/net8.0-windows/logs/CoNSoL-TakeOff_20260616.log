@@ -1,0 +1,61 @@
+﻿2026-06-16T02:23:14.6201299Z [INFO] Bootstrap complete
+2026-06-16T02:23:24.9328902Z [INFO] Initializing MainForm
+2026-06-16T02:23:24.9995834Z [INFO] Initializing tool buttons
+2026-06-16T02:23:25.0381066Z [INFO] Tool buttons created and added to panel
+2026-06-16T02:23:25.0452742Z [INFO] Loading README files
+2026-06-16T02:23:25.0545657Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\README.md
+2026-06-16T02:23:25.0714511Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\README.md
+2026-06-16T02:23:25.0732059Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Application\README.md
+2026-06-16T02:23:25.0747842Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Domain\README.md
+2026-06-16T02:23:25.0752584Z [INFO] README load complete: 4 files found
+2026-06-16T02:23:25.0761512Z [INFO] MainForm initialization complete
+2026-06-16T02:23:35.8814508Z [INFO] Tool clicked: Polyline
+2026-06-16T02:29:58.6656829Z [INFO] Bootstrap complete
+2026-06-16T02:29:58.9193878Z [INFO] Initializing MainForm
+2026-06-16T02:29:58.9263512Z [INFO] Initializing tool buttons
+2026-06-16T02:29:58.9320133Z [INFO] Tool buttons created and added to panel
+2026-06-16T02:29:58.9351274Z [INFO] Loading README files
+2026-06-16T02:29:58.9363291Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\README.md
+2026-06-16T02:29:58.9369818Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\README.md
+2026-06-16T02:29:58.9376407Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Application\README.md
+2026-06-16T02:29:58.9381740Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Domain\README.md
+2026-06-16T02:29:58.9387119Z [INFO] README load complete: 4 files found
+2026-06-16T02:29:58.9392037Z [INFO] MainForm initialization complete
+2026-06-16T02:30:13.8779190Z [INFO] Tool clicked: Polyline
+2026-06-16T02:37:32.2920567Z [INFO] Bootstrap complete
+2026-06-16T02:37:32.6595866Z [INFO] Initializing MainForm
+2026-06-16T02:37:32.6624500Z [INFO] Initializing tool buttons
+2026-06-16T02:37:32.6649605Z [INFO] Tool buttons created and added to panel
+2026-06-16T02:37:32.6671053Z [INFO] Loading README files
+2026-06-16T02:37:32.6678431Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\README.md
+2026-06-16T02:37:32.6684435Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\README.md
+2026-06-16T02:37:32.6690219Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Application\README.md
+2026-06-16T02:37:32.6695840Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Domain\README.md
+2026-06-16T02:37:32.6701160Z [INFO] README load complete: 4 files found
+2026-06-16T02:37:32.6706132Z [INFO] MainForm initialization complete
+2026-06-16T03:07:18.6789045Z [INFO] Bootstrap complete
+2026-06-16T03:11:59.7757953Z [INFO] Initializing MainForm
+2026-06-16T03:12:45.5100786Z [INFO] Initializing tool buttons
+2026-06-16T03:14:25.7175690Z [INFO] Tool buttons created and added to panel
+2026-06-16T03:27:24.4080145Z [INFO] Loading README files
+2026-06-16T03:27:24.4100774Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\README.md
+2026-06-16T03:27:24.4115243Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\README.md
+2026-06-16T03:27:24.4152205Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Application\README.md
+2026-06-16T03:27:24.4163773Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Domain\README.md
+2026-06-16T03:27:24.4170086Z [INFO] README load complete: 4 files found
+2026-06-16T03:27:24.4174950Z [INFO] MainForm initialization complete
+2026-06-16T03:27:29.8325829Z [INFO] Opening layout file dialog
+2026-06-16T03:27:40.2376793Z [INFO] Opening file: C:\Users\GoingIForMal\Documents\myTakeOff.takeoff
+2026-06-16T03:27:44.4919983Z [INFO] File loaded. Layout ID: ab482746-9845-42c6-b82c-f718b3c93f6b
+2026-06-16T03:27:44.6047538Z [INFO] Layout opened successfully: ab482746-9845-42c6-b82c-f718b3c93f6b
+2026-06-16T03:27:56.0229619Z [INFO] Zoom Out clicked
+2026-06-16T03:27:56.6536864Z [INFO] Zoom Out clicked
+2026-06-16T03:27:58.7652910Z [INFO] Tool clicked: Pan
+2026-06-16T03:28:14.1819391Z [INFO] Tool clicked: Line
+2026-06-16T03:28:16.9424974Z [INFO] Tool clicked: Polyline
+2026-06-16T03:28:35.3887367Z [INFO] Zoom Out clicked
+2026-06-16T03:28:35.5805236Z [INFO] Zoom Out clicked
+2026-06-16T03:28:36.1583335Z [INFO] Zoom Out clicked
+2026-06-16T03:29:00.6526405Z [INFO] Layout saved
+2026-06-16T03:29:03.3564993Z [INFO] Opening layout file dialog
+2026-06-16T03:51:57.7142486Z [INFO] Open dialog canceled

@@ -25,3 +25,17 @@ E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\obj\Debug\net8.0-windows\Desktop.pd
 E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\obj\Debug\net8.0-windows\Desktop.genruntimeconfig.cache
 E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\obj\Debug\net8.0-windows\ref\Desktop.dll
 E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\obj\Debug\net8.0-windows\Desktop.sourcelink.json
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\bin\Debug\net8.0-windows\x86\leptonica-1.82.0.dll
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\bin\Debug\net8.0-windows\x86\tesseract50.dll
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\bin\Debug\net8.0-windows\x64\leptonica-1.82.0.dll
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\bin\Debug\net8.0-windows\x64\tesseract50.dll
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\bin\Debug\net8.0-windows\ClosedXML.dll
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\bin\Debug\net8.0-windows\ClosedXML.Parser.dll
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\bin\Debug\net8.0-windows\DocumentFormat.OpenXml.dll
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\bin\Debug\net8.0-windows\DocumentFormat.OpenXml.Framework.dll
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\bin\Debug\net8.0-windows\ExcelNumberFormat.dll
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\bin\Debug\net8.0-windows\RBush.dll
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\bin\Debug\net8.0-windows\SixLabors.Fonts.dll
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\bin\Debug\net8.0-windows\System.IO.Packaging.dll
+E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\bin\Debug\net8.0-windows\Tesseract.dll

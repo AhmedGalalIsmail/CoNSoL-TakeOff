@@ -1,0 +1,18 @@
+﻿2026-06-15T19:50:49.5142122Z [INFO] Bootstrap complete
+2026-06-15T19:50:53.0117299Z [INFO] Initializing MainForm
+2026-06-15T19:50:53.0600982Z [INFO] Initializing tool buttons
+2026-06-15T19:50:53.0652925Z [INFO] Tool buttons created and added to panel
+2026-06-15T19:50:53.0689345Z [INFO] Loading README files
+2026-06-15T19:50:53.0696831Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Desktop\README.md
+2026-06-15T19:50:53.0704091Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Infrastructure\README.md
+2026-06-15T19:50:53.0710975Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Application\README.md
+2026-06-15T19:50:53.0837528Z [INFO] Found README: E:\Users\GoingIForMal\CoNSoL-TakeOff\Domain\README.md
+2026-06-15T19:50:53.0842333Z [INFO] README load complete: 4 files found
+2026-06-15T19:50:53.0846471Z [INFO] MainForm initialization complete
+2026-06-15T19:51:54.9609033Z [ERROR] UI exception | Object reference not set to an instance of an object.
+2026-06-15T19:51:58.8414208Z [INFO] Tool clicked: Polyline
+2026-06-15T19:52:38.1184120Z [ERROR] UI exception | Object reference not set to an instance of an object.
+2026-06-15T19:53:13.1281430Z [INFO] Tool clicked: Polyline
+2026-06-15T19:53:14.1200784Z [INFO] Tool clicked: Ellipse
+2026-06-15T19:53:18.2402379Z [INFO] Tool clicked: Select
+2026-06-15T19:53:21.7605938Z [INFO] Tool clicked: Pan

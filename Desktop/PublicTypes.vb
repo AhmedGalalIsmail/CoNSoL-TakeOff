@@ -17,13 +17,13 @@ Imports System.Drawing
 Imports System.Runtime.InteropServices
 #End Region
 
-Namespace Desktop
+'Namespace Desktop
 #Region "Public enums"
-	' ---------------------------
-	' Public enums (keep contracts)
-	' ---------------------------
-	' Specifies how a grid should be rendered
-	Public Enum GridKind
+' ---------------------------
+' Public enums (keep contracts)
+' ---------------------------
+' Specifies how a grid should be rendered
+Public Enum GridKind
 		None
 		Lines   ' Continuous grid lines
 		Points     ' Grid as points
@@ -49,16 +49,35 @@ Namespace Desktop
 		Physical
 	End Enum
 
-
+	''' <summary>
+	''' available Tools for the interactive canvas.
+	''' </summary>
 	Public Enum ToolType
 		None
+		''' <summary>Select and manipulate existing shapes.</summary>
 		SelectTool
-		LineTool
-		RectangleTool
-		CircleTool
-		PanTool
-		ZoomTool
+		''' <summary>Draw straight lines.</summary>
+		Line
+		''' <summary>Draw rectangles.</summary>
+		Rectangle
+		''' <summary>Draw ellipses.</summary>
+		Ellipse
+		''' <summary>Draw Polyline</summary>
+		Polyline
+		''' <summary>Pan the viewport.</summary>
+		Pan
+		''' <summary>Zoom in/out of the viewport, typically by dragging a rectangle to define the zoom area or using mouse wheel for incremental zooming.</summary>
+		Zoom
 	End Enum
+	'Public Enum ToolType
+	'	None
+	'	SelectTool
+	'	LineTool
+	'	RectangleTool
+	'	CircleTool
+	'	PanTool
+	'	ZoomTool
+	'End Enum
 
 	Public Enum InteractionState
 		Idle
@@ -834,7 +853,7 @@ Namespace Desktop
 	End Structure
 #End Region
 
-End Namespace
+'End Namespace
 
 '#Region "Info. & Imports"
 '' =========================================================
