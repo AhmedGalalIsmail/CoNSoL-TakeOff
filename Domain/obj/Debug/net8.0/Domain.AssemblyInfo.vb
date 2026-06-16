@@ -16,7 +16,7 @@ Imports System.Reflection
 <Assembly: System.Reflection.AssemblyCompanyAttribute("Domain"),  _
  Assembly: System.Reflection.AssemblyConfigurationAttribute("Debug"),  _
  Assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0"),  _
- Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+98d432a3ad95f23bbd669d1102d93e2a9cbfb911"),  _
+ Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4be4bd8b81c1234eec9871fbe7c31a7d8015ddc6"),  _
  Assembly: System.Reflection.AssemblyProductAttribute("Domain"),  _
  Assembly: System.Reflection.AssemblyTitleAttribute("Domain"),  _
  Assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")> 
