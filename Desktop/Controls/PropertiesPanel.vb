@@ -8,7 +8,10 @@ Imports Desktop.Controls.LineShape
 Imports Domain.Entities.CanvasElement
 
 Namespace Controls
-	Public Class PropertiesPanel
+    ''' <summary>
+    ''' PropertiesPanel is a user control that displays and allows editing of the properties of a selected shape or canvas element. It shows information such as type, geometry, block code, dimension mode, layer, and nested relationships. It also allows editing of parameters defined in the BusinessJson of a shape. When parameters are edited, it updates the BusinessJson and raises an event to notify the change.
+    ''' </summary>
+    Public Class PropertiesPanel
 		Inherits UserControl
 
 		Private _shape As ShapeBase
@@ -53,7 +56,8 @@ Namespace Controls
 
 
 		'    ' ---------------- UI ----------------
-
+		''' <summary>
+		''' Build the user interface of the properties panel, including labels for type and geometry, text boxes for block code, dimension mode, layer, and nested info, and a data grid for parameters. Arrange these controls in a TableLayoutPanel for organized display. The parameters grid allows editing of parameter values, which will trigger updates to the BusinessJson when edited.</summary>
 		Private Sub BuildUI()
 			Dim root As New TableLayoutPanel With {
 				.Dock = DockStyle.Right,
@@ -225,7 +229,10 @@ Namespace Controls
 		''' <param name="el"></param>
 		Public Sub SetElement(el As CanvasElement)
 			_selected = el
-			If el Is Nothing Then Exit Sub
+			If el Is Nothing Then
+				ClearUI()
+				Exit Sub
+			End If
 			lblType.Text = $"Type: {el.Type}"
 			txtCategory.Text = GetCategory(el)
 		End Sub

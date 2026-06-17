@@ -2,6 +2,8 @@ Imports System.Windows.Forms
 Imports Domain.Entities
 Imports Domain.Services
 
+''' <summary>
+''' LayerPanel is a UserControl that provides a UI for managing layers in the application. It allows users to view existing layers, add new layers, and delete selected layers. The control interacts with a LayerManager to perform these operations and updates its display accordingly.</summary>
 Public Class LayerPanel
 	Inherits UserControl
 

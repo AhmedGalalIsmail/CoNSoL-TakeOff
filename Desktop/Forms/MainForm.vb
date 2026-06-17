@@ -120,12 +120,12 @@ Namespace Forms
 			End Try
 		End Sub
 
-        ''' <summary>
-        ''' Event handler for when a canvas element is selected.
-        ''' Updates the properties panel to show the selected element's properties.
-        ''' </summary>
-        ''' <param name="el"></param>
-        Private Sub OnElementSelected(el As CanvasElement)
+		''' <summary>
+		''' Event handler for when a canvas element is selected.
+		''' Updates the properties panel to show the selected element's properties.
+		''' </summary>
+		''' <param name="el"></param>
+		Private Sub OnElementSelected(el As CanvasElement)
 			_propertiesPanel.SetElement(el)
 		End Sub
 
@@ -209,35 +209,75 @@ Namespace Forms
 		''' 4. Load detected elements into a new CanvasLayout and display on canvas<br></br>
 		''' 5. If user rejects detected scale, prompt for manual input
 		''' </summary>
-		Private Sub ImportAI_Click() 'sender As Object, e As EventArgs)
+
+		Private Sub ImportAI_Click()
+
 			Dim dlg As New OpenFileDialog()
 			dlg.Filter = "Images|*.png;*.jpg;*.jpeg"
 			If dlg.ShowDialog() <> DialogResult.OK Then Exit Sub
+			' ? 1. Load background image
+			Dim img = Image.FromFile(dlg.FileName)
+			_canvas.SetBackgroundImage(img, 0.5F)
+			' ? 2. Run AI
 			Dim ai As New AiIntakeService()
 			Dim result = ai.ProcessDrawing(dlg.FileName)
-			Dim scale = result.DetectedScale
-			If String.IsNullOrEmpty(scale) Then
-				scale = "1:100" ' ? fallback default
+			If result Is Nothing OrElse result.DetectedElements Is Nothing Then
+				MessageBox.Show("AI failed ?")
+				Exit Sub
 			End If
-			Dim confirmed = MessageBox.Show(
-				$"Detected Scale: {scale}" & vbCrLf & "Confirm?",
-				"Scale Detection",
-				MessageBoxButtons.YesNo)
-			' After confirmation
-			Dim layout As New CanvasLayout()
-			For Each el In result.DetectedElements
-				layout.Elements.Add(el)
-			Next
-			' Fix: call instance method on the _canvas instance instead of referencing the type.
-			' Use the same method used elsewhere in this class for consistency.
-			_canvas.LoadFromLayout(layout)
-			MessageBox.Show($"Detected {layout.Elements.Count} elements!")
-			' User cancel/select No
-			If confirmed = DialogResult.No Then
+			' ? 3. Scale confirmation
+			Dim scale = If(result.DetectedScale, "1:100")
+			If MessageBox.Show($"Detected Scale: {scale}" & vbCrLf & "Confirm?",
+					   "Scale",
+					   MessageBoxButtons.YesNo) = DialogResult.No Then
 				scale = InputBox("Enter correct scale:", "Scale", scale)
 			End If
-			MessageBox.Show($"Final Scale: {scale}")
+			' ? 4. Prepare layout
+			Dim layout As New CanvasLayout()
+			Dim defaultLayer = layerManager.AddLayer("Default") 'GetDefaultLayer()
+			For Each el In result.DetectedElements
+				el.Id = Guid.NewGuid()
+				' ? FIX Layer binding
+				If el.LayerId = Guid.Empty Then
+					el.LayerId = defaultLayer.Id
+				End If
+				layout.Elements.Add(el)
+			Next
+			' ? 5. Load into canvas
+			_canvas.LoadFromLayout(layout)
+			MessageBox.Show($"? AI Loaded {layout.Elements.Count} elements")
 		End Sub
+
+		' Original Ver
+		'Private Sub ImportAI_Click() 'sender As Object, e As EventArgs)
+		'	Dim dlg As New OpenFileDialog()
+		'	dlg.Filter = "Images|*.png;*.jpg;*.jpeg"
+		'	If dlg.ShowDialog() <> DialogResult.OK Then Exit Sub
+		'	Dim ai As New AiIntakeService()
+		'	Dim result = ai.ProcessDrawing(dlg.FileName)
+		'	Dim scale = result.DetectedScale
+		'	If String.IsNullOrEmpty(scale) Then
+		'		scale = "1:100" ' ? fallback default
+		'	End If
+		'	Dim confirmed = MessageBox.Show(
+		'		$"Detected Scale: {scale}" & vbCrLf & "Confirm?",
+		'		"Scale Detection",
+		'		MessageBoxButtons.YesNo)
+		'	' After confirmation
+		'	Dim layout As New CanvasLayout()
+		'	For Each el In result.DetectedElements
+		'		layout.Elements.Add(el)
+		'	Next
+		'	' Fix: call instance method on the _canvas instance instead of referencing the type.
+		'	' Use the same method used elsewhere in this class for consistency.
+		'	_canvas.LoadFromLayout(layout)
+		'	MessageBox.Show($"Detected {layout.Elements.Count} elements!")
+		'	' User cancel/select No
+		'	If confirmed = DialogResult.No Then
+		'		scale = InputBox("Enter correct scale:", "Scale", scale)
+		'	End If
+		'	MessageBox.Show($"Final Scale: {scale}")
+		'End Sub
 
 		''' <summary>
 		''' Exports the takeoff results to an Excel file using the ExcelExporter service.

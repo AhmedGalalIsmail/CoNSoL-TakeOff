@@ -7,37 +7,12 @@ Imports System.Drawing.Drawing2D
 'Imports System.Windows.Forms
 Imports System.Text.Json
 'Imports System.Linq
+Imports Domain
 Imports Domain.Entities
-'Imports Domain
+Imports Domain.Services
+Imports Domain.Services.LayerManager
 
 
-
-#End Region
-
-
-
-'Namespace Controls
-
-'End Namespace
-#Region "CanvasControl and related types"
-
-'''' <summary>
-'''' available Tools for the interactive canvas.
-'''' </summary>
-'Public Enum ToolType
-'	''' <summary>Select and manipulate existing shapes.</summary>
-'	SelectTool
-'	''' <summary>Draw straight lines.</summary>
-'	Line
-'	''' <summary>Draw rectangles.</summary>
-'	Rectangle
-'	''' <summary>Draw ellipses.</summary>
-'	Ellipse
-'	''' <summary>Draw Polyline</summary>
-'	Polyline
-'	''' <summary>Pan the viewport.</summary>
-'	Pan
-'End Enum
 #End Region
 
 #Region "canvas control"
@@ -103,11 +78,15 @@ Public Class CanvasControl
 	Private _backgroundImage As Image = Nothing
 	Private _backgroundOpacity As Single = 0.5F
 
-    ''' <summary>
-    ''' Event triggered when a shape is selected on the canvas.
-    ''' </summary>
-    ''' <param name="el"></param>
-    Public Event ElementSelected(el As CanvasElement)
+	Private _gridKind As GridKind = GridKind.Lines
+
+	Private _snapEnabled As Boolean = False
+
+	''' <summary>
+	''' Event triggered when a shape is selected on the canvas.
+	''' </summary>
+	''' <param name="el"></param>
+	Public Event ElementSelected(el As CanvasElement)
 #End Region
 
 #Region "Layout and shape management"
@@ -597,11 +576,14 @@ thickness As Single
 	''' <param name="p">Point in world coordinates.</param>
 	''' <returns>Snapped point in world coordinates.</returns>
 	Private Function Snap(p As PointF) As PointF
+		' ? If disabled, return original
+		If Not _snapEnabled Then Return p
 		Dim sx = Math.Round(p.X / _gridSize) * _gridSize
 		Dim sy = Math.Round(p.Y / _gridSize) * _gridSize
 		Return New PointF(CSng(sx), CSng(sy))
 	End Function
 
+	' ' Original Ver
 	''' <summary>
 	''' Hit-test shapes from top-most to bottom-most and return the first matching shape.
 	''' </summary>

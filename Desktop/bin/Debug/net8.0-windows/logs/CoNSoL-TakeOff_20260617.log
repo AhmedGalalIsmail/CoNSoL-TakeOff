@@ -1,0 +1,7 @@
+﻿2026-06-17T02:49:42.8486108Z [INFO] Bootstrap complete
+2026-06-17T02:49:47.6462036Z [INFO] Initializing MainForm
+2026-06-17T02:49:47.6519979Z [INFO] Initializing tool buttons
+2026-06-17T02:49:47.6602738Z [INFO] Tool buttons created and added to panel
+2026-06-17T02:49:47.6641741Z [INFO] MainForm initialization complete
+2026-06-17T16:35:33.5381176Z [INFO] Bootstrap complete
+2026-06-17T16:36:09.3327558Z [ERROR] Unhandled exception | SplitterDistance must be between Panel1MinSize and Width - Panel2MinSize.
