@@ -1,4 +1,4 @@
----
+﻿---
 aliases:
   - 📋 TASK BACKLOG
 doc_id: 601
@@ -120,6 +120,20 @@ These tasks block entire feature chains. Nothing downstream can be completed unt
 
 ---
 
+## 🧠 AI — Upcoming Tasks
+
+| ID | Category | Task | Layer | SDLC Ref | Status | Effort | Depends On | Unlocks |
+|---|---|---|---|---|---|---|---|---|
+| T-067 | Data | Define AI import session and source artifact entities | L03 | UC-AI-001, FR-AI-001, FR-AI-002 | TODO | 4h |  | T-071, UC-AI-001 |
+| T-068 | AI | Define OCR service contract and adapter boundary | L05 | UC-AI-002, FR-AI-003 | TODO | 3h |  | T-072, UC-AI-002 |
+| T-069 | AI | Define geometry detection and candidate review contracts | L05 | UC-AI-004, UC-AI-006, FR-AI-005..FR-AI-010 | TODO | 5h |  | T-070, T-071 |
+| T-070 | UI | Add AI intake/review workflow to `ProductionMainForm` | L04 | UC-AI-003, UC-AI-006, FR-AI-004, FR-AI-009, FR-AI-010 | TODO | 8h | T-026, T-043 | T-072, UC-AI-006 |
+| T-071 | Data | Persist OCR results, geometry candidates, and review decisions | L03 | UC-AI-001, UC-AI-002, UC-AI-004, UC-AI-006, FR-AI-012 | TODO | 6h | T-067, T-069 | UC-AI-001..UC-AI-006 |
+| T-072 | Testing | Add AI intake fixtures and acceptance tests | L06 | G-0401-05, G-0401-06, UC-AI-001..UC-AI-008 | TODO | 6h | T-070, T-071 | AI promotion gate |
+| T-073 | Ops | Add AI logging and tracing points | L08 | UC-AI-001..UC-AI-008, 0606 | TODO | 3h | T-070, T-071 | Auditability |
+| T-074 | Build | Decide OCR/CV packaging and fallback strategy | L07 | UC-AI-002, UC-AI-004, UC-AI-005, OQ-NEW-03 | TODO | 3h | T-068, T-069 | Standalone install readiness |
+| T-075 | Business | Wire accepted AI candidates into calculation/export flow | L02 | UC-AI-006, UC-AI-007, UC-AI-008, FR-AI-011..FR-AI-013 | TODO | 5h | T-071 | AI take-off value |
+
 ## Summary Counts
 
 | Priority | Total | Done | In Progress | Blocked | TODO |
@@ -128,10 +142,11 @@ These tasks block entire feature chains. Nothing downstream can be completed unt
 | 🟠 High | 18 | 0 | 0 | 12 | 6 |
 | 🟡 Medium | 23 | 0 | 0 | 8 | 15 |
 | 🟢 Low | 9 | 0 | 0 | 0 | 9 |
-| **Total** | **66** | **0** | **0** | **25** | **41** |
+| **Total** | **75** | **0** | **0** | **25** | **50** |
 
 > Note: "Blocked" = dependency task not yet complete. As critical tasks complete, blocked tasks become available.
 
 ---
 > Update Status column and summary counts after each session.
 > Do not add tasks without assigning a UC, FR, or GAP ID.
+

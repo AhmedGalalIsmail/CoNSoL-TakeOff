@@ -1,4 +1,4 @@
----
+﻿---
 aliases:
   - CoNSoL-TakeOff AI Product Story Draft
 doc_id: 0601-draft
@@ -577,5 +577,25 @@ This draft can be promoted into the live SDLC library when:
 - AI data additions are approved in the ERD.
 - AI service contracts are defined in L05/API docs.
 - AI tasks are added to `1_Task_Backlog.md` with traceable IDs.
-- The dashboard clearly separates manual MVP progress from AI roadmap progress.
+
+
+## Remaining To Promote
+
+These are the draft items that still need promotion into the live SDLC library or backlog.
+
+| Category | Item | Status | Where It Belongs |
+|---|---|---|---|
+| Data | Import session and source artifact persistence | Not yet promoted | `0_CoNSoL_Production_Layers.md`, `1_Task_Backlog.md` |
+| AI | OCR result storage and reviewable metadata | Not yet promoted | `0_CoNSoL_Production_Layers.md`, `1_Task_Backlog.md` |
+| AI | Geometry candidate detection and preview | Not yet promoted | `0_CoNSoL_Production_Layers.md`, `1_Task_Backlog.md` |
+| AI | Scale detection and user confirmation | Not yet promoted | `0_CoNSoL_Production_Layers.md`, `1_Task_Backlog.md` |
+| AI | Classification confidence, source trace, accept/reject/edit | Not yet promoted | `0_CoNSoL_Production_Layers.md`, `1_Task_Backlog.md` |
+| UI | AI review surface in the clean form | Not yet promoted | `0_CoNSoL_Production_Layers.md`, `1_Task_Backlog.md` |
+| Testing | AI intake fixtures and acceptance coverage | Not yet promoted | `1_Task_Backlog.md`, `0401_Testing_Documentation.md` |
+| Ops | AI logging, tracing, and package fallback | Not yet promoted | `0_CoNSoL_Production_Layers.md`, `1_Task_Backlog.md`, `0304` |
+
+
+
+
+
 

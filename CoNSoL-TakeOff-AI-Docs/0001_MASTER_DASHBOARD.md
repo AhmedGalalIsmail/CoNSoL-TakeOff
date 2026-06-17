@@ -1,4 +1,4 @@
----
+﻿---
 aliases:
   - 📊 MASTER DASHBOARD
 color: "#e0970a"
@@ -110,6 +110,7 @@ These 12 gaps from `0005_Gap_Analysis.md` block implementation. Resolve in this 
 | Canvas pan | ✅ Working | FR-CV-004 |
 | Grid rendering | ✅ Working | 0209 §3 |
 | Double-buffering | ✅ Working | NFR-001 |
+| `ProductionMainForm` clean runtime-built shell | âœ… Working | L04 / Desktop |
 | Shape selection (click) | ✅ Working | UC-006 partial |
 | Multi-select | ✅ Working (visual only) | UC-006 partial |
 | File save (.takeoff) | ✅ Working | UC-013 partial |
@@ -137,6 +138,19 @@ These 12 gaps from `0005_Gap_Analysis.md` block implementation. Resolve in this 
 | Unit tests (Domain + Infra) | G-0401-01, G-0401-02 | 15h |
 | XML documentation | G-0301-11 | 9h |
 | Logging (strategic) | 0606, 0301 §13 | 8h |
+
+## ðŸ§  AI Roadmap Additions
+
+| Category | Item | Status | SDLC Reference | Effort |
+|---|---|---|---|---|
+| AI | Source artifact import session | Planned | UC-AI-001, FR-AI-001, FR-AI-002 | 6h |
+| AI | OCR extraction + metadata capture | Planned | UC-AI-002, FR-AI-003 | 6h |
+| AI | Scale confirmation workflow | Planned | UC-AI-003, FR-AI-004 | 4h |
+| AI | Geometry detection + candidate preview | Planned | UC-AI-004, FR-AI-005, FR-AI-006 | 8h |
+| AI | Classification + confidence + review | Planned | UC-AI-005, UC-AI-006, FR-AI-007..FR-AI-010 | 8h |
+| AI | Reviewed export path | Planned | UC-AI-008, FR-AI-011..FR-AI-013 | 4h |
+| Testing | AI intake fixtures and acceptance tests | Planned | G-0401-05, G-0401-06 | 6h |
+| Ops | AI logging and tracing | Planned | 0606, 0301 Â§13 | 3h |
 
 ---
 
@@ -180,3 +194,6 @@ MVP = UC-001, UC-002, UC-004, UC-006, UC-007, UC-008 working end-to-end
 ---
 > **Rule:** This dashboard is the ONLY live status document. All others are archived.
 > Update UC status column and gap counts after each session.
+
+
+

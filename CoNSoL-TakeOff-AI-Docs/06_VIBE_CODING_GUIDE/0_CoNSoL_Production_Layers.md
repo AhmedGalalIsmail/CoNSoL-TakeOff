@@ -1,4 +1,4 @@
----
+﻿---
 aliases:
   - 🧱 CoNSoL Production Layers
 doc_id: 600
@@ -534,6 +534,21 @@ Instrument the application with strategic logging to enable debugging, performan
 
 ---
 
+## AI Intake Overlay - Draft 0601 Promotion
+
+This overlay captures the remaining 0601 items that still need promotion into the live SDLC library and backlog.
+
+| Category | Item | Status | Where It Belongs | Notes |
+|---|---|---|---|---|
+| Data | Import session + source artifact persistence | Planned | `0_CoNSoL_Production_Layers.md` / `1_Task_Backlog.md` | Needed before accepted AI objects can live in the file model |
+| AI | OCR result storage | Planned | `0_CoNSoL_Production_Layers.md` / `1_Task_Backlog.md` | Keep extracted text reviewable and auditable |
+| AI | Geometry candidate detection | Planned | `0_CoNSoL_Production_Layers.md` / `1_Task_Backlog.md` | Produces reviewed candidates, not final objects |
+| AI | Scale confirmation workflow | Planned | `0_CoNSoL_Production_Layers.md` / `1_Task_Backlog.md` | User must confirm scale before conversion |
+| AI | Classification + confidence + review | Planned | `0_CoNSoL_Production_Layers.md` / `1_Task_Backlog.md` | Needed for accept/reject/edit flow |
+| UI | AI review surface in the clean form | Planned | `0_CoNSoL_Production_Layers.md` / `1_Task_Backlog.md` | Add overlays/panels without disturbing the dev form |
+| Testing | AI intake fixtures and acceptance tests | Planned | `1_Task_Backlog.md` / `0401` | Cover intake -> review -> export |
+| Ops | AI tracing and packaging fallback | Planned | `0_CoNSoL_Production_Layers.md` / `1_Task_Backlog.md` / `0304` | Capture logs and pick offline OCR/CV strategy |
+
 # Final Checklist — Production Readiness Gate
 
 ## Core (L01–L04)
@@ -571,3 +586,4 @@ Instrument the application with strategic logging to enable debugging, performan
 
 ---
 > See `1_Task_Backlog.md` for the concrete task list with UC/FR/GAP traceability.
+
