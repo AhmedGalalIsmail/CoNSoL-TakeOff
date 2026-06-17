@@ -1,5 +1,4 @@
 ﻿Imports Windows.Win32.UI
-Imports CoNSoL.Desktop.Controls
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class BlockAssignmentForm
     Inherits System.Windows.Forms.Form

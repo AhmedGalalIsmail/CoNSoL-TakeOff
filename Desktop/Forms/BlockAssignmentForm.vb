@@ -21,6 +21,7 @@ Public Class BlockAssignmentForm
         Me.FormBorderStyle = FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
+        InitializeComponent()
         BuildUI()
     End Sub
 

@@ -27,17 +27,17 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\GoingIForMal\\.nuget\\packages\\": {},
+    "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\.dotnet-home\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Infrastructure\\Infrastructure.vbproj",
+      "projectUniqueName": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Infrastructure\\Infrastructure.vbproj",
       "projectName": "Infrastructure",
-      "projectPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Infrastructure\\Infrastructure.vbproj",
-      "packagesPath": "C:\\Users\\GoingIForMal\\.nuget\\packages\\",
-      "outputPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Infrastructure\\obj\\",
+      "projectPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Infrastructure\\Infrastructure.vbproj",
+      "packagesPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\.dotnet-home\\.nuget\\packages\\",
+      "outputPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -59,8 +59,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Domain\\Domain.vbproj": {
-              "projectPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Domain\\Domain.vbproj"
+            "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Domain\\Domain.vbproj": {
+              "projectPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Domain\\Domain.vbproj"
             }
           }
         }

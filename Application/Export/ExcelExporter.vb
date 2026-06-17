@@ -1,26 +1,35 @@
-Imports ClosedXML.Excel
+Imports System.IO
+Imports System.Text
 
 Public Class ExcelExporter
 	''' <summary>
-	''' Exports the takeoff results to an Excel file.
+	''' Exports the takeoff results to a simple CSV file.
 	''' </summary>
 	''' <param name="result">
 	''' The takeoff results to export, containing a dictionary of block names and their corresponding values.
 	''' </param>
 	''' <param name="path">
-	''' The file path where the Excel file will be saved. The file will be created if it does not exist, or overwritten if it does.
+	''' The file path where the export file will be saved.
 	''' </param>
 	Public Shared Sub Export(result As TakeOffResult, path As String)
-		Dim wb = New XLWorkbook()
-		Dim ws = wb.Worksheets.Add("TakeOff")
-		ws.Cell(1, 1).Value = "Block"
-		ws.Cell(1, 2).Value = "Value"
-		Dim row = 2
+		Dim builder As New StringBuilder()
+		builder.AppendLine("Block,Value")
+
 		For Each kv In result.Results
-			ws.Cell(row, 1).Value = kv.Key
-			ws.Cell(row, 2).Value = kv.Value
-			row += 1
+			builder.AppendLine($"{EscapeCsv(kv.Key)},{kv.Value}")
 		Next
-		wb.SaveAs(path)
+
+		File.WriteAllText(path, builder.ToString(), Encoding.UTF8)
 	End Sub
+
+	Private Shared Function EscapeCsv(value As String) As String
+		If value Is Nothing Then Return ""
+		If value.Contains("""") Then
+			value = value.Replace("""", """""")
+		End If
+		If value.Contains(",") OrElse value.Contains(vbCr) OrElse value.Contains(vbLf) OrElse value.Contains("""") Then
+			Return $"""{value}"""
+		End If
+		Return value
+	End Function
 End Class

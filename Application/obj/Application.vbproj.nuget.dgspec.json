@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Application\\Application.vbproj": {}
+    "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Application\\Application.vbproj": {}
   },
   "projects": {
-    "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Application\\Application.vbproj": {
+    "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Application\\Application.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Application\\Application.vbproj",
+        "projectUniqueName": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Application\\Application.vbproj",
         "projectName": "Application",
-        "projectPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Application\\Application.vbproj",
-        "packagesPath": "C:\\Users\\GoingIForMal\\.nuget\\packages\\",
-        "outputPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Application\\obj\\",
+        "projectPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Application\\Application.vbproj",
+        "packagesPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\.dotnet-home\\.nuget\\packages\\",
+        "outputPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,11 +33,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Domain\\Domain.vbproj": {
-                "projectPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Domain\\Domain.vbproj"
+              "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Domain\\Domain.vbproj": {
+                "projectPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Domain\\Domain.vbproj"
               },
-              "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Infrastructure\\Infrastructure.vbproj": {
-                "projectPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Infrastructure\\Infrastructure.vbproj"
+              "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Infrastructure\\Infrastructure.vbproj": {
+                "projectPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Infrastructure\\Infrastructure.vbproj"
               }
             }
           }
@@ -57,24 +57,6 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "dependencies": {
-            "ClosedXML": {
-              "target": "Package",
-              "version": "[0.105.0, )"
-            },
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[13.0.4, )"
-            },
-            "OpenCvSharp4": {
-              "target": "Package",
-              "version": "[4.13.0.20260602, )"
-            },
-            "Tesseract": {
-              "target": "Package",
-              "version": "[5.2.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -95,14 +77,14 @@
         }
       }
     },
-    "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Domain\\Domain.vbproj": {
+    "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Domain\\Domain.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Domain\\Domain.vbproj",
+        "projectUniqueName": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Domain\\Domain.vbproj",
         "projectName": "Domain",
-        "projectPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Domain\\Domain.vbproj",
-        "packagesPath": "C:\\Users\\GoingIForMal\\.nuget\\packages\\",
-        "outputPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Domain\\obj\\",
+        "projectPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Domain\\Domain.vbproj",
+        "packagesPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\.dotnet-home\\.nuget\\packages\\",
+        "outputPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -161,14 +143,14 @@
         }
       }
     },
-    "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Infrastructure\\Infrastructure.vbproj": {
+    "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Infrastructure\\Infrastructure.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Infrastructure\\Infrastructure.vbproj",
+        "projectUniqueName": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Infrastructure\\Infrastructure.vbproj",
         "projectName": "Infrastructure",
-        "projectPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Infrastructure\\Infrastructure.vbproj",
-        "packagesPath": "C:\\Users\\GoingIForMal\\.nuget\\packages\\",
-        "outputPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Infrastructure\\obj\\",
+        "projectPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Infrastructure\\Infrastructure.vbproj",
+        "packagesPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\.dotnet-home\\.nuget\\packages\\",
+        "outputPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -190,8 +172,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Domain\\Domain.vbproj": {
-                "projectPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff\\Domain\\Domain.vbproj"
+              "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Domain\\Domain.vbproj": {
+                "projectPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Domain\\Domain.vbproj"
               }
             }
           }
