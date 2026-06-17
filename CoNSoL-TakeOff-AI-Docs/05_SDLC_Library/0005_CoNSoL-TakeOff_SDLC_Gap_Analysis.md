@@ -1,7 +1,7 @@
 ---
 aliases:
   - 🚧 CoNSoL-TakeOff 🚧 SDLC Gap Analysis 🚧
-color: var(--mk-color-green)
+color: "#e10707"
 doc_id: 105
 title: SDLC Gap Analysis
 phase: inception
