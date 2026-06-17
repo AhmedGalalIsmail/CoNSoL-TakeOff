@@ -187,7 +187,7 @@ Namespace Forms
 				_left.Controls.Add(btnImportAI)
 
 
-				_right.Controls.Add(_propertiesPanel)
+				' _right.Controls.Add(_propertiesPanel)
 
 				layerManager.Initialize()
 				layerManager.EnsureDefaultLayer()

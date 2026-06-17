@@ -6,14 +6,24 @@ Imports Infrastructure.Logging
 
 Namespace Config
 	''' <summary>
-	''' 
+	''' Application configuration class, responsible for loading and saving application settings from/to a JSON file. 
+	''' Contains properties for application name, log directory, and data directory.
 	''' </summary>
 	Public Class AppConfig
+#Region "Public Properties"
+		''' <summary>
+		''' Name of the application, used for logging and display purposes. Default is "CoNSoL-TakeOff".</summary>
 		Public Property AppName As String = "CoNSoL-TakeOff"
+		''' <summary>
+		''' Directory where log files will be stored. Default is "logs".</summary>
 		Public Property LogDir As String = "logs"
+		''' <summary>
+		''' Directory where application data files (e.g., materials, blocks) will be stored. Default is "data".</summary>
 		Public Property DataDir As String = "data"
-
+		''' <summary>
+		''' Logger instance for logging messages during configuration loading and application runtime. This is not serialized to the config file and should be set at runtime.</summary>
 		Public _logger As ILogger
+#End Region
 
 		''' <summary>
 		''' Loads configuration from specified path. 
