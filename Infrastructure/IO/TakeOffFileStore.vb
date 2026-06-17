@@ -7,22 +7,21 @@ Imports Infrastructure.Crypto
 
 Namespace IO
 	''' <summary>
-	''' Handles saving and loading of canvas layouts, with optional encryption for security.
-	''' </summary>
+	''' Handles saving and loading of canvas layouts, with optional encryption for security.</summary>
 	Public Class TakeOffFileStore
+		''' <summary>
+		''' Optional CryptoService for encrypting and decrypting files. If not provided, files will be saved in plain text.</summary>
 		Private ReadOnly _crypto As CryptoService
 
 		''' <summary>
-		''' Initialize with optional CryptoService for encryption support.
-		''' </summary>
+		''' Initialize with optional CryptoService for encryption support.</summary>
 		''' <param name="crypto"></param>
 		Public Sub New(Optional crypto As CryptoService = Nothing)
 			_crypto = crypto
 		End Sub
 
 		''' <summary>
-		''' Saves the canvas layout to a file, optionally encrypting it for security.
-		''' </summary>
+		''' Saves the canvas layout to a file, optionally encrypting it for security.</summary>
 		''' <param name="path"></param>
 		''' <param name="layout"></param>
 		''' <param name="encrypt"></param>
@@ -43,13 +42,10 @@ Namespace IO
 		End Sub
 
 		''' <summary>
-		''' Loads the canvas layout from a file, decrypting it if necessary.
-		''' </summary>
+		''' Loads the canvas layout from a file, decrypting it if necessary.</summary>
 		''' <param name="path"></param>
 		''' <param name="encrypted"></param>
-		''' <returns>
-		''' The deserialized CanvasLayout object representing the saved state of the canvas.
-		''' </returns>
+		''' <returns>The deserialized CanvasLayout object representing the saved state of the canvas.</returns>
 		Public Function Load(path As String, Optional encrypted As Boolean = False) As CanvasLayout
 			Dim json As String
 			If encrypted AndAlso _crypto IsNot Nothing Then
@@ -65,11 +61,8 @@ Namespace IO
 		End Function
 
 		''' <summary>
-		''' Derives a cryptographic key from a password using PBKDF2 with a fixed salt and iteration count.
-		''' </summary>
-		''' <returns>
-		''' A byte array containing the derived key, suitable for use in encryption and decryption operations.
-		''' </returns>
+		''' Derives a cryptographic key from a password using PBKDF2 with a fixed salt and iteration count.</summary>
+		''' <returns>A byte array containing the derived key, suitable for use in encryption and decryption operations.</returns>
 		Private Function DeriveKey() As Byte()
 			Dim salt = System.Text.Encoding.UTF8.GetBytes("CoNSoL-Salt")
 			Using kdf As New System.Security.Cryptography.Rfc2898DeriveBytes("password123", salt, 100000, System.Security.Cryptography.HashAlgorithmName.SHA256)
