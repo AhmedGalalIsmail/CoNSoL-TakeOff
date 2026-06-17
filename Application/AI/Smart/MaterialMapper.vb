@@ -1,8 +1,9 @@
 Imports System.Text.Json
 Imports Domain.Entities
 
+''' <summary>
+''' MaterialMapper is responsible for assigning business definitions to detected elements based on their classification.</summary>
 Public Class MaterialMapper
-
 	''' <summary>
 	''' Assign business definitions automatically
 	''' </summary>

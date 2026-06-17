@@ -1,6 +1,8 @@
 
 Imports Domain.Entities
 
+''' <summary>
+''' CategoryClassifier is responsible for classifying detected CanvasElements into categories based on OCR text analysis. This can help in organizing elements into types like Concrete, Plumbing, Electrical, etc., which can be useful for takeoff calculations and material breakdowns.</summary>
 Public Class CategoryClassifier
 	''' <summary>
 	''' Classify objects into categories (Concrete, Plumbing, Electrical...)
