@@ -86,7 +86,7 @@ Namespace Forms
 			_contentSplit.FixedPanel = FixedPanel.Panel2
 			_contentSplit.SplitterDistance = 880
 			_contentSplit.Panel1MinSize = 640
-			_contentSplit.Panel2MinSize = 320
+			_contentSplit.Panel2MinSize = 220
 
 			_rightSplit.Dock = DockStyle.Fill
 			_rightSplit.Orientation = Orientation.Horizontal
