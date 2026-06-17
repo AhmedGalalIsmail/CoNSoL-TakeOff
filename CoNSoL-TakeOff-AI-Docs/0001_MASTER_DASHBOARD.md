@@ -1,4 +1,4 @@
-﻿---
+---
 aliases:
   - 📊 MASTER DASHBOARD
 color: "#e0970a"
