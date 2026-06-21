@@ -13,7 +13,7 @@
     ],
     "additionalProbingPaths": [
       "C:\\Users\\GoingIForMal\\.dotnet\\store\\|arch|\\|tfm|",
-      "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\.dotnet-home\\.nuget\\packages",
+      "C:\\Users\\GOINGI~1\\AppData\\Local\\Temp\\.nuget\\packages",
       "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
     ],
     "configProperties": {
