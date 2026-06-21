@@ -28,8 +28,5 @@
     <Compile Update="Forms\ProductionMainForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\MainF.vb">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
 </Project>

@@ -27,7 +27,7 @@
     ]
   },
   "packageFolders": {
-    "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\.dotnet-home\\.nuget\\packages\\": {},
+    "C:\\Users\\GOINGI~1\\AppData\\Local\\Temp\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
@@ -36,7 +36,7 @@
       "projectUniqueName": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Infrastructure\\Infrastructure.vbproj",
       "projectName": "Infrastructure",
       "projectPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Infrastructure\\Infrastructure.vbproj",
-      "packagesPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\.dotnet-home\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\GOINGI~1\\AppData\\Local\\Temp\\.nuget\\packages\\",
       "outputPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
