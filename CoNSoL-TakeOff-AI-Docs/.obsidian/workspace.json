@@ -114,7 +114,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 400.5
+    "width": 200
   },
   "right": {
     "id": "785bbd048f2515c1",
@@ -231,8 +231,9 @@
   },
   "active": "10684b032ffb19ec",
   "lastOpenFiles": [
-    "en/0001_MASTER_DASHBOARD.md",
+    "en/06_VIBE_CODING_GUIDE/1_Task_Backlog.md",
     "en/05_SDLC_Library/05_Mega-File.md",
+    "en/0001_MASTER_DASHBOARD.md",
     "CoNSoL-Documents-Library-V2/MegaFile/01-Inception/0101-Requirement_Analysis.md",
     "CoNSoL-Documents-Library-V2/MegaFile/01-Inception",
     "CoNSoL-Documents-Library-V2/MegaFile",
@@ -252,7 +253,6 @@
     "ar/05_SDLC_Library/05_Mega-File-ar1.md",
     "ar/05_SDLC_Library/0000_AGENT_BRIEFING-ar.md",
     "ar/06_VIBE_CODING_GUIDE/1_Task_Backlog-ar.md",
-    "en/06_VIBE_CODING_GUIDE/1_Task_Backlog.md",
     "ar/06_VIBE_CODING_GUIDE/0_CoNSoL_Production_Layers-ar.md",
     "ar/06_VIBE_CODING_GUIDE/0_CoNSoL_Production_Layers.md",
     "ar/06_VIBE_CODING_GUIDE/1_Task_Backlog.md",
