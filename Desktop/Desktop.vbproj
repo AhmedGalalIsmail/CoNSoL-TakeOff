@@ -16,6 +16,7 @@
 	<ItemGroup>
 		<None Remove="My Project\Application.myapp" />
 	</ItemGroup>
+
 	
 	<!--
 	<ItemGroup>

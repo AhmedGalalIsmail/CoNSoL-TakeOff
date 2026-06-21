@@ -67,3 +67,12 @@ E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Desktop
 E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Desktop.genruntimeconfig.cache
 E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\ref\Desktop.dll
 E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Desktop.Forms.ProductionMainForm.resources
+E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Forms\MainWPFform.g.vb
+E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Forms\MaterialCrudFormWPF.g.vb
+E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\WPFMain.g.vb
+E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Desktop_MarkupCompile.cache
+E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Desktop_MarkupCompile.lref
+E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Forms\MainWPFform.baml
+E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Forms\MaterialCrudFormWPF.baml
+E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\WPFMain.baml
+E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Desktop.g.resources
