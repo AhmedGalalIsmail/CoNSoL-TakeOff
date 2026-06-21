@@ -23,12 +23,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "en/0001_MASTER_DASHBOARD.md",
+                "file": "en/05_SDLC_Library/05_Mega-File.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "0001_MASTER_DASHBOARD"
+              "title": "05_Mega-File"
             }
           },
           {
@@ -231,6 +231,7 @@
   },
   "active": "10684b032ffb19ec",
   "lastOpenFiles": [
+    "en/0001_MASTER_DASHBOARD.md",
     "en/05_SDLC_Library/05_Mega-File.md",
     "CoNSoL-Documents-Library-V2/MegaFile/01-Inception/0101-Requirement_Analysis.md",
     "CoNSoL-Documents-Library-V2/MegaFile/01-Inception",
@@ -248,7 +249,6 @@
     "ar/99_Archive/99_Archive.md",
     "ar/0601_CoNSoL-TakeOff_AI_PRODUCT_STORY_DRAFT_V1.3-ar.md",
     "ar/0001_MASTER_DASHBOARD-ar.md",
-    "en/0001_MASTER_DASHBOARD.md",
     "ar/05_SDLC_Library/05_Mega-File-ar1.md",
     "ar/05_SDLC_Library/0000_AGENT_BRIEFING-ar.md",
     "ar/06_VIBE_CODING_GUIDE/1_Task_Backlog-ar.md",

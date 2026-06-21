@@ -3169,7 +3169,7 @@ This document ensures:
 
 #### 1.2 Coding Standards
 
-#### Naming
+##### Naming
 
 - Classes → `PascalCase`
 - Methods → `PascalCase`
@@ -3177,8 +3177,7 @@ This document ensures:
 - Constants → `UPPER_CASE`
 
 ---
-
-#### Example
+##### Example
 
 ```vb.net
 Public Class DrawingCanvas
@@ -3221,12 +3220,12 @@ Infrastructure Layer
 
 #### 2.2 Responsibilities
 
-|Layer|Responsibility|
-|---|---|
-|UI|Rendering & interaction|
-|Application|Use cases|
-|Domain|Business logic|
-|Infrastructure|DB, files|
+| **Layer**      | **Responsibility**      |
+| -------------- | ----------------------- |
+| UI             | Rendering & interaction |
+| Application    | Use cases               |
+| Domain         | Business logic          |
+| Infrastructure | DB, files               |
 
 ---
 
@@ -3234,7 +3233,7 @@ Infrastructure Layer
 
 #### 3.1 Canvas Component
 
-#### Responsibilities
+##### Responsibilities
 
 - Handle rendering
 - Process mouse events
@@ -3242,7 +3241,7 @@ Infrastructure Layer
 
 ---
 
-#### Example
+##### Example
 
 
 ```vb
@@ -3447,7 +3446,7 @@ End Interface
 
 ### 🧪 10. Code Quality
 
-### 10.1 Code Review Checklist
+#### 10.1 Code Review Checklist
 
 - [ ]  Naming conventions followed
 - [ ]  No duplicated logic
@@ -3456,7 +3455,7 @@ End Interface
 
 ---
 
-### 10.2 Static Analysis
+#### 10.2 Static Analysis
 
 - Linting tools
 - Code formatting
@@ -3465,7 +3464,7 @@ End Interface
 
 ### 🚀 11. Build & Run
 
-### 11.1 Build Process
+#### 11.1 Build Process
 
 ```txt
 Code → Compile → Test → Package  
@@ -3473,7 +3472,7 @@ Code → Compile → Test → Package
 
 ---
 
-### 11.2 Artifacts
+#### 11.2 Artifacts
 
 - Executable (.exe)
 - Installer (.msi / MSIX)
@@ -3496,7 +3495,7 @@ Code → Compile → Test → Package
 
 ### 📡 13. Logging & Debugging
 
-### 13.1 Logging
+#### 13.1 Logging
 
 ```vb
 Logger.Log("Shape created") 
@@ -3504,7 +3503,7 @@ Logger.Log("Shape created")
 
 ---
 
-### 13.2 Debug Tools
+#### 13.2 Debug Tools
 
 - Visual Studio debugger
 - Log tracing
