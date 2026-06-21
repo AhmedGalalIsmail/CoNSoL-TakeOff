@@ -3442,6 +3442,24 @@ End Interface
 - Feature flags
 - Logging settings
 
+#### 9.3 User & Application Settings
+
+| **ID** | **Requirement** | **Category** | **Status** |
+|---|---|---|---|
+| FR-CONF-010 | The system shall provide a centralized settings surface for application-wide preferences and user-level preferences | Architecture | Draft |
+| FR-CONF-011 | The settings model shall separate immutable application configuration from mutable user preferences | Data Model | Draft |
+| FR-CONF-012 | The shell shall expose a Settings entry from the main UI and relevant maintenance screens | UX / Navigation | Draft |
+| FR-CONF-013 | The system shall persist user preferences locally in standalone mode and through the shared configuration store in integrated mode | Persistence | Draft |
+| FR-CONF-014 | The system shall support settings groups for display, behavior, file paths, defaults, and diagnostics | Functional | Draft |
+| FR-CONF-015 | The system shall validate configuration edits before saving and surface recoverable errors inline | Validation | Draft |
+| FR-CONF-016 | The system shall allow reset-to-default behavior for user preferences without deleting application configuration | UX / Recovery | Draft |
+
+##### Draft Scope Notes
+
+- Application settings cover startup behavior, storage paths, logging, feature toggles, and environment binding.
+- User settings cover theme, language, last opened workspace, grid and snap defaults, and personal UI preferences.
+- The first implementation should reuse the same settings service from both WinForms and WPF entry points.
+
 ---
 
 ### 🧪 10. Code Quality
