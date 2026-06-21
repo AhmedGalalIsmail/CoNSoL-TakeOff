@@ -10,13 +10,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="My Project\Application.Designer.vb" />
+		<Compile Remove="My Project\Application.Designer.vb" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="My Project\Application.myapp" />
+		<None Remove="My Project\Application.myapp" />
 	</ItemGroup>
-  
+	
 	<!--
 	<ItemGroup>
 		<Compile Remove="ApplicationEvents.vb" />
@@ -31,7 +31,7 @@
  <ItemGroup>
 		<Page Remove="Forms\WPFMainForm.xaml" />
 	</ItemGroup>
-  -->
+	-->
 
 	<ItemGroup>
 		<Import Include="System.Data" />
@@ -46,7 +46,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="My Project\" />
+		<Folder Include="My Project\" />
 	</ItemGroup>
 
 </Project>
