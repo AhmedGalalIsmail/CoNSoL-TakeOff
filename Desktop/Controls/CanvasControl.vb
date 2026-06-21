@@ -14,32 +14,6 @@ Imports Domain.Entities
 
 #End Region
 
-
-
-'Namespace Controls
-
-'End Namespace
-#Region "CanvasControl and related types"
-
-'''' <summary>
-'''' available Tools for the interactive canvas.
-'''' </summary>
-'Public Enum ToolType
-'	''' <summary>Select and manipulate existing shapes.</summary>
-'	SelectTool
-'	''' <summary>Draw straight lines.</summary>
-'	Line
-'	''' <summary>Draw rectangles.</summary>
-'	Rectangle
-'	''' <summary>Draw ellipses.</summary>
-'	Ellipse
-'	''' <summary>Draw Polyline</summary>
-'	Polyline
-'	''' <summary>Pan the viewport.</summary>
-'	Pan
-'End Enum
-#End Region
-
 #Region "canvas control"
 
 ''' <summary>
@@ -103,11 +77,14 @@ Public Class CanvasControl
 	Private _backgroundImage As Image = Nothing
 	Private _backgroundOpacity As Single = 0.5F
 
-    ''' <summary>
-    ''' Event triggered when a shape is selected on the canvas.
-    ''' </summary>
-    ''' <param name="el"></param>
-    Public Event ElementSelected(el As CanvasElement)
+	Private _gridKind As GridKind = GridKind.Lines
+
+	Private _snapEnabled As Boolean = False
+	''' <summary>
+	''' Event triggered when a shape is selected on the canvas.
+	''' </summary>
+	''' <param name="el"></param>
+	Public Event ElementSelected(el As CanvasElement)
 #End Region
 
 #Region "Layout and shape management"
@@ -165,13 +142,13 @@ Public Class CanvasControl
 	''' <param name="color"></param>
 	''' <param name="thickness"></param>
 	Private Sub DrawDashedOutline(
-g As Graphics,
-shape As ShapeBase,
-zoom As Single,
-pan As PointF,
-color As Color,
-thickness As Single
-)
+		g As Graphics,
+		shape As ShapeBase,
+		zoom As Single,
+		pan As PointF,
+		color As Color,
+		thickness As Single)
+
 		Using pen As New Pen(color, thickness)
 			pen.DashStyle = DashStyle.Dash
 			Dim r = shape.GetBounds(zoom, pan)
@@ -597,10 +574,19 @@ thickness As Single
 	''' <param name="p">Point in world coordinates.</param>
 	''' <returns>Snapped point in world coordinates.</returns>
 	Private Function Snap(p As PointF) As PointF
+		' ? If disabled, return original
+		If Not _snapEnabled Then Return p
 		Dim sx = Math.Round(p.X / _gridSize) * _gridSize
 		Dim sy = Math.Round(p.Y / _gridSize) * _gridSize
 		Return New PointF(CSng(sx), CSng(sy))
 	End Function
+
+	' ' Orignal Ver
+	'Private Function Snap(p As PointF) As PointF
+	'	Dim sx = Math.Round(p.X / _gridSize) * _gridSize
+	'	Dim sy = Math.Round(p.Y / _gridSize) * _gridSize
+	'	Return New PointF(CSng(sx), CSng(sy))
+	'End Function
 
 	''' <summary>
 	''' Hit-test shapes from top-most to bottom-most and return the first matching shape.
@@ -619,30 +605,66 @@ thickness As Single
 	''' </summary>
 	''' <param name="g">Graphics surface to draw on.</param>
 	Private Sub DrawGrid(g As Graphics)
-		Using pen As New Pen(Color.Gainsboro)
-			For x = 0 To Me.Width Step CInt(_gridSize * _zoom)
-				g.DrawLine(pen, x + _pan.X Mod (CInt(_gridSize * _zoom)), 0, x + _pan.X Mod (CInt(_gridSize * _zoom)), Me.Height)
+		Dim size = CInt(_gridSize * _zoom)
+		For x = 0 To Me.Width Step size
+			For y = 0 To Me.Height Step size
+				Select Case _gridKind
+					Case GridKind.Lines
+						g.DrawLine(Pens.Gainsboro, x, 0, x, Me.Height)
+						g.DrawLine(Pens.Gainsboro, 0, y, Me.Width, y)
+					Case GridKind.Points
+						g.FillRectangle(Brushes.Gray, x, y, 2, 2)
+					Case GridKind.Crosses
+						g.DrawLine(Pens.Gray, x - 3, y, x + 3, y)
+						g.DrawLine(Pens.Gray, x, y - 3, x, y + 3)
+				End Select
 			Next
-			For y = 0 To Me.Height Step CInt(_gridSize * _zoom)
-				g.DrawLine(pen, 0, y + _pan.Y Mod (CInt(_gridSize * _zoom)), Me.Width, y + _pan.Y Mod (CInt(_gridSize * _zoom)))
-			Next
-		End Using
+		Next
 	End Sub
+
+
+	' ' Original Ver
+	'Private Sub DrawGrid(g As Graphics)
+	'	Using pen As New Pen(Color.Gainsboro)
+	'		For x = 0 To Me.Width Step CInt(_gridSize * _zoom)
+	'			g.DrawLine(pen, x + _pan.X Mod (CInt(_gridSize * _zoom)), 0, x + _pan.X Mod (CInt(_gridSize * _zoom)), Me.Height)
+	'		Next
+	'		For y = 0 To Me.Height Step CInt(_gridSize * _zoom)
+	'			g.DrawLine(pen, 0, y + _pan.Y Mod (CInt(_gridSize * _zoom)), Me.Width, y + _pan.Y Mod (CInt(_gridSize * _zoom)))
+	'		Next
+	'	End Using
+	'End Sub
 
 	''' <summary>
 	''' Draw horizontal and vertical rulers on the top and left edges of the control.
 	''' </summary>
 	''' <param name="g">Graphics surface to draw on.</param>
 	Private Sub DrawRulers(g As Graphics)
-		Using br As New SolidBrush(Color.LightSteelBlue)
-			g.FillRectangle(br, 0, 0, Me.Width, 20)
-			g.FillRectangle(br, 0, 0, 20, Me.Height)
-		End Using
-		Using pen As New Pen(Color.Black)
-			g.DrawLine(pen, 20, 20, Me.Width, 20)
-			g.DrawLine(pen, 20, 20, 20, Me.Height)
-		End Using
+		' ? Background
+		g.FillRectangle(Brushes.LightSteelBlue, 0, 0, Me.Width, 20)
+		g.FillRectangle(Brushes.LightSteelBlue, 0, 0, 20, Me.Height)
+		Dim stepSize As Integer = CInt(_gridSize * _zoom)
+		For x = 20 To Me.Width Step stepSize
+			g.DrawLine(Pens.Black, x, 15, x, 20)
+			g.DrawString((x / _zoom).ToString(), Me.Font, Brushes.Black, x, 0)
+		Next
+		For y = 20 To Me.Height Step stepSize
+			g.DrawLine(Pens.Black, 15, y, 20, y)
+			g.DrawString((y / _zoom).ToString(), Me.Font, Brushes.Black, 0, y)
+		Next
 	End Sub
+
+	' ' Original Ver
+	'   Private Sub DrawRulers(g As Graphics)
+	'	Using br As New SolidBrush(Color.LightSteelBlue)
+	'		g.FillRectangle(br, 0, 0, Me.Width, 20)
+	'		g.FillRectangle(br, 0, 0, 20, Me.Height)
+	'	End Using
+	'	Using pen As New Pen(Color.Black)
+	'		g.DrawLine(pen, 20, 20, Me.Width, 20)
+	'		g.DrawLine(pen, 20, 20, 20, Me.Height)
+	'	End Using
+	'End Sub
 End Class
 #End Region
 #End Region

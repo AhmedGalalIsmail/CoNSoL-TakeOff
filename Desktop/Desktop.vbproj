@@ -6,6 +6,7 @@
     <StartupObject>Desktop.program</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
