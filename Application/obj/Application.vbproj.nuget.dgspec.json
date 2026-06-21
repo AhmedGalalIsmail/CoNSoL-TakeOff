@@ -10,7 +10,7 @@
         "projectUniqueName": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Application\\Application.vbproj",
         "projectName": "Application",
         "projectPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Application\\Application.vbproj",
-        "packagesPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\.dotnet-home\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\GOINGI~1\\AppData\\Local\\Temp\\.nuget\\packages\\",
         "outputPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
@@ -83,7 +83,7 @@
         "projectUniqueName": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Domain\\Domain.vbproj",
         "projectName": "Domain",
         "projectPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Domain\\Domain.vbproj",
-        "packagesPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\.dotnet-home\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\GOINGI~1\\AppData\\Local\\Temp\\.nuget\\packages\\",
         "outputPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
@@ -149,7 +149,7 @@
         "projectUniqueName": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Infrastructure\\Infrastructure.vbproj",
         "projectName": "Infrastructure",
         "projectPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Infrastructure\\Infrastructure.vbproj",
-        "packagesPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\.dotnet-home\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\GOINGI~1\\AppData\\Local\\Temp\\.nuget\\packages\\",
         "outputPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
