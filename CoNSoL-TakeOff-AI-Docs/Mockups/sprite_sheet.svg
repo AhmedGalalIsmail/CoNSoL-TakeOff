@@ -33,7 +33,7 @@
 
   <!-- 1. Select (cursor arrow) -->
   <g transform="translate(30,115)">
-    <rect class="cell-bg" width="110" height="110" rx="8"/>
+    <rect class="cell-bg active" width="110" height="110" rx="8"/> <!-- cell-bg -->
     <g transform="translate(55,50)">
       <path class="icon-stroke" d="M -14,-16 L 12,4 L 0,6 L 8,18 L 2,22 L -6,10 L -14,18 Z"/>
     </g>
@@ -42,7 +42,7 @@
 
   <!-- 2. Line tool (active/accent) -->
   <g transform="translate(162,115)">
-    <rect class="cell-bg active" width="110" height="110" rx="8"/>
+    <rect class="cell-bg" width="110" height="110" rx="8"/> <!-- cell-bg active -->
     <g transform="translate(55,50)">
       <line class="icon-stroke-accent" x1="-16" y1="14" x2="16" y2="-14"/>
       <circle class="icon-fill-accent" cx="-16" cy="14" r="2.5"/>
