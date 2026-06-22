@@ -302,6 +302,52 @@ These are draft candidates. They are not active backlog items yet.
 
 ---
 
+## 👣 Draft User Stories
+
+These user stories are a lightweight bridge from the story language into traceable UC/FR work.
+
+| **US ID** | **Story** | **Maps to** |
+| --- | --- | --- |
+| US-AI-001 | As a user, I want to upload a drawing so the system can begin AI intake | UC-AI-001, FR-AI-001, FR-AI-002 |
+| US-AI-002 | As a user, I want the system to extract text and metadata so I can review it | UC-AI-002, FR-AI-003 |
+| US-AI-003 | As a user, I want the scale to be detected or requested so geometry can be interpreted correctly | UC-AI-003, FR-AI-004 |
+| US-AI-004 | As a user, I want candidate geometry detected and redrawn as editable objects | UC-AI-004, FR-AI-005, FR-AI-006 |
+| US-AI-005 | As a user, I want construction objects classified and layered so the drawing is organized | UC-AI-005, FR-AI-007, FR-AI-008 |
+| US-AI-006 | As a user, I want confidence shown so I can decide what to trust | UC-AI-006, FR-AI-009, FR-AI-010 |
+| US-AI-007 | As a user, I want to review and correct AI output before calculation | UC-AI-006, FR-AI-010 |
+| US-AI-008 | As a user, I want quantities calculated only from accepted objects | UC-AI-007, FR-AI-011 |
+| US-AI-009 | As a user, I want AI audit metadata preserved after save/open | UC-AI-001..UC-AI-006, FR-AI-012 |
+| US-AI-010 | As a user, I want reviewed results exported as business data | UC-AI-008, FR-AI-013 |
+| US-AI-011 | As a user, I want the clean shell to support the AI review workflow | L04, FR-UI-024..FR-UI-036 |
+| US-AI-012 | As a user, I want the same business object model to serve manual and AI work | UC-001..UC-014, L01..L03 |
+
+---
+
+## 🧱 Draft AI NFRs
+
+| **NFR ID** | **Requirement** | **Target** |
+| --- | --- | --- |
+| NFR-AI-001 | AI intake shall remain reviewable and editable before any export or quantity calculation | Human-in-the-loop |
+| NFR-AI-002 | AI-derived results shall preserve source trace and confidence metadata | Auditability |
+| NFR-AI-003 | AI intake should complete the first-pass extraction within a reasonable desktop workflow time | Performance |
+| NFR-AI-004 | AI import shall support offline-first standalone operation for the MVP | Deployment |
+| NFR-AI-005 | Accepted AI objects shall behave exactly like manually drawn objects after acceptance | Consistency |
+| NFR-AI-006 | AI failures shall degrade gracefully without destroying manual drawing state | Reliability |
+
+---
+
+## 🔗 Traceability Alignment Matrix
+
+| **Live Doc** | **Alignment Check** | **Status** |
+| --- | --- | --- |
+| `05_Mega-File.md` SRS | Existing UC-001..UC-014, FR-UI-024..FR-UI-036, and the new AI FRs/NFRs can coexist without changing the manual MVP spine | Aligned |
+| `05_Mega-File.md` Design | AI workflow depends on L01 canvas stability, L03 persistence, L04 review UI, and L05 service contracts | Aligned |
+| `0_CoNSoL_Production_Layers.md` | AI intake overlay now maps cleanly to L03/L04/L05/L06/L07/L08, and the WPF shell additions fit L04 | Aligned |
+| `0001_MASTER_DASHBOARD.md` | Dashboard AI roadmap entries already reflect the AI intake progression and can absorb the new user-story bridge | Aligned |
+| `1_Task_Backlog.md` | Existing AI tasks T-067..T-075 cover the first wave; the next phase is the clean shell + review workflow + settings work | Mostly aligned |
+
+---
+
 ## 🧧 Production Layer Impact
 
 | **Layer**                        | **Impact from 0601**                                                                           | **Build rule**                                      |
@@ -583,4 +629,3 @@ These are the draft items that still need promotion into the live SDLC library o
 | UI           | AI review surface in the clean form                         | Not yet promoted | `0_CoNSoL_Production_Layers.md`, `1_Task_Backlog.md`         |
 | Testing      | AI intake fixtures and acceptance coverage                  | Not yet promoted | `1_Task_Backlog.md`, `0401_Testing_Documentation.md`         |
 | Ops          | AI logging, tracing, and package fallback                   | Not yet promoted | `0_CoNSoL_Production_Layers.md`, `1_Task_Backlog.md`, `0304` |
-

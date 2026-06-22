@@ -243,10 +243,13 @@ Implement the WinForms presentation layer: canvas control, property panel, layer
 ## What Exists
 
 - `MainForm` — main window, skeleton
+- `ProductionMainForm` — production shell, working
+- `MainWPFform` — WPF shell clone, wired to the same workspace actions
 - `CanvasControl` — interactive drawing surface (working)
 - `PropertiesPanel` — exists but not wired to selection state
 - `BlockAssignmentForm` — block/material dialog (exists)
 - `MaterialCrudForm` — material management (exists)
+- `MaterialCrudFormWPF` — WPF CRUD clone, wired to the same catalog actions
 - Tool selection UI — working
 
 ## What Is Missing
@@ -259,6 +262,7 @@ Implement the WinForms presentation layer: canvas control, property panel, layer
 | `(mixed)` placeholder for differing values  | FR-PP-004                 | 1h         |
 | Logical 3D fields in property panel         | FR-PP-008                 | 2h         |
 | Main shell responsive layout                | FR-UI-024..FR-UI-029      | 5h         |
+| Main shell button behaviors + 0.0 axes     | FR-UI-024..FR-UI-029, FR-UI-036 | 4h |
 | Materials & Blocks CRUD form                | FR-UI-030..FR-UI-035      | 8h         |
 | Toolbox layout + grouping                   | G-0208-08                 | 2h         |
 | Status bar                                  | G-0208-10                 | 2h         |

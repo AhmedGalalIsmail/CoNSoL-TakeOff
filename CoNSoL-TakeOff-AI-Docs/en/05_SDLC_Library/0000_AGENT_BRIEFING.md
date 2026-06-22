@@ -51,20 +51,20 @@ CoNSoL-TakeOff Documentation Library
 
 ## Key Vocabulary
 
-| Term | Definition |
-|---|---|
-| UC-NNN | Use Case — full user flow with actor, preconditions, steps, exceptions |
-| FR-XX-NNN | Functional Requirement (DT=drawing tool, CV=canvas, PP=property panel, LP=layer panel) |
-| NFR-NNN | Non-Functional Requirement (NFR-001 = <16ms redraw) |
-| GAP / G-XXXX | A missing or incomplete doc section (in Gap Analysis) |
-| D0/D1/D2/D3 | Dimension modes: D0=count, D1=length, D2=area, D3=volume |
-| Logical units | Real-world units (mm/cm/m) used for business data |
-| Physical units | Screen pixels used for rendering |
-| ScaleFactor | Conversion ratio: logical ÷ physical |
-| Smart Tag | Data aggregator attached to objects (carries numeric or text value) |
-| Custom Mark | Visual marker attached to objects (countable, no value) |
-| Block/Symbol | Reusable drawing element with attribute definitions |
-| Nested object | Child drawing object that subtracts from or adds to its parent's quantity |
+| Term           | Definition                                                                             |
+| -------------- | -------------------------------------------------------------------------------------- |
+| UC-NNN         | Use Case — full user flow with actor, preconditions, steps, exceptions                 |
+| FR-XX-NNN      | Functional Requirement (DT=drawing tool, CV=canvas, PP=property panel, LP=layer panel) |
+| NFR-NNN        | Non-Functional Requirement (NFR-001 = <16ms redraw)                                    |
+| GAP / G-XXXX   | A missing or incomplete doc section (in Gap Analysis)                                  |
+| D0/D1/D2/D3    | Dimension modes: D0=count, D1=length, D2=area, D3=volume                               |
+| Logical units  | Real-world units (mm/cm/m) used for business data                                      |
+| Physical units | Screen pixels used for rendering                                                       |
+| ScaleFactor    | Conversion ratio: logical ÷ physical                                                   |
+| Smart Tag      | Data aggregator attached to objects (carries numeric or text value)                    |
+| Custom Mark    | Visual marker attached to objects (countable, no value)                                |
+| Block/Symbol   | Reusable drawing element with attribute definitions                                    |
+| Nested object  | Child drawing object that subtracts from or adds to its parent's quantity              |
 
 ---
 

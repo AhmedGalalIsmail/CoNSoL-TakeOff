@@ -3055,6 +3055,7 @@ Define the **user experience, user interface behavior, and interaction rules** f
 | FR-UI-027 | The status bar shall show cursor coordinates, scale, active layer, active tool, object count, zoom, and snap/grid state | Draft |
 | FR-UI-028 | The right inspector shall expose tabbed views for Properties, Tags, and Marks | Draft |
 | FR-UI-029 | The bottom layer area shall support add, delete, and settings actions plus visibility, lock, and print toggles per layer | Draft |
+| FR-UI-036 | The canvas shall display perpendicular horizontal and vertical axes that intersect at the 0.0 origin and keep the origin visible in the drawing surface | Draft |
 
 ---
 
