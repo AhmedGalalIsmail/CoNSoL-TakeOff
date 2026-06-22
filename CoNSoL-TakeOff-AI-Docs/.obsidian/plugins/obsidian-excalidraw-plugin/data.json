@@ -5,11 +5,11 @@
   "disableDoubleClickTextEditing": false,
   "phoneFooterSafeAreaPadding": false,
   "folder": "Excalidraw",
-  "cropFolder": "",
-  "annotateFolder": "",
+  "cropFolder": "Excalidraw/_Studio/_Cropped",
+  "annotateFolder": "Excalidraw/_Studio/_Annotations",
   "embedUseExcalidrawFolder": false,
   "templateFilePath": "Excalidraw/Template.excalidraw",
-  "scriptFolderPath": "Excalidraw/Scripts",
+  "scriptFolderPath": "Excalidraw/_Scripts/_Download",
   "fontAssetsPath": "Excalidraw/CJK Fonts",
   "loadChineseFonts": false,
   "loadJapaneseFonts": false,
@@ -48,8 +48,8 @@
   "tabletUIMode": "compact",
   "phoneUIMode": "mobile",
   "iframeMatchExcalidrawTheme": true,
-  "matchTheme": false,
-  "matchThemeAlways": false,
+  "matchTheme": true,
+  "matchThemeAlways": true,
   "matchThemeTrigger": false,
   "defaultMode": "normal",
   "defaultPenMode": "never",
@@ -120,7 +120,7 @@
   "library2": {
     "type": "excalidrawlib",
     "version": 2,
-    "source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.16.1",
+    "source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag2.24.2",
     "libraryItems": []
   },
   "imageElementNotice": true,
@@ -1012,7 +1012,7 @@
         "rules": [
           {
             "shift": false,
-            "ctrl_cmd": false,
+            "ctrl_cmd": true,
             "alt_opt": false,
             "meta_ctrl": false,
             "result": "active-pane"

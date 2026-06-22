@@ -44,9 +44,15 @@
     "//HTML Pages/HTML Pages/06_VIBE_CODING_GUIDE",
     "//ar/ar/06_VIBE_CODING_GUIDE",
     "//ar/ar/05_SDLC_Library",
-    "//en",
     "//en/en/06_VIBE_CODING_GUIDE",
-    "//en/en/05_SDLC_Library"
+    "//Excalidraw",
+    "//en",
+    "//Drawing-Mermaids",
+    "//CoNSoL-Documents-Library-V2",
+    "//CoNSoL-Documents-Library-V2/CoNSoL-Documents-Library-V2/MegaFile",
+    "//CoNSoL-Documents-Library-V2/CoNSoL-Documents-Library-V2/MegaFile/CoNSoL-Documents-Library-V2/MegaFile/01-Inception",
+    "//en/en/05_SDLC_Library",
+    "//Mockups"
   ],
   "expandFolderOnClick": true,
   "spacesFolder": "Tags",
