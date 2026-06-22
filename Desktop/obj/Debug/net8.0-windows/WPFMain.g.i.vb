@@ -57,7 +57,7 @@ Partial Public Class WPFMain
             Return
         End If
         _contentLoaded = true
-        Dim resourceLocater As System.Uri = New System.Uri("/Desktop;V1.0.0.0;component/wpfmain.xaml", System.UriKind.Relative)
+        Dim resourceLocater As System.Uri = New System.Uri("/Desktop;component/wpfmain.xaml", System.UriKind.Relative)
         
         #ExternalSource("..\..\..\WPFMain.xaml",1)
         System.Windows.Application.LoadComponent(Me, resourceLocater)

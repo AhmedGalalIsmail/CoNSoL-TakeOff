@@ -47,6 +47,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Folder Include="Assets\Icons\" />
 		<Folder Include="My Project\" />
 	</ItemGroup>
 
