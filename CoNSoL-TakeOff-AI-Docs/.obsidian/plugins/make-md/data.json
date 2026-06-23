@@ -45,14 +45,14 @@
     "//ar/ar/06_VIBE_CODING_GUIDE",
     "//ar/ar/05_SDLC_Library",
     "//en/en/06_VIBE_CODING_GUIDE",
-    "//Excalidraw",
-    "//en",
-    "//Drawing-Mermaids",
     "//CoNSoL-Documents-Library-V2",
     "//CoNSoL-Documents-Library-V2/CoNSoL-Documents-Library-V2/MegaFile",
     "//CoNSoL-Documents-Library-V2/CoNSoL-Documents-Library-V2/MegaFile/CoNSoL-Documents-Library-V2/MegaFile/01-Inception",
     "//en/en/05_SDLC_Library",
-    "//Mockups"
+    "//ZRGPictureBoxControl",
+    "//Excalidraw",
+    "//Drawing-Mermaids",
+    "//ZRGPictureBoxControl-in-Detailed"
   ],
   "expandFolderOnClick": true,
   "spacesFolder": "Tags",
