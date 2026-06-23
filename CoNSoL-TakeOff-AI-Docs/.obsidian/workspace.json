@@ -25,12 +25,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ZRGPictureBoxControl-in-Detailed/Draft.md",
+                "file": "en/0601_CoNSoL-TakeOff_AI_PRODUCT_STORY_DRAFT_V1.3.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Draft"
+              "title": "0601_CoNSoL-TakeOff_AI_PRODUCT_STORY_DRAFT_V1.3"
             }
           },
           {
@@ -144,7 +144,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 335.5
+    "width": 386.5
   },
   "right": {
     "id": "785bbd048f2515c1",
@@ -261,7 +261,10 @@
   },
   "active": "d94db30b03389659",
   "lastOpenFiles": [
+    "en/0001_MASTER_DASHBOARD.md",
     "ZRGPictureBoxControl-in-Detailed/Draft.md",
+    "en/en.md",
+    "continue-export.zip",
     "Pasted image 20260623040727.png",
     "Pasted image 20260623033816.png",
     "ZRGPictureBoxControl-in-Detailed/01-ZRGPictureBoxControl.md",
@@ -296,7 +299,6 @@
     "Excalidraw/_Scripts/_Download/Toggle Grid.svg",
     "Excalidraw/_Scripts/_Download/Toggle Grid.md",
     "Excalidraw/_Scripts/_Download/Text to Sticky Notes.svg",
-    "Excalidraw/_Scripts/_Download/Text to Sticky Notes.md",
     "Excalidraw/_Scripts/_Download/Text to Path.svg",
     "Excalidraw/_Scripts/_Download/Text Aura.svg",
     "Excalidraw/_Scripts/_Download",
@@ -304,7 +306,6 @@
     "Excalidraw/_Studio/_Drawings",
     "Excalidraw/_Studio/_Cropped",
     "Excalidraw/_Studio/_Annotations",
-    "Excalidraw/_Studio",
-    "Excalidraw/_Scripts"
+    "Excalidraw/_Studio"
   ]
 }

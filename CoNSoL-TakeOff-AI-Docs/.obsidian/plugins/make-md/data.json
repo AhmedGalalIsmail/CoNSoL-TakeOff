@@ -50,9 +50,9 @@
     "//CoNSoL-Documents-Library-V2/CoNSoL-Documents-Library-V2/MegaFile/CoNSoL-Documents-Library-V2/MegaFile/01-Inception",
     "//en/en/05_SDLC_Library",
     "//ZRGPictureBoxControl",
-    "//Excalidraw",
     "//Drawing-Mermaids",
-    "//ZRGPictureBoxControl-in-Detailed"
+    "//ZRGPictureBoxControl-in-Detailed",
+    "//en"
   ],
   "expandFolderOnClick": true,
   "spacesFolder": "Tags",
