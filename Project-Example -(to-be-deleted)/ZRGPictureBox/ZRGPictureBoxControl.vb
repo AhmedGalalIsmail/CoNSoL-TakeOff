@@ -2,6 +2,7 @@ Imports System
 Imports System.Windows.Forms
 Imports System.ComponentModel
 Imports System.Collections.Generic
+Imports System.Drawing
 
 Partial Public Class ZRGPictureBoxControl
     Inherits System.Windows.Forms.UserControl
@@ -17,15 +18,15 @@ Partial Public Class ZRGPictureBoxControl
     Public Shared ReadOnly DefaultMaxLogicalWindowSize As Size = New Size(100000000, 100000000)
 #End Region
 
-#Region "Costanti"
+#Region "Constants"
     ''' <summary>
-    ''' Unita' di misura di deafult utilizzata per la visualizzazione delle coordinate e per i righelli
+    ''' Default measurement unit used for displaying coordinates and rulers
     ''' </summary>
     Public Const DefaultUnitOfMeasure As MeasureSystem.enUniMis = MeasureSystem.enUniMis.mm
 
 #End Region
 
-#Region "Eventi"
+#Region "Events"
     Public Shadows Event MouseClick(ByVal sender As ZRGPictureBoxControl, ByVal e As System.Windows.Forms.MouseEventArgs, ByVal LogicalCoord As Point, ByVal CurrentClickAction As enClickAction)
     Public Shadows Event MouseMove(ByVal sender As ZRGPictureBoxControl, ByVal e As System.Windows.Forms.MouseEventArgs, ByVal LogicalCoord As Point, ByVal CurrentClickAction As enClickAction)
     Public Shadows Event MouseDown(ByVal sender As ZRGPictureBoxControl, ByVal e As System.Windows.Forms.MouseEventArgs, ByVal LogicalCoord As Point, ByVal CurrentClickAction As enClickAction)
@@ -44,7 +45,7 @@ Partial Public Class ZRGPictureBoxControl
     Public Event OnClickActionChanged(ByVal oldClickAction As enClickAction, ByVal newClickAction As enClickAction)
 #End Region
 
-#Region "Variabili private"
+#Region "Private Variables"
     Private myGraphicInfo As New ConversionInfo()
     Private myClickAction As enClickAction = enClickAction.Zoom
     Private myCoordinatesBox As CoordinatesBox = New CoordinatesBox(Me)
@@ -145,7 +146,7 @@ Partial Public Class ZRGPictureBoxControl
     End Property
 #End Region
 
-#Region "Dimensioni e unita' di misura"
+#Region "Dimensions and units of measurement"
     Private myBorderStyle As BorderStyle = Windows.Forms.BorderStyle.FixedSingle
     Private myUnitOfMeasure As MeasureSystem.enUniMis = DefaultUnitOfMeasure
     Private myMinLogicalWindowSize As Size = DefaultMinLogicalWindowSize
@@ -164,9 +165,9 @@ Partial Public Class ZRGPictureBoxControl
 
 #End Region
 
-#Region "Proprieta'"
+#Region "Proprities'"
 
-#Region "Origine, coordinate, dimensioni, ecc. "
+#Region "Origin, coordinates, dimensions, etc."
     Protected Overrides ReadOnly Property DefaultSize() As Size
         Get
             Return New Size(560, 400)
@@ -258,7 +259,7 @@ Partial Public Class ZRGPictureBoxControl
         End Set
     End Property
 
-#Region "Funzioni che impediscono la serializzazione di queste proprieta'"
+#Region "Functions that prevent serialization of these properties"
     <EditorBrowsable(EditorBrowsableState.Never)> _
     Private Function ShouldSerializeScaleFactor() As Boolean
         Return False
