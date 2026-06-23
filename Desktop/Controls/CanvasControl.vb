@@ -53,6 +53,18 @@ Public Class CanvasControl
 
 	Private ReadOnly _shapeMenu As New ContextMenuStrip()
 
+#Region "Size"
+	Public Shared ReadOnly DefaultMinLogicalWindowSize As Size = New Size(2000, 2000)
+	Public Shared ReadOnly DefaultMaxLogicalWindowSize As Size = New Size(100000000, 100000000)
+#End Region
+
+#Region "Dimensions and units of measurement"
+	'Private myBorderStyle As BorderStyle = Windows.Forms.BorderStyle.FixedSingle
+	'Private myUnitOfMeasure As MeasureSystem.enUniMis = DefaultUnitOfMeasure
+	Private myMinLogicalWindowSize As Size = DefaultMinLogicalWindowSize
+	Private myMaxLogicalWindowSize As Size = DefaultMaxLogicalWindowSize
+#End Region
+
 	''' <summary>Current layout being rendered.</summary>
 	''' <remarks>Invariant: Never null. Set via SetLayout().</remarks>
 	Private _currentLayout As CanvasLayout
@@ -144,13 +156,13 @@ Public Class CanvasControl
 	''' <param name="color"></param>
 	''' <param name="thickness"></param>
 	Private Sub DrawDashedOutline(
-g As Graphics,
-shape As ShapeBase,
-zoom As Single,
-pan As PointF,
-color As Color,
-thickness As Single
-)
+		g As Graphics,
+		shape As ShapeBase,
+		zoom As Single,
+		pan As PointF,
+		color As Color,
+		thickness As Single)
+
 		Using pen As New Pen(color, thickness)
 			pen.DashStyle = DashStyle.Dash
 			Dim r = shape.GetBounds(zoom, pan)
@@ -177,10 +189,8 @@ thickness As Single
 				Case ElementRelationshipType.Nested
 					' Child is part of parent (logical containment)
 					DrawDashedOutline(g, child, zoom, pan, Color.DimGray, 1)
-
 					' Parent gets a heavier outline
 					DrawDashedOutline(g, parent, zoom, pan, Color.Gray, 2)
-
 				Case ElementRelationshipType.Exclusion
 					' Exclusion (subtract from parent)
 					DrawDashedOutline(g, child, zoom, pan, Color.Red, 2)
@@ -193,7 +203,6 @@ thickness As Single
 	''' </summary>
 	Private Sub AssignBlockToSelectedShape()
 		If _selected Is Nothing Then Return
-
 		Using dlg As New BlockAssignmentForm()
 			dlg.BusinessJson = _selected.BusinessJson
 
@@ -215,10 +224,18 @@ thickness As Single
 
 		Dim assignBlockItem = New ToolStripMenuItem("Assign Block...")
 		AddHandler assignBlockItem.Click, AddressOf AssignBlockToSelectedShape
-
 		_shapeMenu.Items.Add(assignBlockItem)
-
 	End Sub
+#Region "Functions that prevent serialization of these properties"
+	<EditorBrowsable(EditorBrowsableState.Never)>
+	Private Function ShouldSerializeMinLogicalWindowSize() As Boolean
+		Return MinLogicalWindowSize <> DefaultMinLogicalWindowSize
+	End Function
+	<EditorBrowsable(EditorBrowsableState.Never)>
+	Private Function ShouldSerializeMaxLogicalWindowSize() As Boolean
+		Return MaxLogicalWindowSize <> DefaultMaxLogicalWindowSize
+	End Function
+#End Region
 #End Region
 
 #Region "Public API"
@@ -627,6 +644,7 @@ thickness As Single
 	End Sub
 End Class
 #End Region
+
 #End Region
 
 #Region "Shape definitions"
