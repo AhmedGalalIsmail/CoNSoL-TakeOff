@@ -111,7 +111,7 @@ These 12 gaps from `0005_Gap_Analysis.md` block implementation. Resolve in this 
 | Canvas pan                                     | ✅ Working               | FR-CV-004          |
 | Grid rendering                                 | ✅ Working               | 0209 §3            |
 | Double-buffering                               | ✅ Working               | NFR-001            |
-| `ProductionMainForm` clean runtime-built shell | âœ… Working             | L04 / Desktop      |
+| `ProductionMainForm` clean runtime-built shell | ✅  Working             | L04 / Desktop      |
 | Shape selection (click)                        | ✅ Working               | UC-006 partial     |
 | Multi-select                                   | ✅ Working (visual only) | UC-006 partial     |
 | File save (.takeoff)                           | ✅ Working               | UC-013 partial     |
@@ -140,7 +140,7 @@ These 12 gaps from `0005_Gap_Analysis.md` block implementation. Resolve in this 
 | XML documentation              | G-0301-11               | 9h                   |
 | Logging (strategic)            | 0606, 0301 §13          | 8h                   |
 
-## ðŸ§  AI Roadmap Additions
+## 🤖§  AI Roadmap Additions
 
 | **Category** | **Item**                                | **Status** | **SDLC Reference**                         | **Effort** |
 | ------------ | --------------------------------------- | ---------- | ------------------------------------------ | ---------- |
