@@ -27,6 +27,12 @@
 
 This archive contains your Continue configurations for your personal workspace `ahmad1galal`.
 
+> **Open the file 👇:**
+
+![[continue-export.zip]]
+
+
+---
 ## What is included
 
 - **`agents/`** — Self-contained agent YAMLs with all dependencies inlined. No Hub connection needed.
