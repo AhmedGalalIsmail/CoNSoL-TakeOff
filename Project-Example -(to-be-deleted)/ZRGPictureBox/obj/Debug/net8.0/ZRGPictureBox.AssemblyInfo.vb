@@ -16,7 +16,7 @@ Imports System.Reflection
 <Assembly: System.Reflection.AssemblyCompanyAttribute("ZRGPictureBox"),  _
  Assembly: System.Reflection.AssemblyConfigurationAttribute("Debug"),  _
  Assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0"),  _
- Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e9af536f29a11cc4b68dd1e07fe4418444c2eecb"),  _
+ Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5f1de8cfc34d51df7e0d82df0ae749691d830032"),  _
  Assembly: System.Reflection.AssemblyProductAttribute("ZRGPictureBox"),  _
  Assembly: System.Reflection.AssemblyTitleAttribute("ZRGPictureBox"),  _
  Assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")> 
