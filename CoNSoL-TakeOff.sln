@@ -17,12 +17,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{956EB379-583E-4D28-8F59-928DF0155CA8}"
+	ProjectSection(SolutionItems) = preProject
+		0001_MASTER_DASHBOARD.md = 0001_MASTER_DASHBOARD.md
+		0005_CoNSoL-TakeOff_SDLC_Gap_Analysis.md = 0005_CoNSoL-TakeOff_SDLC_Gap_Analysis.md
+		0601_CoNSoL-TakeOff_AI_PRODUCT_STORY_DRAFT_V1.3.md = 0601_CoNSoL-TakeOff_AI_PRODUCT_STORY_DRAFT_V1.3.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resx", "Resx", "{3FA9AE5B-1A1D-43A7-90F7-5F53603F6B06}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project-Example(to be delete)", "Project-Example(to be delete)", "{62000D23-1BA1-4501-8594-2128679B4D93}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ZRGPictureBox", "Project-Example -(to-be-deleted)\ZRGPictureBox\ZRGPictureBox.vbproj", "{4A67B085-E1A3-4A9F-A537-84D6EE127376}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05_SDLC_Library", "05_SDLC_Library", "{53E4C809-CD4D-4927-B34A-D736E3578DC6}"
+	ProjectSection(SolutionItems) = preProject
+		0000_AGENT_BRIEFING.md = 0000_AGENT_BRIEFING.md
+		05_Mega-File.md = 05_Mega-File.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06_VIBE_CODING_GUIDE", "06_VIBE_CODING_GUIDE", "{8256CE1F-A607-4493-AB0A-1392FE4DBB53}"
+	ProjectSection(SolutionItems) = preProject
+		0_CoNSoL_Production_Layers.md = 0_CoNSoL_Production_Layers.md
+		1_Task_Backlog.md = 1_Task_Backlog.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +80,8 @@ Global
 		{3FA9AE5B-1A1D-43A7-90F7-5F53603F6B06} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{62000D23-1BA1-4501-8594-2128679B4D93} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{4A67B085-E1A3-4A9F-A537-84D6EE127376} = {62000D23-1BA1-4501-8594-2128679B4D93}
+		{53E4C809-CD4D-4927-B34A-D736E3578DC6} = {956EB379-583E-4D28-8F59-928DF0155CA8}
+		{8256CE1F-A607-4493-AB0A-1392FE4DBB53} = {956EB379-583E-4D28-8F59-928DF0155CA8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AB0F8BCB-62CD-44C9-8EB2-F31B8E0B324C}
