@@ -17,7 +17,7 @@ related_docs:
   - "06_VIBE_CODING_GUIDE/1_Task_Backlog.md"
 last_updated: 2026-06
 ---
-# 🏛 CoNSoL-TakeOff AI - Product Story Draft
+# 🏛 CoNSoL-TakeOff AI - Product Story
 
 > Draft purpose: promote the standalone 0601 AI product story into the live documentation-library format without overwriting the current manual-MVP execution plan.
 
@@ -27,7 +27,7 @@ last_updated: 2026-06
 
 This document is a draft bridge between:
 
-- The current live SDLC library, which focuses on a manual-first WinForms MVP.
+- The current live SDLC library, which focuses on a manual-first WinForms/WPF MVP.
 - The 0601 product story, which defines the wider AI-assisted Take-Off vision.
 
 The current backlog remains the executable source of truth until the AI items below are reviewed and added to `1_Task_Backlog.md` with traceable UC, FR, and GAP IDs.
@@ -142,7 +142,7 @@ The AI does not replace the estimator. It accelerates the setup by producing a f
 
 ## ⚙️ Core Product Principle
 
-Every detected drawing element becomes a business object.
+> ***Every detected drawing element becomes a business object.***
 
 - 🧱 **Examples:**
 	- Wall
