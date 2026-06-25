@@ -1,26 +1,14 @@
 {
   "main": {
-    "id": "2966b7ba698b8cc3",
+    "id": "f97df666c8d718bd",
     "type": "split",
     "children": [
       {
-        "id": "fc6ef9175adb9730",
+        "id": "78c269628a22f287",
         "type": "tabs",
         "children": [
           {
-            "id": "0dc51c2257ee3240",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "Excalidraw/_Studio/_Drawings/Drawing 2026-06-22 00.58.04.excalidraw.md"
-              },
-              "icon": "excalidraw-icon",
-              "title": "Drawing 2026-06-22 00.58.04.excalidraw"
-            }
-          },
-          {
-            "id": "d94db30b03389659",
+            "id": "d08a39b271664b15",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -34,63 +22,48 @@
             }
           },
           {
-            "id": "10684b032ffb19ec",
+            "id": "2466d549f63f5757",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ZRGPictureBoxControl-in-Detailed/Draft.md",
+                "file": "en/Project-Example -(to-be-deleted)/00-Project-Docs(All-in-one).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Draft"
+              "title": "00-Project-Docs(All-in-one)"
             }
           },
           {
-            "id": "f07d8d0552613889",
+            "id": "431386feeda171a6",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "en/0001_MASTER_DASHBOARD.md",
+                "file": "en/Project-Example -(to-be-deleted)/00-Project-Docs(All-in-one).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "0001_MASTER_DASHBOARD"
-            }
-          },
-          {
-            "id": "1eb81fefc73536d4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "en/05_SDLC_Library/0000_AGENT_BRIEFING.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "0000_AGENT_BRIEFING"
+              "title": "00-Project-Docs(All-in-one)"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "472d936a819d44f6",
+    "id": "676c1fbb751027c0",
     "type": "split",
     "children": [
       {
-        "id": "b42277d586c9f0c7",
+        "id": "0010e30cc4c2403b",
         "type": "tabs",
         "children": [
           {
-            "id": "83d7241f8620374f",
+            "id": "d68f0086129348a4",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -103,7 +76,7 @@
             }
           },
           {
-            "id": "5fe9d2a4eb672a35",
+            "id": "72d0f7340bca6d9d",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -120,7 +93,7 @@
             }
           },
           {
-            "id": "3731a62632132b7b",
+            "id": "ab16b26a5846c331",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -128,39 +101,27 @@
               "icon": "lucide-bookmark",
               "title": "Bookmarks"
             }
-          },
-          {
-            "id": "243590d649e2e9d5",
-            "type": "leaf",
-            "state": {
-              "type": "mk-path-view",
-              "state": {},
-              "icon": "layout-grid",
-              "title": "Navigator"
-            }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 386.5
+    "width": 300
   },
   "right": {
-    "id": "785bbd048f2515c1",
+    "id": "c9767910c8bd8dbd",
     "type": "split",
     "children": [
       {
-        "id": "38ff4aea8b0d9c3f",
+        "id": "bd58189cc805fa4b",
         "type": "tabs",
         "children": [
           {
-            "id": "6725497c2cd7825a",
+            "id": "e07a550ae3bfc73e",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "05_SDLC_Library/05_Mega-File.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -170,25 +131,24 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 05_Mega-File"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "c50ef0ce2aa9b753",
+            "id": "417e35c1ed502536",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "0001_MASTER_DASHBOARD.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from 0001_MASTER_DASHBOARD"
+              "title": "Outgoing links"
             }
           },
           {
-            "id": "4f5f2549911493c7",
+            "id": "40fcae3796157e23",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -203,7 +163,7 @@
             }
           },
           {
-            "id": "e3b19256f0632340",
+            "id": "d4f2f7d032ea9c49",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -217,18 +177,17 @@
             }
           },
           {
-            "id": "b64937cc1e4e3454",
+            "id": "b4bd5148f9d4b10a",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "0001_MASTER_DASHBOARD.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 0001_MASTER_DASHBOARD"
+              "title": "Outline"
             }
           }
         ]
@@ -240,58 +199,47 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "notes-to-html-pages:Export current note to HTML page": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false,
-      "templater-obsidian:Templater": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": false,
-      "obsidian-excalidraw-plugin:New drawing": false,
-      "pdf-plus:PDF++: Toggle auto-copy": false,
-      "pdf-plus:PDF++: Toggle auto-focus": false,
-      "pdf-plus:PDF++: Toggle auto-paste": false,
-      "mermaid-tools:Open Mermaid Toolbar": false,
-      "html-server:Turn Http Server On": false,
-      "html-server:Turn Http Server Off": false
+      "bases:Create new base": false
     }
   },
-  "active": "d94db30b03389659",
+  "active": "d08a39b271664b15",
   "lastOpenFiles": [
-    "en/0001_MASTER_DASHBOARD.md",
-    "ZRGPictureBoxControl-in-Detailed/Draft.md",
-    "en/en.md",
-    "continue-export.zip",
     "Pasted image 20260623040727.png",
     "Pasted image 20260623033816.png",
-    "ZRGPictureBoxControl-in-Detailed/01-ZRGPictureBoxControl.md",
+    "Pasted image 20260621011129.png",
+    "continue-export.zip",
     "ZRGPictureBoxControl-in-Detailed/ZRGPictureBoxControl-in-Detailed.md",
-    "ZRGPictureBoxControl-in-Detailed/00-Offers.md",
+    "ZRGPictureBoxControl-in-Detailed/Draft.md",
+    "ZRGPictureBoxControl-in-Detailed/13-Examples .md",
+    "ZRGPictureBoxControl-in-Detailed/12-PublicTypes.md",
+    "ZRGPictureBoxControl-in-Detailed/11-cCommonCursors.md",
+    "ZRGPictureBoxControl-in-Detailed/10-CrossCursor.md",
+    "ZRGPictureBoxControl-in-Detailed/09-BackImageGraphics.md",
+    "ZRGPictureBoxControl-in-Detailed/08-ConversionInfo.md",
+    "ZRGPictureBoxControl-in-Detailed/07-DistanceRuler.md",
     "ZRGPictureBoxControl-in-Detailed/06-Rulers.md",
     "ZRGPictureBoxControl-in-Detailed/05-MeasureSystem.md",
     "ZRGPictureBoxControl-in-Detailed/04-CoordinatesBox.md",
     "ZRGPictureBoxControl-in-Detailed/03-SelectionBoxElement.md",
     "ZRGPictureBoxControl-in-Detailed/02-ZoomButton.md",
-    "ZRGPictureBoxControl-in-Detailed/13-Examples .md",
-    "ZRGPictureBoxControl-in-Detailed/12-PublicTypes.md",
-    "ZRGPictureBoxControl-in-Detailed/07-DistanceRuler.md",
-    "ZRGPictureBoxControl-in-Detailed/09-BackImageGraphics.md",
-    "ZRGPictureBoxControl-in-Detailed/10-CrossCursor.md",
-    "ZRGPictureBoxControl-in-Detailed/11-cCommonCursors.md",
-    "ZRGPictureBoxControl-in-Detailed/08-ConversionInfo.md",
-    "ZRGPictureBoxControl-in-Detailed/DistanceRuler.md",
-    "Mockups/Unconfirmed 561990.crdownload",
-    "Mockups/sprite_sheet-with-Status.svg",
-    "Mockups/sprite_sheet - Copy.svg",
-    "Drawing-Mermaids/Drawing-Mermaids.md",
-    "en/05_SDLC_Library/05_Mega-File.md",
+    "ZRGPictureBoxControl-in-Detailed/01-ZRGPictureBoxControl.md",
     "ZRGPictureBoxControl-in-Detailed",
+    "Mockups/sprite_sheet.svg",
+    "Mockups/sprite_sheet-with-Status.svg",
+    "Mockups/Mockups.md",
     "Mockups/material_block_crud_form_mockup.html",
-    "en/99_Archive/0601_CoNSoL-TakeOff AI - PRODUCT STORY_single_file_V1.2.md",
+    "Mockups/consoletakeoff_main_ui_mockup.html",
+    "Mockups",
+    "en/en.md",
     "Excalidraw/_Studio/_Drawings/Drawing 2026-06-22 00.58.04.excalidraw.md",
+    "Excalidraw/_Studio/_Drawings",
+    "Excalidraw/_Studio",
     "Excalidraw/_Scripts/_Download/Zoom to Fit Selected Elements.svg",
     "Excalidraw/_Scripts/_Download/Zoom to Fit Selected Elements.md",
     "Excalidraw/_Scripts/_Download/Uniform size.svg",
@@ -299,13 +247,14 @@
     "Excalidraw/_Scripts/_Download/Toggle Grid.svg",
     "Excalidraw/_Scripts/_Download/Toggle Grid.md",
     "Excalidraw/_Scripts/_Download/Text to Sticky Notes.svg",
+    "Excalidraw/_Scripts/_Download/Text to Sticky Notes.md",
     "Excalidraw/_Scripts/_Download/Text to Path.svg",
+    "Excalidraw/_Scripts/_Download/Text to Path.md",
     "Excalidraw/_Scripts/_Download/Text Aura.svg",
+    "Excalidraw/_Scripts/_Download/Text Aura.md",
+    "Excalidraw/_Scripts/_Download/Split text by lines.md",
     "Excalidraw/_Scripts/_Download",
-    "Excalidraw/_Templates",
-    "Excalidraw/_Studio/_Drawings",
-    "Excalidraw/_Studio/_Cropped",
-    "Excalidraw/_Studio/_Annotations",
-    "Excalidraw/_Studio"
+    "Excalidraw/_Scripts",
+    "Excalidraw/Untitled.mermaid"
   ]
 }
