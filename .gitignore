@@ -5,12 +5,14 @@
 /.vs/CoNSoL-TakeOff
 /Docs/output.log
 /Docs/Temp
+/TempToDelete
 /CoNSoL-TakeOff-AI-Docs/HTML Pages
 /.dotnet-home
 /.git
 /.vs
 /CoNSoL-TakeOff-AI-Docs/.makemd
 /CoNSoL-TakeOff-AI-Docs/.obsidian
+/CoNSoL-TakeOff-AI-Docs/.obsidian/workspace.json
 /CoNSoL-TakeOff-AI-Docs/.space
 /CoNSoL-TakeOff-AI-Docs/.trash
 /CoNSoL-TakeOff-AI-Docs/ar
@@ -18,8 +20,8 @@
 /CoNSoL-TakeOff-AI-Docs/Excalidraw
 /CoNSoL-TakeOff-AI-Docs/Mockups/.space
 /CoNSoL-TakeOff-AI-Docs/Mockups/Mockups.md
-/CoNSoL-TakeOff-AI-Docs\ZRGPictureBoxControl-in-Detailed\.space
-/CoNSoL-TakeOff-AI-Docs/ZRGPictureBoxControl-in-Detailed/ZRGPictureBoxControl-in-Detailed.md
-
-
-/CoNSoL-TakeOff-AI-Docs/.obsidian/workspace.json
+/CoNSoL-TakeOff-AI-Docs/ZRGPictureBoxControl-in-Detailed/.space
+/CoNSoL-TakeOff-AI-Docs/en/Project-Example -(to-be-deleted)
+/Project-Example -(to-be-deleted)/ZRGPictureBox\bin
+/Project-Example -(to-be-deleted)/ZRGPictureBox\obj
+/Desktop/Assets
