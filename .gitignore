@@ -1,4 +1,4 @@
-################################################################################
+﻿################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
@@ -10,13 +10,14 @@
 /.dotnet-home
 /.git
 /.vs
+/CoNSoL-TakeOff-AI-Docs/Temp
 /CoNSoL-TakeOff-AI-Docs/.makemd
 /CoNSoL-TakeOff-AI-Docs/.obsidian
 /CoNSoL-TakeOff-AI-Docs/.obsidian/workspace.json
 /CoNSoL-TakeOff-AI-Docs/.space
 /CoNSoL-TakeOff-AI-Docs/.trash
 /CoNSoL-TakeOff-AI-Docs/ar
-/CoNSoL-TakeOff-AI-Docs/ar/.space/context.mdb
+/CoNSoL-TakeOff-AI-Docs/ar/.space
 /CoNSoL-TakeOff-AI-Docs/Drawing-Mermaids
 /CoNSoL-TakeOff-AI-Docs/Excalidraw
 /CoNSoL-TakeOff-AI-Docs/Mockups/.space
@@ -38,4 +39,4 @@
 /Infrastructure/bin
 /Infrastructure/bin/Debug/net8.0
 /Infrastructure/obj
-/Project-Example -(to-be-deleted)/ZRGPictureBox/obj/Debug/net8.0/ZRGPictureBox.vbproj.FileListAbsolute.txt
+/Project-Example -(to-be-deleted)/ZRGPictureBox/obj/Debug/net8.0
