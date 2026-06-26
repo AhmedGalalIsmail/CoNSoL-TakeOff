@@ -65,7 +65,7 @@
 
         <Border Grid.Row="2" Background="#2B2E34" BorderBrush="#111" BorderThickness="0,0,0,1">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
-                <Button x:Name="NewButton" Content="New" Width="58" Margin="0,0,6,0" Click="OnNewClick" />
+                <Button x:Name="NewButton" Content="New" Width="58" Margin="0,0,6,0" Click="OnNewClick"/>
                 <Button x:Name="OpenButton" Content="Open" Width="58" Margin="0,0,6,0" Click="OnOpenClick" />
                 <Button x:Name="SaveButton" Content="Save" Width="58" Margin="0,0,10,0" Click="OnSaveClick" />
                 <Button x:Name="ImportButton" Content="Import" Width="64" Margin="0,0,6,0" Click="OnImportClick" />
