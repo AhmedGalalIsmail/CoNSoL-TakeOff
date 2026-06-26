@@ -24,4 +24,16 @@
 /CoNSoL-TakeOff-AI-Docs/en/Project-Example -(to-be-deleted)
 /Project-Example -(to-be-deleted)/ZRGPictureBox\bin
 /Project-Example -(to-be-deleted)/ZRGPictureBox\obj
+/Application/bin
+/Application/bin/Debug/net8.0
+/Application/obj
 /Desktop/Assets
+/Desktop/bin/
+/Desktop/bin/Debug/net8.0-windows
+/Desktop/obj
+/Domain/bin
+/Domain/bin/Debug/net8.0
+/Domain/obj
+/Infrastructure/bin
+/Infrastructure/bin/Debug/net8.0
+/Infrastructure/obj
