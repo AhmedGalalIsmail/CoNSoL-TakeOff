@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "en/0601_CoNSoL-TakeOff_AI_PRODUCT_STORY_DRAFT_V1.3.md",
+                "file": "ZRGPictureBoxControl-in-Detailed/01-ZRGPictureBoxControl.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "0601_CoNSoL-TakeOff_AI_PRODUCT_STORY_DRAFT_V1.3"
+              "title": "01-ZRGPictureBoxControl"
             }
           },
           {
@@ -106,7 +106,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 406.5
   },
   "right": {
     "id": "c9767910c8bd8dbd",
@@ -208,13 +208,22 @@
       "bases:Create new base": false
     }
   },
-  "active": "d08a39b271664b15",
+  "active": "d68f0086129348a4",
   "lastOpenFiles": [
+    "en/Project-Example -(to-be-deleted)/ZRGPictureBoxControl-in-Details.md",
+    "ZRGPictureBoxControl-in-Detailed/ZRGPictureBoxControl-in-Details.md",
+    "ZRGPictureBoxControl-in-Detailed/00-Project-Docs(All-in-one).md",
+    "ZRGPictureBoxControl-in-Detailed/01-ZRGPictureBoxControl.md",
+    "ZRGPictureBoxControl-in-Detailed/02-ZoomButton.md",
+    "ZRGPictureBoxControl-in-Detailed/ZRGPictureBoxControl-in-Detailed.md",
+    "en/05_SDLC_Library/0000_AGENT_BRIEFING.md",
+    "ar/Untitled.md",
+    "ar/check.md",
+    "en/0601_CoNSoL-TakeOff_AI_PRODUCT_STORY_DRAFT_V1.3.md",
     "Pasted image 20260623040727.png",
     "Pasted image 20260623033816.png",
     "Pasted image 20260621011129.png",
     "continue-export.zip",
-    "ZRGPictureBoxControl-in-Detailed/ZRGPictureBoxControl-in-Detailed.md",
     "ZRGPictureBoxControl-in-Detailed/Draft.md",
     "ZRGPictureBoxControl-in-Detailed/13-Examples .md",
     "ZRGPictureBoxControl-in-Detailed/12-PublicTypes.md",
@@ -227,8 +236,6 @@
     "ZRGPictureBoxControl-in-Detailed/05-MeasureSystem.md",
     "ZRGPictureBoxControl-in-Detailed/04-CoordinatesBox.md",
     "ZRGPictureBoxControl-in-Detailed/03-SelectionBoxElement.md",
-    "ZRGPictureBoxControl-in-Detailed/02-ZoomButton.md",
-    "ZRGPictureBoxControl-in-Detailed/01-ZRGPictureBoxControl.md",
     "ZRGPictureBoxControl-in-Detailed",
     "Mockups/sprite_sheet.svg",
     "Mockups/sprite_sheet-with-Status.svg",
@@ -243,16 +250,9 @@
     "Excalidraw/_Scripts/_Download/Zoom to Fit Selected Elements.svg",
     "Excalidraw/_Scripts/_Download/Zoom to Fit Selected Elements.md",
     "Excalidraw/_Scripts/_Download/Uniform size.svg",
-    "Excalidraw/_Scripts/_Download/Uniform size.md",
     "Excalidraw/_Scripts/_Download/Toggle Grid.svg",
-    "Excalidraw/_Scripts/_Download/Toggle Grid.md",
     "Excalidraw/_Scripts/_Download/Text to Sticky Notes.svg",
-    "Excalidraw/_Scripts/_Download/Text to Sticky Notes.md",
     "Excalidraw/_Scripts/_Download/Text to Path.svg",
-    "Excalidraw/_Scripts/_Download/Text to Path.md",
-    "Excalidraw/_Scripts/_Download/Text Aura.svg",
-    "Excalidraw/_Scripts/_Download/Text Aura.md",
-    "Excalidraw/_Scripts/_Download/Split text by lines.md",
     "Excalidraw/_Scripts/_Download",
     "Excalidraw/_Scripts",
     "Excalidraw/Untitled.mermaid"
