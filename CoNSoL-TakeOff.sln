@@ -18,9 +18,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{956EB379-583E-4D28-8F59-928DF0155CA8}"
 	ProjectSection(SolutionItems) = preProject
-		0001_MASTER_DASHBOARD.md = 0001_MASTER_DASHBOARD.md
-		0005_CoNSoL-TakeOff_SDLC_Gap_Analysis.md = 0005_CoNSoL-TakeOff_SDLC_Gap_Analysis.md
-		0601_CoNSoL-TakeOff_AI_PRODUCT_STORY_DRAFT_V1.3.md = 0601_CoNSoL-TakeOff_AI_PRODUCT_STORY_DRAFT_V1.3.md
+		CoNSoL-TakeOff-AI-Docs\en\0001_MASTER_DASHBOARD.md = CoNSoL-TakeOff-AI-Docs\en\0001_MASTER_DASHBOARD.md
+		CoNSoL-TakeOff-AI-Docs\en\0005_CoNSoL-TakeOff_SDLC_Gap_Analysis.md = CoNSoL-TakeOff-AI-Docs\en\0005_CoNSoL-TakeOff_SDLC_Gap_Analysis.md
+		CoNSoL-TakeOff-AI-Docs\en\0601_CoNSoL-TakeOff_AI_PRODUCT_STORY_DRAFT_V1.3.md = CoNSoL-TakeOff-AI-Docs\en\0601_CoNSoL-TakeOff_AI_PRODUCT_STORY_DRAFT_V1.3.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resx", "Resx", "{3FA9AE5B-1A1D-43A7-90F7-5F53603F6B06}"
@@ -31,14 +31,14 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ZRGPictureBox", "Project-Ex
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05_SDLC_Library", "05_SDLC_Library", "{53E4C809-CD4D-4927-B34A-D736E3578DC6}"
 	ProjectSection(SolutionItems) = preProject
-		0000_AGENT_BRIEFING.md = 0000_AGENT_BRIEFING.md
-		05_Mega-File.md = 05_Mega-File.md
+		CoNSoL-TakeOff-AI-Docs\en\05_SDLC_Library\0000_AGENT_BRIEFING.md = CoNSoL-TakeOff-AI-Docs\en\05_SDLC_Library\0000_AGENT_BRIEFING.md
+		CoNSoL-TakeOff-AI-Docs\en\05_SDLC_Library\05_Mega-File.md = CoNSoL-TakeOff-AI-Docs\en\05_SDLC_Library\05_Mega-File.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06_VIBE_CODING_GUIDE", "06_VIBE_CODING_GUIDE", "{8256CE1F-A607-4493-AB0A-1392FE4DBB53}"
 	ProjectSection(SolutionItems) = preProject
-		0_CoNSoL_Production_Layers.md = 0_CoNSoL_Production_Layers.md
-		1_Task_Backlog.md = 1_Task_Backlog.md
+		CoNSoL-TakeOff-AI-Docs\en\06_VIBE_CODING_GUIDE\0_CoNSoL_Production_Layers.md = CoNSoL-TakeOff-AI-Docs\en\06_VIBE_CODING_GUIDE\0_CoNSoL_Production_Layers.md
+		CoNSoL-TakeOff-AI-Docs\en\06_VIBE_CODING_GUIDE\1_Task_Backlog.md = CoNSoL-TakeOff-AI-Docs\en\06_VIBE_CODING_GUIDE\1_Task_Backlog.md
 	EndProjectSection
 EndProject
 Global

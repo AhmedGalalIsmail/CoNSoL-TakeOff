@@ -1,4 +1,4 @@
-﻿# CoNSoL-TakeOff
+# CoNSoL-TakeOff
 
 **CoNSoL-TakeOff** is a **visual-first construction take-off and estimation tool** that enables users to draw construction elements and automatically compute quantities, materials, and costs.
 
@@ -6,7 +6,7 @@
 
 ---
 
-## 📋 Overview
+## ?? Overview
 
 ### What is CoNSoL-TakeOff?
 
@@ -31,25 +31,25 @@ CoNSoL-TakeOff bridges the gap by treating drawing geometry as **first-class bus
 
 ---
 
-## 🏗️ Architecture Overview
+## ??? Architecture Overview
 
 ### Layered Design
 
 ```
-┌─────────────────────────────────────┐
-│       UI Layer (Desktop)            │  WinForms, Canvas, Panels, Tools
-├─────────────────────────────────────┤
-│     Application Layer               │  Use Cases, Services, Orchestration
-├─────────────────────────────────────┤
-│       Domain Layer                  │  Entities, Business Logic, Utilities
-├─────────────────────────────────────┤
-│    Infrastructure Layer             │  Config, Logging, IO, Crypto, JSON
-└─────────────────────────────────────┘
+???????????????????????????????????????
+?       UI Layer (Desktop)            ?  WinForms, Canvas, Panels, Tools
+???????????????????????????????????????
+?     Application Layer               ?  Use Cases, Services, Orchestration
+???????????????????????????????????????
+?       Domain Layer                  ?  Entities, Business Logic, Utilities
+???????????????????????????????????????
+?    Infrastructure Layer             ?  Config, Logging, IO, Crypto, JSON
+???????????????????????????????????????
 ```
 
 ### Core Components
 
-| Component | Purpose | Documentation |
+| **Component** | **Purpose** | **Documentation** |
 |-----------|---------|----------------|
 | **Domain** | Data entities, geometry utilities, business definitions | [Domain/README.md](Domain/README.md) |
 | **Application** | Use case orchestration, calculation engine, services | [Application/README.md](Application/README.md) |
@@ -58,7 +58,7 @@ CoNSoL-TakeOff bridges the gap by treating drawing geometry as **first-class bus
 
 ---
 
-## 🚀 Quick Start
+## ?? Quick Start
 
 ### Prerequisites
 - .NET 8.0 or higher
@@ -89,13 +89,13 @@ dotnet run --project Desktop/Desktop.vbproj
 
 ---
 
-## 📚 SDLC Documentation
+## ?? SDLC Documentation
 
 This project follows a structured **Software Development Lifecycle (SDLC)** documented in the **Mega-File.md** library.
 
 ### Document Structure (from Mega-File.md)
 
-| Phase | Document | Purpose |
+| **Phase** | **Document** | **Purpose** |
 |-------|----------|---------|
 | **Inception** | [0101-Requirement_Analysis](Mega-File.md#-0101--requirement-analysis-) | Business vision, scope, success criteria |
 | **Inception** | [0102-Planning](Mega-File.md#--0102--planning-) | Roadmap, risks, milestones |
@@ -111,108 +111,108 @@ This project follows a structured **Software Development Lifecycle (SDLC)** docu
 
 ---
 
-## 🎯 Key Concepts
+## ?? Key Concepts
 
 ### Dimension Modes
 
 Each drawn object uses exactly **one dimension mode** for quantity calculation:
 
-| Mode | Description | Example |
-|------|-------------|---------|
-| **D0** | Count | Number of doors, windows |
-| **D1** | Length | Wall length (m) |
-| **D2** | Area | Floor area (m²) |
-| **D3** | Volume | Concrete volume (m³) |
+| **Mode** | **Description** | **Example**              |
+|----------|-----------------|--------------------------|
+| **D0**   | Count           | Number of doors, windows |
+| **D1**   | Length          | Wall length (m)          |
+| **D2**   | Area            | Floor area (m�)          |
+| **D3**   | Volume          | Concrete volume (m�)     |
 
 ### Nested Objects
 
 Objects can contain other objects:
-- **Door** inside **Wall** → reduces wall area
-- **Window** inside **Wall** → reduces wall area
-- **Opening** inside **Slab** → reduces slab area
+- **Door** inside **Wall** ? reduces wall area
+- **Window** inside **Wall** ? reduces wall area
+- **Opening** inside **Slab** ? reduces slab area
 
 The calculation engine automatically handles subtraction.
 
 ### Smart Tags & Custom Marks
 
-- **Smart Tags** = data metadata (Material, Quantity, Unit Price) — aggregatable numerically
-- **Custom Marks** = visual metadata (Inspection issue, Rework needed) — not aggregated
+- **Smart Tags** = data metadata (Material, Quantity, Unit Price) � aggregatable numerically
+- **Custom Marks** = visual metadata (Inspection issue, Rework needed) � not aggregated
 
 ### Deployment Modes
 
-| Mode | Configuration | Use Case |
-|------|---------------|----------|
+| **Mode** | **Configuration** | **Use Case** |
+|----------|-------------------|--------------|
 | **Standalone** | Local SQLite DB, local files | Desktop app, single-user |
 | **Integrated** | Shared SQL Server DB, CoNSoL-Suite | Multi-user suite, enterprise |
 
 ---
 
-## 📂 Project Structure
+## ?? Project Structure
 
 ```
 CoNSoL-TakeOff/
-├── Domain/                              # Business logic, entities, utilities
-│   ├── Entities/
-│   │   ├── CanvasElement.vb            # Shape + metadata container
-│   │   ├── CanvasLayout.vb             # Drawing canvas state
-│   │   ├── BusinessDefinition.vb       # Material, quantity, pricing info
-│   │   ├── BlockModels.vb              # Block/Symbol definitions
-│   │   └── ElementRelationship.vb      # Nested object relationships
-│   ├── Utilities/
-│   │   └── Geometry.vb                 # Geometric calculations
-│   └── README.md
-│
-├── Application/                         # Use case orchestration, services
-│   ├── Services/
-│   │   ├── TakeOffService.vb           # Quantity aggregation
-│   │   └── MaterialService.vb          # Material lookups
-│   ├── TakeOffCalculator.vb            # Calculation engine
-│   ├── TakeOffContext.vb               # Calculation context
-│   ├── TakeOffResult.vb                # Result aggregates
-│   └── README.md
-│
-├── Infrastructure/                      # Cross-cutting concerns
-│   ├── Config/
-│   │   └── AppConfig.vb                # Configuration management
-│   ├── Logging/
-│   │   ├── ILogger.vb                  # Logging interface
-│   │   └── FileLogger.vb               # File-based logger
-│   ├── IO/
-│   │   ├── TakeOffFileStore.vb         # File persistence
-│   │   └── MaterialJsonStore.vb        # Material JSON storage
-│   ├── Crypto/
-│   │   ├── CryptoService.vb            # Encryption/decryption
-│   │   └── Hashing.vb                  # Hashing utilities
-│   ├── Wrappers/
-│   │   └── JsonSerializer.vb           # JSON serialization wrapper
-│   └── README.md
-│
-├── Desktop/                             # WinForms UI layer
-│   ├── Forms/
-│   │   ├── MainForm.vb                 # Main application window
-│   │   ├── BlockAssignmentForm.vb      # Block assignment dialog
-│   │   └── MaterialCrudForm.vb         # Material management dialog
-│   ├── Controls/
-│   │   ├── CanvasControl.vb            # 2D drawing canvas
-│   │   ├── PropertiesPanel.vb          # Property inspector
-│   │   └── LineShape.vb                # Line shape implementation
-│   ├── CompositionRoot.vb              # Dependency injection setup
-│   ├── Program.vb                      # Entry point
-│   ├── ApplicationEvents.vb            # VB app framework events
-│   └── README.md
-│
-├── Mega-File.md                        # SDLC documentation library
-└── README.md                           # This file
+??? Domain/                              # Business logic, entities, utilities
+?   ??? Entities/
+?   ?   ??? CanvasElement.vb            # Shape + metadata container
+?   ?   ??? CanvasLayout.vb             # Drawing canvas state
+?   ?   ??? BusinessDefinition.vb       # Material, quantity, pricing info
+?   ?   ??? BlockModels.vb              # Block/Symbol definitions
+?   ?   ??? ElementRelationship.vb      # Nested object relationships
+?   ??? Utilities/
+?   ?   ??? Geometry.vb                 # Geometric calculations
+?   ??? README.md
+?
+??? Application/                         # Use case orchestration, services
+?   ??? Services/
+?   ?   ??? TakeOffService.vb           # Quantity aggregation
+?   ?   ??? MaterialService.vb          # Material lookups
+?   ??? TakeOffCalculator.vb            # Calculation engine
+?   ??? TakeOffContext.vb               # Calculation context
+?   ??? TakeOffResult.vb                # Result aggregates
+?   ??? README.md
+?
+??? Infrastructure/                      # Cross-cutting concerns
+?   ??? Config/
+?   ?   ??? AppConfig.vb                # Configuration management
+?   ??? Logging/
+?   ?   ??? ILogger.vb                  # Logging interface
+?   ?   ??? FileLogger.vb               # File-based logger
+?   ??? IO/
+?   ?   ??? TakeOffFileStore.vb         # File persistence
+?   ?   ??? MaterialJsonStore.vb        # Material JSON storage
+?   ??? Crypto/
+?   ?   ??? CryptoService.vb            # Encryption/decryption
+?   ?   ??? Hashing.vb                  # Hashing utilities
+?   ??? Wrappers/
+?   ?   ??? JsonSerializer.vb           # JSON serialization wrapper
+?   ??? README.md
+?
+??? Desktop/                             # WinForms UI layer
+?   ??? Forms/
+?   ?   ??? MainForm.vb                 # Main application window
+?   ?   ??? BlockAssignmentForm.vb      # Block assignment dialog
+?   ?   ??? MaterialCrudForm.vb         # Material management dialog
+?   ??? Controls/
+?   ?   ??? CanvasControl.vb            # 2D drawing canvas
+?   ?   ??? PropertiesPanel.vb          # Property inspector
+?   ?   ??? LineShape.vb                # Line shape implementation
+?   ??? CompositionRoot.vb              # Dependency injection setup
+?   ??? Program.vb                      # Entry point
+?   ??? ApplicationEvents.vb            # VB app framework events
+?   ??? README.md
+?
+??? Mega-File.md                        # SDLC documentation library
+??? README.md                           # This file
 ```
 
 ---
 
-## 🔄 Core Workflows
+## ?? Core Workflows
 
 ### Drawing & Estimation Flow
 
 ```
-Setup → Draw → Define → Store → Calculate → Report
+Setup ? Draw ? Define ? Store ? Calculate ? Report
 ```
 
 1. **Setup** - Configure layers, materials, formulas
@@ -225,18 +225,18 @@ Setup → Draw → Define → Store → Calculate → Report
 ### Drawing Tool Interaction
 
 ```
-MouseDown → Capture start point
-  ↓
-MouseMove → Render rubber-band preview
-  ↓
-MouseUp → Commit shape object
-  ↓
-(Escape) → Cancel operation
+MouseDown ? Capture start point
+  ?
+MouseMove ? Render rubber-band preview
+  ?
+MouseUp ? Commit shape object
+  ?
+(Escape) ? Cancel operation
 ```
 
 ---
 
-## 🧪 Testing
+## ?? Testing
 
 See [0401-Testing_Documentation](Mega-File.md#-0401--testing-documentation) for:
 - Test strategy and coverage goals
@@ -252,7 +252,7 @@ Current test hooks are in place for:
 
 ---
 
-## 📡 Observability
+## ?? Observability
 
 ### Logging
 
@@ -270,7 +270,7 @@ See [Infrastructure/AppConfig.vb](Infrastructure/Config/AppConfig.vb):
 
 ---
 
-## 🔒 Security Considerations
+## ?? Security Considerations
 
 - **Input Validation** - All geometry and business data validated at the domain layer
 - **File Access** - Controlled via `TakeOffFileStore`
@@ -281,7 +281,7 @@ See [0202-Security_Documentation](Mega-File.md#-0202--security-documentation) fo
 
 ---
 
-## 📦 Deployment
+## ?? Deployment
 
 ### Standalone Mode
 
@@ -311,7 +311,7 @@ See [0501-Deployment_Documentation](Mega-File.md#-0501--deployment-documentation
 
 ---
 
-## 🤝 Contributing
+## ?? Contributing
 
 ### Code Standards
 
@@ -323,7 +323,7 @@ See [0501-Deployment_Documentation](Mega-File.md#-0501--deployment-documentation
 ### Branch Workflow
 
 ```
-master (main) ← develop ← feature/xxx
+master (main) ? develop ? feature/xxx
 ```
 
 ### Commit Message Format
@@ -337,33 +337,33 @@ References Mega-File section if applicable.
 
 ---
 
-## 📞 Support & Contact
+## ?? Support & Contact
 
-| Topic | Reference |
-|-------|-----------|
+| **Topic**              | **Reference** |
+|------------------------|---------------|
 | Requirements Questions | [0101-Requirement_Analysis](Mega-File.md#-0101--requirement-analysis-) |
-| Architecture Concerns | [0201-Design_Documentation](Mega-File.md#-0201--design-documentation) |
-| Development Standards | [0301-Development_Documentation](Mega-File.md#-0301--development-documentation) |
-| UI/UX Issues | [0208-UX_UI_Design](Mega-File.md#-0208--ux--ui-design) |
-| Test Strategy | [0401-Testing_Documentation](Mega-File.md#-0401--testing-documentation) |
-| Deployment | [0501-Deployment_Documentation](Mega-File.md#-0501--deployment-documentation) |
+| Architecture Concerns  | [0201-Design_Documentation](Mega-File.md#-0201--design-documentation) |
+| Development Standards  | [0301-Development_Documentation](Mega-File.md#-0301--development-documentation) |
+| UI/UX Issues           | [0208-UX_UI_Design](Mega-File.md#-0208--ux--ui-design) |
+| Test Strategy          | [0401-Testing_Documentation](Mega-File.md#-0401--testing-documentation) |
+| Deployment             | [0501-Deployment_Documentation](Mega-File.md#-0501--deployment-documentation) |
 
 ---
 
-## 📄 License
+## ?? License
 
 See LICENSE file for details.
 
 ---
 
-## 📝 Version History
+## ?? Version History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| **Version** | **Date**        | **Notes** |
+|-------------|-----------------|-----------|
 | 1.0.0 | TBD | Initial release |
 
 ---
 
-**Last Updated:** 19 April 2026  
+**Last Updated:** 26 June 2026  
 **Repository:** E:\Users\GoingIForMal\CoNSoL-TakeOff  
 **Master Document:** [Mega-File.md](Mega-File.md)
