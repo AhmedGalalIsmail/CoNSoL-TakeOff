@@ -44,286 +44,327 @@ Imports Domain.Entities
 ''' - UC-008: Deployment (serialization)
 ''' </remarks>
 Public Class CanvasControl
-    Inherits UserControl
+	Inherits UserControl
 #Region "Layout and shape management"
 
 #Region "Fields and Properties"
-    Private ReadOnly _shapes As New List(Of ShapeBase)()
-    Private _selected As ShapeBase = Nothing
-    Private _isDrawing As Boolean = False
-    Private _startPt As PointF
-    Private _currPt As PointF
-    Private _tempShape As ShapeBase = Nothing
-    Private _tool As ToolType = ToolType.SelectTool
-    Private ReadOnly _shapeMenu As New ContextMenuStrip()
+	Private ReadOnly _shapes As New List(Of ShapeBase)()
+	Private _selected As ShapeBase = Nothing
+	Private _isDrawing As Boolean = False
+	Private _startPt As PointF
+	Private _currPt As PointF
+	Private _tempShape As ShapeBase = Nothing
+	Private _tool As ToolType = ToolType.SelectTool
+	Private ReadOnly _shapeMenu As New ContextMenuStrip()
 
 #Region "Dimensions and units of measurement"
-    'Private myBorderStyle As BorderStyle = Windows.Forms.BorderStyle.FixedSingle
-    'Private myUnitOfMeasure As MeasureSystem.enUniMis = DefaultUnitOfMeasure
-    Private myMinLogicalWindowSize As Size = DefaultMinLogicalWindowSize
-    Private myMaxLogicalWindowSize As Size = DefaultMaxLogicalWindowSize
+	'Private myBorderStyle As BorderStyle = Windows.Forms.BorderStyle.FixedSingle
+	Private myUnitOfMeasure As MeasureSystem.enUniMis = DefaultUnitOfMeasure
+	Private myMinLogicalWindowSize As Size = DefaultMinLogicalWindowSize
+	Private myMaxLogicalWindowSize As Size = DefaultMaxLogicalWindowSize
 #End Region
 
-    ''' <summary>Current layout being rendered.</summary>
-    ''' <remarks>Invariant: Never null. Set via SetLayout().</remarks>
-    Private _currentLayout As CanvasLayout
+	''' <summary>Current layout being rendered.</summary>
+	''' <remarks>Invariant: Never null. Set via SetLayout().</remarks>
+	Private _currentLayout As CanvasLayout
 
-    ''' <summary>Zoom factor (1.0 = 100%).</summary>
-    ''' <remarks>Valid range: 0.1 to 10.0</remarks>
-    Private _zoom As Single = 1.0F
+	''' <summary>Zoom factor (1.0 = 100%).</summary>
+	''' <remarks>Valid range: 0.1 to 10.0</remarks>
+	Private _zoom As Single = 1.0F
 
-    ''' <summary>Pan offset in physical coordinates.</summary>
-    ''' <remarks>Represents top-left corner displacement.</remarks>
-    Private _pan As PointF = New PointF(0, 0)
-    Private _gridSize As Integer = 20
-    Private _showGrid As Boolean = True
-    Private _snapToGrid As Boolean = True
-    Private _showRulers As Boolean = True
+	''' <summary>Pan offset in physical coordinates.</summary>
+	''' <remarks>Represents top-left corner displacement.</remarks>
+	Private _pan As PointF = New PointF(0, 0)
+	Private _gridSize As Integer = 20
+	Private _showGrid As Boolean = True
+	Private _snapToGrid As Boolean = True
+	Private _showRulers As Boolean = True
 
-    Private _backBuffer As Bitmap = Nothing
-    Private _backGraphics As Graphics = Nothing
+	Private _backBuffer As Bitmap = Nothing
+	Private _backGraphics As Graphics = Nothing
 
-    Public Property BusinessJson As String
+	Public Property BusinessJson As String
 
-    ' draw image as background and apply transparency
-    Private _backgroundImage As Image = Nothing
-    Private _backgroundOpacity As Single = 0.5F
+	' draw image as background and apply transparency
+	Private _backgroundImage As Image = Nothing
+	Private _backgroundOpacity As Single = 0.5F
 
-    Private _gridKind As GridKind = GridKind.Lines
+	Private _gridKind As GridKind = GridKind.Lines
 
-    Private _snapEnabled As Boolean = False
+	Private _snapEnabled As Boolean = False
+
+	Private myGraphicInfo As New ConversionInfo()
+
+#Region "Constants"
+	''' <summary>
+	''' Default measurement unit used for displaying coordinates and rulers</summary>
+	Public Const DefaultUnitOfMeasure As MeasureSystem.enUniMis = MeasureSystem.enUniMis.mm
+#End Region
 
 #Region "Origin, coordinates, dimensions, etc."
 
-    ''' <summary>Gets the default size of the control when it is first created.</summary>
-    ''' <returns>A <see cref="Size"/> structure representing the default width and height of the control (560x400 pixels).</returns>
-    Protected Overrides ReadOnly Property DefaultSize() As Size
-        Get
-            Return New Size(560, 400)
-        End Get
-    End Property
+	''' <summary>Gets the default size of the control when it is first created.</summary>
+	''' <returns>A <see cref="Size"/> structure representing the default width and height of the control (560x400 pixels).</returns>
+	Protected Overrides ReadOnly Property DefaultSize() As Size
+		Get
+			Return New Size(560, 400)
+		End Get
+	End Property
 
-    ''' <summary>Gets or sets the scale factor used to convert between physical and logical coordinates.</summary>
-    ''' <returns>A <see cref="Single"/> representing the scale factor. A value of 1.0 means 1:1 mapping between physical and logical coordinates.</returns>
-    <Browsable(False)>
-    Public Property ScaleFactor() As Single
-        Get
-            Return GraphicInfo.ScaleFactor
-        End Get
-        Set(ByVal Value As Single)
-            ' Se il nuovo valore mi porterebbe fuori dai limiti minimi o massimi, lo ignoro
-            If (Width / Value) > MaxLogicalWindowSize.Width AndAlso Value < GraphicInfo.ScaleFactor Then Exit Property
-            If (Height / Value) > MaxLogicalWindowSize.Height AndAlso Value < GraphicInfo.ScaleFactor Then Exit Property
-            If (Width / Value) < MinLogicalWindowSize.Width AndAlso Value > GraphicInfo.ScaleFactor Then Exit Property
-            If (Height / Value) < MinLogicalWindowSize.Height AndAlso Value > GraphicInfo.ScaleFactor Then Exit Property
-            ' Aggiorno i dati interni
-            GraphicInfo.ScaleFactor = Value
-        End Set
-    End Property
+	''' <summary>Gets or sets the scale factor used to convert between physical and logical coordinates.</summary>
+	''' <returns>A <see cref="Single"/> representing the scale factor. A value of 1.0 means 1:1 mapping between physical and logical coordinates.</returns>
+	<Browsable(False)>
+	Public Property ScaleFactor() As Single
+		Get
+			Return GraphicInfo.ScaleFactor
+		End Get
+		Set(ByVal Value As Single)
+			' Se il nuovo valore mi porterebbe fuori dai limiti minimi o massimi, lo ignoro
+			If (Width / Value) > MaxLogicalWindowSize.Width AndAlso Value < GraphicInfo.ScaleFactor Then Exit Property
+			If (Height / Value) > MaxLogicalWindowSize.Height AndAlso Value < GraphicInfo.ScaleFactor Then Exit Property
+			If (Width / Value) < MinLogicalWindowSize.Width AndAlso Value > GraphicInfo.ScaleFactor Then Exit Property
+			If (Height / Value) < MinLogicalWindowSize.Height AndAlso Value > GraphicInfo.ScaleFactor Then Exit Property
+			' Aggiorno i dati interni
+			GraphicInfo.ScaleFactor = Value
+		End Set
+	End Property
 
-    ''' <summary>Gets or sets the logical origin of the canvas in logical coordinates. The logical origin represents the top-left corner of the canvas in logical units.</summary>
-    ''' <returns>A <see cref="Point"/> representing the logical origin (top-left corner) of the canvas in logical coordinates.</returns>
-    <Browsable(False)>
-    Public Property LogicalOrigin() As System.Drawing.Point
-        Get
-            Return GraphicInfo.LogicalOrigin
-        End Get
-        Set(ByVal Value As System.Drawing.Point)
-            GraphicInfo.LogicalOrigin = Value
-        End Set
-    End Property
+	''' <summary>Gets or sets the logical origin of the canvas in logical coordinates. The logical origin represents the top-left corner of the canvas in logical units.</summary>
+	''' <returns>A <see cref="Point"/> representing the logical origin (top-left corner) of the canvas in logical coordinates.</returns>
+	<Browsable(False)>
+	Public Property LogicalOrigin() As System.Drawing.Point
+		Get
+			Return GraphicInfo.LogicalOrigin
+		End Get
+		Set(ByVal Value As System.Drawing.Point)
+			GraphicInfo.LogicalOrigin = Value
+		End Set
+	End Property
 
-    ''' <summary>Gets the logical center point of the canvas in logical coordinates. The logical center is calculated as the midpoint of the logical width and height, offset from the logical origin.</summary>
-    ''' <returns>A <see cref="Point"/> representing the logical center of the canvas in logical coordinates.</returns>
-    <Browsable(False)>
-    Public ReadOnly Property LogicalCenter() As Point
-        Get
-            Return New Point(LogicalOrigin.X + LogicalWidth / 2, LogicalOrigin.Y + LogicalHeight / 2)
-        End Get
-    End Property
+	''' <summary>Gets the logical center point of the canvas in logical coordinates. The logical center is calculated as the midpoint of the logical width and height, offset from the logical origin.</summary>
+	''' <returns>A <see cref="Point"/> representing the logical center of the canvas in logical coordinates.</returns>
+	<Browsable(False)>
+	Public ReadOnly Property LogicalCenter() As Point
+		Get
+			Return New Point(LogicalOrigin.X + LogicalWidth / 2, LogicalOrigin.Y + LogicalHeight / 2)
+		End Get
+	End Property
 
-    ''' <summary>Gets or sets the logical width of the canvas in logical coordinates. The logical width represents the horizontal extent of the canvas in logical units.</summary>
-    ''' <returns>An <see cref="Integer"/> representing the logical width of the canvas in logical coordinates.</returns>
-    <Browsable(False)>
-    Public Property LogicalWidth() As Integer
-        Get
-            Return GraphicInfo.LogicalWidth
-        End Get
-        Set(ByVal Value As Integer)
-            GraphicInfo.LogicalWidth = Value
-        End Set
-    End Property
+	''' <summary>Gets or sets the logical width of the canvas in logical coordinates. The logical width represents the horizontal extent of the canvas in logical units.</summary>
+	''' <returns>An <see cref="Integer"/> representing the logical width of the canvas in logical coordinates.</returns>
+	<Browsable(False)>
+	Public Property LogicalWidth() As Integer
+		Get
+			Return GraphicInfo.LogicalWidth
+		End Get
+		Set(ByVal Value As Integer)
+			GraphicInfo.LogicalWidth = Value
+		End Set
+	End Property
 
-    ''' <summary>Gets or sets the logical height of the canvas in logical coordinates. The logical height represents the vertical extent of the canvas in logical units.</summary>
-    ''' <returns>An <see cref="Integer"/> representing the logical height of the canvas in logical coordinates.</returns>
-    <Browsable(False)>
-    Public Property LogicalHeight() As Integer
-        Get
-            Return GraphicInfo.LogicalHeight
-        End Get
-        Set(ByVal Value As Integer)
-            GraphicInfo.LogicalHeight = Value
-        End Set
-    End Property
+	''' <summary>Gets or sets the logical height of the canvas in logical coordinates. The logical height represents the vertical extent of the canvas in logical units.</summary>
+	''' <returns>An <see cref="Integer"/> representing the logical height of the canvas in logical coordinates.</returns>
+	<Browsable(False)>
+	Public Property LogicalHeight() As Integer
+		Get
+			Return GraphicInfo.LogicalHeight
+		End Get
+		Set(ByVal Value As Integer)
+			GraphicInfo.LogicalHeight = Value
+		End Set
+	End Property
 
-    ''' <summary>Gets the logical area of the canvas in logical coordinates, represented as a RECT structure.</summary>
-    ''' <returns>A RECT structure representing the logical area of the canvas, with left, top, right, and bottom coordinates in logical units.</returns>
-    <Browsable(False)>
-    Public Property LogicalArea() As RECT
-        Get
-            Return GraphicInfo.LogicalArea
-        End Get
-        Private Set(ByVal value As RECT)
-            GraphicInfo.LogicalArea = value
-        End Set
-    End Property
+	''' <summary>Gets the logical area of the canvas in logical coordinates, represented as a RECT structure.</summary>
+	''' <returns>A RECT structure representing the logical area of the canvas, with left, top, right, and bottom coordinates in logical units.</returns>
+	<Browsable(False)>
+	Public Property LogicalArea() As RECT
+		Get
+			Return GraphicInfo.LogicalArea
+		End Get
+		Private Set(ByVal value As RECT)
+			GraphicInfo.LogicalArea = value
+		End Set
+	End Property
+
+	''' <summary>
+	''' 
+	''' </summary>
+	Public Property GraphicInfo() As ConversionInfo
+		Get
+			Return myGraphicInfo
+		End Get
+		Private Set(ByVal Value As ConversionInfo)
+			myGraphicInfo = Value
+		End Set
+	End Property
+
+	''' <summary>
+	''' Allows you to view the coordinates at which the mouse is located</summary>
+	<Description("Allows you to view the coordinates at which the mouse is located"),
+	 DefaultValue(True)>
+	Public Property ShowMouseCoordinates() As Boolean
+		Get
+			Return myShowMouseCoordinates
+		End Get
+		Set(ByVal value As Boolean)
+			myShowMouseCoordinates = value
+		End Set
+	End Property
+
 #End Region
 #Region "Size"
-    Public Shared ReadOnly DefaultMinLogicalWindowSize As Size = New Size(2000, 2000)
-    Public Shared ReadOnly DefaultMaxLogicalWindowSize As Size = New Size(100000000, 100000000)
 
-    Public Property MinLogicalWindowSize() As Size
-        Get
-            Return myMinLogicalWindowSize
-        End Get
-        Set(ByVal Value As Size)
-            myMinLogicalWindowSize = Value
-        End Set
-    End Property
-    Public Property MaxLogicalWindowSize() As Size
-        Get
-            Return myMaxLogicalWindowSize
-        End Get
-        Set(ByVal Value As Size)
-            myMaxLogicalWindowSize = Value
-            ' Aggiorno i dati delle scrollbar
-            If ShowScrollbars Then
-                UpdateScrollbars()
-            End If
-        End Set
-    End Property
+	Public Shared ReadOnly DefaultMinLogicalWindowSize As Size = New Size(2000, 2000)
+	Public Shared ReadOnly DefaultMaxLogicalWindowSize As Size = New Size(100000000, 100000000)
 
-    Public Property GraphicInfo() As ConversionInfo
-        Get
-            Return myGraphicInfo
-        End Get
-        Private Set(ByVal Value As ConversionInfo)
-            myGraphicInfo = Value
-        End Set
-    End Property
+	Public Property MinLogicalWindowSize() As Size
+		Get
+			Return myMinLogicalWindowSize
+		End Get
+		Set(ByVal Value As Size)
+			myMinLogicalWindowSize = Value
+		End Set
+	End Property
+	Public Property MaxLogicalWindowSize() As Size
+		Get
+			Return myMaxLogicalWindowSize
+		End Get
+		Set(ByVal Value As Size)
+			myMaxLogicalWindowSize = Value
+			' Aggiorno i dati delle scrollbar
+			If ShowScrollbars Then
+				UpdateScrollbars()
+			End If
+		End Set
+	End Property
 #End Region
 
 #Region "Scrollbar"
 
-    ''' <summary>
-    ''' Gets Or sets a value indicating whether the container will allow the user to scroll controls positioned outside its visible bounds.
-    ''' NOTE: This has been redeclared To prevent modification by external applications.</summary>
-    <Browsable(False)>
-    <EditorBrowsable(EditorBrowsableState.Never)>
-    Public Overrides Property AutoScroll() As Boolean
-        Get
-            Return MyBase.AutoScroll
-        End Get
-        Set(ByVal value As Boolean)
-            MyBase.AutoScroll = value
-        End Set
-    End Property
+	''' <summary>
+	''' Gets Or sets a value indicating whether the container will allow the user to scroll controls positioned outside its visible bounds.
+	''' NOTE: This has been redeclared To prevent modification by external applications.</summary>
+	<Browsable(False)>
+	<EditorBrowsable(EditorBrowsableState.Never)>
+	Public Overrides Property AutoScroll() As Boolean
+		Get
+			Return MyBase.AutoScroll
+		End Get
+		Set(ByVal value As Boolean)
+			MyBase.AutoScroll = value
+		End Set
+	End Property
 
-    ''' <summary>
-    ''' Gets or sets the minimum size of the auto-scroll.
-    ''' NOTE: This has been redeclared to prevent modification by external applications.
-    ''' </summary>
-    <Browsable(False)>
-    <EditorBrowsable(EditorBrowsableState.Never)>
-    Public Shadows Property AutoScrollMinSize() As System.Drawing.Size
-        Get
-            Return MyBase.AutoScrollMinSize
-        End Get
-        Private Set(ByVal value As System.Drawing.Size)
-            MyBase.AutoScrollMinSize = value
-        End Set
-    End Property
+	''' <summary>
+	''' Gets or sets the minimum size of the auto-scroll.
+	''' NOTE: This has been redeclared to prevent modification by external applications.
+	''' </summary>
+	<Browsable(False)>
+	<EditorBrowsable(EditorBrowsableState.Never)>
+	Public Shadows Property AutoScrollMinSize() As System.Drawing.Size
+		Get
+			Return MyBase.AutoScrollMinSize
+		End Get
+		Private Set(ByVal value As System.Drawing.Size)
+			MyBase.AutoScrollMinSize = value
+		End Set
+	End Property
 
-    ''' <summary>
-    ''' Gets or sets the size of the auto-scroll margin.
-    ''' NOTE: This has been redeclared to prevent modification by external applications.
-    ''' </summary>
-    <Browsable(False)>
-    <EditorBrowsable(EditorBrowsableState.Never)>
-    Public Shadows Property AutoScrollMargin() As System.Drawing.Size
-        Get
-            Return MyBase.AutoScrollMargin
-        End Get
-        Private Set(ByVal value As System.Drawing.Size)
-            MyBase.AutoScrollMargin = value
-        End Set
-    End Property
+	''' <summary>
+	''' Gets or sets the size of the auto-scroll margin.
+	''' NOTE: This has been redeclared to prevent modification by external applications.
+	''' </summary>
+	<Browsable(False)>
+	<EditorBrowsable(EditorBrowsableState.Never)>
+	Public Shadows Property AutoScrollMargin() As System.Drawing.Size
+		Get
+			Return MyBase.AutoScrollMargin
+		End Get
+		Private Set(ByVal value As System.Drawing.Size)
+			MyBase.AutoScrollMargin = value
+		End Set
+	End Property
 
-    ''' <summary>
-    ''' Allows you to display scrollbars
-    ''' </summary>
-    <Description("Allows you to display scrollbars"),
-    DefaultValue(False)>
-    Public Property ShowScrollbars() As Boolean
-        Get
-            Return AutoScroll
-        End Get
-        Set(ByVal Value As Boolean)
-            ' Check if the value is already the desired one
-            If AutoScroll = Value Then
-                Exit Property
-            End If
-            ' I update the scrollbar data, I do it before displaying them, so I avoid a redraw with the wrong scrollbars
-            If Value Then
-                UpdateScrollbars()
-            End If
-            ' NOTE: I need to set the flag that will make me skip the Resize() event that fires when the Autoscroll value changes
-            myIsChangingAutoScroll = True
-            AutoScroll = Value
-            myIsChangingAutoScroll = False
-        End Set
-    End Property
+	''' <summary>
+	''' Allows you to display scrollbars
+	''' </summary>
+	<Description("Allows you to display scrollbars"),
+	DefaultValue(False)>
+	Public Property ShowScrollbars() As Boolean
+		Get
+			Return AutoScroll
+		End Get
+		Set(ByVal Value As Boolean)
+			' Check if the value is already the desired one
+			If AutoScroll = Value Then
+				Exit Property
+			End If
+			' I update the scrollbar data, I do it before displaying them, so I avoid a redraw with the wrong scrollbars
+			If Value Then
+				UpdateScrollbars()
+			End If
+			' NOTE: I need to set the flag that will make me skip the Resize() event that fires when the Autoscroll value changes
+			myIsChangingAutoScroll = True
+			AutoScroll = Value
+			myIsChangingAutoScroll = False
+		End Set
+	End Property
 
-    ''' <summary>
-    ''' Sets the value of the scrollbars (depends on the zoom level of the logical window)    ''' </summary>
-    Private Sub UpdateScrollbars()
-        ' NOTE:   The thumb of a scrollbar Is the part I can click And drag around.
-        ' I update the size that scrollbars appear In, essentially changing it so that
-        ' the thumb of the scrollbar becomes narrower Or wider depending on the logical area displayed.
-        Dim newValueX, newValueY As Integer
-        newValueX = Math.BigMul(Me.Size.Width, MaxLogicalWindowSize.Width) / LogicalWidth
-        newValueY = Math.BigMul(Me.Size.Height, MaxLogicalWindowSize.Height) / LogicalHeight
-        ' Check se ho dei valori validi
-        newValueX = Math.Max(newValueX, 0)
-        newValueX = Math.Max(newValueY, 0)
-        Me.AutoScrollMinSize = New Size(newValueX, newValueY)
+	''' <summary>
+	''' Sets the value of the scrollbars (depends on the zoom level of the logical window)    ''' </summary>
+	Private Sub UpdateScrollbars()
+		' NOTE:   The thumb of a scrollbar Is the part I can click And drag around.
+		' I update the size that scrollbars appear In, essentially changing it so that
+		' the thumb of the scrollbar becomes narrower Or wider depending on the logical area displayed.
+		Dim newValueX, newValueY As Integer
+		newValueX = Math.BigMul(Me.Size.Width, MaxLogicalWindowSize.Width) / LogicalWidth
+		newValueY = Math.BigMul(Me.Size.Height, MaxLogicalWindowSize.Height) / LogicalHeight
+		' Check se ho dei valori validi
+		newValueX = Math.Max(newValueX, 0)
+		newValueX = Math.Max(newValueY, 0)
+		Me.AutoScrollMinSize = New Size(newValueX, newValueY)
 
-        ' Aggiorno la posizione delle thumb all'interno delle scrollbar
-        ' NOTA: Devono essere sempre maggiori o uguali a zero
-        newValueX = Math.BigMul(Me.Size.Width, LogicalCenter.X + MaxLogicalWindowSize.Width / 2) / LogicalWidth
-        newValueY = Math.BigMul(Me.Size.Height, LogicalCenter.Y + MaxLogicalWindowSize.Height / 2) / LogicalHeight
-        ' Check se ho dei valori validi
-        newValueX = Math.Max(newValueX, 0)
-        newValueX = Math.Max(newValueY, 0)
-        Me.AutoScrollPosition = New Point(newValueX, newValueY)
+		' Aggiorno la posizione delle thumb all'interno delle scrollbar
+		' NOTA: Devono essere sempre maggiori o uguali a zero
+		newValueX = Math.BigMul(Me.Size.Width, LogicalCenter.X + MaxLogicalWindowSize.Width / 2) / LogicalWidth
+		newValueY = Math.BigMul(Me.Size.Height, LogicalCenter.Y + MaxLogicalWindowSize.Height / 2) / LogicalHeight
+		' Check se ho dei valori validi
+		newValueX = Math.Max(newValueX, 0)
+		newValueX = Math.Max(newValueY, 0)
+		Me.AutoScrollPosition = New Point(newValueX, newValueY)
 
-        ' Aggiorno gli spostamenti relativi alle scrollbar
-        Me.HorizontalScroll.SmallChange = CSng(LogicalWidth) * PanFactorWithShift / 100.0!
-        Me.HorizontalScroll.LargeChange = CSng(LogicalWidth) * PanFactorNoShift / 100.0!
-        Me.VerticalScroll.SmallChange = CSng(LogicalHeight) * PanFactorWithShift / 100.0!
-        Me.VerticalScroll.LargeChange = CSng(LogicalHeight) * PanFactorNoShift / 100.0!
-    End Sub
+		' Aggiorno gli spostamenti relativi alle scrollbar
+		Me.HorizontalScroll.SmallChange = CSng(LogicalWidth) * PanFactorWithShift / 100.0!
+		Me.HorizontalScroll.LargeChange = CSng(LogicalWidth) * PanFactorNoShift / 100.0!
+		Me.VerticalScroll.SmallChange = CSng(LogicalHeight) * PanFactorWithShift / 100.0!
+		Me.VerticalScroll.LargeChange = CSng(LogicalHeight) * PanFactorNoShift / 100.0!
+	End Sub
 
+#End Region
+
+#Region "Flag for display"
+	Private myShowMouseCoordinates As Boolean = True
+	Private myShowRulers As Boolean = True
+	Private myIsChangingAutoScroll As Boolean = False
+#End Region
+
+#Region "Pan & zoom"
+	Friend Const ZoomMultiplier As Single = 1.25
+	Friend Const PanFactorNoShift As Single = 100.0! / 3.0!
+	Friend Const PanFactorWithShift As Single = 10.0!
 #End Region
 
 #End Region
 
 #Region "Events"
-    ''' <summary>
-    ''' Event triggered when a shape is selected on the canvas.
-    ''' </summary>
-    ''' <param name="el"></param>
-    Public Event ElementSelected(el As CanvasElement)
+	''' <summary>
+	''' Event triggered when a shape is selected on the canvas.
+	''' </summary>
+	''' <param name="el"></param>
+	Public Event ElementSelected(el As CanvasElement)
+
+	Public Event OnMeasureUnitChanged(ByVal unit As MeasureSystem.enUniMis)
+
 #End Region
 
 #Region "Mouse Handling"
@@ -331,580 +372,599 @@ Public Class CanvasControl
 #End Region
 
 #Region "Drawing & Rendering"
-    ''' <summary>Sets the layout to render and clears selection.</summary>
-    ''' <param name="layout">Canvas layout to display</param>
-    ''' <remarks>
-    ''' Resets zoom/pan to defaults and clears any selection.
-    ''' Triggers full repaint of canvas.
-    ''' </remarks>
-    ''' <exception cref="ArgumentNullException">If layout is Nothing</exception>
-    Public Sub SetLayout(layout As CanvasLayout)
-        _currentLayout = layout
-        _zoom = 1.0F
-        _pan = New PointF(0, 0)
-        Invalidate()
-    End Sub
 
+	''' <summary>Sets the layout to render and clears selection.</summary>
+	''' <param name="layout">Canvas layout to display</param>
+	''' <remarks>
+	''' Resets zoom/pan to defaults and clears any selection.
+	''' Triggers full repaint of canvas.
+	''' </remarks>
+	''' <exception cref="ArgumentNullException">If layout is Nothing</exception>
+	Public Sub SetLayout(layout As CanvasLayout)
+		_currentLayout = layout
+		_zoom = 1.0F
+		_pan = New PointF(0, 0)
+		Invalidate()
+	End Sub
+
+	''' <summary>
+	''' Units of measurement of the PictureBox logical coordinate system</summary>
+	<Description("Sets the unit of measurement of the PictureBox's logical coordinate system."),
+	DefaultValue(GetType(MeasureSystem.enUniMis), "Millimeter")>
+	Public Property UnitOfMeasure() As MeasureSystem.enUniMis
+		Get
+			Return myUnitOfMeasure
+		End Get
+		Set(ByVal Value As MeasureSystem.enUniMis)
+			If myUnitOfMeasure = Value Then
+				Exit Property
+			End If
+			myUnitOfMeasure = Value
+			RaiseEvent OnMeasureUnitChanged(Value)
+			'If I'm drawing something that requires units of measurement, I have to redraw it.			If ShowMouseCoordinates OrElse ShowRulers Then
+			Invalidate()
+		End Set
+	End Property
 
 #End Region
 
 #Region "Tool Implementation"
-    ''' <summary>
-    ''' Set a background image for the canvas with specified opacity.
-    ''' </summary>
-    ''' <param name="img"></param>
-    ''' <param name="opacity"></param>
-    Public Sub SetBackgroundImage(img As Image, Optional opacity As Single = 0.5F)
-        _backgroundImage = img
-        _backgroundOpacity = opacity
-        Invalidate()
-    End Sub
+	''' <summary>
+	''' Set a background image for the canvas with specified opacity.
+	''' </summary>
+	''' <param name="img"></param>
+	''' <param name="opacity"></param>
+	Public Sub SetBackgroundImage(img As Image, Optional opacity As Single = 0.5F)
+		_backgroundImage = img
+		_backgroundOpacity = opacity
+		Invalidate()
+	End Sub
 
-    ''' <summary>Find a shape on the canvas by its associated domain element ID.</summary>
-    ''' <param name="id"></param>
-    ''' <returns>The <see cref="ShapeBase"/> instance with a matching <see cref="ShapeBase.ElementId"/>, or <c>Nothing</c> if no match is found.</returns>
-    Private Function FindShapeByElementId(id As Guid) As ShapeBase
-        Return _shapes.FirstOrDefault(Function(s) s.ElementId = id)
-    End Function
+	''' <summary>Find a shape on the canvas by its associated domain element ID.</summary>
+	''' <param name="id"></param>
+	''' <returns>The <see cref="ShapeBase"/> instance with a matching <see cref="ShapeBase.ElementId"/>, or <c>Nothing</c> if no match is found.</returns>
+	Private Function FindShapeByElementId(id As Guid) As ShapeBase
+		Return _shapes.FirstOrDefault(Function(s) s.ElementId = id)
+	End Function
 
-    ''' <summary>
-    ''' Find a shape on the canvas by its associated domain element ID, given as a string.
-    ''' Parses the string to a Guid and searches for a matching shape.
-    ''' </summary>
-    ''' <param name="id"></param>
-    ''' <returns> The <see cref="ShapeBase"/> instance with a matching <see cref="ShapeBase.ElementId"/>, or <c>Nothing</c> if no match is found or if the ID is not a valid Guid.</returns>
-    Private Function FindShapeByElementId(id As String) As ShapeBase
-        Dim gid As Guid
-        If Not Guid.TryParse(id, gid) Then Return Nothing
+	''' <summary>
+	''' Find a shape on the canvas by its associated domain element ID, given as a string.
+	''' Parses the string to a Guid and searches for a matching shape.
+	''' </summary>
+	''' <param name="id"></param>
+	''' <returns> The <see cref="ShapeBase"/> instance with a matching <see cref="ShapeBase.ElementId"/>, or <c>Nothing</c> if no match is found or if the ID is not a valid Guid.</returns>
+	Private Function FindShapeByElementId(id As String) As ShapeBase
+		Dim gid As Guid
+		If Not Guid.TryParse(id, gid) Then Return Nothing
 
-        Return _shapes.FirstOrDefault(Function(s) s.ElementId = gid)
-    End Function
+		Return _shapes.FirstOrDefault(Function(s) s.ElementId = gid)
+	End Function
 
-    ''' <summary>Draw a dashed outline around the given shape to indicate relationships (e.g., nesting, exclusion).</summary>
-    ''' <param name="g"></param>
-    ''' <param name="shape"></param>
-    ''' <param name="zoom"></param>
-    ''' <param name="pan"></param>
-    ''' <param name="color"></param>
-    ''' <param name="thickness"></param>
-    Private Sub DrawDashedOutline(g As Graphics, shape As ShapeBase, zoom As Single, pan As PointF, color As Color, thickness As Single)
+	''' <summary>Draw a dashed outline around the given shape to indicate relationships (e.g., nesting, exclusion).</summary>
+	''' <param name="g"></param>
+	''' <param name="shape"></param>
+	''' <param name="zoom"></param>
+	''' <param name="pan"></param>
+	''' <param name="color"></param>
+	''' <param name="thickness"></param>
+	Private Sub DrawDashedOutline(g As Graphics, shape As ShapeBase, zoom As Single, pan As PointF, color As Color, thickness As Single)
 
-        Using pen As New Pen(color, thickness)
-            pen.DashStyle = DashStyle.Dash
-            Dim r = shape.GetBounds(zoom, pan)
-            r.Inflate(3, 3) ' small visual offset
-            g.DrawRectangle(pen, r)
-        End Using
-    End Sub
+		Using pen As New Pen(color, thickness)
+			pen.DashStyle = DashStyle.Dash
+			Dim r = shape.GetBounds(zoom, pan)
+			r.Inflate(3, 3) ' small visual offset
+			g.DrawRectangle(pen, r)
+		End Using
+	End Sub
 
-    ''' <summary>Draw visual indicators for nested and exclusion relationships based on the current layout's relationships.</summary>
-    ''' <param name="g"></param>
-    ''' <param name="zoom"></param>
-    ''' <param name="pan"></param>
-    Private Sub DrawNestedOverlays(g As Graphics, zoom As Single, pan As PointF)
-        If _currentLayout Is Nothing Then Return
-        If _currentLayout.Relationships Is Nothing Then Return
+	''' <summary>Draw visual indicators for nested and exclusion relationships based on the current layout's relationships.</summary>
+	''' <param name="g"></param>
+	''' <param name="zoom"></param>
+	''' <param name="pan"></param>
+	Private Sub DrawNestedOverlays(g As Graphics, zoom As Single, pan As PointF)
+		If _currentLayout Is Nothing Then Return
+		If _currentLayout.Relationships Is Nothing Then Return
 
-        For Each rel In _currentLayout.Relationships
-            Dim parent = FindShapeByElementId(rel.ParentElementId)
-            Dim child = FindShapeByElementId(rel.ChildElementId)
-            If parent Is Nothing OrElse child Is Nothing Then Continue For
-            ' Draw relationship indicators based on the type of relationship
-            Select Case rel.RelationshipType
-                Case ElementRelationshipType.Nested
-                    ' Child is part of parent (logical containment)
-                    DrawDashedOutline(g, child, zoom, pan, Color.DimGray, 1)
-                    ' Parent gets a heavier outline
-                    DrawDashedOutline(g, parent, zoom, pan, Color.Gray, 2)
-                Case ElementRelationshipType.Exclusion
-                    ' Exclusion (subtract from parent)
-                    DrawDashedOutline(g, child, zoom, pan, Color.Red, 2)
-            End Select
-        Next
-    End Sub
+		For Each rel In _currentLayout.Relationships
+			Dim parent = FindShapeByElementId(rel.ParentElementId)
+			Dim child = FindShapeByElementId(rel.ChildElementId)
+			If parent Is Nothing OrElse child Is Nothing Then Continue For
+			' Draw relationship indicators based on the type of relationship
+			Select Case rel.RelationshipType
+				Case ElementRelationshipType.Nested
+					' Child is part of parent (logical containment)
+					DrawDashedOutline(g, child, zoom, pan, Color.DimGray, 1)
+					' Parent gets a heavier outline
+					DrawDashedOutline(g, parent, zoom, pan, Color.Gray, 2)
+				Case ElementRelationshipType.Exclusion
+					' Exclusion (subtract from parent)
+					DrawDashedOutline(g, child, zoom, pan, Color.Red, 2)
+			End Select
+		Next
+	End Sub
 
 #End Region
 
 #Region "Serialization"
 #Region "Functions that prevent serialization of these properties"
-    <EditorBrowsable(EditorBrowsableState.Never)>
-    Private Function ShouldSerializeScaleFactor() As Boolean
-        Return False
-    End Function
-    <EditorBrowsable(EditorBrowsableState.Never)>
-    Private Function ShouldSerializeLogicalOrigin() As Boolean
-        Return False
-    End Function
-    <EditorBrowsable(EditorBrowsableState.Never)>
-    Private Function ShouldSerializeLogicalWidth() As Boolean
-        Return False
-    End Function
-    <EditorBrowsable(EditorBrowsableState.Never)>
-    Private Function ShouldSerializeLogicalHeight() As Boolean
-        Return False
-    End Function
-    <EditorBrowsable(EditorBrowsableState.Never)>
-    Private Function ShouldSerializeLogicalArea() As Boolean
-        Return False
-    End Function
-    '<EditorBrowsable(EditorBrowsableState.Never)>
-    'Private Function ShouldSerializeMinLogicalWindowSize() As Boolean
-    '    Return MinLogicalWindowSize <> DefaultMinLogicalWindowSize
-    'End Function
-    '<EditorBrowsable(EditorBrowsableState.Never)>
-    'Private Function ShouldSerializeMaxLogicalWindowSize() As Boolean
-    '    Return MaxLogicalWindowSize <> DefaultMaxLogicalWindowSize
-    'End Function
+	<EditorBrowsable(EditorBrowsableState.Never)>
+	Private Function ShouldSerializeScaleFactor() As Boolean
+		Return False
+	End Function
+	<EditorBrowsable(EditorBrowsableState.Never)>
+	Private Function ShouldSerializeLogicalOrigin() As Boolean
+		Return False
+	End Function
+	<EditorBrowsable(EditorBrowsableState.Never)>
+	Private Function ShouldSerializeLogicalWidth() As Boolean
+		Return False
+	End Function
+	<EditorBrowsable(EditorBrowsableState.Never)>
+	Private Function ShouldSerializeLogicalHeight() As Boolean
+		Return False
+	End Function
+	<EditorBrowsable(EditorBrowsableState.Never)>
+	Private Function ShouldSerializeLogicalArea() As Boolean
+		Return False
+	End Function
+	'<EditorBrowsable(EditorBrowsableState.Never)>
+	'Private Function ShouldSerializeMinLogicalWindowSize() As Boolean
+	'    Return MinLogicalWindowSize <> DefaultMinLogicalWindowSize
+	'End Function
+	'<EditorBrowsable(EditorBrowsableState.Never)>
+	'Private Function ShouldSerializeMaxLogicalWindowSize() As Boolean
+	'    Return MaxLogicalWindowSize <> DefaultMaxLogicalWindowSize
+	'End Function
 
 #End Region
 #End Region
 
-    ''' <summary>
-    ''' Context menu action to assign a block (business data) to the currently selected shape.
-    ''' </summary>
-    Private Sub AssignBlockToSelectedShape()
-        If _selected Is Nothing Then Return
-        Using dlg As New BlockAssignmentForm()
-            dlg.BusinessJson = _selected.BusinessJson
+	''' <summary>
+	''' Context menu action to assign a block (business data) to the currently selected shape.
+	''' </summary>
+	Private Sub AssignBlockToSelectedShape()
+		If _selected Is Nothing Then Return
+		Using dlg As New BlockAssignmentForm()
+			dlg.BusinessJson = _selected.BusinessJson
 
-            If dlg.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
-                _selected.BusinessJson = dlg.BusinessJson
-            End If
-        End Using
-    End Sub
+			If dlg.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+				_selected.BusinessJson = dlg.BusinessJson
+			End If
+		End Using
+	End Sub
 
-    ''' <summary>
-    ''' Initializes a new instance of <see cref="CanvasControl"/>.
-    ''' Sets default styles for smooth painting and initializes the cursor/background.
-    ''' </summary>
-    Public Sub New()
+	''' <summary>
+	''' Initializes a new instance of <see cref="CanvasControl"/>.
+	''' Sets default styles for smooth painting and initializes the cursor/background.
+	''' </summary>
+	Public Sub New()
 
-        Me.DoubleBuffered = True
-        Me.SetStyle(ControlStyles.AllPaintingInWmPaint Or ControlStyles.UserPaint Or ControlStyles.OptimizedDoubleBuffer, True)
-        Me.BackColor = Color.White
-        Me.Cursor = Cursors.Cross
+		Me.DoubleBuffered = True
+		Me.SetStyle(ControlStyles.AllPaintingInWmPaint Or ControlStyles.UserPaint Or ControlStyles.OptimizedDoubleBuffer, True)
+		Me.BackColor = Color.White
+		Me.Cursor = Cursors.Cross
 
-        Dim assignBlockItem = New ToolStripMenuItem("Assign Block...")
-        AddHandler assignBlockItem.Click, AddressOf AssignBlockToSelectedShape
-        _shapeMenu.Items.Add(assignBlockItem)
-    End Sub
+		Dim assignBlockItem = New ToolStripMenuItem("Assign Block...")
+		AddHandler assignBlockItem.Click, AddressOf AssignBlockToSelectedShape
+		_shapeMenu.Items.Add(assignBlockItem)
+	End Sub
 
 #Region "Functions that prevent serialization of these properties"
-    <EditorBrowsable(EditorBrowsableState.Never)>
-    Private Function ShouldSerializeMinLogicalWindowSize() As Boolean
-        Return MinLogicalWindowSize <> DefaultMinLogicalWindowSize
-    End Function
-    <EditorBrowsable(EditorBrowsableState.Never)>
-    Private Function ShouldSerializeMaxLogicalWindowSize() As Boolean
-        Return MaxLogicalWindowSize <> DefaultMaxLogicalWindowSize
-    End Function
+	<EditorBrowsable(EditorBrowsableState.Never)>
+	Private Function ShouldSerializeMinLogicalWindowSize() As Boolean
+		Return MinLogicalWindowSize <> DefaultMinLogicalWindowSize
+	End Function
+	<EditorBrowsable(EditorBrowsableState.Never)>
+	Private Function ShouldSerializeMaxLogicalWindowSize() As Boolean
+		Return MaxLogicalWindowSize <> DefaultMaxLogicalWindowSize
+	End Function
 #End Region
 #End Region
 
 #Region "Public API"
-    ''' <summary>
-    ''' Switches the active tool used by the canvas.
-    ''' </summary>
-    ''' <param name="tool">The tool to set.</param>
-    Public Sub SetTool(tool As ToolType)
-        _tool = tool
-        _isDrawing = False
-        _tempShape = Nothing
-        Me.Cursor = If(tool = ToolType.Pan, Cursors.Hand, Cursors.Cross)
-        Invalidate()
-    End Sub
+	''' <summary>
+	''' Switches the active tool used by the canvas.
+	''' </summary>
+	''' <param name="tool">The tool to set.</param>
+	Public Sub SetTool(tool As ToolType)
+		_tool = tool
+		_isDrawing = False
+		_tempShape = Nothing
+		Me.Cursor = If(tool = ToolType.Pan, Cursors.Hand, Cursors.Cross)
+		Invalidate()
+	End Sub
 
-    ''' <summary>
-    ''' Increase the canvas zoom by a fixed factor and request repaint.
-    ''' Zooms in 25%.
-    ''' </summary>
-    'Public Sub ZoomIn()
-    '    _zoom *= 1.2F
-    '    Invalidate()
-    'End Sub
+	''' <summary>
+	''' Increase the canvas zoom by a fixed factor and request repaint.
+	''' Zooms in 25%.
+	''' </summary>
+	'Public Sub ZoomIn()
+	'    _zoom *= 1.2F
+	'    Invalidate()
+	'End Sub
 
-    ''' <summary>
-    ''' Zooms in 25%.</summary>
-    Public Sub ZoomIn()
-        _zoom = Math.Min(_zoom * 1.25F, 10.0F)
-        Invalidate()
-    End Sub
+	''' <summary>
+	''' Zooms in 25%.</summary>
+	Public Sub ZoomIn()
+		_zoom = Math.Min(_zoom * 1.25F, 10.0F)
+		Invalidate()
+	End Sub
 
-    '''' <summary>
-    '''' Decrease the canvas zoom by a fixed factor (Zooms out 20%.) and request repaint.
-    '''' Zoom is clamped to a small positive minimum.</summary>
-    Public Sub ZoomOut()
-        _zoom = Math.Max(_zoom * 0.8F, 0.1F)
-        Invalidate()
-    End Sub
+	'''' <summary>
+	'''' Decrease the canvas zoom by a fixed factor (Zooms out 20%.) and request repaint.
+	'''' Zoom is clamped to a small positive minimum.</summary>
+	Public Sub ZoomOut()
+		_zoom = Math.Max(_zoom * 0.8F, 0.1F)
+		Invalidate()
+	End Sub
 
-    ''' <summary>
-    ''' Toggle rendering of the snap/grid overlay and request repaint.
-    ''' </summary>
-    Public Sub ToggleGrid()
-        _showGrid = Not _showGrid
-        Invalidate()
-    End Sub
+	''' <summary>
+	''' Toggle rendering of the snap/grid overlay and request repaint.
+	''' </summary>
+	Public Sub ToggleGrid()
+		_showGrid = Not _showGrid
+		Invalidate()
+	End Sub
 
-    ''' <summary>
-    ''' Toggle snapping behavior when placing or drawing shapes.
-    ''' </summary>
-    Public Sub ToggleSnap()
-        _snapToGrid = Not _snapToGrid
-    End Sub
+	''' <summary>
+	''' Toggle snapping behavior when placing or drawing shapes.
+	''' </summary>
+	Public Sub ToggleSnap()
+		_snapToGrid = Not _snapToGrid
+	End Sub
 
-    ''' <summary>
-    ''' Remove all shapes from the canvas and clear selection.
-    ''' </summary>
-    Public Sub Clear()
-        _shapes.Clear()
-        _selected = Nothing
-        Invalidate()
-    End Sub
+	''' <summary>
+	''' Remove all shapes from the canvas and clear selection.
+	''' </summary>
+	Public Sub Clear()
+		_shapes.Clear()
+		_selected = Nothing
+		Invalidate()
+	End Sub
 
-    ''' <summary>
-    ''' Export current canvas contents into a domain <see cref="CanvasLayout"/> instance.
-    ''' </summary>
-    ''' <returns>A <see cref="CanvasLayout"/> representing current elements on the canvas.</returns>
-    Public Function ToLayout() As CanvasLayout
-        Dim layout As New CanvasLayout() With {.Unit = "meter", .ScaleFactor = 1.0}
-        For Each s In _shapes
-            Dim elem As New CanvasElement() With {
-            .Type = If(TypeOf s Is LineShape, "line",
-                    If(TypeOf s Is RectShape, "rectangle",
-                    If(TypeOf s Is EllipseShape, "ellipse",
-                    If(TypeOf s Is PolylineShape, "polyline", "unknown")))),
-            .Layer = "default",
-            .GeometryJson = s.ToGeometryJson(),
-            .BusinessJson = "{}"
-            }
-            layout.Elements.Add(elem)
-        Next
-        Return layout
-    End Function
+	''' <summary>
+	''' Export current canvas contents into a domain <see cref="CanvasLayout"/> instance.
+	''' </summary>
+	''' <returns>A <see cref="CanvasLayout"/> representing current elements on the canvas.</returns>
+	Public Function ToLayout() As CanvasLayout
+		Dim layout As New CanvasLayout() With {.Unit = "meter", .ScaleFactor = 1.0}
+		For Each s In _shapes
+			Dim elem As New CanvasElement() With {
+			.Type = If(TypeOf s Is LineShape, "line",
+					If(TypeOf s Is RectShape, "rectangle",
+					If(TypeOf s Is EllipseShape, "ellipse",
+					If(TypeOf s Is PolylineShape, "polyline", "unknown")))),
+			.Layer = "default",
+			.GeometryJson = s.ToGeometryJson(),
+			.BusinessJson = "{}"
+			}
+			layout.Elements.Add(elem)
+		Next
+		Return layout
+	End Function
 
-    ''' <summary>
-    ''' Load shapes from a <see cref="CanvasLayout"/> instance, replacing current contents.
-    ''' </summary>
-    ''' <param name="layout">The layout to load from.</param>
-    Public Sub LoadFromLayout(layout As CanvasLayout)
-        _shapes.Clear()
-        For Each e In layout.Elements
-            Select Case e.Type
-                Case "line"
-                    Dim ls As New LineShape()
-                    ls.FromGeometryJson(e.GeometryJson)
-                    _shapes.Add(ls)
-                Case "rectangle"
-                    Dim rs As New RectShape()
-                    rs.FromGeometryJson(e.GeometryJson)
-                    _shapes.Add(rs)
-                Case "ellipse"
-                    Dim es As New EllipseShape()
-                    es.FromGeometryJson(e.GeometryJson)
-                    _shapes.Add(es)
-                Case "polyline"
-                    Dim ps As New PolylineShape()
-                    ps.FromGeometryJson(e.GeometryJson)
-                    _shapes.Add(ps)
-            End Select
-        Next
-        Invalidate()
-    End Sub
+	''' <summary>
+	''' Load shapes from a <see cref="CanvasLayout"/> instance, replacing current contents.
+	''' </summary>
+	''' <param name="layout">The layout to load from.</param>
+	Public Sub LoadFromLayout(layout As CanvasLayout)
+		_shapes.Clear()
+		For Each e In layout.Elements
+			Select Case e.Type
+				Case "line"
+					Dim ls As New LineShape()
+					ls.FromGeometryJson(e.GeometryJson)
+					_shapes.Add(ls)
+				Case "rectangle"
+					Dim rs As New RectShape()
+					rs.FromGeometryJson(e.GeometryJson)
+					_shapes.Add(rs)
+				Case "ellipse"
+					Dim es As New EllipseShape()
+					es.FromGeometryJson(e.GeometryJson)
+					_shapes.Add(es)
+				Case "polyline"
+					Dim ps As New PolylineShape()
+					ps.FromGeometryJson(e.GeometryJson)
+					_shapes.Add(ps)
+			End Select
+		Next
+		Invalidate()
+	End Sub
 #End Region
 
 #Region "Input handling and rendering"
-    ''' <summary>
-    ''' Custom painting logic renders grid, rulers, shapes and transient drawing state to a back-buffer.
-    ''' </summary>
-    Protected Overrides Sub OnPaint(e As PaintEventArgs)
-        MyBase.OnPaint(e)
+	''' <summary>
+	''' Custom painting logic renders grid, rulers, shapes and transient drawing state to a back-buffer.
+	''' </summary>
+	Protected Overrides Sub OnPaint(e As PaintEventArgs)
+		MyBase.OnPaint(e)
 
-        If _backBuffer Is Nothing OrElse _backBuffer.Size <> Me.ClientSize Then
-            _backBuffer = New Bitmap(Me.Width, Me.Height)
-            _backGraphics = Graphics.FromImage(_backBuffer)
-        End If
+		If _backBuffer Is Nothing OrElse _backBuffer.Size <> Me.ClientSize Then
+			_backBuffer = New Bitmap(Me.Width, Me.Height)
+			_backGraphics = Graphics.FromImage(_backBuffer)
+		End If
 
-        _backGraphics.SmoothingMode = SmoothingMode.AntiAlias
-        _backGraphics.Clear(Me.BackColor)
+		_backGraphics.SmoothingMode = SmoothingMode.AntiAlias
+		_backGraphics.Clear(Me.BackColor)
 
-        If _showGrid Then DrawGrid(_backGraphics)
-        If _showRulers Then DrawRulers(_backGraphics)
+		If _showGrid Then DrawGrid(_backGraphics)
+		If _showRulers Then DrawRulers(_backGraphics)
 
-        For Each s In _shapes
-            s.Draw(_backGraphics, _zoom, _pan)
-        Next
+		For Each s In _shapes
+			s.Draw(_backGraphics, _zoom, _pan)
+		Next
 
-        If _selected IsNot Nothing Then
-            Using pen As New Pen(Color.DarkOrange, 2)
-                pen.DashStyle = DashStyle.Dash
-                _backGraphics.DrawRectangle(pen, _selected.GetBounds(_zoom, _pan))
-            End Using
-        End If
+		If _selected IsNot Nothing Then
+			Using pen As New Pen(Color.DarkOrange, 2)
+				pen.DashStyle = DashStyle.Dash
+				_backGraphics.DrawRectangle(pen, _selected.GetBounds(_zoom, _pan))
+			End Using
+		End If
 
-        If _isDrawing AndAlso _tempShape IsNot Nothing Then
-            Using pen As New Pen(Color.SteelBlue, 2)
-                pen.DashStyle = DashStyle.Dot
-                _tempShape.Draw(_backGraphics, _zoom, _pan, pen)
-            End Using
-        End If
+		If _isDrawing AndAlso _tempShape IsNot Nothing Then
+			Using pen As New Pen(Color.SteelBlue, 2)
+				pen.DashStyle = DashStyle.Dot
+				_tempShape.Draw(_backGraphics, _zoom, _pan, pen)
+			End Using
+		End If
 
-        If _backgroundImage IsNot Nothing Then
-            Dim cm As New Imaging.ColorMatrix()
-            cm.Matrix33 = _backgroundOpacity
-            Dim ia As New Imaging.ImageAttributes()
-            ia.SetColorMatrix(cm)
-            Dim rect As New Rectangle(0, 0, Width, Height)
-            e.Graphics.DrawImage(
-        _backgroundImage,
-        rect,
-        0, 0,
-        _backgroundImage.Width,
-        _backgroundImage.Height,
-        GraphicsUnit.Pixel,
-        ia)
+		If _backgroundImage IsNot Nothing Then
+			Dim cm As New Imaging.ColorMatrix()
+			cm.Matrix33 = _backgroundOpacity
+			Dim ia As New Imaging.ImageAttributes()
+			ia.SetColorMatrix(cm)
+			Dim rect As New Rectangle(0, 0, Width, Height)
+			e.Graphics.DrawImage(
+		_backgroundImage,
+		rect,
+		0, 0,
+		_backgroundImage.Width,
+		_backgroundImage.Height,
+		GraphicsUnit.Pixel,
+		ia)
 
-        End If
-        DrawNestedOverlays(_backGraphics, _zoom, _pan)
-        e.Graphics.DrawImageUnscaled(_backBuffer, 0, 0)
-    End Sub
+		End If
+		DrawNestedOverlays(_backGraphics, _zoom, _pan)
+		e.Graphics.DrawImageUnscaled(_backBuffer, 0, 0)
+	End Sub
 
-    ''' <summary>
-    ''' Mouse down handler: begins drawing, selection or panning depending on the active tool.
-    ''' </summary>
-    Protected Overrides Sub OnMouseDown(e As MouseEventArgs)
-        MyBase.OnMouseDown(e)
+	''' <summary>
+	''' Mouse down handler: begins drawing, selection or panning depending on the active tool.
+	''' </summary>
+	Protected Overrides Sub OnMouseDown(e As MouseEventArgs)
+		MyBase.OnMouseDown(e)
 
-        Dim lp = ScreenToWorld(e.Location)
-        If _snapToGrid Then lp = Snap(lp)
+		Dim lp = ScreenToWorld(e.Location)
+		If _snapToGrid Then lp = Snap(lp)
 
-        If e.Button = MouseButtons.Right Then
-            _selected = HitTest(lp)
-            If _selected IsNot Nothing Then
-                _shapeMenu.Show(Me, e.Location)
-                Return
-            End If
-        End If
+		If e.Button = MouseButtons.Right Then
+			_selected = HitTest(lp)
+			If _selected IsNot Nothing Then
+				_shapeMenu.Show(Me, e.Location)
+				Return
+			End If
+		End If
 
-        Select Case _tool
-            Case ToolType.Pan
-                _startPt = e.Location
-                Cursor = Cursors.SizeAll
-                Return
-            Case ToolType.SelectTool
-                _selected = HitTest(lp)
-                Invalidate()
-            Case ToolType.Line
-                _isDrawing = True
-                _startPt = lp
-                _tempShape = New LineShape() With {.Start = lp, .[End] = lp}
-            Case ToolType.Rectangle
-                _isDrawing = True
-                _startPt = lp
-                _tempShape = New RectShape() With {.TopLeft = lp, .Width = 0, .Height = 0}
-            Case ToolType.Polyline
-                _isDrawing = True
-                _tempShape = New PolylineShape()
-                CType(_tempShape, PolylineShape).Points.Add(lp)
-            Case ToolType.Ellipse
-                _isDrawing = True
-                _startPt = lp
-                _tempShape = New EllipseShape() With {
-                .Center = lp,
-                .RadiusX = 0,
-                .RadiusY = 0
-                }
-        End Select
-        _selected = HitTest(lp)
-        ' OLD Code
-        ' RaiseEvent ElementSelected(_selected)
-        ' Convert the selected ShapeBase to a CanvasElement expected by the event
-        Dim selElement As CanvasElement = Nothing
-        If _selected IsNot Nothing Then
-            Dim typeName As String = If(TypeOf _selected Is LineShape, "line",
-                                        If(TypeOf _selected Is RectShape, "rectangle",
-                                        If(TypeOf _selected Is EllipseShape, "ellipse",
-                                        If(TypeOf _selected Is PolylineShape, "polyline", "unknown"))))
+		Select Case _tool
+			Case ToolType.Pan
+				_startPt = e.Location
+				Cursor = Cursors.SizeAll
+				Return
+			Case ToolType.SelectTool
+				_selected = HitTest(lp)
+				Invalidate()
+			Case ToolType.Line
+				_isDrawing = True
+				_startPt = lp
+				_tempShape = New LineShape() With {.Start = lp, .[End] = lp}
+			Case ToolType.Rectangle
+				_isDrawing = True
+				_startPt = lp
+				_tempShape = New RectShape() With {.TopLeft = lp, .Width = 0, .Height = 0}
+			Case ToolType.Polyline
+				_isDrawing = True
+				_tempShape = New PolylineShape()
+				CType(_tempShape, PolylineShape).Points.Add(lp)
+			Case ToolType.Ellipse
+				_isDrawing = True
+				_startPt = lp
+				_tempShape = New EllipseShape() With {
+				.Center = lp,
+				.RadiusX = 0,
+				.RadiusY = 0
+				}
+		End Select
+		_selected = HitTest(lp)
+		' OLD Code
+		' RaiseEvent ElementSelected(_selected)
+		' Convert the selected ShapeBase to a CanvasElement expected by the event
+		Dim selElement As CanvasElement = Nothing
+		If _selected IsNot Nothing Then
+			Dim typeName As String = If(TypeOf _selected Is LineShape, "line",
+										If(TypeOf _selected Is RectShape, "rectangle",
+										If(TypeOf _selected Is EllipseShape, "ellipse",
+										If(TypeOf _selected Is PolylineShape, "polyline", "unknown"))))
 
-            selElement = New CanvasElement() With {
-                .Type = typeName,
-                .Layer = _selected.LayerId,
-                .GeometryJson = _selected.ToGeometryJson(),
-                .BusinessJson = If(String.IsNullOrEmpty(_selected.BusinessJson), "{}", _selected.BusinessJson)
-            }
-        End If
-        RaiseEvent ElementSelected(selElement)
+			selElement = New CanvasElement() With {
+				.Type = typeName,
+				.Layer = _selected.LayerId,
+				.GeometryJson = _selected.ToGeometryJson(),
+				.BusinessJson = If(String.IsNullOrEmpty(_selected.BusinessJson), "{}", _selected.BusinessJson)
+			}
+		End If
+		RaiseEvent ElementSelected(selElement)
 
-    End Sub
+	End Sub
 
-    ''' <summary>
-    ''' Mouse move handler: updates drawing preview or pans viewport when appropriate.
-    ''' </summary>
-    Protected Overrides Sub OnMouseMove(e As MouseEventArgs)
-        MyBase.OnMouseMove(e)
-        Dim lp = ScreenToWorld(e.Location)
-        If _snapToGrid Then lp = Snap(lp)
+	''' <summary>
+	''' Mouse move handler: updates drawing preview or pans viewport when appropriate.
+	''' </summary>
+	Protected Overrides Sub OnMouseMove(e As MouseEventArgs)
+		MyBase.OnMouseMove(e)
+		Dim lp = ScreenToWorld(e.Location)
+		If _snapToGrid Then lp = Snap(lp)
 
-        If _tool = ToolType.Pan AndAlso e.Button = MouseButtons.Left Then
-            Dim dx = e.Location.X - _startPt.X
-            Dim dy = e.Location.Y - _startPt.Y
-            _pan = New PointF(_pan.X + dx, _pan.Y + dy)
-            _startPt = e.Location
-            Invalidate()
-            Return
-        End If
+		If _tool = ToolType.Pan AndAlso e.Button = MouseButtons.Left Then
+			Dim dx = e.Location.X - _startPt.X
+			Dim dy = e.Location.Y - _startPt.Y
+			_pan = New PointF(_pan.X + dx, _pan.Y + dy)
+			_startPt = e.Location
+			Invalidate()
+			Return
+		End If
 
-        If _isDrawing Then
-            _currPt = lp
-            If TypeOf _tempShape Is LineShape Then
-                CType(_tempShape, LineShape).[End] = lp
-            ElseIf TypeOf _tempShape Is RectShape Then
-                Dim r = CType(_tempShape, RectShape)
-                r.Width = Math.Abs(lp.X - _startPt.X)
-                r.Height = Math.Abs(lp.Y - _startPt.Y)
-                r.TopLeft = New PointF(Math.Min(_startPt.X, lp.X), Math.Min(_startPt.Y, lp.Y))
-            ElseIf TypeOf _tempShape Is EllipseShape Then
-                Dim ee = CType(_tempShape, EllipseShape)
-                ee.RadiusX = Math.Abs(lp.X - _startPt.X)
-                ee.RadiusY = Math.Abs(lp.Y - _startPt.Y)
-                ee.Center = New PointF(Math.Min(_startPt.X, lp.X), Math.Min(_startPt.Y, lp.Y))
-            ElseIf TypeOf _tempShape Is PolylineShape Then
-                'If _isDrawing Then
-                Dim pl = CType(_tempShape, PolylineShape)
-                pl.Points.Add(lp)
-                Invalidate()
-                'End If
-            End If
-            Invalidate()
-        End If
-    End Sub
+		If _isDrawing Then
+			_currPt = lp
+			If TypeOf _tempShape Is LineShape Then
+				CType(_tempShape, LineShape).[End] = lp
+			ElseIf TypeOf _tempShape Is RectShape Then
+				Dim r = CType(_tempShape, RectShape)
+				r.Width = Math.Abs(lp.X - _startPt.X)
+				r.Height = Math.Abs(lp.Y - _startPt.Y)
+				r.TopLeft = New PointF(Math.Min(_startPt.X, lp.X), Math.Min(_startPt.Y, lp.Y))
+			ElseIf TypeOf _tempShape Is EllipseShape Then
+				Dim ee = CType(_tempShape, EllipseShape)
+				ee.RadiusX = Math.Abs(lp.X - _startPt.X)
+				ee.RadiusY = Math.Abs(lp.Y - _startPt.Y)
+				ee.Center = New PointF(Math.Min(_startPt.X, lp.X), Math.Min(_startPt.Y, lp.Y))
+			ElseIf TypeOf _tempShape Is PolylineShape Then
+				'If _isDrawing Then
+				Dim pl = CType(_tempShape, PolylineShape)
+				pl.Points.Add(lp)
+				Invalidate()
+				'End If
+			End If
+			Invalidate()
+		End If
+	End Sub
 
-    ''' <summary>
-    ''' Mouse up handler: finalizes transient drawing state and commits new shapes.
-    ''' </summary>
-    Protected Overrides Sub OnMouseUp(e As MouseEventArgs)
-        MyBase.OnMouseUp(e)
+	''' <summary>
+	''' Mouse up handler: finalizes transient drawing state and commits new shapes.
+	''' </summary>
+	Protected Overrides Sub OnMouseUp(e As MouseEventArgs)
+		MyBase.OnMouseUp(e)
 
-        ' For polylines, we allow multiple clicks to add points, and a double-click to finish the shape.
-        If _tool = ToolType.Polyline AndAlso e.Clicks = 2 Then
-            If _tempShape IsNot Nothing AndAlso _tempShape.IsValid() Then
-                _shapes.Add(_tempShape)
-            End If
-            _isDrawing = False
-            _tempShape = Nothing
-            Invalidate()
-            Return
-        End If
+		' For polylines, we allow multiple clicks to add points, and a double-click to finish the shape.
+		If _tool = ToolType.Polyline AndAlso e.Clicks = 2 Then
+			If _tempShape IsNot Nothing AndAlso _tempShape.IsValid() Then
+				_shapes.Add(_tempShape)
+			End If
+			_isDrawing = False
+			_tempShape = Nothing
+			Invalidate()
+			Return
+		End If
 
-        ' Pan tool does not create shapes, just updates viewport on mouse move, so we exit early here.
-        If _tool = ToolType.Pan Then
-            Cursor = Cursors.Hand
-            Return
-        End If
+		' Pan tool does not create shapes, just updates viewport on mouse move, so we exit early here.
+		If _tool = ToolType.Pan Then
+			Cursor = Cursors.Hand
+			Return
+		End If
 
-        ' For other tools, we finalize the shape on mouse up.
-        If Not _isDrawing Then
-            Return
-        End If
+		' For other tools, we finalize the shape on mouse up.
+		If Not _isDrawing Then
+			Return
+		End If
 
-        ' Validate and commit the shape if it has a valid geometry (e.g., non-zero size).
-        If _tempShape IsNot Nothing AndAlso _tempShape.IsValid() Then
-            _shapes.Add(_tempShape)
-        End If
+		' Validate and commit the shape if it has a valid geometry (e.g., non-zero size).
+		If _tempShape IsNot Nothing AndAlso _tempShape.IsValid() Then
+			_shapes.Add(_tempShape)
+		End If
 
-        _isDrawing = False
-        _tempShape = Nothing
-        Invalidate()
-    End Sub
+		_isDrawing = False
+		_tempShape = Nothing
+		Invalidate()
+	End Sub
 
-    ''' <summary>
-    ''' Converts screen pixel coordinates to canvas logical coordinates.
-    ''' </summary>
-    ''' <param name="screenPoint">Point in screen pixels</param>
-    ''' <returns>Point in canvas logical units</returns>
-    ''' <remarks>
-    ''' Formula: logical = (physical - pan) / zoom
-    ''' Used for tool interaction (mouse clicks, drags).
-    ''' </remarks>
-    Private Function PhysicalToLogical(screenPoint As PointF) As PointF
-        Return New PointF(
-                (screenPoint.X - _pan.X) / _zoom,
-                (screenPoint.Y - _pan.Y) / _zoom)
-    End Function
+	''' <summary>
+	''' Converts screen pixel coordinates to canvas logical coordinates.
+	''' </summary>
+	''' <param name="screenPoint">Point in screen pixels</param>
+	''' <returns>Point in canvas logical units</returns>
+	''' <remarks>
+	''' Formula: logical = (physical - pan) / zoom
+	''' Used for tool interaction (mouse clicks, drags).
+	''' </remarks>
+	Private Function PhysicalToLogical(screenPoint As PointF) As PointF
+		Return New PointF(
+				(screenPoint.X - _pan.X) / _zoom,
+				(screenPoint.Y - _pan.Y) / _zoom)
+	End Function
 
-    ''' <summary>
-    ''' Convert a screen coordinate to world/canvas coordinates applying pan and zoom.
-    ''' </summary>
-    ''' <param name="p">Screen point in control coordinates.</param>
-    ''' <returns>Point in world/canvas coordinate space.</returns>
-    Private Function ScreenToWorld(p As Point) As PointF
-        Return New PointF((p.X - _pan.X) / _zoom, (p.Y - _pan.Y) / _zoom)
-    End Function
+	''' <summary>
+	''' Convert a screen coordinate to world/canvas coordinates applying pan and zoom.
+	''' </summary>
+	''' <param name="p">Screen point in control coordinates.</param>
+	''' <returns>Point in world/canvas coordinate space.</returns>
+	Private Function ScreenToWorld(p As Point) As PointF
+		Return New PointF((p.X - _pan.X) / _zoom, (p.Y - _pan.Y) / _zoom)
+	End Function
 
-    ''' <summary>
-    ''' Convert a world/canvas coordinate to screen coordinates applying pan and zoom.
-    ''' </summary>
-    ''' <param name="p">Point in world/canvas coordinate space.</param>
-    ''' <returns>Point in control (screen) coordinate space.</returns>
-    Private Function WorldToScreen(p As PointF) As Point
-        Return New Point(CInt(p.X * _zoom + _pan.X), CInt(p.Y * _zoom + _pan.Y))
-    End Function
+	''' <summary>
+	''' Convert a world/canvas coordinate to screen coordinates applying pan and zoom.
+	''' </summary>
+	''' <param name="p">Point in world/canvas coordinate space.</param>
+	''' <returns>Point in control (screen) coordinate space.</returns>
+	Private Function WorldToScreen(p As PointF) As Point
+		Return New Point(CInt(p.X * _zoom + _pan.X), CInt(p.Y * _zoom + _pan.Y))
+	End Function
 
-    ''' <summary>
-    ''' Snap a world point to the current grid.
-    ''' </summary>
-    ''' <param name="p">Point in world coordinates.</param>
-    ''' <returns>Snapped point in world coordinates.</returns>
-    Private Function Snap(p As PointF) As PointF
-        ' ? If disabled, return original
-        If Not _snapEnabled Then Return p
-        Dim sx = Math.Round(p.X / _gridSize) * _gridSize
-        Dim sy = Math.Round(p.Y / _gridSize) * _gridSize
-        Return New PointF(CSng(sx), CSng(sy))
-    End Function
+	''' <summary>
+	''' Snap a world point to the current grid.
+	''' </summary>
+	''' <param name="p">Point in world coordinates.</param>
+	''' <returns>Snapped point in world coordinates.</returns>
+	Private Function Snap(p As PointF) As PointF
+		' ? If disabled, return original
+		If Not _snapEnabled Then Return p
+		Dim sx = Math.Round(p.X / _gridSize) * _gridSize
+		Dim sy = Math.Round(p.Y / _gridSize) * _gridSize
+		Return New PointF(CSng(sx), CSng(sy))
+	End Function
 
-    ' ' Original Ver
-    ''' <summary>
-    ''' Hit-test shapes from top-most to bottom-most and return the first matching shape.
-    ''' </summary>
-    ''' <param name="lp">Location in world coordinates.</param>
-    ''' <returns>The hit <see cref="ShapeBase"/> or <c>Nothing</c> if none match.</returns>
-    Private Function HitTest(lp As PointF) As ShapeBase
-        For i = _shapes.Count - 1 To 0 Step -1
-            If _shapes(i).HitTest(lp) Then Return _shapes(i)
-        Next
-        Return Nothing
-    End Function
+	' ' Original Ver
+	''' <summary>
+	''' Hit-test shapes from top-most to bottom-most and return the first matching shape.
+	''' </summary>
+	''' <param name="lp">Location in world coordinates.</param>
+	''' <returns>The hit <see cref="ShapeBase"/> or <c>Nothing</c> if none match.</returns>
+	Private Function HitTest(lp As PointF) As ShapeBase
+		For i = _shapes.Count - 1 To 0 Step -1
+			If _shapes(i).HitTest(lp) Then Return _shapes(i)
+		Next
+		Return Nothing
+	End Function
 
-    ''' <summary>
-    ''' Draw the grid lines to the provided graphics surface.
-    ''' </summary>
-    ''' <param name="g">Graphics surface to draw on.</param>
-    Private Sub DrawGrid(g As Graphics)
-        Using pen As New Pen(Color.Gainsboro)
-            For x = 0 To Me.Width Step CInt(_gridSize * _zoom)
-                g.DrawLine(pen, x + _pan.X Mod (CInt(_gridSize * _zoom)), 0, x + _pan.X Mod (CInt(_gridSize * _zoom)), Me.Height)
-            Next
-            For y = 0 To Me.Height Step CInt(_gridSize * _zoom)
-                g.DrawLine(pen, 0, y + _pan.Y Mod (CInt(_gridSize * _zoom)), Me.Width, y + _pan.Y Mod (CInt(_gridSize * _zoom)))
-            Next
-        End Using
-    End Sub
+	''' <summary>
+	''' Draw the grid lines to the provided graphics surface.
+	''' </summary>
+	''' <param name="g">Graphics surface to draw on.</param>
+	Private Sub DrawGrid(g As Graphics)
+		Using pen As New Pen(Color.Gainsboro)
+			For x = 0 To Me.Width Step CInt(_gridSize * _zoom)
+				g.DrawLine(pen, x + _pan.X Mod (CInt(_gridSize * _zoom)), 0, x + _pan.X Mod (CInt(_gridSize * _zoom)), Me.Height)
+			Next
+			For y = 0 To Me.Height Step CInt(_gridSize * _zoom)
+				g.DrawLine(pen, 0, y + _pan.Y Mod (CInt(_gridSize * _zoom)), Me.Width, y + _pan.Y Mod (CInt(_gridSize * _zoom)))
+			Next
+		End Using
+	End Sub
 
-    ''' <summary>
-    ''' Draw horizontal and vertical rulers on the top and left edges of the control.
-    ''' </summary>
-    ''' <param name="g">Graphics surface to draw on.</param>
-    Private Sub DrawRulers(g As Graphics)
-        Using br As New SolidBrush(Color.LightSteelBlue)
-            g.FillRectangle(br, 0, 0, Me.Width, 20)
-            g.FillRectangle(br, 0, 0, 20, Me.Height)
-        End Using
-        Using pen As New Pen(Color.Black)
-            g.DrawLine(pen, 20, 20, Me.Width, 20)
-            g.DrawLine(pen, 20, 20, 20, Me.Height)
-        End Using
-    End Sub
+	''' <summary>
+	''' Draw horizontal and vertical rulers on the top and left edges of the control.
+	''' </summary>
+	''' <param name="g">Graphics surface to draw on.</param>
+	Private Sub DrawRulers(g As Graphics)
+		Using br As New SolidBrush(Color.LightSteelBlue)
+			g.FillRectangle(br, 0, 0, Me.Width, 20)
+			g.FillRectangle(br, 0, 0, 20, Me.Height)
+		End Using
+		Using pen As New Pen(Color.Black)
+			g.DrawLine(pen, 20, 20, Me.Width, 20)
+			g.DrawLine(pen, 20, 20, 20, Me.Height)
+		End Using
+	End Sub
 End Class
 #End Region
 
@@ -917,63 +977,63 @@ End Class
 ''' Implementations must provide drawing, hit testing, bounds and (de)serialization behavior.
 ''' </summary>
 Public MustInherit Class ShapeBase
-    ''' <summary>
-    ''' Unique identifier for this shape, linking to domain elements.</summary>
-    Public Property ElementId As Guid = Guid.NewGuid()
+	''' <summary>
+	''' Unique identifier for this shape, linking to domain elements.</summary>
+	Public Property ElementId As Guid = Guid.NewGuid()
 
-    ''' <summary>
-    ''' Layer identifier for organizing shapes (e.g., "default", "overlay").</summary>
-    Public Property LayerId As String = "default"
+	''' <summary>
+	''' Layer identifier for organizing shapes (e.g., "default", "overlay").</summary>
+	Public Property LayerId As String = "default"
 
-    ''' <summary>
-    ''' JSON string representing associated business data for this shape.
-    ''' </summary>
-    Public Property BusinessJson As String
+	''' <summary>
+	''' JSON string representing associated business data for this shape.
+	''' </summary>
+	Public Property BusinessJson As String
 
-    ''' <summary>
-    ''' Draw the shape to the given graphics surface using the specified zoom and pan.
-    ''' </summary>
-    ''' <param name="g">Graphics surface to draw on.</param>
-    ''' <param name="zoom">Current zoom factor.</param>
-    ''' <param name="pan">Current pan offset.</param>
-    ''' <param name="pen">Optional pen to use for drawing (default is shape-specific).</param>
-    ''' <remarks>
-    ''' Implementations should apply zoom and pan to their world coordinates when rendering.
-    ''' </remarks>
-    Public MustOverride Sub Draw(g As Graphics, zoom As Single, pan As PointF, Optional pen As Pen = Nothing)
+	''' <summary>
+	''' Draw the shape to the given graphics surface using the specified zoom and pan.
+	''' </summary>
+	''' <param name="g">Graphics surface to draw on.</param>
+	''' <param name="zoom">Current zoom factor.</param>
+	''' <param name="pan">Current pan offset.</param>
+	''' <param name="pen">Optional pen to use for drawing (default is shape-specific).</param>
+	''' <remarks>
+	''' Implementations should apply zoom and pan to their world coordinates when rendering.
+	''' </remarks>
+	Public MustOverride Sub Draw(g As Graphics, zoom As Single, pan As PointF, Optional pen As Pen = Nothing)
 
-    ''' <summary>
-    ''' Determine whether the given world point intersects the shape.
-    ''' </summary>
-    ''' <param name="lp">Point in world coordinates.</param>
-    ''' <returns><c>True</c> if the point hits the shape; otherwise <c>False</c>.</returns>
-    Public MustOverride Function HitTest(lp As PointF) As Boolean
+	''' <summary>
+	''' Determine whether the given world point intersects the shape.
+	''' </summary>
+	''' <param name="lp">Point in world coordinates.</param>
+	''' <returns><c>True</c> if the point hits the shape; otherwise <c>False</c>.</returns>
+	Public MustOverride Function HitTest(lp As PointF) As Boolean
 
-    ''' <summary>
-    ''' Return the bounding rectangle in screen coordinates for selection visuals.
-    ''' </summary>
-    ''' <param name="zoom">Current zoom factor.</param>
-    ''' <param name="pan">Current pan offset.</param>
-    ''' <returns>A <see cref="Rectangle"/> representing screen-space bounds.</returns>
-    Public MustOverride Function GetBounds(zoom As Single, pan As PointF) As Rectangle
+	''' <summary>
+	''' Return the bounding rectangle in screen coordinates for selection visuals.
+	''' </summary>
+	''' <param name="zoom">Current zoom factor.</param>
+	''' <param name="pan">Current pan offset.</param>
+	''' <returns>A <see cref="Rectangle"/> representing screen-space bounds.</returns>
+	Public MustOverride Function GetBounds(zoom As Single, pan As PointF) As Rectangle
 
-    ''' <summary>
-    ''' Validate whether the shape has sufficient size/definition to be committed.
-    ''' </summary>
-    ''' <returns><c>True</c> if valid; otherwise <c>False</c>.</returns>
-    Public MustOverride Function IsValid() As Boolean
+	''' <summary>
+	''' Validate whether the shape has sufficient size/definition to be committed.
+	''' </summary>
+	''' <returns><c>True</c> if valid; otherwise <c>False</c>.</returns>
+	Public MustOverride Function IsValid() As Boolean
 
-    ''' <summary>
-    ''' Serialize the shape geometry to a JSON string appropriate for storage in a <see cref="CanvasElement"/>.
-    ''' </summary>
-    ''' <returns>JSON string representing the shape geometry.</returns>
-    Public MustOverride Function ToGeometryJson() As String
+	''' <summary>
+	''' Serialize the shape geometry to a JSON string appropriate for storage in a <see cref="CanvasElement"/>.
+	''' </summary>
+	''' <returns>JSON string representing the shape geometry.</returns>
+	Public MustOverride Function ToGeometryJson() As String
 
-    ''' <summary>
-    ''' Populate shape geometry from a previously serialized JSON payload.
-    ''' </summary>
-    ''' <param name="json">JSON geometry payload.</param>
-    Public MustOverride Sub FromGeometryJson(json As String)
+	''' <summary>
+	''' Populate shape geometry from a previously serialized JSON payload.
+	''' </summary>
+	''' <param name="json">JSON geometry payload.</param>
+	Public MustOverride Sub FromGeometryJson(json As String)
 End Class
 #End Region
 
@@ -984,66 +1044,66 @@ End Class
 ''' Straight line shape defined by a start and end point in world coordinates.
 ''' </summary>
 Public Class LineShape
-    Inherits ShapeBase
+	Inherits ShapeBase
 #Region "Public Properties"
-    ''' <summary>Start point in world coordinates.</summary>
-    Public Property Start As PointF
-    ''' <summary>End point in world coordinates.</summary>
-    Public Property [End] As PointF
+	''' <summary>Start point in world coordinates.</summary>
+	Public Property Start As PointF
+	''' <summary>End point in world coordinates.</summary>
+	Public Property [End] As PointF
 #End Region
 
 #Region "Public Overrides"
-    ''' <inheritdoc/>
-    Public Overrides Sub Draw(g As Graphics, zoom As Single, pan As PointF, Optional pen As Pen = Nothing)
-        Dim p1 = New PointF(Start.X * zoom + pan.X, Start.Y * zoom + pan.Y)
-        Dim p2 = New PointF([End].X * zoom + pan.X, [End].Y * zoom + pan.Y)
-        Using p As Pen = If(pen, New Pen(Color.DodgerBlue, 2))
-            g.DrawLine(p, p1, p2)
-        End Using
-    End Sub
+	''' <inheritdoc/>
+	Public Overrides Sub Draw(g As Graphics, zoom As Single, pan As PointF, Optional pen As Pen = Nothing)
+		Dim p1 = New PointF(Start.X * zoom + pan.X, Start.Y * zoom + pan.Y)
+		Dim p2 = New PointF([End].X * zoom + pan.X, [End].Y * zoom + pan.Y)
+		Using p As Pen = If(pen, New Pen(Color.DodgerBlue, 2))
+			g.DrawLine(p, p1, p2)
+		End Using
+	End Sub
 
-    ''' <inheritdoc/>
-    Public Overrides Function HitTest(lp As PointF) As Boolean
-        Dim dx = [End].X - Start.X
-        Dim dy = [End].Y - Start.Y
-        Dim length2 = dx * dx + dy * dy
-        If length2 = 0 Then Return False
-        Dim t = ((lp.X - Start.X) * dx + (lp.Y - Start.Y) * dy) / length2
-        t = Math.Max(0, Math.Min(1, t))
-        Dim proj = New PointF(Start.X + t * dx, Start.Y + t * dy)
-        Dim dist = Math.Sqrt((lp.X - proj.X) ^ 2 + (lp.Y - proj.Y) ^ 2)
-        Return dist < 5
-    End Function
+	''' <inheritdoc/>
+	Public Overrides Function HitTest(lp As PointF) As Boolean
+		Dim dx = [End].X - Start.X
+		Dim dy = [End].Y - Start.Y
+		Dim length2 = dx * dx + dy * dy
+		If length2 = 0 Then Return False
+		Dim t = ((lp.X - Start.X) * dx + (lp.Y - Start.Y) * dy) / length2
+		t = Math.Max(0, Math.Min(1, t))
+		Dim proj = New PointF(Start.X + t * dx, Start.Y + t * dy)
+		Dim dist = Math.Sqrt((lp.X - proj.X) ^ 2 + (lp.Y - proj.Y) ^ 2)
+		Return dist < 5
+	End Function
 
-    ''' <inheritdoc/>
-    Public Overrides Function GetBounds(zoom As Single, pan As PointF) As Rectangle
-        Dim p1 = New Point(CInt(Start.X * zoom + pan.X), CInt(Start.Y * zoom + pan.Y))
-        Dim p2 = New Point(CInt([End].X * zoom + pan.X), CInt([End].Y * zoom + pan.Y))
-        Dim minX = Math.Min(p1.X, p2.X)
-        Dim minY = Math.Min(p1.Y, p2.Y)
-        Dim maxX = Math.Max(p1.X, p2.X)
-        Dim maxY = Math.Max(p1.Y, p2.Y)
-        Return New Rectangle(minX, minY, maxX - minX, maxY - minY)
-    End Function
+	''' <inheritdoc/>
+	Public Overrides Function GetBounds(zoom As Single, pan As PointF) As Rectangle
+		Dim p1 = New Point(CInt(Start.X * zoom + pan.X), CInt(Start.Y * zoom + pan.Y))
+		Dim p2 = New Point(CInt([End].X * zoom + pan.X), CInt([End].Y * zoom + pan.Y))
+		Dim minX = Math.Min(p1.X, p2.X)
+		Dim minY = Math.Min(p1.Y, p2.Y)
+		Dim maxX = Math.Max(p1.X, p2.X)
+		Dim maxY = Math.Max(p1.Y, p2.Y)
+		Return New Rectangle(minX, minY, maxX - minX, maxY - minY)
+	End Function
 
-    ''' <inheritdoc/>
-    Public Overrides Function IsValid() As Boolean
-        Return Math.Abs(Start.X - [End].X) + Math.Abs(Start.Y - [End].Y) > 2
-    End Function
+	''' <inheritdoc/>
+	Public Overrides Function IsValid() As Boolean
+		Return Math.Abs(Start.X - [End].X) + Math.Abs(Start.Y - [End].Y) > 2
+	End Function
 
-    ''' <inheritdoc/>
-    Public Overrides Function ToGeometryJson() As String
-        Return JsonSerializer.Serialize(New With {.start = New With {.x = Start.X, .y = Start.Y}, .[end] = New With {.x = [End].X, .y = [End].Y}})
-    End Function
+	''' <inheritdoc/>
+	Public Overrides Function ToGeometryJson() As String
+		Return JsonSerializer.Serialize(New With {.start = New With {.x = Start.X, .y = Start.Y}, .[end] = New With {.x = [End].X, .y = [End].Y}})
+	End Function
 
-    ''' <inheritdoc/>
-    Public Overrides Sub FromGeometryJson(json As String)
-        Dim doc = JsonDocument.Parse(json)
-        Dim s = doc.RootElement.GetProperty("start")
-        Dim e = doc.RootElement.GetProperty("end")
-        Start = New PointF(s.GetProperty("x").GetSingle(), s.GetProperty("y").GetSingle())
-        [End] = New PointF(e.GetProperty("x").GetSingle(), e.GetProperty("y").GetSingle())
-    End Sub
+	''' <inheritdoc/>
+	Public Overrides Sub FromGeometryJson(json As String)
+		Dim doc = JsonDocument.Parse(json)
+		Dim s = doc.RootElement.GetProperty("start")
+		Dim e = doc.RootElement.GetProperty("end")
+		Start = New PointF(s.GetProperty("x").GetSingle(), s.GetProperty("y").GetSingle())
+		[End] = New PointF(e.GetProperty("x").GetSingle(), e.GetProperty("y").GetSingle())
+	End Sub
 #End Region
 End Class
 #End Region
@@ -1053,54 +1113,54 @@ End Class
 ''' Axis-aligned rectangle shape in world coordinates.
 ''' </summary>
 Public Class RectShape
-    Inherits ShapeBase
+	Inherits ShapeBase
 #Region "Public Properties"
-    ''' <summary>Top-left corner in world coordinates.</summary>
-    Public Property TopLeft As PointF
-    ''' <summary>Width in world units.</summary>
-    Public Property Width As Single
-    ''' <summary>Height in world units.</summary>
-    Public Property Height As Single
+	''' <summary>Top-left corner in world coordinates.</summary>
+	Public Property TopLeft As PointF
+	''' <summary>Width in world units.</summary>
+	Public Property Width As Single
+	''' <summary>Height in world units.</summary>
+	Public Property Height As Single
 #End Region
 
 #Region "Public Overrides"
-    ''' <inheritdoc/>
-    Public Overrides Sub Draw(g As Graphics, zoom As Single, pan As PointF, Optional pen As Pen = Nothing)
-        Dim r = New RectangleF(TopLeft.X * zoom + pan.X, TopLeft.Y * zoom + pan.Y, Width * zoom, Height * zoom)
-        Using p As Pen = If(pen, New Pen(Color.ForestGreen, 2))
-            g.DrawRectangle(p, Rectangle.Round(r))
-        End Using
-    End Sub
+	''' <inheritdoc/>
+	Public Overrides Sub Draw(g As Graphics, zoom As Single, pan As PointF, Optional pen As Pen = Nothing)
+		Dim r = New RectangleF(TopLeft.X * zoom + pan.X, TopLeft.Y * zoom + pan.Y, Width * zoom, Height * zoom)
+		Using p As Pen = If(pen, New Pen(Color.ForestGreen, 2))
+			g.DrawRectangle(p, Rectangle.Round(r))
+		End Using
+	End Sub
 
-    ''' <inheritdoc/>
-    Public Overrides Function HitTest(lp As PointF) As Boolean
-        Return lp.X >= TopLeft.X AndAlso lp.X <= TopLeft.X + Width AndAlso lp.Y >= TopLeft.Y AndAlso lp.Y <= TopLeft.Y + Height
-    End Function
+	''' <inheritdoc/>
+	Public Overrides Function HitTest(lp As PointF) As Boolean
+		Return lp.X >= TopLeft.X AndAlso lp.X <= TopLeft.X + Width AndAlso lp.Y >= TopLeft.Y AndAlso lp.Y <= TopLeft.Y + Height
+	End Function
 
-    ''' <inheritdoc/>
-    Public Overrides Function GetBounds(zoom As Single, pan As PointF) As Rectangle
-        Dim r = New RectangleF(TopLeft.X * zoom + pan.X, TopLeft.Y * zoom + pan.Y, Width * zoom, Height * zoom)
-        Return Rectangle.Round(r)
-    End Function
+	''' <inheritdoc/>
+	Public Overrides Function GetBounds(zoom As Single, pan As PointF) As Rectangle
+		Dim r = New RectangleF(TopLeft.X * zoom + pan.X, TopLeft.Y * zoom + pan.Y, Width * zoom, Height * zoom)
+		Return Rectangle.Round(r)
+	End Function
 
-    ''' <inheritdoc/>
-    Public Overrides Function IsValid() As Boolean
-        Return Width >= 5 AndAlso Height >= 5
-    End Function
+	''' <inheritdoc/>
+	Public Overrides Function IsValid() As Boolean
+		Return Width >= 5 AndAlso Height >= 5
+	End Function
 
-    ''' <inheritdoc/>
-    Public Overrides Function ToGeometryJson() As String
-        Return JsonSerializer.Serialize(New With {.topLeft = New With {.x = TopLeft.X, .y = TopLeft.Y}, .width = Width, .height = Height})
-    End Function
+	''' <inheritdoc/>
+	Public Overrides Function ToGeometryJson() As String
+		Return JsonSerializer.Serialize(New With {.topLeft = New With {.x = TopLeft.X, .y = TopLeft.Y}, .width = Width, .height = Height})
+	End Function
 
-    ''' <inheritdoc/>
-    Public Overrides Sub FromGeometryJson(json As String)
-        Dim doc = JsonDocument.Parse(json)
-        Dim tl = doc.RootElement.GetProperty("topLeft")
-        TopLeft = New PointF(tl.GetProperty("x").GetSingle(), tl.GetProperty("y").GetSingle())
-        Width = doc.RootElement.GetProperty("width").GetSingle()
-        Height = doc.RootElement.GetProperty("height").GetSingle()
-    End Sub
+	''' <inheritdoc/>
+	Public Overrides Sub FromGeometryJson(json As String)
+		Dim doc = JsonDocument.Parse(json)
+		Dim tl = doc.RootElement.GetProperty("topLeft")
+		TopLeft = New PointF(tl.GetProperty("x").GetSingle(), tl.GetProperty("y").GetSingle())
+		Width = doc.RootElement.GetProperty("width").GetSingle()
+		Height = doc.RootElement.GetProperty("height").GetSingle()
+	End Sub
 #End Region
 End Class
 #End Region
@@ -1110,103 +1170,103 @@ End Class
 ''' Axis-aligned ellipse shape defined by a bounding rectangle in world coordinates.
 ''' </summary>
 Public Class EllipseShape
-    Inherits ShapeBase
+	Inherits ShapeBase
 #Region "Public Properties"
-    'Public Property TopLeft As PointF
-    'Public Property Width As Single
-    'Public Property Height As Single
+	'Public Property TopLeft As PointF
+	'Public Property Width As Single
+	'Public Property Height As Single
 
-    ''' <summary>Center point of the ellipse in world coordinates.</summary>
-    ''' <returns>A <see cref="PointF"/> representing the center of the ellipse in world coordinates.</returns>
-    Public Property Center As PointF
-    ''' <summary>Radius along the X-axis in world units.</summary>
-    ''' <returns>A <see cref="Single"/> representing the horizontal radius of the ellipse in world units.</returns>
-    Public Property RadiusX As Single
-    ''' <summary>Radius along the Y-axis in world units.</summary>
-    ''' <returns>A <see cref="Single"/> representing the vertical radius of the ellipse in world units.</returns>
-    Public Property RadiusY As Single
+	''' <summary>Center point of the ellipse in world coordinates.</summary>
+	''' <returns>A <see cref="PointF"/> representing the center of the ellipse in world coordinates.</returns>
+	Public Property Center As PointF
+	''' <summary>Radius along the X-axis in world units.</summary>
+	''' <returns>A <see cref="Single"/> representing the horizontal radius of the ellipse in world units.</returns>
+	Public Property RadiusX As Single
+	''' <summary>Radius along the Y-axis in world units.</summary>
+	''' <returns>A <see cref="Single"/> representing the vertical radius of the ellipse in world units.</returns>
+	Public Property RadiusY As Single
 #End Region
 
 #Region "Public Overrides"
-    ''' <summary>Draw the ellipse by calculating its bounding rectangle from the center and radii, applying zoom and pan transformations.</summary>
-    ''' <param name="g">Graphics surface to draw on.</param>
-    ''' <param name="zoom">Current zoom factor, used to scale the ellipse size appropriately for rendering.</param>
-    ''' <param name="pan">Current pan offset, used to translate the ellipse position for rendering in the viewport.</param>
-    ''' <param name="pen">Optional pen to use for drawing the ellipse. If not provided, a default pen will be used.</param>
-    Public Overrides Sub Draw(g As Graphics, zoom As Single, pan As PointF, Optional pen As Pen = Nothing)
-        Dim r = New RectangleF(
-        Center.X * zoom + pan.X,
-        Center.Y * zoom + pan.Y,
-        RadiusX * zoom,
-        RadiusY * zoom
-    )
-        Using p As Pen = If(pen, New Pen(Color.MediumPurple, 2))
-            g.DrawEllipse(p, r)
-        End Using
-    End Sub
+	''' <summary>Draw the ellipse by calculating its bounding rectangle from the center and radii, applying zoom and pan transformations.</summary>
+	''' <param name="g">Graphics surface to draw on.</param>
+	''' <param name="zoom">Current zoom factor, used to scale the ellipse size appropriately for rendering.</param>
+	''' <param name="pan">Current pan offset, used to translate the ellipse position for rendering in the viewport.</param>
+	''' <param name="pen">Optional pen to use for drawing the ellipse. If not provided, a default pen will be used.</param>
+	Public Overrides Sub Draw(g As Graphics, zoom As Single, pan As PointF, Optional pen As Pen = Nothing)
+		Dim r = New RectangleF(
+		Center.X * zoom + pan.X,
+		Center.Y * zoom + pan.Y,
+		RadiusX * zoom,
+		RadiusY * zoom
+	)
+		Using p As Pen = If(pen, New Pen(Color.MediumPurple, 2))
+			g.DrawEllipse(p, r)
+		End Using
+	End Sub
 
-    ''' <summary>Hit test the ellipse by normalizing the point to the ellipse's coordinate space and checking if it falls within the unit circle.</summary>
-    ''' <param name="lp"></param>
-    ''' <returns><c>True</c> if the point is inside the ellipse; otherwise <c>False</c>.</returns>
-    Public Overrides Function HitTest(lp As PointF) As Boolean
-        Dim rx = RadiusX / 2.0F
-        Dim ry = RadiusY / 2.0F
-        If rx <= 0 OrElse ry <= 0 Then Return False
+	''' <summary>Hit test the ellipse by normalizing the point to the ellipse's coordinate space and checking if it falls within the unit circle.</summary>
+	''' <param name="lp"></param>
+	''' <returns><c>True</c> if the point is inside the ellipse; otherwise <c>False</c>.</returns>
+	Public Overrides Function HitTest(lp As PointF) As Boolean
+		Dim rx = RadiusX / 2.0F
+		Dim ry = RadiusY / 2.0F
+		If rx <= 0 OrElse ry <= 0 Then Return False
 
-        Dim cx = Center.X + rx
-        Dim cy = Center.Y + ry
+		Dim cx = Center.X + rx
+		Dim cy = Center.Y + ry
 
-        Dim dx = (lp.X - cx) / rx
-        Dim dy = (lp.Y - cy) / ry
+		Dim dx = (lp.X - cx) / rx
+		Dim dy = (lp.Y - cy) / ry
 
-        Return dx * dx + dy * dy <= 1.0F
-    End Function
+		Return dx * dx + dy * dy <= 1.0F
+	End Function
 
-    ''' <summary>Calculate the bounding rectangle for the ellipse based on its center and radii, applying <br></br> zoom and pan transformations to convert from world coordinates to screen coordinates.</summary>
-    ''' <param name="zoom"></param>
-    ''' <param name="pan"></param>
-    ''' <returns>A <see cref="Rectangle"/> that tightly bounds the ellipse in screen coordinates, used for  <br></br> selection highlighting and hit testing.</returns>
-    Public Overrides Function GetBounds(zoom As Single, pan As PointF) As Rectangle
-        Dim r = New RectangleF(
-        Center.X * zoom + pan.X,
-        Center.Y * zoom + pan.Y,
-        RadiusX * zoom,
-        RadiusY * zoom
-    )
-        Return Rectangle.Round(r)
-    End Function
+	''' <summary>Calculate the bounding rectangle for the ellipse based on its center and radii, applying <br></br> zoom and pan transformations to convert from world coordinates to screen coordinates.</summary>
+	''' <param name="zoom"></param>
+	''' <param name="pan"></param>
+	''' <returns>A <see cref="Rectangle"/> that tightly bounds the ellipse in screen coordinates, used for  <br></br> selection highlighting and hit testing.</returns>
+	Public Overrides Function GetBounds(zoom As Single, pan As PointF) As Rectangle
+		Dim r = New RectangleF(
+		Center.X * zoom + pan.X,
+		Center.Y * zoom + pan.Y,
+		RadiusX * zoom,
+		RadiusY * zoom
+	)
+		Return Rectangle.Round(r)
+	End Function
 
-    ''' <summary>Validate that the ellipse has non-trivial size by checking that both radii exceed a minimum threshold.</summary>
-    ''' <returns><c>True</c> if both <see cref="RadiusX"/> and <see cref="RadiusY"/> are greater than or equal to 5 units; otherwise <c>False</c>.</returns>
-    Public Overrides Function IsValid() As Boolean
-        Return RadiusX >= 5 AndAlso RadiusY >= 5
-    End Function
+	''' <summary>Validate that the ellipse has non-trivial size by checking that both radii exceed a minimum threshold.</summary>
+	''' <returns><c>True</c> if both <see cref="RadiusX"/> and <see cref="RadiusY"/> are greater than or equal to 5 units; otherwise <c>False</c>.</returns>
+	Public Overrides Function IsValid() As Boolean
+		Return RadiusX >= 5 AndAlso RadiusY >= 5
+	End Function
 
-    ''' <summary>Serialize the ellipse geometry to JSON by representing the center point and radii as properties in a structured format.</summary>
-    ''' <returns>A JSON string representing the ellipse geometry, e.g.:
-    ''' {
-    '''   "center": {"x": 50.0, "y": 50.0},
-    '''   "radiusX": 20.0,
-    '''   "radiusY": 10.0
-    ''' }
-    ''' </returns>
-    Public Overrides Function ToGeometryJson() As String
-        Return JsonSerializer.Serialize(New With {
-        .topLeft = New With {.x = Center.X, .y = Center.Y},
-        .width = RadiusX,
-        .height = RadiusY
-    })
-    End Function
+	''' <summary>Serialize the ellipse geometry to JSON by representing the center point and radii as properties in a structured format.</summary>
+	''' <returns>A JSON string representing the ellipse geometry, e.g.:
+	''' {
+	'''   "center": {"x": 50.0, "y": 50.0},
+	'''   "radiusX": 20.0,
+	'''   "radiusY": 10.0
+	''' }
+	''' </returns>
+	Public Overrides Function ToGeometryJson() As String
+		Return JsonSerializer.Serialize(New With {
+		.topLeft = New With {.x = Center.X, .y = Center.Y},
+		.width = RadiusX,
+		.height = RadiusY
+	})
+	End Function
 
-    ''' <summary>Deserialize the ellipse geometry from JSON by parsing the center point and radii from the expected structured format.</summary>
-    ''' <param name="json">JSON string containing the ellipse geometry, expected to have properties for "center" (with "x" and "y") and "radiusX"/"radiusY".</param>
-    Public Overrides Sub FromGeometryJson(json As String)
-        Dim doc = JsonDocument.Parse(json)
-        Dim tl = doc.RootElement.GetProperty("topLeft")
-        Center = New PointF(tl.GetProperty("x").GetSingle(), tl.GetProperty("y").GetSingle())
-        RadiusX = doc.RootElement.GetProperty("width").GetSingle()
-        RadiusY = doc.RootElement.GetProperty("height").GetSingle()
-    End Sub
+	''' <summary>Deserialize the ellipse geometry from JSON by parsing the center point and radii from the expected structured format.</summary>
+	''' <param name="json">JSON string containing the ellipse geometry, expected to have properties for "center" (with "x" and "y") and "radiusX"/"radiusY".</param>
+	Public Overrides Sub FromGeometryJson(json As String)
+		Dim doc = JsonDocument.Parse(json)
+		Dim tl = doc.RootElement.GetProperty("topLeft")
+		Center = New PointF(tl.GetProperty("x").GetSingle(), tl.GetProperty("y").GetSingle())
+		RadiusX = doc.RootElement.GetProperty("width").GetSingle()
+		RadiusY = doc.RootElement.GetProperty("height").GetSingle()
+	End Sub
 #End Region
 End Class
 #End Region
@@ -1216,135 +1276,135 @@ End Class
 ''' Polyline shape consisting of multiple connected segments.
 ''' </summary>
 Public Class PolylineShape
-    Inherits ShapeBase
+	Inherits ShapeBase
 
 #Region "Public Properties"
-    ''' <summary>
-    ''' List of points defining the polyline vertices in world coordinates.
-    ''' </summary>
-    ''' <returns>
-    ''' List of <see cref="PointF"/> representing the vertices of the polyline.
-    ''' </returns>
-    Public ReadOnly Property Points As New List(Of PointF)
+	''' <summary>
+	''' List of points defining the polyline vertices in world coordinates.
+	''' </summary>
+	''' <returns>
+	''' List of <see cref="PointF"/> representing the vertices of the polyline.
+	''' </returns>
+	Public ReadOnly Property Points As New List(Of PointF)
 #End Region
 
 #Region "Public Overrides"
-    ''' <summary>
-    ''' Draw the polyline by connecting all points in sequence, applying zoom and pan transformations.
-    ''' </summary>
-    ''' <param name="g"></param>
-    ''' <param name="zoom"></param>
-    ''' <param name="pan"></param>
-    ''' <param name="pen"></param>
-    Public Overrides Sub Draw(g As Graphics, zoom As Single, pan As PointF, Optional pen As Pen = Nothing)
-        If Points.Count < 2 Then Return
+	''' <summary>
+	''' Draw the polyline by connecting all points in sequence, applying zoom and pan transformations.
+	''' </summary>
+	''' <param name="g"></param>
+	''' <param name="zoom"></param>
+	''' <param name="pan"></param>
+	''' <param name="pen"></param>
+	Public Overrides Sub Draw(g As Graphics, zoom As Single, pan As PointF, Optional pen As Pen = Nothing)
+		If Points.Count < 2 Then Return
 
-        Using p As Pen = If(pen, New Pen(Color.IndianRed, 2))
-            Dim screenPts = Points.Select(
-                Function(pt) New PointF(pt.X * zoom + pan.X, pt.Y * zoom + pan.Y)
-            ).ToArray()
+		Using p As Pen = If(pen, New Pen(Color.IndianRed, 2))
+			Dim screenPts = Points.Select(
+				Function(pt) New PointF(pt.X * zoom + pan.X, pt.Y * zoom + pan.Y)
+			).ToArray()
 
-            g.DrawLines(p, screenPts)
-        End Using
-    End Sub
+			g.DrawLines(p, screenPts)
+		End Using
+	End Sub
 
-    ''' <summary>
-    ''' Hit test the polyline by checking proximity to each segment defined by consecutive points.
-    ''' </summary>
-    ''' <param name="lp"></param>
-    ''' <returns>
-    ''' <c>True</c> if the point is within a certain distance of any segment; otherwise <c>False</c>.
-    ''' </returns>
-    Public Overrides Function HitTest(lp As PointF) As Boolean
-        For i = 0 To Points.Count - 2
-            Dim a = Points(i)
-            Dim b = Points(i + 1)
-            Dim dx = b.X - a.X
-            Dim dy = b.Y - a.Y
-            Dim len2 = dx * dx + dy * dy
-            If len2 = 0 Then Continue For
-            Dim t = ((lp.X - a.X) * dx + (lp.Y - a.Y) * dy) / len2
-            t = Math.Max(0, Math.Min(1, t))
+	''' <summary>
+	''' Hit test the polyline by checking proximity to each segment defined by consecutive points.
+	''' </summary>
+	''' <param name="lp"></param>
+	''' <returns>
+	''' <c>True</c> if the point is within a certain distance of any segment; otherwise <c>False</c>.
+	''' </returns>
+	Public Overrides Function HitTest(lp As PointF) As Boolean
+		For i = 0 To Points.Count - 2
+			Dim a = Points(i)
+			Dim b = Points(i + 1)
+			Dim dx = b.X - a.X
+			Dim dy = b.Y - a.Y
+			Dim len2 = dx * dx + dy * dy
+			If len2 = 0 Then Continue For
+			Dim t = ((lp.X - a.X) * dx + (lp.Y - a.Y) * dy) / len2
+			t = Math.Max(0, Math.Min(1, t))
 
-            Dim proj = New PointF(a.X + t * dx, a.Y + t * dy)
-            Dim dist = Math.Sqrt((lp.X - proj.X) ^ 2 + (lp.Y - proj.Y) ^ 2)
+			Dim proj = New PointF(a.X + t * dx, a.Y + t * dy)
+			Dim dist = Math.Sqrt((lp.X - proj.X) ^ 2 + (lp.Y - proj.Y) ^ 2)
 
-            If dist < 5 Then Return True
-        Next
-        Return False
-    End Function
+			If dist < 5 Then Return True
+		Next
+		Return False
+	End Function
 
-    ''' <summary>
-    ''' Calculate the bounding rectangle that encompasses all points in the polyline, applying zoom and pan transformations.
-    ''' </summary>
-    ''' <param name="zoom"></param>
-    ''' <param name="pan"></param>
-    ''' <returns>
-    ''' A <see cref="Rectangle"/> that tightly bounds the polyline in screen coordinates, used for selection highlighting.
-    ''' </returns>
-    Public Overrides Function GetBounds(zoom As Single, pan As PointF) As Rectangle
-        Dim minX = Points.Min(Function(p) p.X)
-        Dim minY = Points.Min(Function(p) p.Y)
-        Dim maxX = Points.Max(Function(p) p.X)
-        Dim maxY = Points.Max(Function(p) p.Y)
+	''' <summary>
+	''' Calculate the bounding rectangle that encompasses all points in the polyline, applying zoom and pan transformations.
+	''' </summary>
+	''' <param name="zoom"></param>
+	''' <param name="pan"></param>
+	''' <returns>
+	''' A <see cref="Rectangle"/> that tightly bounds the polyline in screen coordinates, used for selection highlighting.
+	''' </returns>
+	Public Overrides Function GetBounds(zoom As Single, pan As PointF) As Rectangle
+		Dim minX = Points.Min(Function(p) p.X)
+		Dim minY = Points.Min(Function(p) p.Y)
+		Dim maxX = Points.Max(Function(p) p.X)
+		Dim maxY = Points.Max(Function(p) p.Y)
 
-        Dim r = New RectangleF(
-            minX * zoom + pan.X,
-            minY * zoom + pan.Y,
-            (maxX - minX) * zoom,
-            (maxY - minY) * zoom
-        )
-        Return Rectangle.Round(r)
-    End Function
+		Dim r = New RectangleF(
+			minX * zoom + pan.X,
+			minY * zoom + pan.Y,
+			(maxX - minX) * zoom,
+			(maxY - minY) * zoom
+		)
+		Return Rectangle.Round(r)
+	End Function
 
-    ''' <summary>
-    ''' Validate that the polyline has at least two points to form a valid shape.
-    ''' </summary>
-    ''' <returns>
-    ''' <c>True</c> if the polyline has 2 or more points; otherwise <c>False</c>.
-    ''' </returns>
-    Public Overrides Function IsValid() As Boolean
-        Return Points.Count >= 2
-    End Function
+	''' <summary>
+	''' Validate that the polyline has at least two points to form a valid shape.
+	''' </summary>
+	''' <returns>
+	''' <c>True</c> if the polyline has 2 or more points; otherwise <c>False</c>.
+	''' </returns>
+	Public Overrides Function IsValid() As Boolean
+		Return Points.Count >= 2
+	End Function
 
-    ''' <summary>
-    ''' Serialize the list of points to a JSON array format, where each point is represented as an object with "x" and "y" properties.
-    ''' </summary>
-    ''' <returns>
-    ''' A JSON string representing the polyline geometry, e.g.:
-    ''' [
-    '''   {"x": 10.0, "y": 20.0},
-    '''   {"x": 15.0, "y": 25.0},
-    '''   ...
-    ''' ]
-    ''' </returns>
-    Public Overrides Function ToGeometryJson() As String
-        Return JsonSerializer.Serialize(
-            Points.Select(Function(p) New With {.x = p.X, .y = p.Y})
-        )
-    End Function
+	''' <summary>
+	''' Serialize the list of points to a JSON array format, where each point is represented as an object with "x" and "y" properties.
+	''' </summary>
+	''' <returns>
+	''' A JSON string representing the polyline geometry, e.g.:
+	''' [
+	'''   {"x": 10.0, "y": 20.0},
+	'''   {"x": 15.0, "y": 25.0},
+	'''   ...
+	''' ]
+	''' </returns>
+	Public Overrides Function ToGeometryJson() As String
+		Return JsonSerializer.Serialize(
+			Points.Select(Function(p) New With {.x = p.X, .y = p.Y})
+		)
+	End Function
 
-    ''' <summary>
-    ''' Deserialize the polyline geometry from a JSON array of point objects, populating the <see cref="Points"/> list.
-    ''' </summary>
-    ''' <param name="json">
-    ''' A JSON string representing the polyline geometry, expected to be an array of objects with "x" and "y" properties, e.g.:
-    ''' [
-    '''   {"x": 10.0, "y": 20.0},
-    '''   {"x": 15.0, "y": 25.0},
-    '''   ...
-    ''' ]
-    ''' </param>
-    Public Overrides Sub FromGeometryJson(json As String)
-        Points.Clear()
-        Dim doc = JsonDocument.Parse(json)
-        For Each pt In doc.RootElement.EnumerateArray()
-            Points.Add(New PointF(
-                pt.GetProperty("x").GetSingle(),
-                pt.GetProperty("y").GetSingle()
-            ))
-        Next
-    End Sub
+	''' <summary>
+	''' Deserialize the polyline geometry from a JSON array of point objects, populating the <see cref="Points"/> list.
+	''' </summary>
+	''' <param name="json">
+	''' A JSON string representing the polyline geometry, expected to be an array of objects with "x" and "y" properties, e.g.:
+	''' [
+	'''   {"x": 10.0, "y": 20.0},
+	'''   {"x": 15.0, "y": 25.0},
+	'''   ...
+	''' ]
+	''' </param>
+	Public Overrides Sub FromGeometryJson(json As String)
+		Points.Clear()
+		Dim doc = JsonDocument.Parse(json)
+		For Each pt In doc.RootElement.EnumerateArray()
+			Points.Add(New PointF(
+				pt.GetProperty("x").GetSingle(),
+				pt.GetProperty("y").GetSingle()
+			))
+		Next
+	End Sub
 #End Region
 End Class
 #End Region
