@@ -49,37 +49,47 @@ Public Enum GridKind
 		Physical
 	End Enum
 
+''' <summary>
+''' available Tools for the interactive canvas.
+''' </summary>
+Public Enum ToolType
+	None
 	''' <summary>
-	''' available Tools for the interactive canvas.
-	''' </summary>
-	Public Enum ToolType
-		None
-		''' <summary>Select and manipulate existing shapes.</summary>
-		SelectTool
-		''' <summary>Draw straight lines.</summary>
-		Line
-		''' <summary>Draw rectangles.</summary>
-		Rectangle
-		''' <summary>Draw ellipses.</summary>
-		Ellipse
-		''' <summary>Draw Polyline</summary>
-		Polyline
-		''' <summary>Pan the viewport.</summary>
-		Pan
-		''' <summary>Zoom in/out of the viewport, typically by dragging a rectangle to define the zoom area or using mouse wheel for incremental zooming.</summary>
-		Zoom
-	End Enum
-	'Public Enum ToolType
-	'	None
-	'	SelectTool
-	'	LineTool
-	'	RectangleTool
-	'	CircleTool
-	'	PanTool
-	'	ZoomTool
-	'End Enum
+	''' Select and manipulate existing shapes.</summary>
+	SelectTool
+	''' <summary>
+	''' Draw straight lines.</summary>
+	Line
+	''' <summary>
+	''' Draw rectangles.</summary>
+	Rectangle
+	''' <summary>
+	''' Draw ellipses.</summary>
+	Ellipse
+	''' <summary>
+	''' Draw Polyline</summary>
+	Polyline
+	''' <summary>
+	''' Pan the viewport.</summary>
+	Pan
+	''' <summary>
+	''' Zoom in/out of the viewport, typically by dragging a rectangle to define the zoom area or using mouse wheel for incremental zooming.</summary>
+	Zoom
+	''' <summary>
+	''' Measure distances between points on the canvas. This tool allows users to click on two points and see the distance between them, often displayed in a status bar or tooltip. It is useful for precise measurements in design or layout applications.</summary>
+	MeasureDistance
+End Enum
+'Public Enum ToolType
+'	None
+'	SelectTool
+'	LineTool
+'	RectangleTool
+'	CircleTool
+'	PanTool
+'	ZoomTool
+'End Enum
 
-	Public Enum InteractionState
+Public Enum InteractionState
 		Idle
 		Drawing
 		Dragging
