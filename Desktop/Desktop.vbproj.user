@@ -10,6 +10,9 @@
     <Compile Update="Controls\CanvasControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Controls\CoordinatesBox.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Controls\LayerPanel.vb">
       <SubType>UserControl</SubType>
     </Compile>
