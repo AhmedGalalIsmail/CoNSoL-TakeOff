@@ -21,6 +21,8 @@ Imports Domain.Entities
 '#End Region
 #Region "canvas control"
 
+
+
 ''' <summary>
 ''' Interactive 2D drawing canvas with shape rendering and tool support.
 ''' </summary>
@@ -58,7 +60,7 @@ Public Class CanvasControl
 	Private ReadOnly _shapeMenu As New ContextMenuStrip()
 
 #Region "Dimensions and units of measurement"
-	'Private myBorderStyle As BorderStyle = Windows.Forms.BorderStyle.FixedSingle
+	Private myBorderStyle As BorderStyle = BorderStyle.FixedSingle
 	Private myUnitOfMeasure As MeasureSystem.enUniMis = DefaultUnitOfMeasure
 	Private myMinLogicalWindowSize As Size = DefaultMinLogicalWindowSize
 	Private myMaxLogicalWindowSize As Size = DefaultMaxLogicalWindowSize
@@ -93,8 +95,99 @@ Public Class CanvasControl
 
 	Private _snapEnabled As Boolean = False
 
+#Region "Private Variables"
 	Private myGraphicInfo As New ConversionInfo()
+	Private myClickAction As ToolType = ToolType.Zoom
+	Private myCoordinatesBox As CoordinatesBox = New CoordinatesBox(Me)
+	Private myDefaultBackgroundColor As Color = Color.WhiteSmoke
+	Private myZoomSelectionBoxColor As Color = Color.Black
 
+	Private myShowGrid As Boolean = True
+	Private myGridView As GridKind = GridKind.Crosses
+	Private myGridStep As Integer = 10000
+	Private mySmartGridAdjust As Boolean = True
+
+#Region "Size"
+	Public Shared ReadOnly DefaultMinLogicalWindowSize As Size = New Size(2000, 2000)
+	Public Shared ReadOnly DefaultMaxLogicalWindowSize As Size = New Size(100000000, 100000000)
+#End Region
+
+#Region "Video double buffering management"
+	'''' <summary>
+	'''' Bitmap that forms the first-level video buffer (persistent until Refresh())
+	'''' </summary>
+	Private myRefreshBackBuffer As Bitmap
+
+	''' <summary>
+	''' Bitmap that forms the second-level video buffer (persistent until Redraw())
+	''' </summary>
+	Private myRedrawBackBuffer As Bitmap
+
+#End Region
+
+#Region "Various"
+	Private myIsDragging As Boolean = False
+	Private myIsLoaded As Boolean = False
+	Private myRulers As New Rulers(Me)
+	Private myLastMouseDownPoint As Point
+	Public ReadOnly Property LastMouseDownLogicalCoord() As Point
+		Get
+			Return myLastMouseDownPoint
+		End Get
+	End Property
+	Private WithEvents myDistanceRuler As DistanceRuler = New DistanceRuler(Me)
+	Private myIsLayoutSuspended As Boolean = True
+#End Region
+
+#Region "Variables for Resize()"
+
+	Private myLastVisibleAreaRequested As RECT = DefaultRect
+	Private myResizeBeginEndPreviewArea As RECT = DefaultRect
+	Private myResizeMode As ResizeMode = ResizeMode.Stretch
+	Private myIsBetweenResizeBeginEnd As Boolean = False
+	Dim myBeginResizeClientArea As Rectangle
+
+#End Region
+
+#Region "Immagine di sfondo della PictureBox"
+	Private myPictureBoxImagePosition As enBitmapOriginPosition = enBitmapOriginPosition.TopLeft
+	Private myPictureBoxImageCustomOrigin As Point
+	Private myShowPictureBoxImage As Boolean = True
+	Private myPictureBoxImageGR As cBackImageGraphics
+	Private myPictureBoxImage As System.Drawing.Image
+	Private myPictureBoxImagePixelSize_micron As Integer = 100
+
+
+	Public Shadows Property Image As System.Drawing.Image
+		Get
+			Return myPictureBoxImage
+		End Get
+		Set(value As System.Drawing.Image)
+			myPictureBoxImage = value
+			If value IsNot Nothing Then
+				myPictureBoxImageGR = New cBackImageGraphics(myPictureBoxImage, ImageCustomOrigin.X, ImageCustomOrigin.Y, enBitmapOriginPosition.TopLeft, myPictureBoxImagePixelSize_micron, myPictureBoxImagePixelSize_micron)
+			Else
+				myPictureBoxImageGR = Nothing
+			End If
+		End Set
+	End Property
+#End Region
+
+#Region "Dimensions and units of measurement"
+
+#End Region
+
+#Region "Flag for display"
+	Private myShowMouseCoordinates As Boolean = True
+	Private myShowRulers As Boolean = True
+	Private myIsChangingAutoScroll As Boolean = False
+#End Region
+
+#Region "Selection/zoom box"
+	Private mySelectionBox As New SelectionBoxElement(Me)
+#End Region
+
+#End Region
 #Region "Constants"
 	''' <summary>
 	''' Default measurement unit used for displaying coordinates and rulers</summary>
@@ -186,37 +279,8 @@ Public Class CanvasControl
 		End Set
 	End Property
 
-	''' <summary>
-	''' 
-	''' </summary>
-	Public Property GraphicInfo() As ConversionInfo
-		Get
-			Return myGraphicInfo
-		End Get
-		Private Set(ByVal Value As ConversionInfo)
-			myGraphicInfo = Value
-		End Set
-	End Property
-
-	''' <summary>
-	''' Allows you to view the coordinates at which the mouse is located</summary>
-	<Description("Allows you to view the coordinates at which the mouse is located"),
-	 DefaultValue(True)>
-	Public Property ShowMouseCoordinates() As Boolean
-		Get
-			Return myShowMouseCoordinates
-		End Get
-		Set(ByVal value As Boolean)
-			myShowMouseCoordinates = value
-		End Set
-	End Property
-
-#End Region
-#Region "Size"
-
-	Public Shared ReadOnly DefaultMinLogicalWindowSize As Size = New Size(2000, 2000)
-	Public Shared ReadOnly DefaultMaxLogicalWindowSize As Size = New Size(100000000, 100000000)
-
+	''' <summary>Gets or sets the minimum logical window size of the canvas in logical coordinates. This property defines the smallest allowable size for the logical area of the canvas, ensuring that the user cannot zoom out beyond this limit.</summary>
+	''' <returns>A <see cref="Size"/> structure representing the minimum logical window size of the canvas in logical coordinates. The width and height values specify the minimum allowable dimensions for the logical area.</returns>
 	Public Property MinLogicalWindowSize() As Size
 		Get
 			Return myMinLogicalWindowSize
@@ -225,6 +289,9 @@ Public Class CanvasControl
 			myMinLogicalWindowSize = Value
 		End Set
 	End Property
+
+	''' <summary>Gets or sets the maximum logical window size of the canvas in logical coordinates. This property defines the largest allowable size for the logical area of the canvas, ensuring that the user cannot zoom in beyond this limit.</summary>
+	''' <returns>A <see cref="Size"/> structure representing the maximum logical window size of the canvas in logical coordinates. The width and height values specify the maximum allowable dimensions for the logical area.</returns>
 	Public Property MaxLogicalWindowSize() As Size
 		Get
 			Return myMaxLogicalWindowSize
@@ -237,12 +304,46 @@ Public Class CanvasControl
 			End If
 		End Set
 	End Property
+	''' <summary>
+	''' Gets the <see cref="ConversionInfo"/> instance that contains information about the conversion between physical and logical coordinates, including scale factor, logical origin, and logical dimensions.</summary>
+	Public Property GraphicInfo() As ConversionInfo
+		Get
+			Return myGraphicInfo
+		End Get
+		Private Set(ByVal Value As ConversionInfo)
+			myGraphicInfo = Value
+		End Set
+	End Property
+
+	''' <summary>
+	''' Gets or sets the pixel size of the background image in microns. This property determines how the background image is scaled relative to the canvas's logical coordinate system.</summary>
+	Public Property BackgroundImagePixelSize_Mic() As Integer
+		Get
+			Return myPictureBoxImagePixelSize_micron
+		End Get
+		Set(ByVal value As Integer)
+			If myPictureBoxImagePixelSize_micron <> value Then
+				myPictureBoxImagePixelSize_micron = value
+				myPictureBoxImageGR = New cBackImageGraphics(myPictureBoxImage, ImageCustomOrigin.X, ImageCustomOrigin.Y, enBitmapOriginPosition.TopLeft, myPictureBoxImagePixelSize_micron, myPictureBoxImagePixelSize_micron)
+			End If
+		End Set
+	End Property
+
+	''' <summary>Gets or sets the position of the background image relative to the canvas. This property determines how the image is aligned within the canvas area (e.g., top-left, center, custom origin).
+	''' </summary>
+	Public Property ImageCustomOrigin() As Point
+		Get
+			Return myPictureBoxImageCustomOrigin
+		End Get
+		Set(ByVal value As Point)
+			myPictureBoxImageCustomOrigin = value
+		End Set
+	End Property
 #End Region
 
 #Region "Scrollbar"
 
-	''' <summary>
-	''' Gets Or sets a value indicating whether the container will allow the user to scroll controls positioned outside its visible bounds.
+	''' <summary>Gets Or sets a value indicating whether the container will allow the user to scroll controls positioned outside its visible bounds.<br></br>
 	''' NOTE: This has been redeclared To prevent modification by external applications.</summary>
 	<Browsable(False)>
 	<EditorBrowsable(EditorBrowsableState.Never)>
@@ -255,10 +356,8 @@ Public Class CanvasControl
 		End Set
 	End Property
 
-	''' <summary>
-	''' Gets or sets the minimum size of the auto-scroll.
-	''' NOTE: This has been redeclared to prevent modification by external applications.
-	''' </summary>
+	''' <summary>Gets or sets the minimum size of the auto-scroll.<br></br>
+	''' NOTE: This has been redeclared to prevent modification by external applications.</summary>
 	<Browsable(False)>
 	<EditorBrowsable(EditorBrowsableState.Never)>
 	Public Shadows Property AutoScrollMinSize() As System.Drawing.Size
@@ -286,7 +385,7 @@ Public Class CanvasControl
 	End Property
 
 	''' <summary>
-	''' Allows you to display scrollbars
+	''' Gets or sets a value indicating whether scrollbars are displayed on the canvas control.
 	''' </summary>
 	<Description("Allows you to display scrollbars"),
 	DefaultValue(False)>
@@ -342,12 +441,6 @@ Public Class CanvasControl
 
 #End Region
 
-#Region "Flag for display"
-	Private myShowMouseCoordinates As Boolean = True
-	Private myShowRulers As Boolean = True
-	Private myIsChangingAutoScroll As Boolean = False
-#End Region
-
 #Region "Pan & zoom"
 	Friend Const ZoomMultiplier As Single = 1.25
 	Friend Const PanFactorNoShift As Single = 100.0! / 3.0!
@@ -358,11 +451,12 @@ Public Class CanvasControl
 
 #Region "Events"
 	''' <summary>
-	''' Event triggered when a shape is selected on the canvas.
-	''' </summary>
+	''' Event triggered when a shape is selected on the canvas.</summary>
 	''' <param name="el"></param>
 	Public Event ElementSelected(el As CanvasElement)
 
+	''' <summary>Event triggered when the unit of measurement for the canvas changes.</summary>
+	''' <param name="unit"></param>
 	Public Event OnMeasureUnitChanged(ByVal unit As MeasureSystem.enUniMis)
 
 #End Region
@@ -375,10 +469,7 @@ Public Class CanvasControl
 
 	''' <summary>Sets the layout to render and clears selection.</summary>
 	''' <param name="layout">Canvas layout to display</param>
-	''' <remarks>
-	''' Resets zoom/pan to defaults and clears any selection.
-	''' Triggers full repaint of canvas.
-	''' </remarks>
+	''' <remarks>Resets zoom/pan to defaults and clears any selection.<br></br>Triggers full repaint of canvas.</remarks>
 	''' <exception cref="ArgumentNullException">If layout is Nothing</exception>
 	Public Sub SetLayout(layout As CanvasLayout)
 		_currentLayout = layout
@@ -428,9 +519,7 @@ Public Class CanvasControl
 	End Function
 
 	''' <summary>
-	''' Find a shape on the canvas by its associated domain element ID, given as a string.
-	''' Parses the string to a Guid and searches for a matching shape.
-	''' </summary>
+	''' Find a shape on the canvas by its associated domain element ID, given as a string.<br></br>Parses the string to a Guid and searches for a matching shape.</summary>
 	''' <param name="id"></param>
 	''' <returns> The <see cref="ShapeBase"/> instance with a matching <see cref="ShapeBase.ElementId"/>, or <c>Nothing</c> if no match is found or if the ID is not a valid Guid.</returns>
 	Private Function FindShapeByElementId(id As String) As ShapeBase
@@ -458,9 +547,7 @@ Public Class CanvasControl
 	End Sub
 
 	''' <summary>Draw visual indicators for nested and exclusion relationships based on the current layout's relationships.</summary>
-	''' <param name="g"></param>
-	''' <param name="zoom"></param>
-	''' <param name="pan"></param>
+	''' <param name="g"></param><param name="zoom"></param><param name="pan"></param>
 	Private Sub DrawNestedOverlays(g As Graphics, zoom As Single, pan As PointF)
 		If _currentLayout Is Nothing Then Return
 		If _currentLayout.Relationships Is Nothing Then Return
@@ -559,6 +646,68 @@ Public Class CanvasControl
 		Return MaxLogicalWindowSize <> DefaultMaxLogicalWindowSize
 	End Function
 #End Region
+#End Region
+#End Region
+#Region "Private Variables"
+
+#End Region
+
+#Region "Video double buffering management"
+
+#Region "Graphics Scaling Routine"
+	''' <summary>Returns a graphics object derived from the bitmap passed to it.<br></br>
+	''' The returned Object has its scaling And translation matrices Set To the currently used scale factor And LogicalOrigin.<br></br>
+	''' NOTE: You must Dispose() the returned Graphics As soon As you are finished Using it.</summary>
+	Protected Friend Function GetScaledGraphicObject(ByVal Src As Bitmap) As Graphics
+		' Check se la sorgente passatami e' valida
+		If Src Is Nothing Then Return Nothing
+
+		' Creo il Graphics, lo scalo e lo ritorno
+		Return ScaleGraphicObject(Graphics.FromImage(Src))
+	End Function
+
+	''' <summary>
+	''' Returns a graphics object with the scaling and translation matrices set to the currently used scale factor and LogicalOrigin.</summary>
+	Protected Friend Function ScaleGraphicObject(ByRef GR As Graphics) As Graphics
+		Try
+			' Check se il Graphics passatomi e' valido
+			If GR Is Nothing Then
+				Return Nothing
+			End If
+
+			' Check che il fattore di scala sia valido
+			If (ScaleFactor <= 0.0) Then
+				MsgBox("Fattore di scala non valido in ScaleGraphicObject()")
+				Return GR
+			End If
+
+			' Cancello eventuali trasformazioni precedenti
+			GR.ResetTransform()
+
+			' Per ottenere una traslazione di coordinate logiche va impostata prima la matrice di scala e poi quella di traslazione 
+			GR.ScaleTransform(ScaleFactor, ScaleFactor)
+			GR.TranslateTransform(-LogicalOrigin.X, -LogicalOrigin.Y)
+			Return GR
+		Catch ex As Exception
+			Return Nothing
+		End Try
+	End Function
+#End Region
+#End Region
+#Region "Zoom Management"
+	<Browsable(False)>
+	Public Shared ReadOnly Property DefaultRect() As RECT
+		Get
+			' Un rettangolo di default per me vale circa 10 x 10 cm, tengo lo zero in alto a sx
+			' e faccio in modo che l'incrocio degli assi sia visibile (tengo circa 3mm in piu') 
+			Dim _Rect As RECT
+			_Rect.left = -3000 ' -3mm 
+			_Rect.top = -3000 ' -3mm 
+			_Rect.right = 100000 ' 10cm 
+			_Rect.bottom = 100000 ' 10cm 
+			Return _Rect
+		End Get
+	End Property
 #End Region
 
 #Region "Public API"
@@ -968,7 +1117,7 @@ Public Class CanvasControl
 End Class
 #End Region
 
-#End Region
+
 
 #Region "Shape definitions"
 
