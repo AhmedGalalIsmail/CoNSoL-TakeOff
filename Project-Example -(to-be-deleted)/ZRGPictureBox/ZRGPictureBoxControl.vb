@@ -372,9 +372,9 @@ Partial Public Class ZRGPictureBoxControl
 
 #End Region
 
-#Region "Colori"
+#Region "Colors"
 
-#Region "Elementi della PictureBox"
+#Region "PictureBox Elements"
     Public Shared ReadOnly Property AxesColor() As Color
         Get
             Return Color.Navy
@@ -385,6 +385,7 @@ Partial Public Class ZRGPictureBoxControl
             Return Color.White
         End Get
     End Property
+
     Public Property BackgroundColor() As Color
         Get
             Return myDefaultBackgroundColor
@@ -393,11 +394,12 @@ Partial Public Class ZRGPictureBoxControl
             myDefaultBackgroundColor = Value
         End Set
     End Property
+
     ''' <summary>
-    ''' Colore del cursore a croce
+    ''' Crosshair color
     ''' </summary>
-    <Description("Imposta il colore del cursore a croce"), Category("Colors"), _
-    DefaultValue(GetType(Color), "Black")> _
+    <Description("Set the color of the crosshair cursor"), Category("Colors"),
+    DefaultValue(GetType(Color), "Black")>
     Public Property CrossCursorColor() As Color
         Get
             Return FullCrossCursor.Color
