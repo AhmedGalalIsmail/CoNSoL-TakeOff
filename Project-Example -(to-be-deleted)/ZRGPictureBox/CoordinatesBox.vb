@@ -2,11 +2,12 @@ Partial Public Class ZRGPictureBoxControl
 
     Friend Class CoordinatesBox
 
+#Region "Public Fields and Proprties"
         Private myPictureBoxControl As ZRGPictureBoxControl
         Private myDrawingRect As Rectangle = Rectangle.Empty
         Private myLastCoordToDraw As Point = New Point(Integer.MaxValue, Integer.MaxValue)
 
-#Region "Proprieta'"
+
         Public Property PictureBoxControl() As ZRGPictureBoxControl
             Get
                 Return myPictureBoxControl
@@ -15,21 +16,29 @@ Partial Public Class ZRGPictureBoxControl
                 myPictureBoxControl = value
             End Set
         End Property
+
+
         Public ReadOnly Property UnitOfMeasure() As MeasureSystem.enUniMis
             Get
                 Return PictureBoxControl.UnitOfMeasure
             End Get
         End Property
+
+
         Public ReadOnly Property DrawingRect() As Rectangle
             Get
                 Return myDrawingRect
             End Get
         End Property
+
+
         Private ReadOnly Property UnitOfMeasureFactor() As Single
             Get
                 Return MeasureSystem.CustomUnitToMicron(1, UnitOfMeasure)
             End Get
         End Property
+
+
         Private ReadOnly Property UnitOfMeasureString() As String
             Get
                 Return MeasureSystem.UniMisDescription(UnitOfMeasure)
@@ -37,13 +46,14 @@ Partial Public Class ZRGPictureBoxControl
         End Property
 #End Region
 
-#Region "Costruttori"
+#Region "Constractors"
         Public Sub New(ByVal pictureBox As ZRGPictureBoxControl)
             myPictureBoxControl = pictureBox
         End Sub
 #End Region
 
-#Region "Funzioni pubbliche"
+#Region "Public Functions"
+
         Public Sub DrawCoordinateInfo(ByVal GR As Graphics, ByVal CoordToDraw As Point, Optional ByVal PixelCoordMode As Boolean = False)
             Try
                 If myPictureBoxControl Is Nothing Then
@@ -115,9 +125,6 @@ Partial Public Class ZRGPictureBoxControl
                 MsgBox(ex.Message)
             End Try
         End Sub
-
 #End Region
-
     End Class
-
 End Class
