@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "dgSpecHash": "1sseG0yvE8s=",
+  "success": true,
+  "projectFilePath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Project-Example -(to-be-deleted)\\ZRGPictureBox\\ZRGPictureBox.vbproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\GoingIForMal\\.nuget\\packages\\microsoft.win32.systemevents\\10.0.9\\microsoft.win32.systemevents.10.0.9.nupkg.sha512",
+    "C:\\Users\\GoingIForMal\\.nuget\\packages\\system.drawing.common\\10.0.9\\system.drawing.common.10.0.9.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU3003",
+      "level": "Warning",
+      "message": "Package 'System.Drawing.Common 10.0.9' from source 'https://api.nuget.org/v3/index.json': The package signature is invalid or cannot be verified on this platform.",
+      "projectPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Project-Example -(to-be-deleted)\\ZRGPictureBox\\ZRGPictureBox.vbproj",
+      "warningLevel": 1,
+      "filePath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Project-Example -(to-be-deleted)\\ZRGPictureBox\\ZRGPictureBox.vbproj",
+      "libraryId": "System.Drawing.Common",
+      "targetGraphs": []
+    },
+    {
+      "code": "NU3003",
+      "level": "Warning",
+      "message": "Package 'Microsoft.Win32.SystemEvents 10.0.9' from source 'https://api.nuget.org/v3/index.json': The package signature is invalid or cannot be verified on this platform.",
+      "projectPath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Project-Example -(to-be-deleted)\\ZRGPictureBox\\ZRGPictureBox.vbproj",
+      "warningLevel": 1,
+      "filePath": "E:\\Users\\GoingIForMal\\CoNSoL-TakeOff-AI\\Project-Example -(to-be-deleted)\\ZRGPictureBox\\ZRGPictureBox.vbproj",
+      "libraryId": "Microsoft.Win32.SystemEvents",
+      "targetGraphs": []
+    }
+  ]
+}

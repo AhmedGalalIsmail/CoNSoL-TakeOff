@@ -1,4 +1,5 @@
 Imports System.ComponentModel
+Imports System.Drawing
 'Imports Microsoft.VisualBasic
 
 Public Delegate Sub CaptureFishedEventHandler(ByVal sender As Object, ByVal e As CaptureEventArgs)

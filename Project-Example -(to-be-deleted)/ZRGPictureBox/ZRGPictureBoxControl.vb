@@ -57,20 +57,20 @@ Partial Public Class ZRGPictureBoxControl
     Private myGridStep As Integer = 10000
     Private mySmartGridAdjust As Boolean = True
 
-#Region "Gestione del double buffering video"
+#Region "Video double buffering management"
     '''' <summary>
-    '''' Bitmap che costituisce il buffer video di primo livello (persistente fino al Refresh())
+    '''' Bitmap that forms the first-level video buffer (persistent until Refresh())
     '''' </summary>
     Private myRefreshBackBuffer As Bitmap
 
     ''' <summary>
-    ''' Bitmap che costituisce il buffer video di secondo livello (persistente fino al Redraw())
+    ''' Bitmap that forms the second-level video buffer (persistent until Redraw())
     ''' </summary>
     Private myRedrawBackBuffer As Bitmap
 
 #End Region
 
-#Region "Varie"
+#Region "Various"
     Private myIsDragging As Boolean = False
     Private myIsLoaded As Boolean = False
     Private myRulers As New Rulers(Me)
@@ -84,7 +84,7 @@ Partial Public Class ZRGPictureBoxControl
     Private myIsLayoutSuspended As Boolean = True
 #End Region
 
-#Region "Variabili per il Resize()"
+#Region "Variables for Resize()"
 
     Private myLastVisibleAreaRequested As RECT = DefaultRect
     Private myResizeBeginEndPreviewArea As RECT = DefaultRect
@@ -159,7 +159,7 @@ Partial Public Class ZRGPictureBoxControl
     Private myIsChangingAutoScroll As Boolean = False
 #End Region
 
-#Region "Box di selezione/zoom"
+#Region "Selection/zoom box"
     Private mySelectionBox As New SelectionBoxElement(Me)
 #End Region
 
@@ -1814,7 +1814,7 @@ Partial Public Class ZRGPictureBoxControl
 
 #End Region
 
-#Region "Gestione dello Zoom"
+#Region "Zoom Management"
 
 #Region "Varie"
 
@@ -2545,13 +2545,11 @@ Partial Public Class ZRGPictureBoxControl
 
 #End Region
 
-#Region "Routine per la scalatura dei Graphics"
+#Region "Graphics Scaling Routine"
 
-    ''' <summary>
-    ''' Ritorna un oggetto graphics derivato dalla bitmap passatagli
-    ''' L'oggetto ritornato ha le matrici di scalatura e traslazione impostate sul fattore di scala e sulla LogicalOrigin attualmente in uso.
-    ''' NOTA BENE: E' necessario fare un Dispose() del Graphics ritornato appena si e' finito di utilizzarlo
-    ''' </summary>
+    ''' <summary>Returns a graphics object derived from the bitmap passed to it.<br></br>
+    ''' The returned Object has its scaling And translation matrices Set To the currently used scale factor And LogicalOrigin.<br></br>
+    ''' NOTE: You must Dispose() the returned Graphics As soon As you are finished Using it.</summary>
     Protected Friend Function GetScaledGraphicObject(ByVal Src As Bitmap) As Graphics
         ' Check se la sorgente passatami e' valida
         If Src Is Nothing Then Return Nothing
@@ -2561,9 +2559,7 @@ Partial Public Class ZRGPictureBoxControl
     End Function
 
     ''' <summary>
-    ''' Ritorna un oggetto graphics con le matrici di scalatura e traslazione impostate 
-    ''' sul fattore di scala e sulla LogicalOrigin attualmente in uso.
-    ''' </summary>
+    ''' Returns a graphics object with the scaling and translation matrices set to the currently used scale factor and LogicalOrigin.</summary>
     Protected Friend Function ScaleGraphicObject(ByRef GR As Graphics) As Graphics
         Try
             ' Check se il Graphics passatomi e' valido
