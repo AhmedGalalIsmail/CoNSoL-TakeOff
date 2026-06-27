@@ -193,7 +193,89 @@ Public Class CanvasControl
 	''' Default measurement unit used for displaying coordinates and rulers</summary>
 	Public Const DefaultUnitOfMeasure As MeasureSystem.enUniMis = MeasureSystem.enUniMis.mm
 #End Region
+#Region "Colors"
 
+#Region "PictureBox Elements"
+	Public Shared ReadOnly Property AxesColor() As Color
+		Get
+			Return Color.Navy
+		End Get
+	End Property
+	Public Shared ReadOnly Property RulerColor() As Color
+		Get
+			Return Color.White
+		End Get
+	End Property
+
+	Public Property BackgroundColor() As Color
+		Get
+			Return myDefaultBackgroundColor
+		End Get
+		Set(ByVal Value As Color)
+			myDefaultBackgroundColor = Value
+		End Set
+	End Property
+
+	''' <summary>
+	''' Crosshair color
+	''' </summary>
+	<Description("Set the color of the crosshair cursor"), Category("Colors"),
+	DefaultValue(GetType(Color), "Black")>
+	Public Property CrossCursorColor() As Color
+		Get
+			Return FullCrossCursor.Color
+		End Get
+		Set(ByVal Value As Color)
+			FullCrossCursor.Color = Value
+		End Set
+	End Property
+	Public ReadOnly Property GridColor() As Color
+		Get
+			Return Color.LightSteelBlue
+		End Get
+	End Property
+	Public ReadOnly Property SnapGridColor() As Color
+		Get
+			Return Color.Gray
+		End Get
+	End Property
+	''' <summary>
+	''' Colore del box di zoom/selezione
+	''' </summary>
+	<Description("Imposta il colore del box di zoom/selezione"), Category("Colors"),
+	DefaultValue(GetType(Color), "Black")>
+	Public Property ZoomSelectionBoxColor() As Color
+		Get
+			Return myZoomSelectionBoxColor
+		End Get
+		Set(ByVal Value As Color)
+			Try
+				myZoomSelectionBoxColor = Value
+			Catch ex As Exception
+				MsgBox(ex.Message)
+			End Try
+		End Set
+	End Property
+
+	Private myFullCrossCursor As CrossCursor
+
+	Private ReadOnly Property FullCrossCursor As CrossCursor
+		Get
+			If myFullCrossCursor Is Nothing Then
+				myFullCrossCursor = New CrossCursor(Me)
+			End If
+			Return myFullCrossCursor
+		End Get
+	End Property
+	Private ReadOnly Property FullPictureBoxCross() As Boolean
+		Get
+			Return myClickAction = ToolType.MeasureDistance
+		End Get
+	End Property
+
+#End Region
+
+#End Region
 #Region "Origin, coordinates, dimensions, etc."
 
 	''' <summary>Gets the default size of the control when it is first created.</summary>
