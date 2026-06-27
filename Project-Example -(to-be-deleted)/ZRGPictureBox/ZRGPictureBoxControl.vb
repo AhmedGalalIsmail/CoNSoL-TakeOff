@@ -549,9 +549,8 @@ Partial Public Class ZRGPictureBoxControl
 #Region "Scrollbar"
 
     ''' <summary>
-    ''' Ottiene o imposta un valore che indica se il contenitore consentirà all'utente di scorrere i controlli posizionati all'esterno dei limiti visibili.
-    ''' NOTA: E' stata ridichiarata per impedire la modifica da parte di applicativi esterni
-    ''' </summary>
+    ''' Gets Or sets a value indicating whether the container will allow the user to scroll controls positioned outside its visible bounds.
+    ''' NOTE: This has been redeclared To prevent modification by external applications.</summary>
     <Browsable(False)> _
     <EditorBrowsable(EditorBrowsableState.Never)> _
     Public Overrides Property AutoScroll() As Boolean
@@ -564,8 +563,8 @@ Partial Public Class ZRGPictureBoxControl
     End Property
 
     ''' <summary>
-    ''' Ottiene o imposta la dimensione minima dello scorrimento automatico.
-    ''' NOTA: E' stata ridichiarata per impedire la modifica da parte di applicativi esterni
+    ''' Gets or sets the minimum size of the auto-scroll.
+    ''' NOTE: This has been redeclared to prevent modification by external applications.
     ''' </summary>
     <Browsable(False)> _
     <EditorBrowsable(EditorBrowsableState.Never)> _
@@ -579,8 +578,8 @@ Partial Public Class ZRGPictureBoxControl
     End Property
 
     ''' <summary>
-    ''' Ottiene o imposta la dimensione del margine di scorrimento automatico.
-    ''' NOTA: E' stata ridichiarata per impedire la modifica da parte di applicativi esterni
+    ''' Gets or sets the size of the auto-scroll margin.
+    ''' NOTE: This has been redeclared to prevent modification by external applications.
     ''' </summary>
     <Browsable(False)> _
     <EditorBrowsable(EditorBrowsableState.Never)> _
@@ -594,24 +593,24 @@ Partial Public Class ZRGPictureBoxControl
     End Property
 
     ''' <summary>
-    ''' Permette di visualizzare le scrollbar
+    ''' Allows you to display scrollbars
     ''' </summary>
-    <Description("Permette di visualizzare le scrollbar"), _
-    DefaultValue(False)> _
+    <Description("Allows you to display scrollbars"),
+    DefaultValue(False)>
     Public Property ShowScrollbars() As Boolean
         Get
             Return AutoScroll
         End Get
         Set(ByVal Value As Boolean)
-            ' Check se il valore e' gia' quello desiderato
+            ' Check if the value is already the desired one
             If AutoScroll = Value Then
                 Exit Property
             End If
-            ' Aggiorno i dati delle scrollbar, lo faccio prima di visualizzarle, cosi' mi evito un ridisegno con le scrollbar sbagliate
+            ' I update the scrollbar data, I do it before displaying them, so I avoid a redraw with the wrong scrollbars
             If Value Then
                 UpdateScrollbars()
             End If
-            ' NOTA: Devo impostare il flag che mi fara' saltare l'evento Resize() che si genera quando si cambia il valore di Autoscroll
+            ' NOTE: I need to set the flag that will make me skip the Resize() event that fires when the Autoscroll value changes
             myIsChangingAutoScroll = True
             AutoScroll = Value
             myIsChangingAutoScroll = False
@@ -748,8 +747,7 @@ Partial Public Class ZRGPictureBoxControl
     End Property
 
     ''' <summary>
-    ''' Unità di misura del sistema di coordinate logico della PictureBox
-    ''' </summary>
+    ''' Units of measurement of the PictureBox logical coordinate system</summary>
     <Description("Imposta l'unità di misura del sistema di coordinate logico della PictureBox"), _
     DefaultValue(GetType(MeasureSystem.enUniMis), "Millimeter")> _
     Public Property UnitOfMeasure() As MeasureSystem.enUniMis
@@ -770,8 +768,8 @@ Partial Public Class ZRGPictureBoxControl
     End Property
 
     ''' <summary>
-    ''' Ritorna l'area correntemente visualizzata dalla PictureBox [coordinate logiche]
-    ''' NOTA BENE: L'area varia al variare dello zoom
+    ''' Returns the area currently displayed by the PictureBox [logical coordinates]
+    ''' NOTE: The area varies as the zoom changes
     ''' </summary>
     <Browsable(False)> _
     Public ReadOnly Property VisibleRect() As RECT
@@ -822,34 +820,32 @@ Partial Public Class ZRGPictureBoxControl
 
 #End Region
 
-#Region "Funzioni di supporto per gli eventi"
+#Region "Event Helper Functions"
     ''' <summary>
-    ''' Funzione chiamata durante la MouseMove(), permette di personalizzare il cursore nelle classi derivate.
-    ''' Viene passata la posizione attuale del cursore in coordinate logiche.
-    ''' Deve ritornare true se il cursore e' stato personalizzato, false altrimenti.
+    ''' Function called during MouseMove(), allows you to customize the cursor in derived classes.
+    ''' The current cursor position is passed in logical coordinates.
+    ''' Must return true if the cursor has been customized, false otherwise.
     ''' </summary>
     Protected Overridable Function OnCustomCursorRequest(ByVal logicalCoord As Point) As Boolean
         Return False
     End Function
 
     ''' <summary>
-    ''' Cancella gli eventuali dati temporanei usati tra un MouseDown e un MouseUp
-    ''' </summary>
+    ''' Clears any temporary data used between a MouseDown and a MouseUp    ''' </summary>
     Private Sub ResetTemporaryData()
-        ' Cancello il rettangolo di selezione, in modo che non venga piu' ridisegnato
+        ' I delete the selection rectangle, so that it will not be redrawn again
         SelectionBox.Reset()
     End Sub
 
     ''' <summary>
-    ''' Aggiorna lo stato del flag che indica se si sta facendo un drag and drop
-    ''' </summary>
+    ''' Updates the status of the flag indicating whether a drag and drop is being performed</summary>
     Protected Sub UpdateDraggingState()
-        ' Si puo' avere un drag and drop solo se il tasto sinistro e' abbassato
-        ' e se esiste un punto di partenza da cui si e' cominciato il drag
-        ' e se sono in standardView
+        ' You can only drag and drop if the left mouse button is down
+        ' and if there is a starting point from which you started dragging
+        ' and if they are in standardView
         myIsDragging = (MouseButtons = Windows.Forms.MouseButtons.Left) AndAlso (Not SelectionBox.TopLeftCorner = RECT.InvalidPoint)
         If myIsDragging Then
-            ' Si puo' avere un drag and drop solo se mi sono spostato dal punto in cui avevo premuto il tasto
+            'You can only have a drag and drop if I have moved from the point where I pressed the button
             Dim physicalMousePos As Point = PointToClient(MousePosition)
             Dim distanceX As Integer = physicalMousePos.X - myLastMouseDownPoint.X
             Dim distanceY As Integer = physicalMousePos.Y - myLastMouseDownPoint.Y
@@ -923,14 +919,13 @@ Partial Public Class ZRGPictureBoxControl
 
 #End Region
 
-#Region "Gestione degli eventi"
+#Region "Event management"
 
     Protected Overrides Sub OnMouseDown(ByVal e As System.Windows.Forms.MouseEventArgs)
         Try
-            ' Aggiorno lo stato del flag che indica se si sta facendo un drag and drop
-            myIsDragging = False
+            ' I update the status of the flag that indicates whether a drag and drop is being performed            myIsDragging = False
 
-            ' Posizione del mouse in vari tipi di coordinate
+            ' Mouse position in various coordinate types
             Dim logicalMousePos As Point = GraphicInfo.ToLogicalPoint(e.X, e.Y)
             myLastMouseDownPoint = logicalMousePos
 
@@ -1114,16 +1109,14 @@ Partial Public Class ZRGPictureBoxControl
 
 #End Region
 
-#Region "Gestione delle scrollbar"
+#Region "Scrollbar Management"
 
     ''' <summary>
-    ''' Imposta il valore delle scrollbar (dipende dal livello di zoom della finestra logica)
-    ''' </summary>
+    ''' Sets the value of the scrollbars (depends on the zoom level of the logical window)    ''' </summary>
     Private Sub UpdateScrollbars()
-        ' NOTA: La thumb di una scrollbar e' la parte che posso cliccare e trascinare qua e la
-
-        ' Aggiorno la dimensione che fa apparire le scrollbar, in pratica la modifico in modo
-        ' che la thumb delle scrollbar diventi piu' stretta o piu' larga in funzione dell'area logica visualizzata
+        ' NOTE:   The thumb of a scrollbar Is the part I can click And drag around.
+        ' I update the size that scrollbars appear In, essentially changing it so that
+        ' the thumb of the scrollbar becomes narrower Or wider depending on the logical area displayed.
         Dim newValueX, newValueY As Integer
         newValueX = Math.BigMul(Me.Size.Width, MaxLogicalWindowSize.Width) / LogicalWidth
         newValueY = Math.BigMul(Me.Size.Height, MaxLogicalWindowSize.Height) / LogicalHeight
@@ -2267,30 +2260,29 @@ Partial Public Class ZRGPictureBoxControl
     End Sub
 
     ''' <summary>
-    ''' Ritorna l'area logica a cui e' necessario effettuare lo zoom per garantire la visibilita' dell'area desiderata.
-    ''' Le due aree non coincidono in quanto l'area ritornata rispetta la proporzione tra altezza e larghezza
-    ''' e se necessario, tiene conto dell'area occupata dai righelli e della centratura dell'area desiderata.
-    ''' Se CenterWindow e' true, l'area desiderata viene centrata nella picturebox, altrimenti viene lasciata allineata a sinistra
-    ''' Se AddEmptyBorder e' true lo zoom diminuisce lievemente, in modo da avere una cornice vuota attorno all'area desiderata
-    ''' Se ExcludeRulersArea e' true (e se i righelli sono visibili) l'area desiderata
-    ''' viene mappata nella parte della picturebox non coperta dai righelli
+    ''' Returns the logical area To which zoom Is required To ensure visibility Of the desired area.
+    ''' The two areas Do Not coincide because the returned area respects the height-To-width ratio
+    ''' And, if necessary, takes into account the area occupied by the rulers And the centering of the desired area.
+    ''' If CenterWindow Is True, the desired area Is centered In the picturebox; otherwise, it Is left aligned To the left.
+    ''' If AddEmptyBorder Is True, the zoom Is slightly decreased, so As To have an empty frame around the desired area.
+    ''' If ExcludeRulersArea Is True(And If the rulers are visible), the desired area
+    ''' Is mapped to the part of the picturebox Not covered by the rulers.
     ''' </summary>
     Private Function VisibleAreaToLogicalArea(ByVal visibleArea As RECT, Optional ByVal CenterWindow As Boolean = True, _
                                                 Optional ByVal AddEmptyBorder As Boolean = True, Optional ByVal ExcludeRulersArea As Boolean = True) As RECT
-        ' Check di sicurezza
+        ' Security check
         If visibleArea.IsZeroSized Then
             Return New RECT()
         End If
 
-        ' Mi assicuro che il rettangolo sia normalizzato
+        ' I make sure the rectangle is normalized
         visibleArea.NormalizeRect()
 
-        ' Aggiorno l'ultima area visibile che mi e' stata richiesta
+        'I am updating the last visible area that was requested of me.
         myLastVisibleAreaRequested = visibleArea
 
-        ' Dimensioni orizzontali e verticali del controllo.
-        ' NOTA: Uso il ClientRectangle.Width al posto di Width perche' cosi' tengo conto delle eventuali scrollbar.
-        Dim clientWidth As Single = Me.ClientRectangle.Width
+        ' Horizontal and vertical dimensions of the control.
+        ' NOTE: I use ClientRectangle.Width instead of Width because this way I can account for any scrollbars.        Dim clientWidth As Single = Me.ClientRectangle.Width
         Dim clientHeight As Single = Me.ClientRectangle.Height
 
         ' Spazio occupato dai righelli, e' diverso da zero solo se devo disegnare i righelli 

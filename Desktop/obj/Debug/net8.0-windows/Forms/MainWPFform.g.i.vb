@@ -294,7 +294,7 @@ Partial Public Class MainWPFform
             Return
         End If
         _contentLoaded = true
-        Dim resourceLocater As System.Uri = New System.Uri("/Desktop;component/forms/mainwpfform.xaml", System.UriKind.Relative)
+        Dim resourceLocater As System.Uri = New System.Uri("/Desktop;V1.0.0.0;component/forms/mainwpfform.xaml", System.UriKind.Relative)
         
         #ExternalSource("..\..\..\..\Forms\MainWPFform.xaml",1)
         System.Windows.Application.LoadComponent(Me, resourceLocater)

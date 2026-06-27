@@ -196,7 +196,7 @@ Partial Public Class MaterialCrudFormWPF
             Return
         End If
         _contentLoaded = true
-        Dim resourceLocater As System.Uri = New System.Uri("/Desktop;component/forms/materialcrudformwpf.xaml", System.UriKind.Relative)
+        Dim resourceLocater As System.Uri = New System.Uri("/Desktop;V1.0.0.0;component/forms/materialcrudformwpf.xaml", System.UriKind.Relative)
         
         #ExternalSource("..\..\..\..\Forms\MaterialCrudFormWPF.xaml",1)
         System.Windows.Application.LoadComponent(Me, resourceLocater)

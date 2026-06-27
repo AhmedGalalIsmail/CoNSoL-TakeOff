@@ -16,7 +16,7 @@ Imports System.Reflection
 <Assembly: System.Reflection.AssemblyCompanyAttribute("Wave1Verification"),  _
  Assembly: System.Reflection.AssemblyConfigurationAttribute("Debug"),  _
  Assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0"),  _
- Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d47525744e5dab4b85ca91498a27d602879c080a"),  _
+ Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7c4cdfa253fc26896da255a4b613cacbdbcb2cd9"),  _
  Assembly: System.Reflection.AssemblyProductAttribute("Wave1Verification"),  _
  Assembly: System.Reflection.AssemblyTitleAttribute("Wave1Verification"),  _
  Assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")> 

@@ -1,5 +1,12 @@
+Imports System
+
+
 <CLSCompliantAttribute(True)> Public Class MeasureSystem
     Public Shared Event MeasureUnitChanged(ByVal NewUnit As enUniMis)
+
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Public Enum enUniMis
         micron = 0
         mm = 1
@@ -7,7 +14,12 @@
         dmm = 3
         meters = 4
     End Enum
+
     Private myUserUnit As enUniMis
+
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Public Sub New()
         Try
             UserUnit = enUniMis.micron
@@ -106,7 +118,7 @@
     Public Function UserUnitDescription() As String
         Return UniMisDescription(UserUnit)
     End Function
-    Public Sub FillComboWithAvailableUnits(ByVal cbMeasureUnit As System.Windows.Forms.ComboBox)
+    Public Sub FillComboWithAvailableUnits(ByVal cbMeasureUnit As ComboBox)
         Try
             cbMeasureUnit.Items.Clear()
             Dim myArray() As MeasureSystem.enUniMis = System.Enum.GetValues(GetType(MeasureSystem.enUniMis))

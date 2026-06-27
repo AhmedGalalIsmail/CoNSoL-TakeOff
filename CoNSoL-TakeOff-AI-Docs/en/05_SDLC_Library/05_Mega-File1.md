@@ -5,14 +5,14 @@ color: "#c70303"
 
 ---
 
-# 00 — Governance
+# 00 � Governance
 
-## 0001 — SDLC Governance
+## 0001 � SDLC Governance
 	
 - **Purpose**
 	Define document standards, lifecycle, and ownership across the SDLC.
 - **Standards**
-	- Lifecycle: Draft → In Review → Approved → Deprecated
+	- Lifecycle: Draft ? In Review ? Approved ? Deprecated
 	- Versioning: MAJOR.MINOR.PATCH (e.g., 1.0.0)
 	- Review cadence: Quarterly or on major change
 - **Required Metadata**
@@ -25,46 +25,46 @@ color: "#c70303"
 	
 ---
 
-# 01 — Inception
+# 01 � Inception
 
-## 🧠 0101 — Requirement Analysis
+## ?? 0101 � Requirement Analysis
 
 ---
 
-### 🎯 Purpose 
+### ?? Purpose 
 
-Define the **business vision, product scope, users, and success criteria** for the CoNSoL platform and its flagship application, **CoNSoL‑TakeOff**.
+Define the **business vision, product scope, users, and success criteria** for the CoNSoL platform and its flagship application, **CoNSoL?TakeOff**.
 
 - **This document answers:**
 	
 	- What problem are we solving?
 	- What is CoNSoL?
-	- What is CoNSoL‑TakeOff?
+	- What is CoNSoL?TakeOff?
 	- Who is this for?
 	- What is in scope vs out of scope?
 	
 ---
 
-### 🏗️ 1. What is CoNSoL? 
+### ??? 1. What is CoNSoL? 
 
-**CoNSoL (Construction Solution)** is a **modular construction management platform** designed around a hub‑and‑spoke architecture.
+**CoNSoL (Construction Solution)** is a **modular construction management platform** designed around a hub?and?spoke architecture.
 
 #### Platform Characteristics
 	
-- **Core Engine:** CoNSoL‑Engine
+- **Core Engine:** CoNSoL?Engine
 	- Orchestration
 	- Shared services
 	- Licensing
-	- Inter‑module communication
-- **Mandatory Module:** CoNSoL‑Project Manager
+	- Inter?module communication
+- **Mandatory Module:** CoNSoL?Project Manager
 	- Projects
 	- Timelines
 	- Dependencies
 	- Resource allocation
 - **Optional Modules:**
-	- CoNSoL‑TakeOff
-	- CoNSoL‑HR
-	- CoNSoL‑Docs
+	- CoNSoL?TakeOff
+	- CoNSoL?HR
+	- CoNSoL?Docs
 	- Others (future)
 	
 #### Architectural Principle
@@ -73,13 +73,13 @@ Define the **business vision, product scope, users, and success criteria** for t
 
 ---
 
-### 🧱 2. What is CoNSoL‑TakeOff?
+### ?? 2. What is CoNSoL?TakeOff?
 
-**CoNSoL‑TakeOff** is a **visual-first construction take‑off and estimation tool**.
+**CoNSoL?TakeOff** is a **visual-first construction take?off and estimation tool**.
 
 #### Core Idea
 
-> ✏️ **Drawing is not decoration. Drawing is data input.**
+> ?? **Drawing is not decoration. Drawing is data input.**
 
 Users **draw construction elements visually**, and those drawings are treated as:
 - Data objects
@@ -92,7 +92,7 @@ Users **draw construction elements visually**, and those drawings are treated as
 #### Key Capabilities
 	
 - **Draw physical elements** (walls, slabs, rooms, columns)
-- **Assign real‑world meaning to shapes**
+- **Assign real?world meaning to shapes**
 - **Link shapes to:**
 	- Materials
 	- Formulas
@@ -109,17 +109,17 @@ Users **draw construction elements visually**, and those drawings are treated as
 | **Mode**   | **Description**                                     |
 | ---------- | --------------------------------------------------- |
 | Standalone | Desktop app, local DB, standalone license           |
-| Integrated | Embedded in CoNSoL‑Engine, shared DB, suite license |
+| Integrated | Embedded in CoNSoL?Engine, shared DB, suite license |
 
 ---
 
-### ❗ 3. Problem Statement
+### ? 3. Problem Statement
 
 #### Current Pain Points
 	
-- Manual spreadsheets are error‑prone
+- Manual spreadsheets are error?prone
 - CAD tools are disconnected from estimation
-- Quantity take‑off is slow and inconsistent
+- Quantity take?off is slow and inconsistent
 - Changes require rework across tools
 	
 ---
@@ -134,19 +134,19 @@ Users **draw construction elements visually**, and those drawings are treated as
 
 ---
 
-### ✅ 4. Proposed Solution 
+### ? 4. Proposed Solution 
 
-**CoNSoL‑TakeOff provides:**
+**CoNSoL?TakeOff provides:**
 	
-- ✅ Visual drawing interface
-- ✅ Metadata‑driven objects
-- ✅ Real‑time quantity calculation
-- ✅ Database‑backed materials and formulas
-- ✅ Automatic cost rollups
+- ? Visual drawing interface
+- ? Metadata?driven objects
+- ? Real?time quantity calculation
+- ? Database?backed materials and formulas
+- ? Automatic cost rollups
 	
 ---
 
-### 👥 5. Target Users
+### ?? 5. Target Users
 
 #### Primary Users
 	
@@ -162,10 +162,10 @@ Users **draw construction elements visually**, and those drawings are treated as
 	
 ---
 
-### 🔄 6. High-Level User Workflow 
+### ?? 6. High-Level User Workflow 
 
 ```text
-Setup → Draw → Define → Store → Calculate → Report
+Setup ? Draw ? Define ? Store ? Calculate ? Report
 ```
 
 ***Where:***
@@ -176,7 +176,7 @@ Setup → Draw → Define → Store → Calculate → Report
 
 ---
 
-### 🧩 7. Core Concepts
+### ?? 7. Core Concepts
 
 #### 7.1 Dimension Modes
 
@@ -199,28 +199,28 @@ Each drawn object uses **exactly one dimension mode**.
 	
 ---
 
-### 📦 8. Scope
+### ?? 8. Scope
 
-#### ✅ In Scope (v1 / Demo)
+#### ? In Scope (v1 / Demo)
 	
 - 2D drawing canvas
-- Logical 3D attributes (H × W × L)
+- Logical 3D attributes (H � W � L)
 - Materials & formulas
 - Cost estimation
 - Standalone deployment
 	
 ---
 
-#### ❌ Out of Scope (v1)
+#### ? Out of Scope (v1)
 	
 - True 3D rendering
-- Real‑time collaboration
+- Real?time collaboration
 - Cloud sync
-- AI‑assisted drawing (future)
+- AI?assisted drawing (future)
 	
 ---
 
-### 📊 9. Success Criteria 
+### ?? 9. Success Criteria 
 
 #### Demo Success
 	
@@ -239,7 +239,7 @@ Each drawn object uses **exactly one dimension mode**.
 
 ---
 
-### ⚠️ 10. Assumptions & Constraints
+### ?? 10. Assumptions & Constraints
 
 #### Assumptions
 	
@@ -255,7 +255,7 @@ Each drawn object uses **exactly one dimension mode**.
 
 ---
 
-### 🔗 Related Documents
+### ?? Related Documents
 
 - [[CoNSoL-Documents-Library-V2/MegaFile/01-Inception/0102-Planning|0102-Planning]]
 - [[CoNSoL-Documents-Library-V2/MegaFile/02-Design/020101-System Context|0201-Design_Documentation]]
@@ -263,18 +263,18 @@ Each drawn object uses **exactly one dimension mode**.
 - [[CoNSoL-Documents-Library-V2/MegaFile/01-Inception/0104-SRS|0104-SRS]] 
 
 ---
-> END — Requirement Analysis
+> END � Requirement Analysis
 ---
 
 
 ---
-## 🗓️ 0102 — Planning
+## ??? 0102 � Planning
 
 
-**Type:** 📋 Living plan  
+**Type:** ?? Living plan  
 **Filled by:** Project Manager
 
-✅ Standard structure (tables only):
+? Standard structure (tables only):
 ### Roadmap 
 
 | **Phase** | **Scope** | **Owner** | **Target** |
@@ -288,12 +288,12 @@ Each drawn object uses **exactly one dimension mode**.
 |          |                 |            |                |
 
 ---
-> END — Planning
+> END � Planning
 ---
 
-## 🔗 0103 — Requirements Traceability
+## ?? 0103 � Requirements Traceability
 
-**Type:** 📋 Register  
+**Type:** ?? Register  
 **Filled by:** QA / PM
 
 | **Req ID** | **Source** | **Design** | **Code** | **Test** |
@@ -314,9 +314,9 @@ Ensure full traceability from requirements to delivery.
 ---
 
 
-## 📘 0104 — Software Requirements Specification (SRS)
+## ?? 0104 � Software Requirements Specification (SRS)
 
-### CoNSoL‑TakeOff Drawing Engine
+### CoNSoL?TakeOff Drawing Engine
 
 ---
 ### Document Control
@@ -324,7 +324,7 @@ Ensure full traceability from requirements to delivery.
 | **Field**   | **Value**                           |
 | ----------- | ----------------------------------- |
 | Document ID | SRS-SCAD-001                        |
-| Product     | CoNSoL‑TakeOff                      |
+| Product     | CoNSoL?TakeOff                      |
 | Scope       | Drawing Engine (Reusable Component) |
 | Status      | Draft                               |
 
@@ -334,7 +334,7 @@ Ensure full traceability from requirements to delivery.
 
 #### 1.1 Purpose
 
-This document defines the **software requirements** for the **CoNSoL‑TakeOff Drawing Engine**, a reusable 2D drawing and take‑off component intended for desktop and web host applications.
+This document defines the **software requirements** for the **CoNSoL?TakeOff Drawing Engine**, a reusable 2D drawing and take?off component intended for desktop and web host applications.
 
 It serves as:
 - A contract between product and engineering
@@ -348,9 +348,9 @@ It serves as:
 - **The Drawing Engine provides:**
 	
 	- A 2D visual canvas
-	- Logical 3D attributes (H × W × L)
+	- Logical 3D attributes (H � W � L)
 	- Drawing tools (shapes, curves, text, dimensions, symbols)
-	- Context‑sensitive panels
+	- Context?sensitive panels
 	- Layer management
 	- Smart Tags and Custom Marks
 	- Quantity & pricing aggregation
@@ -358,7 +358,7 @@ It serves as:
 #### Out of Scope (v1)
 
 - True 3D rendering
-- Real‑time collaboration
+- Real?time collaboration
 - Cloud synchronization
 
 ---
@@ -371,7 +371,7 @@ It serves as:
 | Physical Coordinates | Screen pixels                            |
 | Smart Tag            | Data metadata attached to objects        |
 | Custom Mark          | Visual marker attached to objects        |
-| Take‑off             | Quantity & cost extraction from drawings |
+| Take?off             | Quantity & cost extraction from drawings |
 
 ---
 
@@ -382,8 +382,8 @@ It serves as:
 The Drawing Engine is a **library**, not a standalone app.
 
 It is consumed by:
-- CoNSoL‑TakeOff (standalone)
-- CoNSoL‑Suite (integrated)
+- CoNSoL?TakeOff (standalone)
+- CoNSoL?Suite (integrated)
 
 ---
 
@@ -397,11 +397,11 @@ It is consumed by:
 
 #### 2.3 Design Constraints
 
-- Core engine must be UI‑framework‑agnostic
+- Core engine must be UI?framework?agnostic
 - Logical and physical coordinates must be separated
 - Validation logic must be split:
-  - Data‑level (engine)
-  - UI‑level (presentation)
+  - Data?level (engine)
+  - UI?level (presentation)
 
 ---
 
@@ -435,11 +435,11 @@ It is consumed by:
 
 | **ID**    | **Requirement**                                          |
 | --------- | -------------------------------------------------------- |
-| FR‑DT‑001 | The system shall allow drawing a Line by start/end click |
-| FR‑DT‑002 | The system shall support multi‑segment polylines         |
-| FR‑DT‑003 | The system shall support Rectangle drawing               |
-| FR‑DT‑004 | The system shall support Circle drawing                  |
-| FR‑DT‑005 | The system shall support Ellipse drawing                 |
+| FR?DT?001 | The system shall allow drawing a Line by start/end click |
+| FR?DT?002 | The system shall support multi?segment polylines         |
+| FR?DT?003 | The system shall support Rectangle drawing               |
+| FR?DT?004 | The system shall support Circle drawing                  |
+| FR?DT?005 | The system shall support Ellipse drawing                 |
 
 ---
 
@@ -447,9 +447,9 @@ It is consumed by:
 
 | **ID**    | **Requirement**                         |
 | --------- | --------------------------------------- |
-| FR‑DT‑010 | The system shall support Arc drawing    |
-| FR‑DT‑011 | The system shall support Spline drawing |
-| FR‑DT‑012 | The system shall support Bezier curves  |
+| FR?DT?010 | The system shall support Arc drawing    |
+| FR?DT?011 | The system shall support Spline drawing |
+| FR?DT?012 | The system shall support Bezier curves  |
 
 ---
 
@@ -457,11 +457,11 @@ It is consumed by:
 
 | **ID**    | **Requirement**                                        |
 | --------- | ------------------------------------------------------ |
-| FR‑DT‑020 | The system shall support Text                          |
-| FR‑DT‑021 | The system shall support Multiline Text                |
-| FR‑DT‑022 | The system shall support Leaders                       |
-| FR‑DT‑023 | The system shall support all standard dimension types  |
-| FR‑DT‑025 | The system shall allow dimension override with warning |
+| FR?DT?020 | The system shall support Text                          |
+| FR?DT?021 | The system shall support Multiline Text                |
+| FR?DT?022 | The system shall support Leaders                       |
+| FR?DT?023 | The system shall support all standard dimension types  |
+| FR?DT?025 | The system shall allow dimension override with warning |
 
 ---
 
@@ -469,9 +469,9 @@ It is consumed by:
 
 | **ID**    | **Requirement**                                      |
 | --------- | ---------------------------------------------------- |
-| FR‑DT‑030 | The system shall support a Symbol Library            |
-| FR‑DT‑031 | Symbols shall be insertable via drag or double‑click |
-| FR‑DT‑033 | Circular block references shall be blocked           |
+| FR?DT?030 | The system shall support a Symbol Library            |
+| FR?DT?031 | Symbols shall be insertable via drag or double?click |
+| FR?DT?033 | Circular block references shall be blocked           |
 
 ---
 
@@ -479,10 +479,10 @@ It is consumed by:
 
 | **ID**    | **Requirement**                        |
 | --------- | -------------------------------------- |
-| FR‑DT‑040 | Users shall define Smart Tags          |
-| FR‑DT‑041 | Smart Tags shall attach to any object  |
-| FR‑DT‑043 | Tags shall support aggregation         |
-| FR‑DT‑045 | Aggregation output shall be exportable |
+| FR?DT?040 | Users shall define Smart Tags          |
+| FR?DT?041 | Smart Tags shall attach to any object  |
+| FR?DT?043 | Tags shall support aggregation         |
+| FR?DT?045 | Aggregation output shall be exportable |
 
 ---
 
@@ -490,9 +490,9 @@ It is consumed by:
 
 | **ID**    | **Requirement**                      |
 | --------- | ------------------------------------ |
-| FR‑DT‑050 | Users shall define Custom Marks      |
-| FR‑DT‑051 | Marks shall be attachable to objects |
-| FR‑DT‑052 | Marks shall be countable             |
+| FR?DT?050 | Users shall define Custom Marks      |
+| FR?DT?051 | Marks shall be attachable to objects |
+| FR?DT?052 | Marks shall be countable             |
 
 ---
 
@@ -500,9 +500,9 @@ It is consumed by:
 
 | **ID**    | **Requirement**                             |
 | --------- | ------------------------------------------- |
-| FR‑CV‑001 | Canvas shall operate in logical coordinates |
-| FR‑CV‑004 | Pan & zoom shall not alter logical data     |
-| FR‑CV‑007 | Rubber‑band preview required                |
+| FR?CV?001 | Canvas shall operate in logical coordinates |
+| FR?CV?004 | Pan & zoom shall not alter logical data     |
+| FR?CV?007 | Rubber?band preview required                |
 
 ---
 
@@ -510,9 +510,9 @@ It is consumed by:
 
 | **ID**    | **Requirement**                                 |
 | --------- | ----------------------------------------------- |
-| FR‑PP‑001 | Property panel shall be context‑sensitive       |
-| FR‑PP‑004 | Mixed values shall show `(mixed)`               |
-| FR‑PP‑008 | Logical 3D fields shall appear where applicable |
+| FR?PP?001 | Property panel shall be context?sensitive       |
+| FR?PP?004 | Mixed values shall show `(mixed)`               |
+| FR?PP?008 | Logical 3D fields shall appear where applicable |
 
 ---
 
@@ -520,9 +520,9 @@ It is consumed by:
 
 | **ID**    | **Requirement**                                         |
 | --------- | ------------------------------------------------------- |
-| FR‑LP‑001 | Layers shall support visibility, lock, print            |
-| FR‑LP‑003 | Deleting a layer with objects shall prompt reassignment |
-| FR‑LP‑004 | Active layer deletion shall be blocked                  |
+| FR?LP?001 | Layers shall support visibility, lock, print            |
+| FR?LP?003 | Deleting a layer with objects shall prompt reassignment |
+| FR?LP?004 | Active layer deletion shall be blocked                  |
 
 ---
 
@@ -538,49 +538,49 @@ It is consumed by:
 
 #### 6.2 Tool Interaction Model
 
-- MouseDown → start
-- MouseMove → preview
-- MouseUp → commit
-- Escape → cancel
+- MouseDown ? start
+- MouseMove ? preview
+- MouseUp ? commit
+- Escape ? cancel
 
 ---
 
 #### 6.3 Validation Rules
 
-- Zero‑size shapes blocked
+- Zero?size shapes blocked
 - Invalid input highlighted inline
-- Non‑blocking warnings preferred
+- Non?blocking warnings preferred
 
 ---
 
-#### 6.4 Multi‑Selection Behavior
+#### 6.4 Multi?Selection Behavior
 
 - Shared fields editable
-- Type‑specific fields hidden
+- Type?specific fields hidden
 - `(mixed)` replaces differing values
 
 ---
 
-### 7. Non‑Functional Requirements
+### 7. Non?Functional Requirements
 
 | **ID**  | **Category**  | **Requirement**  |
 | ------- | ------------- | ---------------- |
-| NFR‑001 | Performance   | < 16ms redraw    |
-| NFR‑004 | Portability   | UI‑agnostic core |
-| NFR‑006 | Serialization | Lossless JSON    |
+| NFR?001 | Performance   | < 16ms redraw    |
+| NFR?004 | Portability   | UI?agnostic core |
+| NFR?006 | Serialization | Lossless JSON    |
 
 ---
 
 ### 8. Component Architecture
 
 ```text
-Engine (UI‑free)
-├── Drawing Objects
-├── Coordinate Service
-├── Layer Service
-├── Tag & Mark Service
-├── Take‑Off Service (optional)
-└── Serialization
+Engine (UI?free)
+??? Drawing Objects
+??? Coordinate Service
+??? Layer Service
+??? Tag & Mark Service
+??? Take?Off Service (optional)
+??? Serialization
 ```
 
 ---
@@ -593,7 +593,7 @@ Engine (UI‑free)
 
 ### 10. Use Cases
 
-#### UC‑001 — Draw a Line on the Canvas
+#### UC?001 � Draw a Line on the Canvas
 
 | **Field**    | **Value**                                                         |
 | ------------ | ----------------------------------------------------------------- |
@@ -633,21 +633,21 @@ classDef cancel fill:#5A3A3A,stroke:#C17E7E,stroke-dasharray:4,color:#F5C2C2
 
 
 	A([User clicks Line tool]):::terminator
-	B[Cursor → crosshair<br\>Property panel → tool defaults]:::process
-	C[/MouseDown → Point1 X1,Y1/]:::io
-	D[Convert Point1: physical → logical]:::process
+	B[Cursor ? crosshair<br\>Property panel ? tool defaults]:::process
+	C[/MouseDown ? Point1 X1,Y1/]:::io
+	D[Convert Point1: physical ? logical]:::process
 	E{Within canvas bounds?}:::decision
 	F[Store Point1 as StartPoint]:::process
 	F1[Show out-of-bounds indicator]:::error
 	G[/MouseMove event/]:::io
 	H{Mouse still pressed?}:::decision
-	I[Convert position → logical]:::process
+	I[Convert position ? logical]:::process
 	J[Render rubber-band preview]:::preview
-	K[/MouseUp → Point2 X2,Y2/]:::io
-	L[Convert Point2: physical → logical]:::process
+	K[/MouseUp ? Point2 X2,Y2/]:::io
+	L[Convert Point2: physical ? logical]:::process
 	M{Active layer locked?}:::decision
 	M1[Show warning<br\>Return to draw state]:::error
-	N[Create Line object<br\>Start · End · ScaleFactor · Unit]:::success
+	N[Create Line object<br\>Start � End � ScaleFactor � Unit]:::success
 	O[Assign to active layer]:::process
 	P[Update ruler ticks]:::process
 	Q[Save to drawing state]:::success
@@ -685,7 +685,7 @@ classDef cancel fill:#5A3A3A,stroke:#C17E7E,stroke-dasharray:4,color:#F5C2C2
 4. System converts Point1 from physical (`px`) to ****`logical coordinates`***
 5. System validates **`Point1`** is within canvas bounds
 6. System stores **`Point1`** as `StartPoint`
-7. User moves the mouse — system renders a **`rubber-band preview`** line from `StartPoint` to current cursor position on every `MouseMove` event
+7. User moves the mouse � system renders a **`rubber-band preview`** line from `StartPoint` to current cursor position on every `MouseMove` event
 8. User clicks **`Point2`**
 9. System converts **`Point2`** to logical coordinates
 10. System creates a **`Line`** object `{ StartPoint, EndPoint, ScaleFactor, Unit }`
@@ -695,31 +695,31 @@ classDef cancel fill:#5A3A3A,stroke:#C17E7E,stroke-dasharray:4,color:#F5C2C2
 14. Canvas redraws showing the permanent line
 
 ##### Alternative Flows
-###### **`A1` — Multi-segment polyline mode**
+###### **`A1` � Multi-segment polyline mode**
 - After step 6, user continues clicking additional points
 - System stores each click as a new segment endpoint and extends the rubber-band from the last point
 - User double-clicks or presses **Enter** to commit all segments as a single polyline object
 - Flow continues from step 10
 
-###### **`A2` — Snap to grid / object snap active**
+###### **`A2` � Snap to grid / object snap active**
 - At step 3 or step 8, cursor snaps to the nearest grid intersection or object snap point
 - Snapped coordinate is used in place of the raw cursor position
 - Flow continues normally
 
-###### **`A3` — Point outside canvas bounds (warn, don't block)**
+###### **`A3` � Point outside canvas bounds (warn, don't block)**
 - At step 5, system detects Point1 is outside logical canvas bounds
 - System shows an out-of-bounds indicator but does not block the action
 - Flow continues from step 6 with the out-of-bounds coordinate
 
 ##### Exception Flows
-###### **`E1` — User presses Escape during drawing**
+###### **`E1` � User presses Escape during drawing**
 - At any point after step 3 and before step 10
 - System cancels the operation, discards Start-Point, clears the rubber-band preview
 - System returns cursor to idle state; no object is created
 
-###### **`E2` — Active layer is locked**
+###### **`E2` � Active layer is locked**
 - At step 11, system detects the active layer is locked
-- System shows inline warning: "Active layer is locked — object cannot be placed"
+- System shows inline warning: "Active layer is locked � object cannot be placed"
 - Object is not saved; system returns to drawing state for the user to select a different layer
 
 ##### Postcondition
@@ -727,7 +727,7 @@ A Line (or polyline) object exists in the drawing state, is visible on canvas, i
 
 ---
 
-#### UC-002 · Assign an object to a layer 
+#### UC-002 � Assign an object to a layer 
 
 | **Field**    | **Value**                                                                     |
 | ------------ | ----------------------------------------------------------------------------- |
@@ -811,31 +811,31 @@ classDef cancel fill:#5A3A3A,stroke:#C17E7E,stroke-dasharray:4,color:#F5C2C2
 5. User selects a target layer
 6. System reassigns the object to the selected layer
 7. System updates the object count on both the source layer and the target layer
-8. Canvas redraws — object inherits the target layer's default Color, Line Style, and Line Weight (unless the object has explicit overrides)
+8. Canvas redraws � object inherits the target layer's default Color, Line Style, and Line Weight (unless the object has explicit overrides)
 
 ##### Alternative Flows
-###### **A1 — Multi-selection, same type**
+###### **A1 � Multi-selection, same type**
 - User selects multiple objects (same type) before step 3
 - Layer dropdown shows `(mixed)` if objects are on different layers
-- User selects a target layer — system reassigns all selected objects
+- User selects a target layer � system reassigns all selected objects
 - All affected layer object counts update
 
-###### **A2 — Multi-selection, mixed types**
+###### **A2 � Multi-selection, mixed types**
 - Property panel shows only universal properties including Layer
 - Behavior otherwise identical to A1
 
-###### **A3 — Assign via Layer panel ("Select All on Layer" + move)**
-- User right-clicks a layer in the Layer panel → "Select All Objects"
+###### **A3 � Assign via Layer panel ("Select All on Layer" + move)**
+- User right-clicks a layer in the Layer panel ? "Select All Objects"
 - All objects on that layer become selected
-- User changes Layer in property panel → all objects move to the new layer
+- User changes Layer in property panel ? all objects move to the new layer
 
 ##### Exception Flows
-###### **E1 — Target layer is locked**
+###### **E1 � Target layer is locked**
 - At step 6, system detects the target layer is locked
 - System shows inline warning: "Target layer is locked"
 - Reassignment is blocked; original layer assignment is preserved
 
-###### **E2 — Only one layer exists**
+###### **E2 � Only one layer exists**
 - At step 4, dropdown shows only one layer
 - Reassignment is not meaningful; system may disable the dropdown or show a tooltip: "Add more layers to reassign"
 
@@ -844,7 +844,7 @@ The selected object(s) belong to the chosen layer. Object counts on affected lay
 
 
 ---
-#### UC-003 · Attach a Smart Tag to an object 
+#### UC-003 � Attach a Smart Tag to an object 
 
 | **Field**    | **Value**                                                                                    |
 | ------------ | -------------------------------------------------------------------------------------------- |
@@ -887,7 +887,7 @@ classDef cancel fill:#5A3A3A,stroke:#C17E7E,stroke-dasharray:4,color:#F5C2C2
 	D{Tag definitions\nexist?}:::decision
 	E[System lists tag definitions]:::process
 	F[Prompt: create new definition]:::process
-	G[User enters Name · ValueType\nDefault · Unit optional]:::process
+	G[User enters Name � ValueType\nDefault � Unit optional]:::process
 	G1{Name\nfield empty?}:::decision
 	G2[Block save\nInline error on Name]:::error
 	H[User selects tag definition]:::process
@@ -895,9 +895,9 @@ classDef cancel fill:#5A3A3A,stroke:#C17E7E,stroke-dasharray:4,color:#F5C2C2
 	J[User enters tag value]:::process
 	K{Value matches\ndeclared type?}:::decision
 	K1[Highlight field\nInline error: expected type]:::error
-	L[Save tag instance\nObjectId · TagDefId · Value · DisplayMode]:::success
+	L[Save tag instance\nObjectId � TagDefId � Value � DisplayMode]:::success
 	M{Display Mode?}:::decision
-	N([Done — no visual change]):::terminator
+	N([Done � no visual change]):::terminator
 	O[Canvas redraws\nTag shown on object]:::process
 	
 	A --> B
@@ -937,29 +937,29 @@ classDef cancel fill:#5A3A3A,stroke:#C17E7E,stroke-dasharray:4,color:#F5C2C2
 10. If Display Mode is **Label** or **Badge**, the canvas redraws showing the tag on the object
 
 ##### Alternative Flows
-###### **A1 — Create a new tag definition inline**
+###### **A1 � Create a new tag definition inline**
 - At step 4, user clicks **New Tag Definition**
 - User enters: Name, Value Type (text / number / boolean / list), Default Value, Unit (optional)
 - System saves the definition to the project's tag library
 - Flow continues from step 5 with the new definition pre-selected
 
-###### **A2 — Attach the same tag to multiple objects**
+###### **A2 � Attach the same tag to multiple objects**
 - User selects multiple objects before step 3
 - Tags section shows the union of tags; tags present on all objects = checked; tags on some = indeterminate
-- User adds a tag → system attaches it to all selected objects
+- User adds a tag ? system attaches it to all selected objects
 - Each object gets its own tag instance (values can be set individually afterward)
 
-###### **A3 — Change display mode**
-- After step 9, user changes Display Mode from Hidden → Label or Badge
+###### **A3 � Change display mode**
+- After step 9, user changes Display Mode from Hidden ? Label or Badge
 - Canvas redraws showing the tag label/badge on the object
 
 ##### Exception Flows
-###### **E1 — Value type mismatch**
+###### **E1 � Value type mismatch**
 - At step 8, user enters a non-numeric value for a Number-type tag
 - System highlights the value field with an inline error: "Expected a numeric value"
 - Tag instance is not saved until the value is corrected
 
-###### **E2 — Tag definition has no name**
+###### **E2 � Tag definition has no name**
 - At A1, user attempts to save a definition with an empty Name field
 - System blocks save; inline error on the Name field
 
@@ -968,7 +968,7 @@ The tag instance is attached to the object, stored in drawing state, and visible
 
 ---
 
-#### UC-004 · Run a take-off quantity summary
+#### UC-004 � Run a take-off quantity summary
 
 | **Field**    | **Value**                                                                                              |
 | ------------ | ------------------------------------------------------------------------------------------------------ |
@@ -1011,7 +1011,7 @@ classDef cancel fill:#5A3A3A,stroke:#C17E7E,stroke-dasharray:4,color:#F5C2C2
 	B[System scans objects<br/>for tags and logical 3D attrs]:::process
 	C{Tagged objects<br/>found?}:::decision
 	C1[Show empty state message<br/>Export disabled]:::error
-	D[Present aggregation options<br/>Group by · Function]:::process
+	D[Present aggregation options<br/>Group by � Function]:::process
 	E{Aggregate<br/>function selected}:::decision
 	E1[Disable Sum/Average<br/>Show tooltip: numeric only]:::error
 	F[User sets Group by<br/>and Aggregate function]:::process
@@ -1020,8 +1020,8 @@ classDef cancel fill:#5A3A3A,stroke:#C17E7E,stroke-dasharray:4,color:#F5C2C2
 	I[Use all objects]:::process
 	J[Compute result set]:::success
 	K{Switch to<br/>Cost view?}:::decision
-	L[Show Volume × Qty × UnitPrice<br/>Grand total row]:::process
-	M[Show aggregation table<br/>Group · Attr · Value · Unit]:::process
+	L[Show Volume � Qty � UnitPrice<br/>Grand total row]:::process
+	M[Show aggregation table<br/>Group � Attr � Value � Unit]:::process
 	N{User clicks Refresh<br/>after drawing changes?}:::decision
 	O[User clicks Export]:::process
 	P{Format?}:::decision
@@ -1075,39 +1075,39 @@ classDef cancel fill:#5A3A3A,stroke:#C17E7E,stroke-dasharray:4,color:#F5C2C2
 
 ##### Alternative Flows
 
-###### **A1 — Filter by layer before aggregating**
+###### **A1 � Filter by layer before aggregating**
 - Before step 4, user selects one or more layers to include
 - System restricts the scan to objects on those layers only
 - Flow continues from step 4
 
-###### **A2 — Filter by object type**
+###### **A2 � Filter by object type**
 - User adds an Object Type filter (e.g. only Rectangles)
 - System restricts aggregation to matching objects
 - Useful for: "total area of all room rectangles"
 
-###### **A3 — Cost rollup view**
+###### **A3 � Cost rollup view**
 - User switches to **Cost view**
-- System shows: Volume (H×W×L) × Quantity × Unit Price = Total Cost per object
+- System shows: Volume (H�W�L) � Quantity � Unit Price = Total Cost per object
 - Summary row shows grand total cost
 - Exportable in same formats
 
-###### **A4 — Re-run after drawing changes**
+###### **A4 � Re-run after drawing changes**
 - User modifies objects (adds/edits dimensions or tags) then returns to the Take-Off panel
 - User clicks **Refresh**
 - System re-scans and updates the result table
 
 ##### Exception Flows
-###### **E1 — No tagged objects found**
+###### **E1 � No tagged objects found**
 - At step 2, system finds no objects with relevant attributes
 - System shows empty state message: "No objects with tags or dimensions found. Assign Smart Tags or logical dimensions to objects first."
 - Export is disabled
 
-###### **E2 — Sum/Average on a text-type tag**
+###### **E2 � Sum/Average on a text-type tag**
 - At step 4, user selects Sum or Average for a text-type tag
 - System disables those functions for that tag; only Count is available
 - Inline tooltip: "Sum and Average are only available for numeric tags"
 
-###### **E3 — Export path not writable (desktop mode)**
+###### **E3 � Export path not writable (desktop mode)**
 - At step 8, system cannot write to the selected path
 - System shows error: "Cannot write to this location. Choose a different folder."
 - Export is retried without losing the result table
@@ -1121,7 +1121,7 @@ A take-off summary table is computed and optionally exported. No drawing objects
 
 ---
 
-#### UC-005 · Insert a symbol from the library
+#### UC-005 � Insert a symbol from the library
 
 | **Field**    | **Value**                                                                                 |
 | ------------ | ----------------------------------------------------------------------------------------- |
@@ -1172,14 +1172,14 @@ classDef cancel fill:#5A3A3A,stroke:#C17E7E,stroke-dasharray:4,color:#F5C2C2
 	H[Add to project library]:::success
 	I[User drags to canvas<br/>or double-clicks to insert]:::process
 	J{Set scale/rotation<br/>before placing?}:::decision
-	K[User sets Scale X·Y · Rotation<br/>in property panel]:::process
-	L[Use defaults: Scale 1,1 · Rotation 0°]:::process
+	K[User sets Scale X�Y � Rotation<br/>in property panel]:::process
+	L[Use defaults: Scale 1,1 � Rotation 0�]:::process
 	M[System enters insert mode<br/>Ghost preview on cursor]:::preview
 	N{Active layer<br/>locked?}:::decision
 	N1[Show warning<br/>Block placement]:::error
 	O[User clicks placement point]:::io
 	P[Check circular block reference]:::process
-	P1[Block · Show error:<br/>cannot contain itself]:::error
+	P1[Block � Show error:<br/>cannot contain itself]:::error
 	Q[Place symbol instance<br/>at clicked position]:::success
 	R[Assign to active layer<br/>Save to drawing state]:::process
 	S{Place another<br/>instance?}:::decision
@@ -1224,44 +1224,44 @@ classDef cancel fill:#5A3A3A,stroke:#C17E7E,stroke-dasharray:4,color:#F5C2C2
 4. User drags the symbol onto the canvas (or double-clicks to activate insert mode)
 5. System enters **insert mode**: cursor shows a ghost preview of the symbol
 6. User positions the cursor at the desired insertion point and clicks
-7. System places a symbol instance at the clicked position with default Scale (1,1) and Rotation (0°)
+7. System places a symbol instance at the clicked position with default Scale (1,1) and Rotation (0�)
 8. System assigns the instance to the active layer
 9. System saves the symbol instance to drawing state
 10. Canvas redraws showing the placed symbol
 
 ##### Alternative Flows
 
-###### **A1 — Set scale / rotation before placing**
+###### **A1 � Set scale / rotation before placing**
 - After step 4 and before step 6, user sets Scale X, Scale Y, and Rotation in the property panel (tool defaults mode)
 - Placed instance uses the specified values
 
-###### **A2 — Place multiple instances**
+###### **A2 � Place multiple instances**
 - After step 7, system remains in insert mode
 - User continues clicking to place additional instances of the same symbol
 - User presses Escape to exit insert mode
 
-###### **A3 — Edit attribute values after placement**
+###### **A3 � Edit attribute values after placement**
 - After step 10, user selects the placed instance
 - Property panel shows editable **Attribute Values** (key-value pairs defined in the block definition)
 - User edits values; system saves to the instance (block definition is not modified)
 
-###### **A4 — Import a symbol from file**
+###### **A4 � Import a symbol from file**
 - In the Symbol Library panel, user clicks **Import**
-- User selects a symbol file (format TBD — JSON / DXF block)
+- User selects a symbol file (format TBD � JSON / DXF block)
 - System validates and adds the definition to the project library
 - Flow continues from step 3
 
 ##### Exception Flows
-###### **E1 — Circular block reference detected**
+###### **E1 � Circular block reference detected**
 - User attempts to define a symbol that contains itself (directly or transitively)
-- System blocks the definition save with error: "Circular reference detected — a symbol cannot contain itself"
+- System blocks the definition save with error: "Circular reference detected � a symbol cannot contain itself"
 
-###### **E2 — Active layer is locked**
+###### **E2 � Active layer is locked**
 - At step 8, system detects the active layer is locked
 - System shows warning and blocks placement
 - User must unlock the layer or switch to a different active layer
 
-###### **E3 — Symbol library is empty**
+###### **E3 � Symbol library is empty**
 - At step 2, no symbols exist
 - System shows empty state with a prompt to import or create a symbol
 
@@ -1270,7 +1270,7 @@ A symbol instance exists on the canvas, assigned to the active layer, with the c
 
 ---
 
-#### UC-006 · Edit properties of a multi-selection 
+#### UC-006 � Edit properties of a multi-selection 
 
 | **Field**    | **Value**                                                                     |
 | ------------ | ----------------------------------------------------------------------------- |
@@ -1311,8 +1311,8 @@ flowchart TD
 
 	A([User selects multiple objects]):::terminator
 	B{Selection<br/>type?}:::decision
-	C[Show all type properties<br/>Differing values → mixed]:::process
-	D[Show universal properties only<br/>Layer · Color · LineStyle · Tags · Marks]:::process
+	C[Show all type properties<br/>Differing values ? mixed]:::process
+	D[Show universal properties only<br/>Layer � Color � LineStyle � Tags � Marks]:::process
 	E{All objects<br/>locked?}:::decision
 	E1[All fields read-only<br/>Show lock indicator]:::error
 	E2[Editable fields apply<br/>to unlocked objects only]:::process
@@ -1324,10 +1324,10 @@ flowchart TD
 	J{Field type?}:::decision
 	K[Apply to all selected objects]:::success
 	L{Tag present<br/>on all objects?}:::decision
-	M[Remove → detach from all]:::process
+	M[Remove ? detach from all]:::process
 	N[Prompt: remove from all that have it?]:::decision
 	O[No change]:::cancel
-	P[Add → attach to all selected]:::success
+	P[Add ? attach to all selected]:::success
 	Q[Canvas redraws]:::process
 	R[Undo stack records<br/>batch edit as single action]:::success
 	S([Done]):::terminator
@@ -1350,8 +1350,8 @@ flowchart TD
 	J -->|Universal Color/Style/Layer| K
 	J -->|Logical 3D H/W/L/Price| K
 	J -->|Tag management| L
-	L -->|All — checked| M
-	L -->|Some — indeterminate| N
+	L -->|All � checked| M
+	L -->|Some � indeterminate| N
 	N -->|Yes| M
 	N -->|No| O
 	L -->|None| P
@@ -1370,33 +1370,33 @@ flowchart TD
 
 ##### Alternative Flows
 
-###### **A1 — Edit a `(mixed)` field**
+###### **A1 � Edit a `(mixed)` field**
 - User clicks a field showing `(mixed)` and enters a new value
 - System replaces the differing values on all selected objects with the single new value
 - A confirmation may be shown: "This will override different values on N objects" (configurable)
 
-###### **A2 — Edit logical 3D fields in multi-selection**
+###### **A2 � Edit logical 3D fields in multi-selection**
 - Fields H, W, L, Quantity, Unit Price follow the same `(mixed)` pattern
 - Editing sets the same value on all selected objects
 
-###### **A3 — Tag management in multi-selection**
+###### **A3 � Tag management in multi-selection**
 - Tags present on **all** selected objects show as checked
 - Tags present on **some** objects show as indeterminate (tri-state checkbox)
-- Adding a tag → attached to all selected objects
-- Removing a checked tag → removed from all selected objects
-- Removing an indeterminate tag → prompts: "Remove from all objects that have it?"
+- Adding a tag ? attached to all selected objects
+- Removing a checked tag ? removed from all selected objects
+- Removing an indeterminate tag ? prompts: "Remove from all objects that have it?"
 
-###### **A4 — Type-specific fields in same-type multi-selection**
+###### **A4 � Type-specific fields in same-type multi-selection**
 - e.g. Two lines selected: Start/End coordinates show `(mixed)`; editing sets the same value on both
-- This is an edge case the user would rarely want — system applies without blocking
+- This is an edge case the user would rarely want � system applies without blocking
 
 ##### Exception Flows
 
-###### **E1 — All selected objects are locked**
+###### **E1 � All selected objects are locked**
 - System shows all fields as read-only with a lock indicator
 - No edits are possible until at least one object is unlocked
 
-###### **E2 — Partial lock in selection**
+###### **E2 � Partial lock in selection**
 - Some selected objects are locked, some are not
 - System applies edits only to unlocked objects
 - Inline notice: "N locked objects were skipped"
@@ -1407,7 +1407,7 @@ All unlocked selected objects reflect the edited property values. The canvas red
 
 ---
 
-#### UC-007 · Delete a layer with objects
+#### UC-007 � Delete a layer with objects
 
 | **Field**    | **Value**                                                                |
 | ------------ | ------------------------------------------------------------------------ |
@@ -1473,7 +1473,7 @@ flowchart TD
 	B -->|No| C
 	C -->|Yes| C1
 	C -->|No| D
-	D -->|No — empty| E
+	D -->|No � empty| E
 	D -->|Yes| F
 	F --> G
 	G -->|Cancel| H
@@ -1506,31 +1506,31 @@ flowchart TD
 8. Layer panel redraws without the deleted layer
 
 ##### Alternative Flows
-###### **A1 — User chooses "Delete objects too"**
+###### **A1 � User chooses "Delete objects too"**
 - At step 3, user selects **Delete objects too** and confirms
 - System removes all objects on the layer from the drawing state
 - System deletes the layer
 - Objects are removed from canvas; undo stack records the batch delete as a single undoable action
 
-###### **A2 — Layer has no objects (object count = 0)**
+###### **A2 � Layer has no objects (object count = 0)**
 - At step 2, system detects the layer is empty
 - System skips the dialog and deletes the layer immediately
 - Flow jumps to step 7
 
-###### **A3 — Delete via keyboard shortcut or context menu**
+###### **A3 � Delete via keyboard shortcut or context menu**
 - Same flow triggered from a different entry point; behavior is identical
 
 ##### Exception Flows
 
-###### **E1 — Target layer is the active layer**
+###### **E1 � Target layer is the active layer**
 - At step 1, user attempts to delete the currently active layer
 - System blocks deletion with inline message: "Cannot delete the active layer. Set another layer as active first."
 - No dialog is shown; no changes are made
 
-###### **E2 — Only one layer remains**
+###### **E2 � Only one layer remains**
 - System blocks deletion with inline message: "A drawing must have at least one layer."
 
-###### **E3 — User cancels the dialog**
+###### **E3 � User cancels the dialog**
 - At step 3, user clicks Cancel
 - No changes are made; layer and all its objects remain intact
 
@@ -1539,17 +1539,17 @@ The target layer no longer exists in the layer list. All objects that were on it
 
 ---
 
-#### UC-008 · Switch between standalone and integrated mode
+#### UC-008 � Switch between standalone and integrated mode
 
 | **Field**    | **Value**                                                                                  |
 | ------------ | ------------------------------------------------------------------------------------------ |
 | Actor        | System Admin / IT                                                                          |
-| Related FR   | NFR-008 (licensing), Component Architecture §8                                             |
+| Related FR   | NFR-008 (licensing), Component Architecture �8                                             |
 | Precondition | The CoNSoL-TakeOff Engine library is installed; a valid license exists for the target mode |
 | Trigger      | Admin deploys or reconfigures the host application                                         |
 
 > [!Note]+ ***Note***
-> This is a **deployment-time** use case, not an end-user runtime action. The mode is set by the host application at startup via configuration — the user does not switch modes mid-session.
+> This is a **deployment-time** use case, not an end-user runtime action. The mode is set by the host application at startup via configuration � the user does not switch modes mid-session.
 ##### Flowchart
 
 ```mermaid
@@ -1596,10 +1596,10 @@ flowchart TD
 	I2[Load canvas in read-only mode<br/>Show connection warning]:::preview
 	I3[Show: cannot connect to DB<br/>Do not load canvas]:::error
 	J[Engine initializes fully]:::success
-	K[Host app mounts:<br/>Canvas · Property Panel · Layer Panel]:::process
+	K[Host app mounts:<br/>Canvas � Property Panel � Layer Panel]:::process
 	L([End user can open or create a drawing]):::terminator
 
-	subgraph Migration["A1 · Standalone → Integrated migration"]
+	subgraph Migration["A1 � Standalone ? Integrated migration"]
 		direction LR
 		M1[Export drawings from local DB]:::process
 		M2[Reconfigure host to Integrated]:::process
@@ -1634,31 +1634,31 @@ flowchart TD
 	- **Standalone:** `LocalDatabaseAdapter` + `LocalFileAdapter`
 	- **Integrated:** `SharedDatabaseAdapter` + `ProjectManagerAdapter`
 3. Engine validates the license token for the selected mode
-4. License is valid → Engine initializes fully; host application proceeds to load the drawing UI
+4. License is valid ? Engine initializes fully; host application proceeds to load the drawing UI
 5. Host application connects the drawing canvas, property panel, and layer panel components
 6. End user can now open or create a drawing
 
 ##### Alternative Flows
-###### **A1 — Migrating from Standalone to Integrated**
-- Admin exports existing drawings from the standalone local database (using File → Export)
+###### **A1 � Migrating from Standalone to Integrated**
+- Admin exports existing drawings from the standalone local database (using File ? Export)
 - Admin reconfigures the host to Integrated mode
 - Admin imports drawings into the shared database via the Project Manager
 - Drawings are now accessible to other suite users
 
 ##### Exception Flows
-###### **E1 — License validation fails**
+###### **E1 � License validation fails**
 - At step 3, Engine cannot validate the license token
 - Engine surfaces a license error to the host application
 - Host application shows appropriate message to the end user (e.g. "License not found or expired")
 - Drawing canvas does not load
 
-###### **E2 — Storage adapter connection fails (Integrated mode)**
+###### **E2 � Storage adapter connection fails (Integrated mode)**
 - At step 2, the `SharedDatabaseAdapter` cannot connect to the shared database
 - Engine surfaces a connection error
 - Host application shows: "Cannot connect to shared database. Check network or database configuration."
 - Application may optionally fall back to read-only mode
 
-###### **E3 — Configuration value is missing or invalid**
+###### **E3 � Configuration value is missing or invalid**
 - At step 1, Mode is not set or has an unrecognized value
 - Host application falls back to `Standalone` as the default safe mode
 - Warning is logged
@@ -1668,38 +1668,38 @@ The CoNSoL-TakeOff Engine is running in the correct mode with the appropriate st
 
 ---
 
-✅ All use cases preserved and indexed
+? All use cases preserved and indexed
 
 ---
 
 ### 11. Constraints & Assumptions
 
-- Desktop‑first
-- Single‑user initially
-- No real‑time collaboration
+- Desktop?first
+- Single?user initially
+- No real?time collaboration
 
 ---
 ### 12. Appendix
 
 #### Open Questions
 
-- Logical 3D auto‑feed vs manual?
+- Logical 3D auto?feed vs manual?
 - Shared engine for tags & marks?
 - Symbol library format?
 
 ---
-> END — Software Requirements Specification
+> END � Software Requirements Specification
 ---
 
 
 
-# 02 — Design
+# 02 � Design
 
-## 📐 0201 — Design Documentation
+## ?? 0201 � Design Documentation
 
 ---
 
-### 🎯 Purpose
+### ?? Purpose
 
 Define the system architecture, design decisions, and technical structure for the CoNSoL platform and CoNSoL-TakeOff application.
 
@@ -1711,7 +1711,7 @@ This document acts as the **single source of truth** for:
 
 ---
 
-#### 📥 Inputs
+#### ?? Inputs
 
 - [[CoNSoL-Documents-Library-V2/MegaFile/01-Inception/0101-Requirement_Analysis|0101-Requirement_Analysis]]
 - [[CoNSoL-Documents-Library-V2/MegaFile/01-Inception/0102-Planning|0102-Planning]]
@@ -1720,7 +1720,7 @@ This document acts as the **single source of truth** for:
 
 ---
 
-#### 📤 Outputs
+#### ?? Outputs
 
 - Architecture diagrams
 - Component definitions
@@ -1729,18 +1729,18 @@ This document acts as the **single source of truth** for:
 
 ---
 
-### 🏛️ 1. System Overview
+### ??? 1. System Overview
 
 #### 1.1 Platform Structure
 
 ```txt
 CoNSoL-Suite
-├── Core: CoNSoL-Engine
-├── Mandatory: Project Manager
-├── Modules:
-│   ├── TakeOff
-│   ├── HR
-│   └── Docs
+??? Core: CoNSoL-Engine
+??? Mandatory: Project Manager
+??? Modules:
+?   ??? TakeOff
+?   ??? HR
+?   ??? Docs
 ```
 
 ---
@@ -1755,13 +1755,13 @@ CoNSoL-Suite
 
 #### 1.3 Deployment Modes
 
-#### ✅ Standalone Mode
+#### ? Standalone Mode
 
 - Local database (SQLite)
 - Single-user
 - Offline-first
 
-#### ✅ Integrated Mode
+#### ? Integrated Mode
 
 - Shared database
 - Connected to CoNSoL-Engine
@@ -1769,13 +1769,13 @@ CoNSoL-Suite
 
 ---
 
-🔗 Related:
+?? Related:
 
 - [[CoNSoL-Documents-Library-V2/MegaFile/02-Design/0205-Architecture Decision Records-ADR|0205-Architecture_Decision_Records_ADR]]
 
 ---
 
-### 🌍 2. System Context
+### ?? 2. System Context
 
 #### 2.1 Actors
 
@@ -1800,26 +1800,26 @@ CoNSoL-Suite
 
 ---
 
-### 🧩 3. Core Architecture Components
+### ?? 3. Core Architecture Components
 
 #### 3.1 High-Level Layers
 
 ```txt
 Presentation Layer
-↓
+?
 Application Layer
-↓
+?
 Domain (Business Logic)
-↓
+?
 Data Access Layer
-↓
+?
 ```
 
 ---
 
 #### 3.2 Component Breakdown
 
-##### 🎨 UI Layer
+##### ?? UI Layer
 
 - Canvas (drawing surface)
 - Property Panel
@@ -1828,7 +1828,7 @@ Data Access Layer
 
 ---
 
-##### 🧠 Application Layer
+##### ?? Application Layer
 
 - Orchestration logic
 - Workflow handling
@@ -1836,7 +1836,7 @@ Data Access Layer
 
 ---
 
-##### ⚙️ Domain Layer (Core Engine)
+##### ?? Domain Layer (Core Engine)
 
 - Drawing Engine
 - Calculation Engine
@@ -1846,20 +1846,20 @@ Data Access Layer
 
 ---
 
-##### 💾 Data Layer
+##### ?? Data Layer
 
 - JSON serialization
 - Database access (Repository pattern)
 
 ---
 
-🔗 Related:
+?? Related:
 
 - [[0301-Development_Documentation]]
 
 ---
 
-### 🧱 4. Drawing Engine Architecture
+### ?? 4. Drawing Engine Architecture
 
 #### 4.1 Core Abstractions
 
@@ -1874,20 +1874,20 @@ Data Access Layer
 
 ```
 Shape (Base)
-├── Line
-├── Rectangle
-├── Circle
-├── Polyline
-├── Text
-├── Symbol
+??? Line
+??? Rectangle
+??? Circle
+??? Polyline
+??? Text
+??? Symbol
 ```
 
 ---
 #### 4.2 Interaction Model
 
-- MouseDown → Capture start point
-- MouseMove → Render preview (rubber-band)
-- MouseUp → Commit object
+- MouseDown ? Capture start point
+- MouseMove ? Render preview (rubber-band)
+- MouseUp ? Commit object
 
 ---
 
@@ -1899,7 +1899,7 @@ Shape (Base)
 
 ---
 
-### 🔄 5. Workflow Design
+### ?? 5. Workflow Design
 
 #### 5.1 Core User Flow
 
@@ -1916,14 +1916,14 @@ E --> F[Report]
 
 #### 5.2 Definition Stage
 
-- Assign shape → block/material
-- Select dimension mode (D0–D3)
+- Assign shape ? block/material
+- Select dimension mode (D0�D3)
 - Attach formulas
 - Handle nested objects
 
 ---
 
-### 🧮 6. Calculation Architecture
+### ?? 6. Calculation Architecture
 
 #### 6.1 Dimension Modes
 
@@ -1949,24 +1949,24 @@ E --> F[Report]
 
 - Child objects subtract from parent
 - Example:
-    - Door inside wall → reduces area
+	- Door inside wall ? reduces area
 
 ---
 
-🔗 Related:
+?? Related:
 
 - [[0301-Development_Documentation]]
 - [[0401-Testing_Documentation]]
 
 ---
 
-### 🗄️ 7. Data Design (High-Level)
+### ??? 7. Data Design (High-Level)
 
 #### 7.1 Data Types
 
-- Geometry data → shapes
-- Business data → materials, blocks
-- Metadata → tags, marks
+- Geometry data ? shapes
+- Business data ? materials, blocks
+- Metadata ? tags, marks
 
 ---
 
@@ -1978,18 +1978,18 @@ E --> F[Report]
 
 ---
 
-🔗 Detailed model:
+?? Detailed model:
 
 - [[020103-Data_Model]]
 
 ---
 
-### 🔌 8. Integration Design
+### ?? 8. Integration Design
 
 #### 8.1 Internal Integration
 
-- Engine ↔ UI components
-- Calculation ↔ Data model
+- Engine ? UI components
+- Calculation ? Data model
 
 ---
 
@@ -2009,7 +2009,7 @@ E --> F[Report]
 
 ---
 
-### 🌐 9. Deployment Architecture
+### ?? 9. Deployment Architecture
 
 #### 9.1 Standalone
 
@@ -2027,13 +2027,13 @@ E --> F[Report]
 
 ---
 
-🔗 Related:
+?? Related:
 
 - [[0501-Deployment_Documentation]]
 
 ---
 
-### 📡 10. Observability Design
+### ?? 10. Observability Design
 
 #### 10.1 Logging
 
@@ -2057,7 +2057,7 @@ E --> F[Report]
 
 ---
 
-### ✅ 11. Quality Attributes
+### ? 11. Quality Attributes
 
 #### 11.1 Performance
 
@@ -2094,7 +2094,7 @@ E --> F[Report]
 
 ---
 
-### 🎨 12. UX & Accessibility Considerations
+### ?? 12. UX & Accessibility Considerations
 
 - Grid + snapping
 - Keyboard shortcuts
@@ -2103,12 +2103,12 @@ E --> F[Report]
 
 ---
 
-🔗 Related:
+?? Related:
 
 - [[Docs/05_CoNSoL-TakeOff-SDLC-Documents-Library/0502-Design/0208-ux_ui_design_en]]
 
 ---
-### ⚠️ 13. Risks & Considerations
+### ?? 13. Risks & Considerations
 
 - Complex multi-selection logic
 - Performance with large drawings
@@ -2116,7 +2116,7 @@ E --> F[Report]
 - UI vs engine validation separation
 
 ---
-### ✅ Design Checklist
+### ? Design Checklist
 
 - [ ]  Architecture defined
 - [ ]  Components identified
@@ -2126,19 +2126,19 @@ E --> F[Report]
 
 ---
 
-### 📌 Notes
+### ?? Notes
 
 - **This document is linked to:**
-	- Requirements → [[CoNSoL-Documents-Library-V2/MegaFile/01-Inception/0101-Requirement_Analysis|0101-Requirement_Analysis]]
-	- Planning → [[CoNSoL-Documents-Library-V2/MegaFile/01-Inception/0102-Planning|0102-Planning]]
-	- Development → [[CoNSoL-Documents-Library-V2/MegaFile/01-Inception/0103-Requirements Traceability|0301-Development_Documentation]]
-	- Testing → [[CoNSoL-Documents-Library-V2/MegaFile/04-Verification/0401-Testing Documentation|0401-Testing_Documentation]]
+	- Requirements ? [[CoNSoL-Documents-Library-V2/MegaFile/01-Inception/0101-Requirement_Analysis|0101-Requirement_Analysis]]
+	- Planning ? [[CoNSoL-Documents-Library-V2/MegaFile/01-Inception/0102-Planning|0102-Planning]]
+	- Development ? [[CoNSoL-Documents-Library-V2/MegaFile/01-Inception/0103-Requirements Traceability|0301-Development_Documentation]]
+	- Testing ? [[CoNSoL-Documents-Library-V2/MegaFile/04-Verification/0401-Testing Documentation|0401-Testing_Documentation]]
 
 ---
-> END — Design Documentation
+> END � Design Documentation
 ---
 
-## 020101 — System Context
+## 020101 � System Context
 
 ### Checklist
 - External systems  
@@ -2148,7 +2148,7 @@ E --> F[Report]
 
 ---
 
-## 020102 — C4 Diagrams
+## 020102 � C4 Diagrams
 
 ### Checklist
 - Context  
@@ -2160,11 +2160,11 @@ E --> F[Report]
 ---
 
 
-## 🗄️ 020103 — Data Model
+## ??? 020103 � Data Model
 
 ---
 
-### 🎯 Purpose
+### ?? Purpose
 
 Define the logical and physical data structures used by the CoNSoL-TakeOff system, including:
 
@@ -2175,14 +2175,14 @@ Define the logical and physical data structures used by the CoNSoL-TakeOff syste
 
 ---
 
-#### 📥 Inputs
+#### ?? Inputs
 
 - [[CoNSoL-Documents-Library-V2/MegaFile/02-Design/0201-Design Documentation|0201-Design_Documentation]]
 - [[CoNSoL-Documents-Library-V2/MegaFile/01-Inception/0101-Requirement_Analysis|0101-Requirement_Analysis]]
 
 ---
 
-#### 📤 Outputs
+#### ?? Outputs
 
 - Database schema
 - JSON structure
@@ -2191,17 +2191,17 @@ Define the logical and physical data structures used by the CoNSoL-TakeOff syste
 
 ---
 
-### 🧠 1. Data Model Overview
+### ?? 1. Data Model Overview
 
 #### 1.1 Design Principles
 
-- ✅ **Separation of Concerns**
+- ? **Separation of Concerns**
 	- Geometry vs Business data
-- ✅ **Metadata-Driven**
+- ? **Metadata-Driven**
 	- Flexible tagging system
-- ✅ **Extensible**
+- ? **Extensible**
 	  - Supports plugins (tags, marks, symbols)
-- ✅ **Versionable**
+- ? **Versionable**
 	  - JSON-based persistence
 
 ---
@@ -2217,7 +2217,7 @@ Define the logical and physical data structures used by the CoNSoL-TakeOff syste
 
 ---
 
-### 🧱 2. Core Entity Model
+### ?? 2. Core Entity Model
 
 #### 2.1 DrawingObject (Base Entity)
 
@@ -2286,7 +2286,7 @@ Define the logical and physical data structures used by the CoNSoL-TakeOff syste
 
 ---
 
-### 🧮 3. Dimension Model
+### ?? 3. Dimension Model
 
 #### 3.1 Dimension Modes
 
@@ -2304,12 +2304,12 @@ Define the logical and physical data structures used by the CoNSoL-TakeOff syste
 | **Property** | **Source**     |
 | ------------ | -------------- |
 | Length       | Line geometry  |
-| Area         | Width × Height |
-| Volume       | Area × Depth   |
+| Area         | Width � Height |
+| Volume       | Area � Depth   |
 
 ---
 
-### 🧩 4. Metadata Model
+### ?? 4. Metadata Model
 
 #### 4.1 Smart Tags
 
@@ -2365,7 +2365,7 @@ JSON
 
 ---
 
-### 🗄️ 5. Database Schema
+### ??? 5. Database Schema
 
 #### 5.1 CanvasLayouts
 
@@ -2433,28 +2433,28 @@ JSON
 
 ---
 
-### 🔗 6. Entity Relationships
+### ?? 6. Entity Relationships
 
 ```text
 CanvasLayouts
-  └── CanvasElements
-        ├── Blocks
-        ├── Materials
-        └── Formulas
+  ??? CanvasElements
+		??? Blocks
+		??? Materials
+		??? Formulas
 ``` 
 
 ---
 
 #### 6.1 Key Relationships
 
-- Canvas → Elements (1:N)
-- Element → Block (N:1)
-- Block → Formula (1:1)
-- Formula → Materials (1:N)
+- Canvas ? Elements (1:N)
+- Element ? Block (N:1)
+- Block ? Formula (1:1)
+- Formula ? Materials (1:N)
 
 ---
 
-### 💾 7. Serialization Strategy
+### ?? 7. Serialization Strategy
 
 #### 7.1 File Format
 
@@ -2485,13 +2485,13 @@ CanvasLayouts
 
 ---
 
-### 🔄 8. Data Lifecycle
+### ?? 8. Data Lifecycle
 
 #### 8.1 Flow
 
 
 ```Plain Text
-User Input → Shape Creation → Metadata Assignment → Save JSON → Persist DB → Calculation  
+User Input ? Shape Creation ? Metadata Assignment ? Save JSON ? Persist DB ? Calculation  
 ```
 
 ---
@@ -2504,7 +2504,7 @@ User Input → Shape Creation → Metadata Assignment → Save JSON → Persist 
 
 ---
 
-### 📡 9. Aggregation Model
+### ?? 9. Aggregation Model
 
 #### 9.1 Aggregation Inputs
 
@@ -2520,14 +2520,14 @@ User Input → Shape Creation → Metadata Assignment → Save JSON → Persist 
 ```json
 {
   "materialSummary": {
-    "cement": { "quantity": 10, "cost": 50 }
+	"cement": { "quantity": 10, "cost": 50 }
   }
 }
 ```
 
 ---
 
-### ⚠️ 10. Constraints & Rules
+### ?? 10. Constraints & Rules
 
 #### 10.1 Validation Rules
 
@@ -2545,7 +2545,7 @@ User Input → Shape Creation → Metadata Assignment → Save JSON → Persist 
 
 ---
 
-### ✅ 11. Data Governance
+### ? 11. Data Governance
 
 #### 11.1 Ownership
 
@@ -2564,7 +2564,7 @@ User Input → Shape Creation → Metadata Assignment → Save JSON → Persist 
 
 ---
 
-### ✅ Data Model Checklist
+### ? Data Model Checklist
 
 - [ ]  Geometry separated from business
 - [ ]  JSON schema defined
@@ -2574,22 +2574,22 @@ User Input → Shape Creation → Metadata Assignment → Save JSON → Persist 
 
 ---
 
-### 📌 Notes
+### ?? Notes
 
 This model supports:
 
-- Standalone mode ✅
-- Integrated mode ✅
-- Future cloud sync ✅
+- Standalone mode ?
+- Integrated mode ?
+- Future cloud sync ?
 
 ---
-> END — Data Model Documentation
+> END � Data Model Documentation
 
 
 
 ---
 
-## 0202 — Security Documentation
+## 0202 � Security Documentation
 
 **Owner:** Security  
 
@@ -2606,7 +2606,7 @@ Define security controls and threat modeling.
 
 ---
 
-## 0203 — Compliance & Legal
+## 0203 � Compliance & Legal
 
 **Owner:** Legal  
 ### Templates
@@ -2619,7 +2619,7 @@ Define security controls and threat modeling.
 
 ---
 
-## 0204 — Risk Management
+## 0204 � Risk Management
 
 **Owner:** Project-Management  
 ### Templates
@@ -2631,7 +2631,7 @@ Define security controls and threat modeling.
 
 ---
 
-## 0205 — Architecture Decision Records (ADR)
+## 0205 � Architecture Decision Records (ADR)
 
 **Owner:** Architecture  
 ### Templates
@@ -2643,7 +2643,7 @@ Define security controls and threat modeling.
 
 ---
 
-## 0206 — Data Governance 
+## 0206 � Data Governance 
 
 **Owner:** Data  
 ### Purpose
@@ -2658,7 +2658,7 @@ Define how data is managed and protected.
 
 ---
 
-## 0207 — Cost & FinOps 
+## 0207 � Cost & FinOps 
 
 **Owner:** platform  
 
@@ -2674,13 +2674,13 @@ Ensure cost-efficient design.
 ---
 
 
-## 🎨 0208 — UX & UI Design
+## ?? 0208 � UX & UI Design
 
 ---
 
-### 🎯 Purpose
+### ?? Purpose
 
-Define the **user experience, user interface behavior, and interaction rules** for the CoNSoL‑TakeOff Drawing Engine.
+Define the **user experience, user interface behavior, and interaction rules** for the CoNSoL?TakeOff Drawing Engine.
 
 - **This document specifies:**
 	- Drawing tools and their variants
@@ -2691,7 +2691,7 @@ Define the **user experience, user interface behavior, and interaction rules** f
 
 ---
 
-#### 📥 Inputs
+#### ?? Inputs
 
 - [[CoNSoL-Documents-Library-V2/MegaFile/01-Inception/0101-Requirement_Analysis|0101-Requirement_Analysis]]
 - Platform strategy & roadmap
@@ -2699,7 +2699,7 @@ Define the **user experience, user interface behavior, and interaction rules** f
 
 ---
 
-#### 📤 Outputs
+#### ?? Outputs
 
 - UI behavior definitions
 - Interaction rules
@@ -2708,15 +2708,15 @@ Define the **user experience, user interface behavior, and interaction rules** f
 
 ---
 
-### 🧠 1. UX Design Principles
+### ?? 1. UX Design Principles
 
 #### 1.1 Core Principles
 	
-- **Visual-first** — drawing is primary input
-- **Data-driven** — UI reflects underlying metadata
-- **Non-destructive** — warn before blocking
-- **Context-sensitive** — panels adapt to selection state
-- **Reusable** — designed as embeddable components
+- **Visual-first** � drawing is primary input
+- **Data-driven** � UI reflects underlying metadata
+- **Non-destructive** � warn before blocking
+- **Context-sensitive** � panels adapt to selection state
+- **Reusable** � designed as embeddable components
 
 ---
 
@@ -2724,17 +2724,17 @@ Define the **user experience, user interface behavior, and interaction rules** f
 	
 - Canvas is **2D visually**
 - Objects may carry **logical 3D attributes**
-- Rendering ≠ business meaning
+- Rendering ? business meaning
 
 ---
 
-### ✏️ 2. Drawing Tools
+### ?? 2. Drawing Tools
 
 #### 2.1 Basic Shapes
 
 ##### 2.1.1 Line
 	
-- Single segment: click start → click end
+- Single segment: click start ? click end
 - Multi-segment (polyline mode):
 	- Continuous clicks
 	- Double-click / Enter to commit
@@ -2919,17 +2919,17 @@ Define the **user experience, user interface behavior, and interaction rules** f
 
 ---
 
-##### ✅ Key Distinction
+##### ? Key Distinction
 
 | **Feature**            | **Smart Tag** | **Custom Mark** |
 | ---------------------- | ------------- | --------------- |
-| Carries value          | ✅             | ❌               |
-| Aggregated numerically | ✅             | ❌               |
-| Visual emphasis        | ⚠️            | ✅               |
+| Carries value          | ?             | ?               |
+| Aggregated numerically | ?             | ?               |
+| Visual emphasis        | ??            | ?               |
 
 ---
 
-### 🧱 3. Layer Panel
+### ?? 3. Layer Panel
 
 #### 3.1 Layer Properties
 
@@ -2963,7 +2963,7 @@ Define the **user experience, user interface behavior, and interaction rules** f
 	
 ---
 
-### 🧰 4. Property Panel
+### ?? 4. Property Panel
 
 #### 4.1 Context Sensitivity
 
@@ -3009,7 +3009,7 @@ Define the **user experience, user interface behavior, and interaction rules** f
 
 ---
 
-### ✅ 5. Validation Rules (UI-Level)
+### ? 5. Validation Rules (UI-Level)
 
 #### 5.1 Drawing Validations
 	
@@ -3023,9 +3023,9 @@ Define the **user experience, user interface behavior, and interaction rules** f
 #### 5.2 Property Panel Validations
 	
 - Numeric-only fields
-- Rotation normalized (0–360)
-- Quantity ≥ 1
-- Price ≥ 0
+- Rotation normalized (0�360)
+- Quantity ? 1
+- Price ? 0
 
 ---
 
@@ -3033,7 +3033,7 @@ Define the **user experience, user interface behavior, and interaction rules** f
 	
 - Duplicate names blocked
 - Deleting active layer blocked
-- All layers hidden → warning
+- All layers hidden ? warning
 
 ---
 
@@ -3072,7 +3072,7 @@ Define the **user experience, user interface behavior, and interaction rules** f
 
 ---
 
-### ⚠️ 6. Highlighted Design Concerns
+### ?? 6. Highlighted Design Concerns
 
 #### 6.1 Logical 3D Applicability
 	
@@ -3093,12 +3093,12 @@ Define the **user experience, user interface behavior, and interaction rules** f
 
 #### 6.3 Validation Separation
 	
-- Data validation → Engine
-- Visual feedback → UI
+- Data validation ? Engine
+- Visual feedback ? UI
 	
 ---
 
-### 🧩 7. Component Reusability
+### ?? 7. Component Reusability
 	
 - Panels are metadata-driven
 - Tools are pluggable
@@ -3106,7 +3106,7 @@ Define the **user experience, user interface behavior, and interaction rules** f
 	
 ---
 
-### 🔗 Related Documents
+### ?? Related Documents
 	
 - [[CoNSoL-Documents-Library-V2/MegaFile/02-Design/0201-Design Documentation|0201-Design_Documentation]]
 - [[CoNSoL-Documents-Library-V2/MegaFile/02-Design/020103-Data Model|020103-Data_Model]]
@@ -3119,16 +3119,16 @@ Define the **user experience, user interface behavior, and interaction rules** f
 - Design system  
 - Accessibility validation  
 ---
-> END — UX & UI Design
+> END � UX & UI Design
 ---
 
-# 03 — Implementation
+# 03 � Implementation
 
-## 💻 0301 — Development Documentation
+## ?? 0301 � Development Documentation
 
 ---
 
-### 🎯 Purpose
+### ?? Purpose
 
 Define coding standards, architecture patterns, development workflows, and implementation guidelines for the CoNSoL-TakeOff system.
 
@@ -3139,7 +3139,7 @@ This document ensures:
 
 ---
 
-#### 📥 Inputs
+#### ?? Inputs
 
 - [[CoNSoL-Documents-Library-V2/MegaFile/02-Design/0201-Design Documentation|0201-Design_Documentation]]
 - [[CoNSoL-Documents-Library-V2/MegaFile/02-Design/020103-Data Model|020103-Data_Model]]
@@ -3147,7 +3147,7 @@ This document ensures:
 
 ---
 
-#### 📤 Outputs
+#### ?? Outputs
 
 - Source code
 - Build artifacts
@@ -3156,15 +3156,15 @@ This document ensures:
 
 ---
 
-### 🧠 1. Development Principles
+### ?? 1. Development Principles
 
 #### 1.1 Core Principles
 
-- ✅ Separation of concerns
-- ✅ Clean architecture
-- ✅ Domain-driven design
-- ✅ Low coupling / high cohesion
-- ✅ Testability
+- ? Separation of concerns
+- ? Clean architecture
+- ? Domain-driven design
+- ? Low coupling / high cohesion
+- ? Testability
 
 ---
 
@@ -3172,17 +3172,17 @@ This document ensures:
 
 ##### Naming
 
-- Classes → `PascalCase`
-- Methods → `PascalCase`
-- Variables → `camelCase`
-- Constants → `UPPER_CASE`
+- Classes ? `PascalCase`
+- Methods ? `PascalCase`
+- Variables ? `camelCase`
+- Constants ? `UPPER_CASE`
 
 ---
 ##### Example
 
 ```vb.net
 Public Class DrawingCanvas
-    Public Property ZoomLevel As Double
+	Public Property ZoomLevel As Double
 End Class
 ```
 
@@ -3193,27 +3193,27 @@ End Class
 
 ```Plain Text
 /CoNSoL-TakeOff
-├── Core
-├── Application
-├── Infrastructure
-├── UI
-└── Tests
+??? Core
+??? Application
+??? Infrastructure
+??? UI
+??? Tests
 ```
 
 ---
 
-### 🏗️ 2. Architecture Implementation
+### ??? 2. Architecture Implementation
 
 #### 2.1 Layered Architecture
 
 
 ```Plain Text
 UI Layer
-↓
+?
 Application Layer
-↓
+?
 Domain Layer
-↓
+?
 Infrastructure Layer
 ```
 
@@ -3230,7 +3230,7 @@ Infrastructure Layer
 
 ---
 
-### 🎨 3. Drawing Engine Implementation
+### ?? 3. Drawing Engine Implementation
 
 #### 3.1 Canvas Component
 
@@ -3247,13 +3247,13 @@ Infrastructure Layer
 
 ```vb
 Public Class DrawingCanvas
-    Inherits UserControl
+	Inherits UserControl
 
-    Public Property Shapes As List(Of Shape)
+	Public Property Shapes As List(Of Shape)
 
-    Protected Overrides Sub OnMouseDown(e As MouseEventArgs)
-        ' Start drawing
-    End Sub
+	Protected Overrides Sub OnMouseDown(e As MouseEventArgs)
+		' Start drawing
+	End Sub
 End Class
 ```
 ---
@@ -3262,12 +3262,12 @@ End Class
 
 ```vb
 Public MustInherit Class Shape
-    Public Property Id As Guid
-    Public Property Type As String
-    Public Property Metadata As Dictionary(Of String, Object)
+	Public Property Id As Guid
+	Public Property Type As String
+	Public Property Metadata As Dictionary(Of String, Object)
 
-    Public MustOverride Sub Draw(g As Graphics)
-    Public MustOverride Function HitTest(p As PointF) As Boolean
+	Public MustOverride Sub Draw(g As Graphics)
+	Public MustOverride Function HitTest(p As PointF) As Boolean
 End Class
 ```
 
@@ -3284,28 +3284,28 @@ End Class
 
 ---
 
-### 🔄 4. Interaction Model
+### ?? 4. Interaction Model
 
 #### 4.1 Event Lifecycle
 
 
 ```Plain Text
-MouseDown → Initialize shape
-MouseMove → Update preview
-MouseUp → Commit shape
+MouseDown ? Initialize shape
+MouseMove ? Update preview
+MouseUp ? Commit shape
 ```
 
 ---
 
 #### 4.2 Coordinate Handling
 
-- Convert physical → logical
+- Convert physical ? logical
 - Apply snapping rules
 - Validate bounds
 
 ---
 
-### 🧠 5. Application Layer (Use Cases)
+### ?? 5. Application Layer (Use Cases)
 
 #### 5.1 Core Use Cases
 
@@ -3320,15 +3320,15 @@ MouseUp → Commit shape
 
 ```vb
 Public Class DrawingService
-    Public Sub AddShape(shape As Shape)
-        ' Add to state
-    End Sub
+	Public Sub AddShape(shape As Shape)
+		' Add to state
+	End Sub
 End Class
 ```
 
 ---
 
-### ⚙️ 6. Domain Logic
+### ?? 6. Domain Logic
 
 #### 6.1 Calculation Engine
 
@@ -3344,7 +3344,7 @@ End Class
 
 ```vb
 Public Function CalculateArea(rect As RectangleShape) As Double
-    Return rect.Width * rect.Height
+	Return rect.Width * rect.Height
 End Function
 ```
 
@@ -3354,10 +3354,10 @@ End Function
 
 ```vb
 Select Case dimensionMode
-    Case "D0"
-        Return count
-    Case "D2"
-        Return width * height
+	Case "D0"
+		Return count
+	Case "D2"
+		Return width * height
 End Select
 ```
 
@@ -3371,14 +3371,14 @@ totalArea -= doorArea
 
 ---
 
-### 💾 7. Data Access Layer
+### ?? 7. Data Access Layer
 
 #### 7.1 Repository Pattern
 
 ```vb
 Public Interface IRepository(Of T)
-    Function GetAll() As List(Of T)
-    Sub Save(entity As T)
+	Function GetAll() As List(Of T)
+	Sub Save(entity As T)
 End Interface
 ```
 
@@ -3399,7 +3399,7 @@ Dim json = JsonConvert.SerializeObject(canvas)
 
 ---
 
-### 🧩 8. API Design
+### ?? 8. API Design
 
 #### 8.1 Internal APIs
 
@@ -3413,7 +3413,7 @@ Dim json = JsonConvert.SerializeObject(canvas)
 
 ```vb
 Public Interface ICalculationEngine
-    Function Calculate(shape As Shape) As Double
+	Function Calculate(shape As Shape) As Double
 End Interface
 ```
 
@@ -3427,7 +3427,7 @@ End Interface
 
 ---
 
-### 🔧 9. Configuration Management
+### ?? 9. Configuration Management
 
 #### 9.1 Environments
 
@@ -3463,7 +3463,7 @@ End Interface
 
 ---
 
-### 🧪 10. Code Quality
+### ?? 10. Code Quality
 
 #### 10.1 Code Review Checklist
 
@@ -3481,12 +3481,12 @@ End Interface
 
 ---
 
-### 🚀 11. Build & Run
+### ?? 11. Build & Run
 
 #### 11.1 Build Process
 
 ```txt
-Code → Compile → Test → Package  
+Code ? Compile ? Test ? Package  
 ```
 
 ---
@@ -3498,7 +3498,7 @@ Code → Compile → Test → Package
 
 ---
 
-### 🧪 12. Testing Hooks (Dev Side)
+### ?? 12. Testing Hooks (Dev Side)
 
 - Unit tests for geometry
 - Mock DB for integration testing
@@ -3506,13 +3506,13 @@ Code → Compile → Test → Package
 
 ---
 
-🔗 Related:
+?? Related:
 
 - [[0401-Testing_Documentation]]
 
 ---
 
-### 📡 13. Logging & Debugging
+### ?? 13. Logging & Debugging
 
 #### 13.1 Logging
 
@@ -3529,7 +3529,7 @@ Logger.Log("Shape created")
 
 ---
 
-### ⚠️ 14. Error Handling
+### ?? 14. Error Handling
 
 #### 14.1 Strategy
 
@@ -3542,15 +3542,15 @@ Logger.Log("Shape created")
 
 ```vb
 Try
-    SaveCanvas()
+	SaveCanvas()
 Catch ex As Exception
-    Logger.Log(ex.Message)
+	Logger.Log(ex.Message)
 End Try
 ```
 
 ---
 
-### ✅ 15. Performance Considerations
+### ? 15. Performance Considerations
 
 - Use double buffering
 - Avoid full redraw
@@ -3558,7 +3558,7 @@ End Try
 
 ---
 
-### ✅ 16. Security Considerations
+### ? 16. Security Considerations
 
 - Validate inputs
 - Protect file access
@@ -3566,7 +3566,7 @@ End Try
 
 ---
 
-### ✅ Development Checklist
+### ? Development Checklist
 
 - [ ]  Layered architecture implemented
 - [ ]  Engine separated from UI
@@ -3577,7 +3577,7 @@ End Try
 
 ---
 
-### 📌 Notes
+### ?? Notes
 
 This document aligns with:
 
@@ -3586,10 +3586,10 @@ This document aligns with:
 - [[CoNSoL-Documents-Library-V2/MegaFile/04-Verification/0401-Testing Documentation|0401-Testing_Documentation]]
 
 ---
-> END — Development Documentation
+> END � Development Documentation
 ---
 
-## 0302 — API Documentation
+## 0302 � API Documentation
 
 **Owner:** engineering  
 
@@ -3602,7 +3602,7 @@ This document aligns with:
 
 ---
 
-## 0303 — Configuration Management
+## 0303 � Configuration Management
 
 **Owner:** platform  
 
@@ -3614,7 +3614,7 @@ This document aligns with:
 
 ---
 
-## 0304 — DevSecOps & CI/CD Strategy 
+## 0304 � DevSecOps & CI/CD Strategy 
 
 **Owner:** platform + security  
 
@@ -3630,7 +3630,7 @@ Define automated pipelines.
 
 ---
 
-## 0305 — Environment Strategy
+## 0305 � Environment Strategy
 
 **Owner:** platform  
 
@@ -3642,9 +3642,9 @@ Define automated pipelines.
 
 ---
 
-# 04 — Verification
+# 04 � Verification
 
-## 0401 — Testing Documentation
+## 0401 � Testing Documentation
 
 **Owner:** qa  
  
@@ -3659,7 +3659,7 @@ Define automated pipelines.
 
 ---
 
-## 0402 — Release & Change Management
+## 0402 � Release & Change Management
 
 **Owner:** release-management  
 
@@ -3671,9 +3671,9 @@ Define automated pipelines.
 
 ---
 
-# 05 — Delivery
+# 05 � Delivery
 
-## 0501 — Deployment Documentation
+## 0501 � Deployment Documentation
 
 **Owner:** platform  
 
@@ -3687,9 +3687,9 @@ Define automated pipelines.
 
 ---
 
-# 06 — Operations
+# 06 � Operations
 
-## 0601 — Operations & Maintenance
+## 0601 � Operations & Maintenance
 
 **Owner:** sre  
 
@@ -3703,7 +3703,7 @@ Define automated pipelines.
 
 ---
 
-## 0602 — Incident & Problem Management
+## 0602 � Incident & Problem Management
 
 **Owner:** sre  
 
@@ -3715,7 +3715,7 @@ Define automated pipelines.
 
 ---
 
-## 0603 — Business Continuity & DR
+## 0603 � Business Continuity & DR
 
 **Owner:** platform  
 
@@ -3727,7 +3727,7 @@ Define automated pipelines.
 
 ---
 
-## 0604 — User & Training Documentation
+## 0604 � User & Training Documentation
 
 **Owner:** product-education  
 
@@ -3739,7 +3739,7 @@ Define automated pipelines.
 
 ---
 
-## 0605 — Process Documentation
+## 0605 � Process Documentation
 
 **Owner:** governance  
 
@@ -3751,7 +3751,7 @@ Define automated pipelines.
 
 ---
 
-## 0606 — Observability
+## 0606 � Observability
 
 **Owner:** sre  
 
@@ -3766,13 +3766,13 @@ Define automated pipelines.
 
 # Cross-Cutting
 
-## Quality Gates ✅
+## Quality Gates ?
 
-- Inception → Requirements approved  
-- Design → Architecture review passed  
-- Implementation → Code + CI passed  
-- Verification → Tests passed  
-- Delivery → Release approved  
+- Inception ? Requirements approved  
+- Design ? Architecture review passed  
+- Implementation ? Code + CI passed  
+- Verification ? Tests passed  
+- Delivery ? Release approved  
 
 ---
 
