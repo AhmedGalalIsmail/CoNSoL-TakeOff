@@ -4,11 +4,6 @@ Imports System.Drawing.Drawing2D
 
 
 Public Class ConversionInfo
-
-#Region "Public Fields"
-
-#End Region
-
 #Region "Public Fields and Proprties"
 	Public PhysicalWidth As Integer = 640
 	Public PhysicalHeight As Integer = 480
@@ -92,7 +87,6 @@ Public Class ConversionInfo
 		End Set
 	End Property
 #End Region
-
 #Region "Operators"
 	''' <summary>
 	''' Compares two ConversionInfo objects for equality</summary>
@@ -106,7 +100,6 @@ Public Class ConversionInfo
 		Return Not (C1 = C2)
 	End Operator
 #End Region
-
 #Region "Converting from physical coordinates to logical coordinates"
 	''' <summary>
 	''' Transforms an X coordinate from physical coordinates to logical coordinates</summary>
@@ -163,7 +156,6 @@ Public Class ConversionInfo
 		End Try
 	End Function
 #End Region
-
 #Region "Converting from logical to physical coordinates"
 	''' <summary>
 	''' Transforms an X coordinate from logical coordinates to physical coordinates</summary>
@@ -220,9 +212,7 @@ Public Class ConversionInfo
 			MsgBox(ex.Message)
 		End Try
 	End Function
-
 #End Region
-
 #Region "Conversion from Dot to Micron"
 	''' <summary>Converts a value in dots (pixels) to microns, given the bitmap DPI</summary>
 	''' <param name="BitmapDPI"></param>
@@ -234,7 +224,6 @@ Public Class ConversionInfo
 		End Try
 	End Function
 #End Region
-
 #Region "Public Functions"
 	''' <summary>
 	''' Creates a copy of this ConversionInfo object</summary>
@@ -253,6 +242,5 @@ Public Class ConversionInfo
 		Me.LogicalOrigin = info.LogicalOrigin
 	End Sub
 #End Region
-
 End Class
 
