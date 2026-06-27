@@ -153,7 +153,7 @@ Partial Public Class ZRGPictureBoxControl
     Private myMaxLogicalWindowSize As Size = DefaultMaxLogicalWindowSize
 #End Region
 
-#Region "Flag per la visualizzazione"
+#Region "Flag for display"
     Private myShowMouseCoordinates As Boolean = True
     Private myShowRulers As Boolean = True
     Private myIsChangingAutoScroll As Boolean = False
@@ -313,10 +313,9 @@ Partial Public Class ZRGPictureBoxControl
     End Property
 
     ''' <summary>
-    ''' Permette di visualizzare le coordinate a cui si trova il mouse
-    ''' </summary>
-    <Description("Permette di visualizzare le coordinate a cui si trova il mouse"), _
-     DefaultValue(True)> _
+    ''' Allows you to view the coordinates at which the mouse is located</summary>
+    <Description("Allows you to view the coordinates at which the mouse is located"),
+     DefaultValue(True)>
     Public Property ShowMouseCoordinates() As Boolean
         Get
             Return myShowMouseCoordinates
