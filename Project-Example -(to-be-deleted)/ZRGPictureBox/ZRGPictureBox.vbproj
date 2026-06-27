@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Cursors\Edit1.png" />
-    <EmbeddedResource Include="Cursors\Zoom-321.png" />
+    <EmbeddedResource Include="Cursors\Edit.png" />
+    <EmbeddedResource Include="Cursors\Zoom-32.png" />
     <EmbeddedResource Include="Resources\Rulers\Rulers.RulerOrigin.png" />
     <EmbeddedResource Include="Resources\Rulers\Rulers.RulerOriginSnap.png" />
   </ItemGroup>
