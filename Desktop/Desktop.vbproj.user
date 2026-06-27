@@ -19,6 +19,12 @@
     <Compile Update="Controls\PropertiesPanel.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Controls\Rulers.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\SelectionBoxElement.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Forms\BlockAssignmentForm.vb">
       <SubType>Form</SubType>
     </Compile>
