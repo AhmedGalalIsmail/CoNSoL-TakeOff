@@ -1,0 +1,104 @@
+<UserControl x:Class="ZoomButton"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 Width="552" Height="39"
+			 Background="Transparent">
+
+	<ToolBarTray Background="#FFA95832">
+		<ToolBar Background="#FFA95832">
+			<!-- Load -->
+			<Button x:Name="btLoad1"
+					ToolTip="Load Image"
+					Width="36" Height="36">
+				<Image Source="/Images/load.png" Stretch="Fill"/>
+			</Button>
+
+			<Separator/>
+
+			<!-- Zoom -->
+			<ToggleButton x:Name="btZoom"
+						  IsChecked="True"
+						  ToolTip="Zoom mode"
+						  Width="36" Height="36">
+				<Image Source="/Images/zoom.png" Stretch="UniformToFill"/>
+			</ToggleButton>
+
+			<!-- Measure -->
+			<ToggleButton x:Name="btMeasure"
+						  ToolTip="Gauging mode"
+						  Width="36" Height="36">
+				<Image Source="/Images/measure.png" Stretch="UniformToFill"/>
+			</ToggleButton>
+
+			<Separator/>
+
+			<!-- View Dropdown -->
+			<Menu Background="#FFA95832">
+				<MenuItem Header="?? View" ToolTip="Visible items">
+
+					<MenuItem x:Name="btViewRulers"
+							  Header="Rulers"
+							  IsCheckable="True"
+							  IsChecked="True"/>
+
+					<MenuItem x:Name="btViewScrollBars"
+							  Header="Scroll bars"
+							  IsCheckable="True"
+							  IsChecked="True"/>
+
+					<MenuItem x:Name="btViewGrid"
+							  Header="Grid"
+							  IsCheckable="True"
+							  IsChecked="True"/>
+				</MenuItem>
+			</Menu>
+
+			<!-- Measurement Units -->
+			<Menu Background="#FFA95832">
+				<MenuItem Header="?? Units" ToolTip="Measure unit">
+					<MenuItem x:Name="btUmMicron" Header="micron"/>
+					<MenuItem x:Name="btUmDmm" Header="mm/10"/>
+					<MenuItem x:Name="btUmMillimeters"
+							  Header="mm"
+							  IsCheckable="True"
+							  IsChecked="True"/>
+
+					<MenuItem x:Name="btUmInch" Header="inches"/>
+					<MenuItem x:Name="btUmMeters" Header="meters"/>
+				</MenuItem>
+			</Menu>
+
+			<Separator/>
+
+			<!-- Label -->
+			<TextBlock Text="Pixel size (micron):"
+					   VerticalAlignment="Center"
+					   Margin="5,0"/>
+
+			<!-- Value -->
+			<TextBlock x:Name="tbPixelSizeMic"
+					   Text="100"
+					   FontWeight="Bold"
+					   FontSize="14"
+					   Foreground="DarkBlue"
+					   VerticalAlignment="Center"
+					   Margin="5,0"
+					   ToolTip="Click to change"/>
+
+			<!-- Zoom Fit -->
+			<ToggleButton x:Name="btZoomFit"
+						  IsChecked="True"
+						  ToolTip="Fit image"
+						  Width="36" Height="36">
+				<Image Source="/Images/zoomfit.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+			</ToggleButton>
+			<Button x:Name="btZoomFit1" Height="32" Width="36" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+				<Button.Background>
+					<ImageBrush ImageSource="/Images/load.png" Stretch="Uniform"/>
+				</Button.Background>
+			</Button>
+
+		</ToolBar>
+	</ToolBarTray>
+
+</UserControl>
