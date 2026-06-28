@@ -1,4 +1,4 @@
-# CoNSoL-TakeOff
+?# CoNSoL-TakeOff
 
 **CoNSoL-TakeOff** is a **visual-first construction take-off and estimation tool** that enables users to draw construction elements and automatically compute quantities, materials, and costs.
 
@@ -49,7 +49,7 @@ CoNSoL-TakeOff bridges the gap by treating drawing geometry as **first-class bus
 
 ### Core Components
 
-| **Component** | **Purpose** | **Documentation** |
+| Component | Purpose | Documentation |
 |-----------|---------|----------------|
 | **Domain** | Data entities, geometry utilities, business definitions | [Domain/README.md](Domain/README.md) |
 | **Application** | Use case orchestration, calculation engine, services | [Application/README.md](Application/README.md) |
@@ -95,7 +95,7 @@ This project follows a structured **Software Development Lifecycle (SDLC)** docu
 
 ### Document Structure (from Mega-File.md)
 
-| **Phase** | **Document** | **Purpose** |
+| Phase | Document | Purpose |
 |-------|----------|---------|
 | **Inception** | [0101-Requirement_Analysis](Mega-File.md#-0101--requirement-analysis-) | Business vision, scope, success criteria |
 | **Inception** | [0102-Planning](Mega-File.md#--0102--planning-) | Roadmap, risks, milestones |
@@ -117,12 +117,12 @@ This project follows a structured **Software Development Lifecycle (SDLC)** docu
 
 Each drawn object uses exactly **one dimension mode** for quantity calculation:
 
-| **Mode** | **Description** | **Example**              |
-|----------|-----------------|--------------------------|
-| **D0**   | Count           | Number of doors, windows |
-| **D1**   | Length          | Wall length (m)          |
-| **D2**   | Area            | Floor area (m²)          |
-| **D3**   | Volume          | Concrete volume (m³)     |
+| Mode | Description | Example |
+|------|-------------|---------|
+| **D0** | Count | Number of doors, windows |
+| **D1** | Length | Wall length (m) |
+| **D2** | Area | Floor area (m²) |
+| **D3** | Volume | Concrete volume (m³) |
 
 ### Nested Objects
 
@@ -140,8 +140,8 @@ The calculation engine automatically handles subtraction.
 
 ### Deployment Modes
 
-| **Mode** | **Configuration** | **Use Case** |
-|----------|-------------------|--------------|
+| Mode | Configuration | Use Case |
+|------|---------------|----------|
 | **Standalone** | Local SQLite DB, local files | Desktop app, single-user |
 | **Integrated** | Shared SQL Server DB, CoNSoL-Suite | Multi-user suite, enterprise |
 
@@ -339,14 +339,14 @@ References Mega-File section if applicable.
 
 ## ?? Support & Contact
 
-| **Topic**              | **Reference** |
-|------------------------|---------------|
+| Topic | Reference |
+|-------|-----------|
 | Requirements Questions | [0101-Requirement_Analysis](Mega-File.md#-0101--requirement-analysis-) |
-| Architecture Concerns  | [0201-Design_Documentation](Mega-File.md#-0201--design-documentation) |
-| Development Standards  | [0301-Development_Documentation](Mega-File.md#-0301--development-documentation) |
-| UI/UX Issues           | [0208-UX_UI_Design](Mega-File.md#-0208--ux--ui-design) |
-| Test Strategy          | [0401-Testing_Documentation](Mega-File.md#-0401--testing-documentation) |
-| Deployment             | [0501-Deployment_Documentation](Mega-File.md#-0501--deployment-documentation) |
+| Architecture Concerns | [0201-Design_Documentation](Mega-File.md#-0201--design-documentation) |
+| Development Standards | [0301-Development_Documentation](Mega-File.md#-0301--development-documentation) |
+| UI/UX Issues | [0208-UX_UI_Design](Mega-File.md#-0208--ux--ui-design) |
+| Test Strategy | [0401-Testing_Documentation](Mega-File.md#-0401--testing-documentation) |
+| Deployment | [0501-Deployment_Documentation](Mega-File.md#-0501--deployment-documentation) |
 
 ---
 
@@ -358,12 +358,12 @@ See LICENSE file for details.
 
 ## ?? Version History
 
-| **Version** | **Date**        | **Notes** |
-|-------------|-----------------|-----------|
+| Version | Date | Notes |
+|---------|------|-------|
 | 1.0.0 | TBD | Initial release |
 
 ---
 
-**Last Updated:** 26 June 2026  
+**Last Updated:** 19 April 2026  
 **Repository:** E:\Users\GoingIForMal\CoNSoL-TakeOff  
 **Master Document:** [Mega-File.md](Mega-File.md)
