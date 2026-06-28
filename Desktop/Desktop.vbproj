@@ -14,6 +14,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Remove="Controls\load.png" />
+		<None Remove="Controls\measure.png" />
+		<None Remove="Controls\S050108-Warning.png" />
+		<None Remove="Controls\zoom.png" />
+		<None Remove="Controls\zoomfit.png" />
+		<None Remove="Images\load.png" />
+		<None Remove="Images\measure.png" />
+		<None Remove="Images\S050108-Warning.png" />
+		<None Remove="Images\zoom.png" />
+		<None Remove="Images\zoomfit.png" />
 		<None Remove="My Project\Application.myapp" />
 	</ItemGroup>
 
@@ -75,6 +85,14 @@
 		<Folder Include="Assets\Icons\5-GENERAL-UI\" />
 		<Folder Include="Assets\Icons\6-MATERIAL-COLOR-SWATCHES\" />
 		<Folder Include="My Project\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Images\load.png" />
+	  <Resource Include="Images\measure.png" />
+	  <Resource Include="Images\S050108-Warning.png" />
+	  <Resource Include="Images\zoom.png" />
+	  <Resource Include="Images\zoomfit.png" />
 	</ItemGroup>
 
 </Project>

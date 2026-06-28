@@ -11,7 +11,7 @@ Public Class cZoomButton
         End Set
     End Property
 
-#Region "Events ..."
+#Region "Events"
     Private Sub RefreshDisplayButtonState()
         Try
             If LinkedPictureBox IsNot Nothing Then
@@ -155,7 +155,6 @@ Public Class cZoomButton
     End Sub
 
 #End Region
-
 
     Private Sub tbPixelSizeMic_Click(sender As Object, e As EventArgs) Handles tbPixelSizeMic.Click
         If LinkedPictureBox IsNot Nothing Then

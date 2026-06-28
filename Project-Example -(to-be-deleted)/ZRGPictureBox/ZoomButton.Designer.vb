@@ -15,12 +15,12 @@ Partial Class cZoomButton
         End Try
     End Sub
 
-    'Richiesto da Progettazione Windows Form
+    'Required by Windows Forms Designer
     Private components As System.ComponentModel.IContainer
 
-    'NOTA: la procedura che segue è richiesta da Progettazione Windows Form
-    'Può essere modificata in Progettazione Windows Form.  
-    'Non modificarla nell'editor del codice.
+    'NOTE: The following procedure Is required by Windows Forms Designer.
+    'It can be modified In Windows Forms Designer.
+    'Do Not modify it in the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()

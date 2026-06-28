@@ -1,11 +1,15 @@
 Imports System
-Imports System.Windows.Forms
+Imports System.Windows 'Forms
 Imports System.ComponentModel
 Imports System.Collections.Generic
 Imports System.Drawing
+'Imports System.ComponentModel
+Imports System.Drawing.Drawing2D
+Imports System.Text.Json
+'Imports Domain.Entities
 
 Partial Public Class ZRGPictureBoxControl
-    Inherits System.Windows.Forms.UserControl
+    Inherits UserControl
 
 #Region "Pan & zoom"
     Friend Const ZoomMultiplier As Single = 1.25
@@ -293,18 +297,17 @@ Partial Public Class ZRGPictureBoxControl
 
 #End Region
 
-#Region "Flag per la visualizzazione"
-    ''' <summary>
-    ''' Visualizza l'immagine di sfondo della picturebox
+#Region "Flag for display"
+    ''' <summary>Displays the picturebox background image
     ''' </summary>
-    <Description("Visualizza l'immagine di sfondo della picturebox."), Category("Opzioni di visualizzazione"), _
-     DefaultValue(True)> _
+    <Description("Displays the picturebox background image."), Category("Opzioni di visualizzazione"),
+     DefaultValue(True)>
     Public Property ShowPictureBoxBackgroundImage() As Boolean
         Get
             Return myShowPictureBoxImage
         End Get
         Set(ByVal value As Boolean)
-            ' Check se il valore e' gia' quello desiderato
+            ' Check if the value is already the desired one
             If myShowPictureBoxImage = value Then
                 Exit Property
             End If
@@ -312,8 +315,8 @@ Partial Public Class ZRGPictureBoxControl
         End Set
     End Property
 
-    ''' <summary>
-    ''' Allows you to view the coordinates at which the mouse is located</summary>
+    ''' <summary>Allows you to view the coordinates at which the mouse is located
+    ''' </summary>
     <Description("Allows you to view the coordinates at which the mouse is located"),
      DefaultValue(True)>
     Public Property ShowMouseCoordinates() As Boolean
@@ -325,8 +328,10 @@ Partial Public Class ZRGPictureBoxControl
         End Set
     End Property
 
-    <Description("Imposta se visualizzare la griglia"), Category("Opzioni di visualizzazione"), _
-     DefaultValue(True)> _
+    ''' <summary>Sets whether to display the grid 
+    ''' </summary>
+    <Description("Sets whether to display the grid"), Category("Opzioni di visualizzazione"),
+     DefaultValue(True)>
     Public Property ShowGrid() As Boolean
         Get
             Return myShowGrid
@@ -335,11 +340,11 @@ Partial Public Class ZRGPictureBoxControl
             myShowGrid = Value
         End Set
     End Property
-    ''' <summary>
-    ''' Permette di visualizzare i righelli
+
+    ''' <summary>Allows you to view rulers
     ''' </summary>
-    <Description("Permette di visualizzare i righelli"), Category("Opzioni di visualizzazione"), _
-     DefaultValue(True)> _
+    <Description("Allows you to view rulers"), Category("View options"),
+     DefaultValue(True)>
     Public Property ShowRulers() As Boolean
         Get
             Return myShowRulers
@@ -620,42 +625,42 @@ Partial Public Class ZRGPictureBoxControl
 
 #End Region
 
-#Region "Stato attuale"
+#Region "Current State"
     ''' <summary>
-    ''' Imposta il tipo di azione da eseguire sul click del mouse
+    ''' Sets the type of action to perform on mouse click.
     ''' </summary>
-    <Description("Imposta il tipo di azione da eseguire sul click del mouse"), _
-    DefaultValue(GetType(enClickAction), "SelectObjects")> _
+    <Description("Sets the type of action to perform on mouse click"),
+    DefaultValue(GetType(enClickAction), "SelectObjects")>
     Public Property ClickAction() As enClickAction
         Get
             Return myClickAction
         End Get
         Set(ByVal Value As enClickAction)
-            ' Check se ho gia' il valore desiderato
+            ' Check if the desired value already exists 
             'If myClickAction = Value Then
             '    Exit Property
             'End If
-            ' Aggiorno i dati interni
+            ' update the internal data
             Dim oldClickAction As enClickAction = myClickAction
             myClickAction = Value
 
-            ' Se sono in modalita' di progettazione, non devo fare altro
+            ' If it is design mode, then do anything else
             If DesignMode Then
                 Exit Property
             End If
 
-            ' Genero l'evento "modificato il tipo di azione da eseguire sul click del mouse"
+            ' I generate the event "changed the type of action to be performed on mouse click"
             RaiseEvent OnClickActionChanged(oldClickAction, myClickAction)
 
-            ' NOTA: Se imposto la modalita' a Zoom, nel Designer sparisce il cursore.
-            '       Penso che questo accada perche' il Designer non sa gestire la classe PictureBoxCursors. -> INVESTIGARE
+            ' NOTE: If I Then Set the mode To Zoom, the cursor disappears In the Designer.
+            ' I think this happens because the Designer doesn't know how to handle the PictureBoxCursors class. -> INVESTIGATE
             Select Case myClickAction
                 Case enClickAction.Zoom
-                    ' L'eventuale box di selezione deve mantenere l'aspetto della finestra
+                    ' Any selection box must maintain the appearance of the window
                     SelectionBox.KeepAspectRatio = True
                     Cursor = cCommonCursors.ZoomCursor
                 Case enClickAction.MeasureDistance
-                    ' L'eventuale box di selezione deve mantenere l'aspetto della finestra
+                    ' Any selection box must maintain the appearance of the window
                     SelectionBox.KeepAspectRatio = True
                     Cursor = cCommonCursors.EditCursor
             End Select
@@ -663,7 +668,7 @@ Partial Public Class ZRGPictureBoxControl
     End Property
 #End Region
 
-#Region "Box di selezione/zoom"
+#Region "Selection/zoom box"
     Public ReadOnly Property SelectionBox() As SelectionBoxElement
         Get
             Return mySelectionBox
@@ -1199,7 +1204,7 @@ Partial Public Class ZRGPictureBoxControl
 
 #End Region
 
-#Region "Routine per la Redraw()"
+#Region "Routine for Redraw()"
 
     Public Sub Redraw()
         Redraw(False)
@@ -1296,8 +1301,7 @@ Partial Public Class ZRGPictureBoxControl
         End Try
     End Function
 
-    ''' <summary>
-    ''' Disegna l'immagine di sfondo della picturebox
+    ''' <summary>Draw the background image of the picturebox
     ''' </summary>
     Private Sub DrawPictureBoxImage(ByVal GR As Graphics)
         Try
@@ -1314,11 +1318,10 @@ Partial Public Class ZRGPictureBoxControl
         End Try
     End Sub
 
-    ''' <summary>
-    ''' Disegna le griglie sul Graphics passatogli
+    ''' <summary>Draw grids on the Graphics passed to him
     ''' </summary>
     Private Sub DrawGrids(ByVal GR As Graphics)
-        ' Disegno la griglia
+        ' Draw the grid
         If myShowGrid Then
             DrawGrid(GR, 0, GridStep, GridView, GridColor, SmartGridAdjust)
         End If
@@ -1327,8 +1330,7 @@ Partial Public Class ZRGPictureBoxControl
         End If
     End Sub
 
-    ''' <summary>
-    ''' Disegna una griglia
+    ''' <summary>Draw a grid
     ''' </summary>
     Private Sub DrawGrid(ByVal GR As Graphics, ByVal GridInitialOffset As Integer, ByVal GridStep As Integer, ByVal GridMode As GridKind, ByVal GridColor As Color, ByVal SmartAdjust As Boolean)
         Try
@@ -1380,8 +1382,7 @@ Partial Public Class ZRGPictureBoxControl
         End Try
     End Sub
 
-    ''' <summary>
-    ''' Disegna gli assi cartesiani
+    ''' <summary>Draw the Cartesian axes
     ''' </summary>
     Private Sub DrawAxes(ByVal GR As Graphics)
         Try
@@ -1398,45 +1399,43 @@ Partial Public Class ZRGPictureBoxControl
     End Sub
 #End Region
 
-#Region "Routine per la Refresh()"
+#Region "Refresh() routine"
 
-    ''' <summary>
-    ''' Copia myBackbufferBitmap sulla image della PictureBox (non tiene conto di cambiamenti di scala)
-    ''' Fa anche l'aggiornamento della posizione delle maniglie della finestra di selezione
-    ''' </summary>
+    ''' <summary>Copies myBackbufferBitmap To the PictureBox image (does Not account For scale changes)<br></br>
+    ''' Also updates the position Of the selection window Handles</summary>
     Public Shadows Sub Refresh(Optional ByVal _Invalidate As Boolean = True)
         Dim GR As Graphics = Nothing
         Try
-            ' Se sono in fase di creazione del controllo o se il controllo e' gia' stato distrutto, posso uscire direttamente
+            ' If I am in the process of creating the control or if the control has already been destroyed, I can exit directly
             If (Not Me.Created) OrElse (Me.IsDisposed) Then
                 Exit Sub
             End If
 
-            ' Check se il fattore di scala e' valido. 
-            ' Serve se chiamo la Refresh() quando la finestra e' minimizzata
+            ' Check if the scale factor is valid.
+            ' This is needed if I call Refresh() when the window is minimized.
             If ScaleFactor = 0.0 Then
                 Return
             End If
 
-            ' Oggetto graphics su cui andro' a tracciare
+            ' Graphics object on which I will trace
             GR = Graphics.FromImage(myRefreshBackBuffer)
 
-            ' Copio il buffer video di terzo livello su quello di secondo livello
-            ' NOTA: Inizialmente usavo la GR.DrawImageUnscaled(), ma e' inutile ricopiare la parte di bitmap che cade fuori
-            '       dall'area client del controllo. Quindi uso la DrawImageUnscaledAndClipped()
+            ' I copy the third-level video buffer to the second-level one.
+            ' NOTE: I initially used GR.DrawImageUnscaled(), but it's pointless to copy the bitmap portion that falls outside
+            ' the control's client area. So I use DrawImageUnscaledAndClipped().
 
-            'LUCADN: ho rimosso l'impostazione a None di SmoothingMode
+            'LUCADN: I removed the SmoothingMode setting to None.
             'GR.SmoothingMode = Drawing2D.SmoothingMode.None
 
             GR.DrawImageUnscaledAndClipped(myRedrawBackBuffer, Me.ClientRectangle)
             'MsgBox(String.Format("Redraw(): ClientRectangle = {0}", ClientRectangle))
 
-            ' Disegno i righelli
+            ' Draw the rulers
             If myShowRulers Then
                 myRulers.Draw(GR)
             End If
 
-            ' Adesso posso scalare il Graphics per disegnare i vari DesignObject
+            ' Now scale the Graphics to draw the various DesignObjects
             ScaleGraphicObject(GR)
 
             If _Invalidate Then Invalidate()
@@ -1447,7 +1446,7 @@ Partial Public Class ZRGPictureBoxControl
         Catch ex As Exception
             'MsgBox(ex.Message)
         Finally
-            ' Libero la memoria allocata per l'oggetto Graphics
+            ' Free the memory allocated for the Graphics object
             If GR IsNot Nothing Then
                 GR.Dispose()
             End If
@@ -2228,32 +2227,32 @@ Partial Public Class ZRGPictureBoxControl
 
 #End Region
 
-#Region "Routine per calcolare/mostrare finestre logiche"
+#Region "Routine to calculate/display logical windows"
 
     ''' <summary>
-    ''' Mostra la finestra logica desiderata.
-    ''' Se SaveInZoomHistory e' true, salva il nuovo zoom nella history degli zoom.
-    ''' Se CenterWindow e' true, la finestra viene centrata nella picturebox, altrimenti viene lasciata allineata a sinistra.
-    ''' Se AddEmptyBorder e' true lo zoom diminuisce lievemente, in modo da avere una cornice vuota attorno all'area desiderata.
-    ''' Se ExcludeRulersArea e' true (e se i righelli sono visibili) la finestra passata viene mappata nell'area della picturebox.
-    ''' non coperta dai righelli
+    ''' Displays the desired logical window.<br></br>
+    ''' If SaveInZoomHistory Is True, saves the New zoom In the zoom history.
+    ''' If CenterWindow Is True, the window Is centered In the picturebox; otherwise, it Is left aligned.<br></br>
+    ''' If AddEmptyBorder Is True, the zoom decreases slightly, leaving an empty border around the desired area.<br></br>
+    ''' If ExcludeRulersArea Is True(And If the rulers are visible), the passed window Is mapped To the picturebox area.
+    ''' Not covered by the rulers
     ''' </summary>
     Public Sub ShowLogicalWindow(ByVal LogicalWindow As RECT, _
                                  Optional ByVal CenterWindow As Boolean = True, Optional ByVal AddEmptyBorder As Boolean = True, _
                                  Optional ByVal ExcludeRulersArea As Boolean = True)
         Try
-            ' Check se il rettangolo passato e' valido. Se non lo e' faccio lo zoom al rettangolo di default.
-            ' NOTA: Se ho una serie di funzioni macchina selezionate, otterro' un ingombro NON VALIDO,
-            '       quindi faro' lo zoom al rettangolo di default
+            ' Check if the passed rectangle is valid. If not, I zoom to the default rectangle.
+            ' NOTE: If I have a series of machine functions selected, I will get an INVALID bounding box,
+            ' then I will zoom to the default rectangle.
             If LogicalWindow.IsZeroSized Then
                 ZoomToDefaultRect()
                 Exit Sub
             End If
 
-            ' Imposto l'area visualizzabile 
+            ' set the viewable area
             LogicalArea = VisibleAreaToLogicalArea(LogicalWindow, CenterWindow, AddEmptyBorder, ExcludeRulersArea)
 
-            ' Ridisegno la finestra
+            ' redrawing the window
             Redraw()
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -2283,22 +2282,23 @@ Partial Public Class ZRGPictureBoxControl
         myLastVisibleAreaRequested = visibleArea
 
         ' Horizontal and vertical dimensions of the control.
-        ' NOTE: I use ClientRectangle.Width instead of Width because this way I can account for any scrollbars.        Dim clientWidth As Single = Me.ClientRectangle.Width
+        ' NOTE: I use ClientRectangle.Width instead of Width because this way I can account for any scrollbars.
+        Dim clientWidth As Single = Me.ClientRectangle.Width
         Dim clientHeight As Single = Me.ClientRectangle.Height
 
-        ' Spazio occupato dai righelli, e' diverso da zero solo se devo disegnare i righelli 
-        ' e se e' attiva l'opzione ExcludeRulersArea
+        ' Space occupied by rulers, it is nonzero only if I need to draw rulers
+        ' and if the ExcludeRulersArea option is enabled
         Dim rulersPhysicalSize As Single = 0
 
-        ' Calcolo lo spazio occupato dai righelli
-        ' Serve per impedire che la parte superiore sinistra dell'area richiesta venga coperta dai righelli
+        ' Calculate the space occupied by the rulers
+        ' This is used to prevent the upper left part of the requested area from being covered by the rulers.
         If myShowRulers AndAlso ExcludeRulersArea Then
             rulersPhysicalSize = myRulers.Size
         End If
 
-        ' Se e' stata richiesta una cornice vuota devo aumentare lievemente 
-        ' lo spazio richiesto dalla finestra logica sulla coordinata in uso.
-        ' Modifico entrambe le coordinate, tanto usero' solo quella che mi serve
+        ' If an empty frame was requested, I need to slightly increase
+        ' the space required by the logical window on the current coordinate.
+        ' I 'll change both coordinates, as I'll only use the one I need.
         If AddEmptyBorder Then
             Dim widthBorder As Integer = CInt(visibleArea.Width / 18)
             Dim heightBorder As Integer = CInt(visibleArea.Height / 18)
@@ -2312,83 +2312,83 @@ Partial Public Class ZRGPictureBoxControl
             Debug.Assert(visibleArea.right = myLastVisibleAreaRequested.right + widthBorder)
         End If
 
-        ' Spazio disponibile per tracciare.
-        ' Se la client area diventa talmente piccola che ci stanno solo i righelli,
-        ' faccio comunque in modo da tenermi un pixel per tracciare
+        ' Space available for drawing.
+        ' If the client area becomes so small that only the rulers fit,
+        ' I still try to leave a pixel for drawing.
         Dim availableWidth As Single = Math.Max(clientWidth - rulersPhysicalSize, 1)
         Dim availableHeight As Single = Math.Max(clientHeight - rulersPhysicalSize, 1)
 
-        ' Fattori di scala corrispondenti alla piu' piccola e alla piu' grande finestra visualizzabile
+        ' Scale factors corresponding to the smallest and largest viewable window
         Dim minScaleFactor As Single = Math.Min(availableWidth / MinLogicalWindowSize.Width, availableHeight / MinLogicalWindowSize.Height)
         Dim maxScaleFactor As Single = Math.Min(availableWidth / MaxLogicalWindowSize.Width, availableHeight / MaxLogicalWindowSize.Height)
         If availableWidth = 1 Then
             availableWidth = 1
         End If
-        ' Trovo i due fattori di scala che mi portano ad avere la finestra desiderata 
-        ' a piena dimensione verticale o orizzontale
+        ' I find the two scaling factors that give me the desired window,
+        ' either full-size vertically or horizontally.
+
         Dim horzScaleFactor As Single = availableWidth / visibleArea.Width
         Dim vertScaleFactor As Single = availableHeight / visibleArea.Height
 
-        ' Check se i fattori di scala sono validi
-        ' NOTA: Possono diventare nulli quando rimpicciolisco la finestra fino ad arrivare
-        '       ad una dimensione pari o minore di quella dei righelli
-        ' TODO: Questo e' solo un workaround, in questo caso la visualizzazione diventa sbagliata
+        ' Check if the scale factors are valid.
+        ' NOTE: They may become null when I zoom out to a size equal to or smaller than the rulers.
+        ' TODO: This is just a workaround; in this case, the display becomes incorrect.
         If (horzScaleFactor <= 0) Then horzScaleFactor = maxScaleFactor
         If (vertScaleFactor <= 0) Then vertScaleFactor = maxScaleFactor
 
-        ' Nuovo fattore di scala da usare
-        ' Dei due fattori di scala devo prendere quello piu' piccolo, in modo che 
-        ' visibleArea.Width e visibleArea.Height staranno dentro all'area finale.
-        ' Questo sara' il fattore di scala che la PictureBox avrebbe se visualizzasse la visibleArea finale.
+        ' New scale factor to use
+        ' Of the two scale factors, I need to take the smaller one, so that
+        ' visibleArea.Width and visibleArea.Height will fit within the final area.
+        ' This will be the scale factor the PictureBox would have if it were displaying the final visibleArea.
         Dim newScaleFactor As Single = Math.Min(horzScaleFactor, vertScaleFactor)
         Debug.Assert(newScaleFactor <> 0, "Trovato fattore di scala non valido")
 
-        ' Check se il fattore di scala mi porterebbe ad una finestra troppo grande o troppo piccola per essere visualizzata
+        ' Check if the scaling factor would result in a window that is too large or too small to display
         If (newScaleFactor > minScaleFactor) Then newScaleFactor = minScaleFactor
         If (newScaleFactor < maxScaleFactor) Then newScaleFactor = maxScaleFactor
 
-        ' Dimensioni dell'area logica che la PictureBox visualizzerebbe con il nuovo fattore di scala
-        ' NOTA: Queste dimensioni comprendono l'ingombro degli eventuali righelli
+        ' Size of the logical area that the PictureBox would display with the new scaling factor 
+        ' NOTE: These dimensions include the space required for any rulers
         Dim newLogicalHeight As Single = clientHeight / newScaleFactor
         Dim newLogicalWidth As Single = clientWidth / newScaleFactor
 
-        ' Dimensione logica che i righelli avrebbero con il nuovo fattore di scala
+        ' Logical size that rulers would have with the new scale factor
         Dim rulersLogicalSize As Integer = rulersPhysicalSize / newScaleFactor
 
-        ' Offset orizzontale e verticale da sommare all'area visibile
+        ' Horizontal and vertical offset to add to the visible area
         Dim horizontalOffset As Single = 0
         Dim verticalOffset As Single = 0
 
-        ' Se richesto, calcolo gli offset necessari per il centraggio
-        ' NOTA: Faccio entrambi i centraggi, tanto nel caso standard uno dei due offset rimane a zero.
-        '       Invece mi servono entrambi i centraggi nel caso in cui tento uno zoom ad un oggetto piccolissimo, cioe' quando supero minScaleFactor
+        ' If requested, I calculate the offsets necessary for centering 
+        ' NOTE: I do both centering, so in the standard case one of the two offsets remains at zero. 
+        ' Instead I need both centerings in case I try to zoom to a very small object, i.e. when I exceed minScaleFactor
         If CenterWindow Then
-            ' NOTA: Questi offset NON comprendono l'ingombro degli eventuali righelli
+            ' NOTE: These offsets do NOT include the space required for any rulers
             verticalOffset = Math.Abs((newLogicalHeight - rulersLogicalSize - visibleArea.Height) / 2)
             horizontalOffset = Math.Abs((newLogicalWidth - rulersLogicalSize - visibleArea.Width) / 2)
         End If
 
-        ' Aggiorno la posizione dell'area da visualizzare 
+        'Update the position of the area to be displayed
         Dim logicalAreaToShow As New RECT()
         logicalAreaToShow.left = visibleArea.left - rulersLogicalSize - horizontalOffset
         logicalAreaToShow.top = visibleArea.top - rulersLogicalSize - verticalOffset
 
-        ' Aggiorno entrambe le dimensioni dell'area da visualizzare in modo da riflettere il nuovo fattore di scala
-        ' NOTA: Le dimensioni dell'area logica che visualizzo comprendono i righelli,
-        '       quindi non devo sottrarre l'ingombro dei righelli
-        ' NOTA: Qui va usata Width al posto di ClientRectangle.Width perche' altrimenti il centraggio
-        '       non avviene correttamente quando le scrollbar sono visualizzate
+        'I update both dimensions of the display area to reflect the New scale factor.
+        ' NOTE:   The dimensions Of the logical area I display include the rulers,
+        ' so I don't have to subtract the rulers' footprint.
+        ' NOTE:   Here, Width must be used instead Of ClientRectangle.Width, otherwise the centering
+        ' will Not occur correctly when the scrollbars are displayed.
         logicalAreaToShow.Width = Me.Width / newScaleFactor
         logicalAreaToShow.Height = Me.Height / newScaleFactor
         logicalAreaToShow.NormalizeRect()
 
-        ' Ritorno l'area logica da visualizzare 
+        ' Return the logical area to display
         Return logicalAreaToShow
     End Function
 
 #End Region
 
-#Region "Preview delle trasformazioni"
+#Region "Transformation Preview"
 
     ''' <summary>
     ''' Ritorna i fattori di scala da utilizzare in X e in Y per la preview della trasformazione
