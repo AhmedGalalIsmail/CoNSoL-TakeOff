@@ -695,29 +695,29 @@ classDef cancel fill:#5A3A3A,stroke:#C17E7E,stroke-dasharray:4,color:#F5C2C2
 14. Canvas redraws showing the permanent line
 
 ##### Alternative Flows
-###### **`A1` — Multi-segment polyline mode**
+###### **A1 — Multi-segment polyline mode**
 - After step 6, user continues clicking additional points
 - System stores each click as a new segment endpoint and extends the rubber-band from the last point
 - User double-clicks or presses **Enter** to commit all segments as a single polyline object
 - Flow continues from step 10
 
-###### **`A2` — Snap to grid / object snap active**
+###### **A2 — Snap to grid / object snap active**
 - At step 3 or step 8, cursor snaps to the nearest grid intersection or object snap point
 - Snapped coordinate is used in place of the raw cursor position
 - Flow continues normally
 
-###### **`A3` — Point outside canvas bounds (warn, don't block)**
+###### **A3 — Point outside canvas bounds (warn, don't block)**
 - At step 5, system detects Point1 is outside logical canvas bounds
 - System shows an out-of-bounds indicator but does not block the action
 - Flow continues from step 6 with the out-of-bounds coordinate
 
 ##### Exception Flows
-###### **`E1` — User presses Escape during drawing**
+###### **E1 — User presses Escape during drawing**
 - At any point after step 3 and before step 10
 - System cancels the operation, discards Start-Point, clears the rubber-band preview
 - System returns cursor to idle state; no object is created
 
-###### **`E2` — Active layer is locked**
+###### **E2 — Active layer is locked**
 - At step 11, system detects the active layer is locked
 - System shows inline warning: "Active layer is locked — object cannot be placed"
 - Object is not saved; system returns to drawing state for the user to select a different layer
