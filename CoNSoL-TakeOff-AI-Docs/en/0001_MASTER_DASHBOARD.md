@@ -6,8 +6,6 @@ doc_id: 001
 status: live
 last_updated: 2026-06
 ---
-> HTML Page: [[HTML Pages/0001_MASTER_DASHBOARD.html|Open HTML Page]]
-
 # 📊 CoNSoL-TakeOff — Master Dashboard
 
 > **Single source of truth for project status.**
