@@ -120,7 +120,7 @@ Partial Public Class CanvasControl
 				GR.DrawRectangle(Pens.Black, myDrawingRect)
 
 				' Disegno la stringa di testo, l'aggiunta di borderSize/2 serve a centrare il testo nel rettangolo di sfondo 
-				GR.DrawString(textToDraw, textFont, Brushes.Black, myDrawingRect.X + borderSize / 2, myDrawingRect.Y + borderSize / 2)
+				GR.DrawString(textToDraw, textFont, Brushes.Black, CSng(myDrawingRect.X + (borderSize / 2)), CSng(myDrawingRect.Y + borderSize / 2))
 			Catch ex As Exception
 				MsgBox(ex.Message)
 			End Try
