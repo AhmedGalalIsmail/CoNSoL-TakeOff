@@ -441,7 +441,7 @@ Namespace Forms
 
 		Private Sub WireEvents()
 			AddHandler _canvas.ElementSelected, AddressOf OnElementSelected
-			AddHandler _canvas.MouseMove, AddressOf OnCanvasMouseMove
+			'AddHandler _canvas.MouseMove, AddressOf OnCanvasMouseMove
 			AddHandler _layerGrid.SelectionChanged, AddressOf OnLayerSelectionChanged
 		End Sub
 
