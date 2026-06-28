@@ -24,30 +24,30 @@ Imports System.Runtime.InteropServices
 ' ---------------------------
 ' Specifies how a grid should be rendered
 Public Enum GridKind
-		None
-		Lines   ' Continuous grid lines
-		Points     ' Grid as points
-		Crosses    ' Grid as crosses
-	End Enum
+	None
+	Lines   ' Continuous grid lines
+	Points    ' Grid as points
+	Crosses    ' Grid as crosses
+End Enum
 
-	Public Enum AxisVisibility
-		None
-		Horizontal
-		Vertical
-		Both
-	End Enum
+Public Enum AxisVisibility
+	None
+	Horizontal
+	Vertical
+	Both
+End Enum
 
-	' Define Theme Mode Light/Dark
-	Public Enum ThemeMode
-		Light
-		Dark
-	End Enum
+' Define Theme Mode Light/Dark
+Public Enum ThemeMode
+	Light
+	Dark
+End Enum
 
-	' Define Coordinate Space Logical/Physical
-	Public Enum CoordinateSpace
-		Logical
-		Physical
-	End Enum
+' Define Coordinate Space Logical/Physical
+Public Enum CoordinateSpace
+	Logical
+	Physical
+End Enum
 
 ''' <summary>
 ''' available Tools for the interactive canvas.
