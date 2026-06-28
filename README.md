@@ -1,4 +1,4 @@
-?# CoNSoL-TakeOff
+# CoNSoL-TakeOff
 
 **CoNSoL-TakeOff** is a **visual-first construction take-off and estimation tool** that enables users to draw construction elements and automatically compute quantities, materials, and costs.
 
