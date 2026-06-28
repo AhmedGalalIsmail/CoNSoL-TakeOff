@@ -39,6 +39,10 @@ Public Class DistanceRuler
 	Private _lineWidth As Integer = 5
 	Private _compArray As Single() = New Single() {0.0, 0.16, 0.33, 0.66, 0.83, 1.0}
 
+	Private myDefaultBackgroundColor As Color = Color.WhiteSmoke
+
+
+
 	Private myPictureBoxControl As CanvasControl
 	Public Property PictureBoxControl() As CanvasControl
 		Get
