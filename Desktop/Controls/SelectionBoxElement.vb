@@ -1,11 +1,9 @@
 Imports System.Drawing.Drawing2D
 
-
 Partial Public Class CanvasControl
-
 	Public Class SelectionBoxElement
 
-#Region "Variabili private"
+#Region "Private variables"
 		Public TopLeftCorner As System.Drawing.Point = System.Drawing.Point.Empty
 		Public BottomRightCorner As System.Drawing.Point = RECT.InvalidPoint
 		Public KeepAspectRatio As Boolean = False
@@ -15,18 +13,17 @@ Partial Public Class CanvasControl
 		Private Shared myBoxBrush As New SolidBrush(Color.FromArgb(40, Color.CadetBlue))
 #End Region
 
-#Region "Proprieta'"
+#Region "Property"
 		Public ReadOnly Property IsInvalid() As Boolean
 			Get
 				Return BottomRightCorner = RECT.InvalidPoint OrElse TopLeftCorner = RECT.InvalidPoint
 			End Get
 		End Property
-		''' <summary>
-		''' Ritorna la dimensione dell'area che va selezionata nel caso di selezione tramite singolo click.
+		''' <summary>Returns the size of the area to be selected in the case of single-click selection.
 		''' </summary>
 		Private ReadOnly Property PointSelectAreaSize() As Integer
 			Get
-				' Calcolo l'area da tenere attorno al punto, tengo 15 pixel in tutto
+				' I calculate the area to keep around the point, I keep 15 pixels in total
 				Return LinkedPictureBox.GraphicInfo.ToLogicalDimension(15.0!)
 			End Get
 		End Property
@@ -40,22 +37,22 @@ Partial Public Class CanvasControl
 		End Property
 		Public ReadOnly Property IsCreatedFromSinglePoint() As Boolean
 			Get
-				' Check se il rettangolo ha entrambe le coordinate valide
+				' Check if the rectangle has both valid coordinates
 				If IsInvalid Then
 					Return False
 				End If
-				' Check se le coordinate sono uguali
+				' Check if the coordinates are the same
 				If (TopLeftCorner = BottomRightCorner) Then
 					Return True
 				End If
-				' Se il "rettangolo da singolo click" contiene il secondo punto del box,
-				' allora il box di selezione e' stato creato tramite un singolo click
+				'If the Then "single-click rectangle" contains the second point Of the box,
+				' then the selection box was created by a single click.
 				Return SingleClickRectangle.Contains(BottomRightCorner)
 			End Get
 		End Property
 #End Region
 
-#Region "Operatori"
+#Region "Operators"
 		Public Shared Widening Operator CType(ByVal box As SelectionBoxElement) As RECT
 			If box.IsInvalid Then
 				Return New RECT()
@@ -68,14 +65,14 @@ Partial Public Class CanvasControl
 		End Operator
 #End Region
 
-#Region "Costruttori"
+#Region "Constructors"
 		Public Sub New(ByVal picBox As CanvasControl)
 			LinkedPictureBox = picBox
 		End Sub
 
 #End Region
 
-#Region "Funzioni private"
+#Region "Private Functions"
 		Private Function RectFromPoints(ByVal FirstCorner As System.Drawing.Point, ByVal SecondCorner As System.Drawing.Point) As RECT
 			Try
 				If FirstCorner = RECT.InvalidPoint OrElse SecondCorner = RECT.InvalidPoint Then
@@ -105,7 +102,7 @@ Partial Public Class CanvasControl
 
 #End Region
 
-#Region "Funzioni pubbliche"
+#Region "Public Functions"
 		Public Sub Reset()
 			TopLeftCorner = RECT.InvalidPoint
 			BottomRightCorner = RECT.InvalidPoint
@@ -116,20 +113,20 @@ Partial Public Class CanvasControl
 				Exit Sub
 			End If
 
-			' Trovo il rettangolo da invalidare
+			' I find the rectangle to invalidate
 			Dim r As RECT = Me
 
-			' Se serve, converto in cordinate fisiche
+			' If necessary, convert to physical coordinates
 			If usePhysicalCoords Then
 				r = LinkedPictureBox.GraphicInfo.ToPhysicalRect(r)
 			End If
 
-			' Check se il rettangolo ottenuto e' valido
+			' Check if the resulting rectangle is valid
 			If r.IsZeroSized Then
 				Exit Sub
 			End If
 
-			' Disegno il rettangolo
+			' Draw the rectangle
 			If Me.IsCreatedFromSinglePoint Then
 				GR.DrawRectangle(myBoxPenSingleClick, r)
 			Else
@@ -139,14 +136,13 @@ Partial Public Class CanvasControl
 		End Sub
 		Public Sub Invalidate()
 			Dim r As RECT = Me
-			' NOTA: Alla Invalidate() vanno passate coordinate fisiche, non logiche
+			' NOTE: Invalidate() must be passed physical coordinates, not logical coordinates.
 			r = LinkedPictureBox.GraphicInfo.ToPhysicalRect(r)
 			r.Inflate(1, 1)
-			' Effettuo il ridisegno della PictureBox associata
+			' Redraw the associated PictureBox
 			LinkedPictureBox.Invalidate(r)
 		End Sub
 #End Region
 
 	End Class
-
 End Class
