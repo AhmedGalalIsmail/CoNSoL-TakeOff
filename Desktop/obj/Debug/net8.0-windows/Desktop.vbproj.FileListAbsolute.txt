@@ -76,3 +76,5 @@ E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Forms\M
 E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Forms\MaterialCrudFormWPF.baml
 E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\WPFMain.baml
 E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Desktop.g.resources
+E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Controls\ZoomButton.baml
+E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Controls\ZoomButton.g.vb
