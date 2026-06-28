@@ -1520,7 +1520,7 @@ If r.IsZeroSized Then Return
 - Prefer `PointF` and floating conversions for high DPI/subpixel accuracy where appropriate.
 - Keep paint order stable: Background -> Grid -> Image overlays -> Rulers -> Selection/Measurement overlays -> Cross cursor -> Coordinates box.
 
-If you want, I can generate small focused code snippets or an API table for any one of the numbered items above.  
+<!--If you want, I can generate small focused code snippets or an API table for any one of the numbered items above.-->
 
 ---
 
