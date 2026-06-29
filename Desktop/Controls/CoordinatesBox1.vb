@@ -1,7 +1,5 @@
 Partial Public Class CanvasControl
-
 	Friend Class CoordinatesBox
-
 #Region "Public Fields and Proprties"
 		Private myPictureBoxControl As CanvasControl
 		Private myDrawingRect As Rectangle = Rectangle.Empty
@@ -45,15 +43,12 @@ Partial Public Class CanvasControl
 			End Get
 		End Property
 #End Region
-
 #Region "Constractors"
 		Public Sub New(ByVal pictureBox As CanvasControl)
 			myPictureBoxControl = pictureBox
 		End Sub
 #End Region
-
 #Region "Public Functions"
-
 		Public Sub DrawCoordinateInfo(ByVal GR As Graphics, ByVal CoordToDraw As Point, Optional ByVal PixelCoordMode As Boolean = False)
 			Try
 				If myPictureBoxControl Is Nothing Then
@@ -83,31 +78,31 @@ Partial Public Class CanvasControl
 					If UnitOfMeasure <> MeasureSystem.enUniMis.micron Then
 						textToDraw = "X=" + xValue.ToString("0000.00") + ", Y=" + yValue.ToString("0000.00") + UnitOfMeasureString
 					Else
-						' Se l'uita' di misura e' micron, non ho cifre dopo la virgola
+						' If the unit of measurement is macron, then no digits after the decimal point
 						textToDraw = "X=" + xValue.ToString("0000") + ", Y=" + yValue.ToString("0000") + UnitOfMeasureString
 					End If
 				End If
 
 				Dim textBox As SizeF = GR.MeasureString(textToDraw, textFont)
 
-				' Se il box cambia dimensioni, invalido la picturebox, cosi' sembra sempre che sia pulito
-				' Serve nel caso in cui:
-				'  - si passa da "X=100,Y=100" a "X=99,Y=99", per cui rimarrebbe una parte del box precedente "scoperta"
-				'  - si cambia unita' di misura a runtime, quindi il box viene ridimensionato
+				' If the box changes size, disable the picturebox, so it always looks clean.
+				' This is useful when:
+				'	- you go from "X=100,Y=100" to "X=99,Y=99", which would leave a part of the previous box "uncovered."
+				'	- you change the measurement unit at runtime, so the box is resized.
 				Static oldTextBox As SizeF = textBox
 				If oldTextBox <> textBox Then
-					' Aggiorno le dimensioni precedenti del box
+					' Updating the previous dimensions of the box
 					oldTextBox = textBox
 				End If
 
-				' Aggiorno le coordinate del rettangolo di sfondo
-				' NOTA: Uso il ClientRectangle.Width al posto di Width perche' cosi' tengo conto delle eventuali scrollbar.
+				' Update the coordinates of the background rectangle
+				' NOTE: Use ClientRectangle.Width instead of Width because this way I can account for any scrollbars.
 				myDrawingRect.X = myPictureBoxControl.ClientRectangle.Width - textBox.Width - borderSize
 				myDrawingRect.Y = myPictureBoxControl.ClientRectangle.Height - textBox.Height - borderSize
 				myDrawingRect.Width = textBox.Width + borderSize
 				myDrawingRect.Height = textBox.Height + borderSize
 
-				' Se le scrollbar sono visibili, devo fare in modo che sia visibile anche il bordo inferiore/destro del rettangolo
+				' If the scrollbars are visible, it needs to make sure the bottom/right edge of the rectangle is also visible
 				If myPictureBoxControl.HScroll Then
 					myDrawingRect.Height -= 1
 				End If
@@ -115,11 +110,11 @@ Partial Public Class CanvasControl
 					myDrawingRect.Width -= 1
 				End If
 
-				' Disegno il rettangolo di sfondo
+				' Draw the background rectangle
 				GR.FillRectangle(Brushes.White, myDrawingRect)
 				GR.DrawRectangle(Pens.Black, myDrawingRect)
 
-				' Disegno la stringa di testo, l'aggiunta di borderSize/2 serve a centrare il testo nel rettangolo di sfondo 
+				' Draw the text string, adding borderSize/2 is used to center the text in the background rectangle
 				GR.DrawString(textToDraw, textFont, Brushes.Black, CSng(myDrawingRect.X + (borderSize / 2)), CSng(myDrawingRect.Y + borderSize / 2))
 			Catch ex As Exception
 				MsgBox(ex.Message)
