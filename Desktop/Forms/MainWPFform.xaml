@@ -25,7 +25,7 @@
             <Grid Margin="12,0,8,0">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <Border Width="28" Height="18" Background="#E07B39" CornerRadius="2" Margin="0,0,10,0">
-                        <TextBlock Text="CoNSoL" Foreground="White" FontSize="9" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <TextBlock Text="CoNSoL" Foreground="White" FontSize="9" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Width="63" />
                     </Border>
                     <TextBlock Text="CoNSoL-TakeOff" Foreground="#D9E0EE" FontSize="13" FontWeight="SemiBold" VerticalAlignment="Center" />
                 </StackPanel>
@@ -154,9 +154,9 @@
                                 <Rectangle Height="1.5" Fill="#E07B39" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
                                 <Rectangle Width="1.5" Fill="#E07B39" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
                                 <Ellipse Width="8" Height="8" Fill="#E07B39" Stroke="#FFFFFF" StrokeThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                <TextBlock Text="0.0" Foreground="#E07B39" FontWeight="SemiBold" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8,8,0,0" />
+                                <TextBlock Text="0.0" Foreground="#E07B39" FontWeight="SemiBold" FontSize="11" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="525,258,0,0" />
                                 <Rectangle Margin="180,90,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="280" Height="18" Fill="#555" Stroke="#333" StrokeThickness="2" />
-                                <Rectangle Margin="180,170,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="180" Fill="#7F8C8D" Stroke="#2B2E34" StrokeThickness="2" />
+                                <Rectangle Margin="220,126,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="193" Fill="#7F8C8D" Stroke="#2B2E34" StrokeThickness="2" />
                             </Grid>
 
                             <Border HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,32,20,0" Width="190" Padding="10" Background="#25272C" BorderBrush="#111" BorderThickness="1">
@@ -178,21 +178,58 @@
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <StackPanel Margin="12">
                                 <TextBlock Text="Object" FontWeight="Bold" Margin="0,0,0,8" />
-                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6"><TextBlock Width="90" Text="Type" Foreground="#AAB2BD" /><TextBlock Text="Rectangle" /></StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6"><TextBlock Width="90" Text="ID" Foreground="#AAB2BD" /><TextBlock Text="a3f9...d2" FontSize="11" Foreground="#9097A3" /></StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6"><TextBlock Width="90" Text="Layer" Foreground="#AAB2BD" /><ComboBox Width="180"><ComboBoxItem Content="Walls" IsSelected="True" /><ComboBoxItem Content="Slabs" /><ComboBoxItem Content="Doors" /></ComboBox></StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                    <TextBlock Width="90" Text="Type" Foreground="#AAB2BD" />
+                                    <TextBlock Text="Rectangle" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                    <TextBlock Width="90" Text="ID" Foreground="#AAB2BD" />
+                                    <TextBlock Text="a3f9...d2" FontSize="11" Foreground="#9097A3" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                    <TextBlock Width="90" Text="Layer" Foreground="#AAB2BD" />
+                                    <ComboBox Width="180">
+                                        <ComboBoxItem Content="Walls" IsSelected="True" />
+                                        <ComboBoxItem Content="Slabs" />
+                                        <ComboBoxItem Content="Doors" />
+                                    </ComboBox>
+                                </StackPanel>
                                 <Separator Margin="0,10" />
                                 <TextBlock Text="Geometry" FontWeight="Bold" Margin="0,0,0,8" />
-                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6"><TextBlock Width="90" Text="X" Foreground="#AAB2BD" /><TextBlock Text="2.25 m" /></StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6"><TextBlock Width="90" Text="Y" Foreground="#AAB2BD" /><TextBlock Text="6.05 m" /></StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6"><TextBlock Width="90" Text="Width" Foreground="#AAB2BD" /><TextBlock Text="1.50 m" /></StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6"><TextBlock Width="90" Text="Height" Foreground="#AAB2BD" /><TextBlock Text="0.45 m" /></StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                    <TextBlock Width="90" Text="X" Foreground="#AAB2BD" />
+                                    <TextBlock Text="2.25 m" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                    <TextBlock Width="90" Text="Y" Foreground="#AAB2BD" />
+                                    <TextBlock Text="6.05 m" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                    <TextBlock Width="90" Text="Width" Foreground="#AAB2BD" />
+                                    <TextBlock Text="1.50 m" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                    <TextBlock Width="90" Text="Height" Foreground="#AAB2BD" />
+                                    <TextBlock Text="0.45 m" />
+                                </StackPanel>
                                 <Separator Margin="0,10" />
                                 <TextBlock Text="Business" FontWeight="Bold" Margin="0,0,0,8" />
-                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6"><TextBlock Width="90" Text="Block" Foreground="#AAB2BD" /><TextBlock Text="DOOR-01" /></StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6"><TextBlock Width="90" Text="Dim Mode" Foreground="#AAB2BD" /><TextBlock Text="D0 ? Count" /></StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6"><TextBlock Width="90" Text="Qty" Foreground="#AAB2BD" /><TextBlock Text="1" /></StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6"><TextBlock Width="90" Text="Unit Price" Foreground="#AAB2BD" /><TextBlock Text="450.00" /></StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                    <TextBlock Width="90" Text="Block" Foreground="#AAB2BD" />
+                                    <TextBlock Text="DOOR-01" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                    <TextBlock Width="90" Text="Dim Mode" Foreground="#AAB2BD" />
+                                    <TextBlock Text="D0 ? Count" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                    <TextBlock Width="90" Text="Qty" Foreground="#AAB2BD" />
+                                    <TextBlock Text="1" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                    <TextBlock Width="90" Text="Unit Price" Foreground="#AAB2BD" />
+                                    <TextBlock Text="450.00" />
+                                </StackPanel>
                             </StackPanel>
                         </ScrollViewer>
                     </TabItem>
@@ -238,19 +275,33 @@
         </Border>
 
         <StatusBar Grid.Row="5" Background="#25272C" Foreground="#D9E0EE">
-            <StatusBarItem><TextBlock x:Name="StatusMessageText" Text="Ready" /></StatusBarItem>
+            <StatusBarItem>
+                <TextBlock x:Name="StatusMessageText" Text="Ready" />
+            </StatusBarItem>
             <Separator />
-            <StatusBarItem><TextBlock x:Name="StatusSelectionText" Text="Selection: none" /></StatusBarItem>
+            <StatusBarItem>
+                <TextBlock x:Name="StatusSelectionText" Text="Selection: none" />
+            </StatusBarItem>
             <Separator />
-            <StatusBarItem><TextBlock x:Name="StatusLayerText" Text="Layer: Walls" /></StatusBarItem>
+            <StatusBarItem>
+                <TextBlock x:Name="StatusLayerText" Text="Layer: Walls" />
+            </StatusBarItem>
             <Separator />
-            <StatusBarItem><TextBlock x:Name="StatusToolText" Text="Tool: Select" /></StatusBarItem>
+            <StatusBarItem>
+                <TextBlock x:Name="StatusToolText" Text="Tool: Select" />
+            </StatusBarItem>
             <Separator />
-            <StatusBarItem><TextBlock x:Name="StatusCoordsText" Text="Cursor: --, --" /></StatusBarItem>
+            <StatusBarItem>
+                <TextBlock x:Name="StatusCoordsText" Text="Cursor: --, --" />
+            </StatusBarItem>
             <Separator />
-            <StatusBarItem><TextBlock x:Name="StatusZoomText" Text="Zoom: 100%" /></StatusBarItem>
+            <StatusBarItem>
+                <TextBlock x:Name="StatusZoomText" Text="Zoom: 100%" />
+            </StatusBarItem>
             <Separator />
-            <StatusBarItem><TextBlock x:Name="StatusGridText" Text="Grid: On | Snap: On" /></StatusBarItem>
+            <StatusBarItem>
+                <TextBlock x:Name="StatusGridText" Text="Grid: On | Snap: On" />
+            </StatusBarItem>
         </StatusBar>
     </Grid>
 </Window>
