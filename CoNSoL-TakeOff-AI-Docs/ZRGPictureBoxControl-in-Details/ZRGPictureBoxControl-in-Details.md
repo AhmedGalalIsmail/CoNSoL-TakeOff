@@ -885,7 +885,7 @@ flowchart LR
 
 ---
 
-# 9. BackImageGraphics — Documentation
+# 9. BackImageGraphics (`cBackImageGraphics`) — Documentation
 
 This document describes `cBackImageGraphics` and the `enBitmapOriginPosition` enum (file: `BackImageGraphics.vb`). `cBackImageGraphics` provides a tiny helper to render a background bitmap into the picture-box logical space using a configurable pixel-to-logical size.
 
@@ -1521,4 +1521,3 @@ If r.IsZeroSized Then Return
 If you want, I can generate small focused code snippets or an API table for any one of the numbered items above.  
 
 ---
-

@@ -117,7 +117,7 @@
 	
 ---
 
-# 1. ZRGPictureBoxControl — Detailed Draft
+# 1. ZRGPictureBoxControl — Documentation
 
 This document describes the `ZRGPictureBoxControl` class (primary file: `ZRGPictureBoxControl.vb`) in detail: structures, actions, properties, methods, nested helpers, workflows, and relationships with other classes/files in the project.
 
