@@ -1,6 +1,6 @@
 ' 
-Imports Desktop.CanvasControl
-Public Class cZoomButton2
+Imports Desktop.CanvasControlWPF
+Public Class cZoomButtonWPF
     Private WithEvents myPictureBox As CanvasControl 'PictureBoxControl
     Public Property LinkedPictureBox As CanvasControl 'PictureBoxControl
         Get
@@ -16,7 +16,8 @@ Public Class cZoomButton2
     Private Sub RefreshDisplayButtonState()
         Try
             If LinkedPictureBox IsNot Nothing Then
-                btViewRulers.Checked = LinkedPictureBox.ShowRulers
+                Dim btViewRulers1 As ToolStripMenuItem = btViewRulers
+                btViewRulers1.Checked = LinkedPictureBox.ShowRulers
                 btViewScrollBars.Checked = LinkedPictureBox.ShowScrollbars
                 btViewGrid.Checked = LinkedPictureBox.ShowGrid
                 tbPixelSizeMic.Text = CStr(LinkedPictureBox.BackgroundImagePixelSize_Mic)
