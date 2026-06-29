@@ -1,15 +1,12 @@
 Imports System.Drawing.Drawing2D
 Imports System.Collections.Generic
 Partial Public Class CanvasControl
-
 	Private Class Rulers
-
 #Region "Costanti"
 		Const RulerSize As Integer = 20
 		Private Const FreeSpaceFactor As Double = 1.75
 		Private Const RulerColorAlpha As Integer = 130
 #End Region
-
 #Region "Tipi di dati privati"
 		Private Class DrawNumberBitmap
 
@@ -242,7 +239,6 @@ Partial Public Class CanvasControl
 		End Class
 
 #End Region
-
 #Region "Variabili private"
 
 		Private WithEvents myPictureBoxControl As CanvasControl
@@ -326,7 +322,6 @@ Partial Public Class CanvasControl
 #End Region
 
 #End Region
-
 #Region "Proprieta'"
 
 		''' <summary>
@@ -487,7 +482,6 @@ Partial Public Class CanvasControl
 		End Property
 
 #End Region
-
 #Region "Costruttori"
 
 		''' <summary>
@@ -510,7 +504,6 @@ Partial Public Class CanvasControl
 		End Sub
 
 #End Region
-
 #Region "Funzioni private"
 		Private Function LoadImageRes(ByVal imageName As String) As Image
 			Try
@@ -804,7 +797,6 @@ Partial Public Class CanvasControl
 		End Sub
 
 #End Region
-
 #Region "Gestione degli eventi della PictureBox"
 
 		''' <summary>
@@ -817,7 +809,6 @@ Partial Public Class CanvasControl
 		End Sub
 
 #End Region
-
 #Region "Funzioni pubbliche"
 
 		''' <summary>
@@ -956,7 +947,5 @@ Partial Public Class CanvasControl
 		End Function
 
 #End Region
-
 	End Class
-
 End Class
