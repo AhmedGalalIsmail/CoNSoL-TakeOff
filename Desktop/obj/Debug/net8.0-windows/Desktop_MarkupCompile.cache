@@ -10,11 +10,11 @@ none
 false
 ;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 
-4621829962
+8-1689271324
 
-27766777695
+43-1593510247
 210-827130666
-Controls\ZoomButton.xaml;Forms\MainWPFform.xaml;Forms\MaterialCrudFormWPF.xaml;WPFMain.xaml;
+Controls\TakeOff_WPF\CanvasControlWPF.xaml;Controls\TakeOff_WPF\CoordinatesBoxWPF.xaml;Controls\TakeOff_WPF\RulersWPF.xaml;Controls\TakeOff_WPF\SelectionBoxElementWPF.xaml;Controls\TakeOff_WPF\ZoomButton.xaml;Forms\MainWPFform.xaml;Forms\MaterialCrudFormWPF.xaml;WPFMain.xaml;
 
-False
+True
 

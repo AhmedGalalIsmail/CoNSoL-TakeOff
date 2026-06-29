@@ -78,3 +78,9 @@ E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\WPFMain
 E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Desktop.g.resources
 E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Controls\ZoomButton.baml
 E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Controls\ZoomButton.g.vb
+E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Controls\TakeOff_WPF\ZoomButton.baml
+E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Controls\TakeOff_WPF\CanvasControlWPF.g.vb
+E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Controls\TakeOff_WPF\CoordinatesBoxWPF.g.vb
+E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Controls\TakeOff_WPF\RulersWPF.g.vb
+E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Controls\TakeOff_WPF\SelectionBoxElementWPF.g.vb
+E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Desktop\obj\Debug\net8.0-windows\Controls\TakeOff_WPF\ZoomButton.g.vb
