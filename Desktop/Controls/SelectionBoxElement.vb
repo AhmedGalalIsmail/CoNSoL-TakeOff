@@ -2,7 +2,6 @@ Imports System.Drawing.Drawing2D
 
 Partial Public Class CanvasControl
 	Public Class SelectionBoxElement
-
 #Region "Private variables"
 		Public TopLeftCorner As System.Drawing.Point = System.Drawing.Point.Empty
 		Public BottomRightCorner As System.Drawing.Point = RECT.InvalidPoint
@@ -12,7 +11,6 @@ Partial Public Class CanvasControl
 		Private Shared myBoxPenSingleClick As New Pen(Color.FromArgb(200, Color.Red))
 		Private Shared myBoxBrush As New SolidBrush(Color.FromArgb(40, Color.CadetBlue))
 #End Region
-
 #Region "Property"
 		Public ReadOnly Property IsInvalid() As Boolean
 			Get
@@ -51,7 +49,6 @@ Partial Public Class CanvasControl
 			End Get
 		End Property
 #End Region
-
 #Region "Operators"
 		Public Shared Widening Operator CType(ByVal box As SelectionBoxElement) As RECT
 			If box.IsInvalid Then
@@ -64,14 +61,12 @@ Partial Public Class CanvasControl
 			End If
 		End Operator
 #End Region
-
 #Region "Constructors"
 		Public Sub New(ByVal picBox As CanvasControl)
 			LinkedPictureBox = picBox
 		End Sub
 
 #End Region
-
 #Region "Private Functions"
 		Private Function RectFromPoints(ByVal FirstCorner As System.Drawing.Point, ByVal SecondCorner As System.Drawing.Point) As RECT
 			Try
@@ -101,7 +96,6 @@ Partial Public Class CanvasControl
 		End Function
 
 #End Region
-
 #Region "Public Functions"
 		Public Sub Reset()
 			TopLeftCorner = RECT.InvalidPoint
@@ -143,6 +137,5 @@ Partial Public Class CanvasControl
 			LinkedPictureBox.Invalidate(r)
 		End Sub
 #End Region
-
 	End Class
 End Class
