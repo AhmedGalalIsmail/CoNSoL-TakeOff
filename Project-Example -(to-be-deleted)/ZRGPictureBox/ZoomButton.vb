@@ -10,7 +10,6 @@ Public Class cZoomButton
             RefreshDisplayButtonState()
         End Set
     End Property
-
 #Region "Events"
     Private Sub RefreshDisplayButtonState()
         Try
@@ -155,7 +154,6 @@ Public Class cZoomButton
     End Sub
 
 #End Region
-
     Private Sub tbPixelSizeMic_Click(sender As Object, e As EventArgs) Handles tbPixelSizeMic.Click
         If LinkedPictureBox IsNot Nothing Then
             Dim newPixelWidth As Integer = LinkedPictureBox.BackgroundImagePixelSize_Mic

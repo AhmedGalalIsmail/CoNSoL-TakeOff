@@ -1,14 +1,14 @@
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class ZRGPictureBoxControl
     Inherits System.Windows.Forms.UserControl
 
     'Richiesto da Progettazione Windows Form
     Private components As System.ComponentModel.IContainer
 
-    'NOTA: la procedura che segue Ã¨ richiesta da Progettazione Windows Form
-    'PuÃ² essere modificata in Progettazione Windows Form.  
+    'NOTA: la procedura che segue è richiesta da Progettazione Windows Form
+    'Può essere modificata in Progettazione Windows Form.  
     'Non modificarla nell'editor del codice.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.SuspendLayout()
         '

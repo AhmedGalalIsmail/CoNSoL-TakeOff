@@ -16,12 +16,10 @@ Partial Public Class ZRGPictureBoxControl
     Friend Const PanFactorNoShift As Single = 100.0! / 3.0!
     Friend Const PanFactorWithShift As Single = 10.0!
 #End Region
-
 #Region "Size"
     Public Shared ReadOnly DefaultMinLogicalWindowSize As Size = New Size(2000, 2000)
     Public Shared ReadOnly DefaultMaxLogicalWindowSize As Size = New Size(100000000, 100000000)
 #End Region
-
 #Region "Constants"
     ''' <summary>
     ''' Default measurement unit used for displaying coordinates and rulers
@@ -29,7 +27,6 @@ Partial Public Class ZRGPictureBoxControl
     Public Const DefaultUnitOfMeasure As MeasureSystem.enUniMis = MeasureSystem.enUniMis.mm
 
 #End Region
-
 #Region "Events"
     Public Shadows Event MouseClick(ByVal sender As ZRGPictureBoxControl, ByVal e As System.Windows.Forms.MouseEventArgs, ByVal LogicalCoord As Point, ByVal CurrentClickAction As enClickAction)
     Public Shadows Event MouseMove(ByVal sender As ZRGPictureBoxControl, ByVal e As System.Windows.Forms.MouseEventArgs, ByVal LogicalCoord As Point, ByVal CurrentClickAction As enClickAction)
@@ -48,7 +45,6 @@ Partial Public Class ZRGPictureBoxControl
     Public Event OnMeasureUnitChanged(ByVal unit As MeasureSystem.enUniMis)
     Public Event OnClickActionChanged(ByVal oldClickAction As enClickAction, ByVal newClickAction As enClickAction)
 #End Region
-
 #Region "Private Variables"
     Private myGraphicInfo As New ConversionInfo()
     Private myClickAction As enClickAction = enClickAction.Zoom
@@ -168,7 +164,6 @@ Partial Public Class ZRGPictureBoxControl
 #End Region
 
 #End Region
-
 #Region "Proprities'"
 
 #Region "Origin, coordinates, dimensions, etc."
@@ -803,7 +798,6 @@ Partial Public Class ZRGPictureBoxControl
 #End Region
 
 #End Region
-
 #Region "Costruttori"
 
     Public Sub New(ByVal visible As Boolean)
@@ -825,7 +819,6 @@ Partial Public Class ZRGPictureBoxControl
     End Sub
 
 #End Region
-
 #Region "Event Helper Functions"
     ''' <summary>
     ''' Function called during MouseMove(), allows you to customize the cursor in derived classes.
@@ -924,7 +917,6 @@ Partial Public Class ZRGPictureBoxControl
     End Function
 
 #End Region
-
 #Region "Event management"
 
     Protected Overrides Sub OnMouseDown(ByVal e As System.Windows.Forms.MouseEventArgs)
@@ -1114,7 +1106,6 @@ Partial Public Class ZRGPictureBoxControl
 #End Region
 
 #End Region
-
 #Region "Scrollbar Management"
 
     ''' <summary>
@@ -1203,7 +1194,6 @@ Partial Public Class ZRGPictureBoxControl
     End Sub
 
 #End Region
-
 #Region "Routine for Redraw()"
 
     Public Sub Redraw()
@@ -1398,7 +1388,6 @@ Partial Public Class ZRGPictureBoxControl
         End Try
     End Sub
 #End Region
-
 #Region "Refresh() routine"
 
     ''' <summary>Copies myBackbufferBitmap To the PictureBox image (does Not account For scale changes)<br></br>
@@ -1454,7 +1443,6 @@ Partial Public Class ZRGPictureBoxControl
     End Sub
 
 #End Region
-
 #Region "Routine per la OnPaint()"
 
     ''' <summary>
@@ -1519,7 +1507,6 @@ Partial Public Class ZRGPictureBoxControl
     End Sub
 
 #End Region
-
 #Region "Override della classe base"
     Protected Overrides Sub OnPaintBackground(ByVal e As PaintEventArgs)
         ' Don't allow the background to paint
@@ -1814,7 +1801,6 @@ Partial Public Class ZRGPictureBoxControl
     End Sub
 
 #End Region
-
 #Region "Zoom Management"
 
 #Region "Varie"
@@ -2033,7 +2019,6 @@ Partial Public Class ZRGPictureBoxControl
     End Property
 
 #End Region
-
 #Region "Gestione del Pan"
     Public Overridable Sub PanHome()
     End Sub
@@ -2113,7 +2098,6 @@ Partial Public Class ZRGPictureBoxControl
     End Sub
 
 #End Region
-
 #Region "Gestione input da tastiera"
 
     ''' <summary>
@@ -2226,7 +2210,6 @@ Partial Public Class ZRGPictureBoxControl
 
 
 #End Region
-
 #Region "Routine to calculate/display logical windows"
 
     ''' <summary>
@@ -2387,7 +2370,6 @@ Partial Public Class ZRGPictureBoxControl
     End Function
 
 #End Region
-
 #Region "Transformation Preview"
 
     ''' <summary>
@@ -2438,7 +2420,6 @@ Partial Public Class ZRGPictureBoxControl
         End Try
     End Function
 #End Region
-
 #Region "Inizializzazione e finalizzazione"
 
     ''' <summary>
@@ -2546,7 +2527,6 @@ Partial Public Class ZRGPictureBoxControl
 #End Region
 
 #End Region
-
 #Region "Graphics Scaling Routine"
 
     ''' <summary>Returns a graphics object derived from the bitmap passed to it.<br></br>
@@ -2615,8 +2595,6 @@ Partial Public Class ZRGPictureBoxControl
     End Function
 
 #End Region
-
-
 #Region "Metodi"
     Private Function MyDoubleClick() As Boolean
         Static myTimer As Long
@@ -2628,5 +2606,4 @@ Partial Public Class ZRGPictureBoxControl
     End Function
 
 #End Region
-
 End Class

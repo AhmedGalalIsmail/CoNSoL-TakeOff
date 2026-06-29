@@ -1,10 +1,7 @@
+Imports System.Drawing
 Imports System.Drawing.Drawing2D
-
-
 Partial Public Class ZRGPictureBoxControl
-
     Public Class SelectionBoxElement
-
 #Region "Variabili private"
         Public TopLeftCorner As System.Drawing.Point = System.Drawing.Point.Empty
         Public BottomRightCorner As System.Drawing.Point = RECT.InvalidPoint
@@ -14,7 +11,6 @@ Partial Public Class ZRGPictureBoxControl
         Private Shared myBoxPenSingleClick As New Pen(Color.FromArgb(200, Color.Red))
         Private Shared myBoxBrush As New SolidBrush(Color.FromArgb(40, Color.CadetBlue))
 #End Region
-
 #Region "Proprieta'"
         Public ReadOnly Property IsInvalid() As Boolean
             Get
@@ -54,7 +50,6 @@ Partial Public Class ZRGPictureBoxControl
             End Get
         End Property
 #End Region
-
 #Region "Operatori"
         Public Shared Widening Operator CType(ByVal box As SelectionBoxElement) As RECT
             If box.IsInvalid Then
@@ -67,14 +62,12 @@ Partial Public Class ZRGPictureBoxControl
             End If
         End Operator
 #End Region
-
 #Region "Costruttori"
         Public Sub New(ByVal picBox As ZRGPictureBoxControl)
             LinkedPictureBox = picBox
         End Sub
 
 #End Region
-
 #Region "Funzioni private"
         Private Function RectFromPoints(ByVal FirstCorner As System.Drawing.Point, ByVal SecondCorner As System.Drawing.Point) As RECT
             Try
@@ -104,7 +97,6 @@ Partial Public Class ZRGPictureBoxControl
         End Function
 
 #End Region
-
 #Region "Funzioni pubbliche"
         Public Sub Reset()
             TopLeftCorner = RECT.InvalidPoint
@@ -146,7 +138,5 @@ Partial Public Class ZRGPictureBoxControl
             LinkedPictureBox.Invalidate(r)
         End Sub
 #End Region
-
     End Class
-
 End Class
