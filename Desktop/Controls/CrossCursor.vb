@@ -39,7 +39,6 @@ Partial Public Class CanvasControl
 		''' Box in which the coordinates are drawn, only the part of the cursor that does not fall on it is drawn</summary>
 		Private myCoordinatesBox As CoordinatesBox = Nothing
 #End Region
-
 #Region "Properties'"
 		''' <summary>
 		''' PictureBoxControl associated with this class instance</summary>
@@ -84,7 +83,6 @@ Partial Public Class CanvasControl
 			End Set
 		End Property
 #End Region
-
 #Region "Constractors"
 		''' <summary>
 		''' Constructor given a control on which to draw the cursor</summary>
@@ -92,7 +90,6 @@ Partial Public Class CanvasControl
 			myPictureBox = picPictureBox
 		End Sub
 #End Region
-
 #Region "Public Functions"
 		''' <summary>
 		''' Delete the position where the cross is drawn.</summary>
