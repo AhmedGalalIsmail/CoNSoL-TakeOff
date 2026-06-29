@@ -34,7 +34,6 @@ Imports Domain.Entities
 Public Class CanvasControl
     Inherits UserControl
 #Region "Layout and shape management"
-
 #Region "Fields and Properties"
     Private ReadOnly _shapes As New List(Of ShapeBase)()
     Private _selected As ShapeBase = Nothing
@@ -831,7 +830,6 @@ Public Class CanvasControl
 #End Region
 
 #End Region
-
 #Region "Events"
     Public Shadows Event MouseClick(ByVal sender As CanvasControl, ByVal e As System.Windows.Forms.MouseEventArgs, ByVal LogicalCoord As Point, ByVal CurrentClickAction As ToolType)
     Public Shadows Event MouseMove(ByVal sender As CanvasControl, ByVal e As System.Windows.Forms.MouseEventArgs, ByVal LogicalCoord As Point, ByVal CurrentClickAction As ToolType)
@@ -855,11 +853,9 @@ Public Class CanvasControl
     ''' <param name="el"></param>
     Public Event ElementSelected(el As CanvasElement)
 #End Region
-
 #Region "Mouse Handling"
 
 #End Region
-
 #Region "Drawing & Rendering"
     ''' <summary>Sets the layout to render and clears selection.</summary>
     ''' <param name="layout">Canvas layout to display</param>
@@ -892,7 +888,6 @@ Public Class CanvasControl
     End Property
 
 #End Region
-
 #Region "Tool Implementation"
     ''' <summary>
     ''' Set a background image for the canvas with specified opacity.
@@ -964,7 +959,6 @@ Public Class CanvasControl
         Next
     End Sub
 #End Region
-
 #Region "Serialization"
 #Region "Functions that prevent serialization of these properties"
     <EditorBrowsable(EditorBrowsableState.Never)>
@@ -997,7 +991,6 @@ Public Class CanvasControl
     'End Function
 #End Region
 #End Region
-
     ''' <summary>
     ''' Context menu action to assign a block (business data) to the currently selected shape.
     ''' </summary>
@@ -1079,9 +1072,7 @@ Public Class CanvasControl
             Return Nothing
         End Try
     End Function
-
 #End Region
-
 #Region "Zoom Management"
     <Browsable(False)>
     Public Shared ReadOnly Property DefaultRect() As RECT
@@ -1097,7 +1088,6 @@ Public Class CanvasControl
         End Get
     End Property
 #End Region
-
 #Region "Event Helper Functions"
     ''' <summary>
     ''' Function called during MouseMove(), allows you to customize the cursor in derived classes.
@@ -1195,7 +1185,6 @@ Public Class CanvasControl
         End Try
     End Function
 #End Region
-
 #Region "Routine for Redraw()"
     <Browsable(False)>
     Public ReadOnly Property IsLayoutSuspended() As Boolean
@@ -1397,7 +1386,6 @@ Public Class CanvasControl
         End Try
     End Sub
 #End Region
-
 #Region "Grid and Snap"
     <Description("Set the grid display mode"),
      DefaultValue(GetType(GridKind), "Crosses")>
@@ -1431,7 +1419,6 @@ Public Class CanvasControl
         End Set
     End Property
 #End Region
-
 #Region "Public API"
     ''' <summary>
     ''' Switches the active tool used by the canvas.
@@ -1837,7 +1824,6 @@ Public Class CanvasControl
     End Sub
 End Class
 #End Region
-
 #Region "Shape definitions"
 
 ''' <summary>
@@ -1904,7 +1890,6 @@ Public MustInherit Class ShapeBase
     Public MustOverride Sub FromGeometryJson(json As String)
 End Class
 #End Region
-
 #Region "Specific shape implementations"
 
 #Region "LineShape"
