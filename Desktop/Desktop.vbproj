@@ -95,4 +95,23 @@
 	  <Resource Include="Images\zoomfit.png" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="Controls\CanvasControl.vb">
+	    <Generator>DtsGenerator</Generator>
+	    <LastGenOutput>Controls\CanvasControl.vb.d.ts</LastGenOutput>
+	  </Compile>
+	  <Compile Update="Controls\ConversionInfo.vb">
+	    <Generator>DtsGenerator</Generator>
+	    <LastGenOutput>Controls\ConversionInfo.vb.d.ts</LastGenOutput>
+	  </Compile>
+	  <Compile Update="Controls\MeasureSys.vb">
+	    <Generator>DtsGenerator</Generator>
+	    <LastGenOutput>Controls\MeasureSys.vb.d.ts</LastGenOutput>
+	  </Compile>
+	  <Compile Update="PublicTypes.vb">
+	    <Generator>DtsGenerator</Generator>
+	    <LastGenOutput>PublicTypes.vb.d.ts</LastGenOutput>
+	  </Compile>
+	</ItemGroup>
+
 </Project>

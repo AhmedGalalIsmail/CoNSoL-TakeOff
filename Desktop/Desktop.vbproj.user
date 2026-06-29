@@ -10,7 +10,7 @@
     <Compile Update="Controls\CanvasControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Controls\CoordinatesBox.vb">
+    <Compile Update="Controls\CoordinatesBox1.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Controls\CrossCursor.vb">
@@ -27,6 +27,30 @@
     </Compile>
     <Compile Update="Controls\SelectionBoxElement.vb">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\TakeOff_FRM\CoordinatesBox.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\TakeOff_FRM\CrossCursorTakeOff.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\TakeOff_FRM\SelectedElementBox.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\TakeOff_FRM\TakeOffCanvas.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\TakeOff_FRM\TakeOffRulers.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\TakeOff_FRM\ZoomButtonTakeOff.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\TakeOff_WPF\CanvasControlWPF.xaml.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\TakeOff_WPF\SelectionBoxElementWPF.xaml.vb">
+      <SubType>Code</SubType>
     </Compile>
     <Compile Update="Forms\BlockAssignmentForm.vb">
       <SubType>Form</SubType>
