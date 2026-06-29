@@ -16,7 +16,7 @@ Imports System.Reflection
 <Assembly: System.Reflection.AssemblyCompanyAttribute("Infrastructure"),  _
  Assembly: System.Reflection.AssemblyConfigurationAttribute("Debug"),  _
  Assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0"),  _
- Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+73d242df74c35cca837f8b871029d4c7095d753b"),  _
+ Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1a06ca7e4a72c52b14c8262342fcb9117425634e"),  _
  Assembly: System.Reflection.AssemblyProductAttribute("Infrastructure"),  _
  Assembly: System.Reflection.AssemblyTitleAttribute("Infrastructure"),  _
  Assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")> 
