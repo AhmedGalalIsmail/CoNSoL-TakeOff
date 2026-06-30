@@ -65,12 +65,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Temp/05_Mega-File1.md",
+                "file": "en/05_SDLC_Library/05_Mega-File.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "05_Mega-File1"
+              "title": "05_Mega-File"
             }
           },
           {
@@ -297,8 +297,12 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "62f3fc89a03f23a6",
+  "active": "b1888d9b15974ef1",
   "lastOpenFiles": [
+    "en/05_SDLC_Library/05_Mega-File.md",
+    "en/05_SDLC_Library/05_Mega-File.md",
+    "Temp/05_Mega-File1.md",
+    "en/06_VIBE_CODING_GUIDE/06_VIBE_CODING_GUIDE.md",
     "en/07_TECHNICAL_ARCHITECTURE/0703_Implementation_Traceability_SRS_to_Code.md~RF1f03432.TMP",
     "en/05_SDLC_Library/05_SDLC_Library.md",
     "en/07_TECHNICAL_ARCHITECTURE/0701_CanvasControl_Technical_Architecture.md",
@@ -311,10 +315,8 @@
     "en/07_TECHNICAL_ARCHITECTURE/0702_Component_Reference_Detailed.md",
     "en/07_TECHNICAL_ARCHITECTURE/0703_Implementation_Traceability_SRS_to_Code.md~RF1ce54c0.TMP",
     "en/07_TECHNICAL_ARCHITECTURE/xqtqt4ne.0x1~",
-    "Temp/05_Mega-File1.md",
     "Temp/Untitled 1.md",
     "Temp/Draft.md",
-    "en/05_SDLC_Library/05_Mega-File.md",
     "ZRGPictureBoxControl-in-Details/File-Content.md",
     "ZRGPictureBoxControl-in-Details/ZRGPictureBoxControl-in-Details.md",
     "en/06_VIBE_CODING_GUIDE/1_Task_Backlog.md",
@@ -331,10 +333,8 @@
     "CoNSoL-TakeOff-AI-Docs_Notion.zip",
     "Unconfirmed 426717.crdownload",
     "Tempo/Tempo.md",
-    "Temp/Temp.md",
     "Tempo",
     "en/05_SDLC_Library/zesoujq0.2ak~",
-    "en/07_TECHNICAL_ARCHITECTURE/zpxn3bjr.31u~",
     "Pasted image 20260622011543.png",
     "Pasted image 20260622011515.png",
     "Pasted image 20260622011440.png",
