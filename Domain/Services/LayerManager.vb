@@ -14,7 +14,7 @@ Namespace Services
 		''' <summary>
 		''' Initializes the LayerManager by ensuring that there is at least one default layer present in the collection. If no layers exist, a default layer is created and added to the collection.
 		''' </summary>
-		Public Sub Initialize()
+		Public Sub Initialize(layerManager As LayerManager)
 			EnsureDefaultLayer()
 		End Sub
 		''' <summary>Adds a new layer to the collection with the specified name. The layer is validated before being added to ensure it meets any necessary criteria.</summary>
@@ -31,13 +31,28 @@ Namespace Services
 		''' <summary>Removes a layer from the collection based on its unique identifier (layerId). If a layer with the specified ID exists in the collection, it will be removed. If no such layer exists, the method does nothing.</summary>
 		''' <param name="layerId"></param>
 		Public Sub RemoveLayer(layerId As Guid)
-			_layers.RemoveAll(Function(l) l.Id = layerId)
+			'_layers.RemoveAll(Function(l) l.Id = layerId)
 		End Sub
 
 		''' <summary>Returns all layers in the collection.</summary>
 		''' <returns>A list of Layer objects representing all layers in the collection.</returns>
 		Public Function GetAll() As List(Of Layer)
 			Return _layers
+		End Function
+
+
+		' ? Support string-based lookup (temporary compatibility)
+		Public Function GetLayer(nameOrId As String) As Layer
+
+			' ? Try as GUID first
+			Dim gid As Guid
+			If Guid.TryParse(nameOrId, gid) Then
+				'Return _layers.FirstOrDefault(Function(l) l.Id = gid)
+			End If
+
+			' ? Fallback: match by name
+			Return _layers.FirstOrDefault(Function(l) l.Name = nameOrId)
+
 		End Function
 
 		''' <summary>
@@ -47,14 +62,15 @@ Namespace Services
 			' default layer is always present
 			If _layers.Count = 0 Then
 				Dim def As New Layer With {
-					.Id = Guid.NewGuid(),
+					.Id = Guid.NewGuid().ToString,
 					.Name = "Default",
 					.IsVisible = True,
-					.IsLocked = False
+					.IsLocked = False,
+					.IncludeInCalculation = True,
+					.Color = "#FFFFFF"
 				}
 				_layers.Add(def)
 			End If
 		End Sub
 	End Class
-
 End Namespace

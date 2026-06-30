@@ -1,0 +1,4 @@
+E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Project-Example -(to-be-deleted)\ZRGPictureBox\obj\Debug\net8.0\ZRGPictureBox.vbproj.AssemblyReference.cache
+E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Project-Example -(to-be-deleted)\ZRGPictureBox\obj\Debug\net8.0\ZRGPictureBox.cZoomButton.resources
+E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Project-Example -(to-be-deleted)\ZRGPictureBox\obj\Debug\net8.0\ZRGPictureBox.ZRGPictureBoxControl.resources
+E:\Users\GoingIForMal\CoNSoL-TakeOff-AI\Project-Example -(to-be-deleted)\ZRGPictureBox\obj\Debug\net8.0\ZRGPictureBox.vbproj.GenerateResource.cache
