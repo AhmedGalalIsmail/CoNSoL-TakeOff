@@ -15,7 +15,7 @@ Public Class LayerAutoBuilder
 			' Assign elements
 			For Each el In layout.Elements
 				If classification(el.Id) = cat Then
-					el.LayerId = layer.Id ' ? IMPORTANT
+					'el.LayerId = layer.Id ' ? IMPORTANT
 				End If
 			Next
 		Next
