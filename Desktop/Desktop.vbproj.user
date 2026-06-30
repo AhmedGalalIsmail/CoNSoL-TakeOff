@@ -22,8 +22,14 @@
     <Compile Update="Forms\MainForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\MainWPF.xaml.vb">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Forms\MaterialCrudForm.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Window1.xaml.vb">
+      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
 </Project>

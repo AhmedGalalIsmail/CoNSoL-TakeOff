@@ -6,6 +6,7 @@
     <StartupObject>Desktop.program</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,6 +33,7 @@
 
   <ItemGroup>
     <Folder Include="My Project\" />
+    <Folder Include="00-CoNSoL-TakeOff-Docs\" />
   </ItemGroup>
 
 </Project>
