@@ -1,0 +1,249 @@
+{
+  "main": {
+    "id": "5dccdceaa7177ba7",
+    "type": "split",
+    "children": [
+      {
+        "id": "dd26d5ff72f43fa2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3de16757aba2a4a2",
+            "type": "leaf",
+            "state": {
+              "type": "mk-space",
+              "state": {
+                "path": "Documentations"
+              },
+              "icon": "lucide-file",
+              "title": "Documentations"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a7fd2760e8a04455",
+    "type": "split",
+    "children": [
+      {
+        "id": "c892ac82a446b160",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "90c1d7736b9d90c0",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "1ebdba1da33b497e",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "2ada9378d248d4ba",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          },
+          {
+            "id": "62f3fc89a03f23a6",
+            "type": "leaf",
+            "state": {
+              "type": "mk-path-view",
+              "state": {},
+              "icon": "layout-grid",
+              "title": "Navigator"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 234.5
+  },
+  "right": {
+    "id": "ed54713219a366cb",
+    "type": "split",
+    "children": [
+      {
+        "id": "e619ef7d273b8710",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e99791edda932a7d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "CoNSoL-Documents-Library/01-Inception/0101-Requirement_Analysis.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 0101-Requirement_Analysis"
+            }
+          },
+          {
+            "id": "a95752c774990049",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "CoNSoL-Documents-Library/01-Inception/0101-Requirement_Analysis.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 0101-Requirement_Analysis"
+            }
+          },
+          {
+            "id": "f389bc912e500344",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "651d7053123b18c7",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "4ced9bba4aefbd71",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "CoNSoL-Documents-Library/01-Inception/0101-Requirement_Analysis.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 0101-Requirement_Analysis"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "templater-obsidian:Templater": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "export-graph-view:Export graph view": false,
+      "markdown-viewer-extension:Markdown Viewer Preview": false,
+      "press-pdf-export:Export current note": false,
+      "emoji-picker:Open emoji picker": false,
+      "emoji-selector:Open emoji picker": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-excalidraw-plugin:New drawing": false
+    }
+  },
+  "active": "3de16757aba2a4a2",
+  "lastOpenFiles": [
+    "Documentations/0005_CoNSoL-TakeOff_SDLC_Gap_Analysis.md",
+    "Documentations",
+    "Mockups/Mockups.md",
+    "en/05_SDLC_Library/05_Mega-File.md",
+    "en/05_SDLC_Library/05_Mega-File.md",
+    "Temp/05_Mega-File1.md",
+    "en/06_VIBE_CODING_GUIDE/06_VIBE_CODING_GUIDE.md",
+    "en/07_TECHNICAL_ARCHITECTURE/0703_Implementation_Traceability_SRS_to_Code.md~RF1f03432.TMP",
+    "en/05_SDLC_Library/05_SDLC_Library.md",
+    "en/07_TECHNICAL_ARCHITECTURE/0701_CanvasControl_Technical_Architecture.md",
+    "en/Project-Example -(to-be-deleted)/ZRGPictureBoxControl-in-Details.md",
+    "en/07_TECHNICAL_ARCHITECTURE/0701_CanvasControl_Technical_Architecture.md~RF1e49bd0.TMP",
+    "ZRGPictureBoxControl-in-Details/01-ZRGPictureBoxControl.md",
+    "ZRGPictureBoxControl-in-Details/02-ZoomButton.md",
+    "ZRGPictureBoxControl-in-Details/ZRGPictureBoxControl-in-Detailed.md",
+    "en/07_TECHNICAL_ARCHITECTURE/0703_Implementation_Traceability_SRS_to_Code.md",
+    "en/07_TECHNICAL_ARCHITECTURE/0702_Component_Reference_Detailed.md",
+    "en/07_TECHNICAL_ARCHITECTURE/0703_Implementation_Traceability_SRS_to_Code.md~RF1ce54c0.TMP",
+    "en/07_TECHNICAL_ARCHITECTURE/xqtqt4ne.0x1~",
+    "Temp/Untitled 1.md",
+    "Temp/Draft.md",
+    "ZRGPictureBoxControl-in-Details/File-Content.md",
+    "ZRGPictureBoxControl-in-Details/ZRGPictureBoxControl-in-Details.md",
+    "en/06_VIBE_CODING_GUIDE/1_Task_Backlog.md",
+    "en/06_VIBE_CODING_GUIDE/0_CoNSoL_Production_Layers.md",
+    "en/0001_MASTER_DASHBOARD.md",
+    "en/0601_CoNSoL-TakeOff_AI_PRODUCT_STORY_DRAFT_V1.3.md",
+    "en/0005_CoNSoL-TakeOff_SDLC_Gap_Analysis.md",
+    "en/05_SDLC_Library/0000_AGENT_BRIEFING.md",
+    "en/en.md",
+    "ar/0601_CoNSoL-TakeOff_AI_PRODUCT_STORY_DRAFT_V1.3-ar.md",
+    "__rzi_5040.13041.rartemp",
+    "__rzi_5040.10428.rartemp",
+    "CoNSoL-TakeOff-AI-Docs_Notion.zip",
+    "Unconfirmed 426717.crdownload",
+    "Tempo",
+    "Pasted image 20260622011543.png",
+    "Pasted image 20260622011515.png",
+    "Pasted image 20260622011440.png",
+    "Pasted image 20260622011418.png",
+    "Pasted image 20260622011324.png",
+    "Pasted image 20260622011033.png",
+    "Pasted image 20260622010833.png"
+  ]
+}
