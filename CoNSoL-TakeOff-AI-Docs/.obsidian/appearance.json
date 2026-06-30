@@ -1,1 +1,9 @@
+<<<<<<< HEAD
 {}
+=======
+{
+  "cssTheme": "Dracula for Obsidian",
+  "accentColor": "#523bc4",
+  "theme": "obsidian"
+}
+>>>>>>> b9914f6811876d47e599e06b4bb33b687fe6b6ae
