@@ -11,12 +11,14 @@
             "id": "3de16757aba2a4a2",
             "type": "leaf",
             "state": {
-              "type": "mk-space",
+              "type": "markdown",
               "state": {
-                "path": "Documentations"
+                "file": "en/05_SDLC_Library/05_Mega-File.md",
+                "mode": "source",
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "Documentations"
+              "title": "05_Mega-File"
             }
           }
         ]
@@ -78,12 +80,11 @@
             "state": {
               "type": "mk-path-view",
               "state": {},
-              "icon": "layout-grid",
-              "title": "Navigator"
+              "icon": "lucide-ghost",
+              "title": "mk-path-view"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
@@ -183,7 +184,6 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "templater-obsidian:Templater": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -191,23 +191,25 @@
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
       "bases:Create new base": false,
+      "templater-obsidian:Templater": false,
       "export-graph-view:Export graph view": false,
-      "markdown-viewer-extension:Markdown Viewer Preview": false,
       "press-pdf-export:Export current note": false,
       "emoji-picker:Open emoji picker": false,
       "emoji-selector:Open emoji picker": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
-      "obsidian-excalidraw-plugin:New drawing": false
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "markdown-viewer-extension:Markdown Viewer Preview": false
     }
   },
   "active": "3de16757aba2a4a2",
   "lastOpenFiles": [
     "en/Project-Example -(to-be-deleted)/ZRGPictureBoxControl-in-Details.md",
-    "en/Project-Example -(to-be-deleted)",
-    "en/06_VIBE_CODING_GUIDE/06_VIBE_CODING_GUIDE.md",
-    "en/06_VIBE_CODING_GUIDE",
-    "en/05_SDLC_Library/05_SDLC_Library.md",
     "en/05_SDLC_Library/05_Mega-File.md",
+    "Documentations/0005_CoNSoL-TakeOff_SDLC_Gap_Analysis.md",
+    "en/06_VIBE_CODING_GUIDE/06_VIBE_CODING_GUIDE.md",
+    "en/05_SDLC_Library/05_SDLC_Library.md",
+    "en/Project-Example -(to-be-deleted)",
+    "en/06_VIBE_CODING_GUIDE",
     "en/05_SDLC_Library",
     "en",
     "ar/check.md",
@@ -219,7 +221,6 @@
     "Temp/Temp.md",
     "Temp/Draft.md",
     "Temp/05_Mega-File1.md",
-    "Documentations/0005_CoNSoL-TakeOff_SDLC_Gap_Analysis.md",
     "Documentations",
     "Mockups/Mockups.md",
     "en/07_TECHNICAL_ARCHITECTURE/0703_Implementation_Traceability_SRS_to_Code.md~RF1f03432.TMP",
