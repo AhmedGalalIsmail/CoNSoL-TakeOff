@@ -8,6 +8,9 @@ Imports Desktop.Controls.LineShape
 Imports Domain.Entities.CanvasElement
 
 Namespace Controls
+	''' <summary>
+	''' PropertiesPanel is a user control that displays and allows editing of the properties of a selected shape or canvas element. It shows information such as type, geometry, block code, dimension mode, layer, and nested relationships. It also allows editing of parameters defined in the BusinessJson of a shape. When parameters are edited, it updates the BusinessJson and raises an event to notify the change.
+	''' </summary>
 	Public Class PropertiesPanel
 		Inherits UserControl
 
@@ -51,16 +54,15 @@ Namespace Controls
 			Me.Controls.Add(lblType)
 		End Sub
 
-
 		'    ' ---------------- UI ----------------
-
+		''' <summary>
+		''' Build the user interface of the properties panel, including labels for type and geometry, text boxes for block code, dimension mode, layer, and nested info, and a data grid for parameters. Arrange these controls in a TableLayoutPanel for organized display. The parameters grid allows editing of parameter values, which will trigger updates to the BusinessJson when edited.</summary>
 		Private Sub BuildUI()
 			Dim root As New TableLayoutPanel With {
 				.Dock = DockStyle.Right,
 				.ColumnCount = 1,
 				.RowCount = 7
 			}
-
 			root.RowStyles.Add(New RowStyle(SizeType.Absolute, 60)) ' title
 			root.RowStyles.Add(New RowStyle(SizeType.Absolute, 60)) ' type
 			root.RowStyles.Add(New RowStyle(SizeType.Absolute, 60)) ' geometry
@@ -140,19 +142,15 @@ Namespace Controls
 
 			Dim doc = JsonDocument.Parse(shape.BusinessJson)
 			Dim root = doc.RootElement
-
 			txtBlock.Text = root.GetProperty("BlockCode").GetString()
 			txtDimMode.Text = root.GetProperty("DimensionMode").GetString()
-
 			If root.TryGetProperty("Parameters", Nothing) Then
 				For Each p In root.GetProperty("Parameters").EnumerateObject()
 					gridParams.Rows.Add(p.Name, p.Value.ToString())
 				Next
 			End If
-
 			' Dim rel = relationships.FirstOrDefault(Function(r) r.ChildElementId = shape.ElementId)
 			Dim rel = GetRel(shape, relationships)
-
 			If rel IsNot Nothing Then
 				txtNestedInfo.Text =
 				$"Nested in: {rel.ParentElementId}{Environment.NewLine}" &
@@ -215,13 +213,8 @@ Namespace Controls
 			RaiseEvent BusinessJsonChanged(_shape)
 		End Sub
 
-
-
-
-
 		''' <summary>
-		''' Bind a canvas element to the properties panel, displaying its type and category for editing.
-		''' </summary>
+		''' Bind a canvas element to the properties panel, displaying its type and category for editing. </summary>
 		''' <param name="el"></param>
 		Public Sub SetElement(el As CanvasElement)
 			_selected = el
@@ -231,8 +224,7 @@ Namespace Controls
 		End Sub
 
 		''' <summary>
-		''' Extract the category (BlockCode) from the BusinessJson of the canvas element. If BusinessJson is empty or invalid, returns "Unknown".
-		''' </summary>
+		''' Extract the category (BlockCode) from the BusinessJson of the canvas element. If BusinessJson is empty or invalid, returns "Unknown".</summary>
 		''' <param name="el"></param>
 		''' <returns></returns>
 		Private Function GetCategory(el As CanvasElement) As String
@@ -242,8 +234,7 @@ Namespace Controls
 		End Function
 
 		''' <summary>
-		''' When the Apply button is clicked, update the BusinessJson of the selected canvas element with the new category and a default DimensionMode. Then show a confirmation message.
-		''' </summary>
+		''' When the Apply button is clicked, update the BusinessJson of the selected canvas element with the new category and a default DimensionMode. Then show a confirmation message.</summary>
 		''' <param name="sender"></param>
 		''' <param name="e"></param>
 		Private Sub Apply_Click(sender As Object, e As EventArgs)
